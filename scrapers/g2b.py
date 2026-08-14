@@ -9,6 +9,13 @@
 주의: 공공데이터포털 API는 오퍼레이션/파라미터명이 가끔 개편됩니다.
       아래 ENDPOINT/OPERATION이 동작하지 않으면 data.go.kr에서 해당 서비스의
       "Swagger 문서"를 열어 최신 오퍼레이션명을 확인해 OPERATION 값만 바꿔주면 됩니다.
+
+참고(업종/지역 필드): 실제 응답 필드명을 로그로 확인한 결과, 코드에서 원래 쓰던
+      indstrytyNm / bizClsfcNoNm / prtcptPsblRgnNm 필드는 이 API 응답에 존재하지
+      않아 항상 빈 값이 저장되고 있었습니다. 대신 아래 필드를 사용합니다.
+        - 업종: mainCnsttyNm (주공종명, 예: "정보통신공사업")
+        - 지역: cnstrtsiteRgnNm (공사현장 지역명) → 없으면 jntcontrctDutyRgnNm1
+                (지역의무공동도급 지역명) → 그래도 없으면 incntvRgnNm1(인센티브 지역명)
 """
 
 import sys
@@ -103,8 +110,12 @@ def fetch_g2b_bids():
 
         for item in items:
             title = item.get("bidNtceNm", "")
-            region_text = item.get("prtcptPsblRgnNm", "") or item.get("rgnDutyJntcontrctRt", "")
             org_text = item.get("ntceInsttNm", "")
+            region_text = (
+                item.get("cnstrtsiteRgnNm", "")
+                or item.get("jntcontrctDutyRgnNm1", "")
+                or item.get("incntvRgnNm1", "")
+            )
             deadline = item.get("bidClseDt", "")
             if not is_deadline_in_range(deadline):
                 continue
@@ -112,8 +123,8 @@ def fetch_g2b_bids():
             results.append({
                 "source": "나라장터",
                 "title": title,
-                "org": item.get("ntceInsttNm", ""),
-                "industry": item.get("indstrytyNm", "") or item.get("bizClsfcNoNm", ""),
+                "org": org_text,
+                "industry": item.get("mainCnsttyNm", ""),
                 "notice_no": item.get("bidNtceNo", ""),
                 "region": region_text,
                 "base_amount": item.get("presmptPrce", ""),

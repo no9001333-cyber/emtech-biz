@@ -11,6 +11,19 @@
       serviceKey, pageNo, numOfRows, _type(json/xml), searchDt(검색년월, YYYYMM)
       입니다. searchDt는 월 단위로만 조회되므로, LOOKBACK_DAYS 범위에 걸친
       연-월을 모두 순회하며 조회해서 합칩니다.
+
+참고(실제 응답 필드명): 최초 작성 시 문서만 보고 bidNtceNm/rgnNm/bidClseDt/
+      bidNtceNo/presmptPrce/bidNtceDt 같은 필드명을 추정해 사용했는데, 실제
+      운영 로그로 확인한 응답 필드는 다음과 같이 전혀 다릅니다:
+        cntrctDeptNm(계약부서명), cntrctDivNm(계약구분명: 공사/용역/물품 등),
+        ctrmthdCdNm(계약방법명), tndrPartcptEntrpsCo(참가업체수),
+        tndrPbanno(입찰공고번호), tndrPblancDe(공고일자),
+        tndrPblancEnddt(입찰마감일시), tndrPblancNm(입찰공고명),
+        tndrPlnprc(예정가격), tndrPrqudoCo(예정가격수), tndrStat(입찰상태)
+      → 아래 매핑을 이 실제 필드명 기준으로 수정했습니다. 단, 이 API에는
+      "공사현장이 어느 지역인지"를 직접 알려주는 필드가 없어서, 지역(region)은
+      계약부서명(지역본부명, 예: "한강권역본부")으로 대체 표기합니다 — 실제
+      현장 소재지와 정확히 일치하지 않을 수 있는 추정값입니다.
 """
 
 import sys
@@ -117,23 +130,24 @@ def fetch_kwater_bids():
 
     results = []
     for item in all_items:
-        title = item.get("bidNtceNm") or item.get("ntceNm", "")
-        region_text = item.get("rgnNm", "")
-        deadline = item.get("bidClseDt", "")
+        title = item.get("tndrPblancNm", "")
+        # 이 API에는 공사현장 지역을 직접 나타내는 필드가 없어, 계약부서(지역본부)명으로 대체
+        region_text = item.get("cntrctDeptNm", "")
+        deadline = item.get("tndrPblancEnddt", "")
         if not is_deadline_in_range(deadline):
             continue
 
         results.append({
             "source": "한국수자원공사",
             "title": title,
-            "industry": "",
+            "industry": item.get("cntrctDivNm", ""),  # 계약구분명 (공사/용역/물품 등)
             "org": "한국수자원공사",
-            "notice_no": item.get("bidNtceNo", ""),
+            "notice_no": item.get("tndrPbanno", ""),
             "region": region_text,
-            "base_amount": item.get("presmptPrce", ""),
-            "notice_date": item.get("bidNtceDt", ""),
+            "base_amount": item.get("tndrPlnprc", ""),
+            "notice_date": item.get("tndrPblancDe", ""),
             "reg_deadline": "",
-            "bid_method": "",
+            "bid_method": item.get("ctrmthdCdNm", ""),
             "deadline": deadline,
             "url": "https://www.kwater.or.kr",
             "eligible": is_eligible_region(region_text, "한국수자원공사"),
