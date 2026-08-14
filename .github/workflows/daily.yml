@@ -31,8 +31,6 @@ jobs:
           D2B_SERVICE_KEY: ${{ secrets.D2B_SERVICE_KEY }}
           KWATER_SERVICE_KEY: ${{ secrets.KWATER_SERVICE_KEY }}
           KEPCO_API_KEY: ${{ secrets.KEPCO_API_KEY }}
-          KORAIL_SERVICE_KEY: ${{ secrets.KORAIL_SERVICE_KEY }}
-          KR_SERVICE_KEY: ${{ secrets.KR_SERVICE_KEY }}
           G2B_AWARDS_SERVICE_KEY: ${{ secrets.G2B_AWARDS_SERVICE_KEY }}
           DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
         run: python main.py
