@@ -7,11 +7,11 @@
    (※ 입찰공고정보서비스와는 별개의 서비스라 별도로 신청해야 합니다)
 2) 발급받은 서비스키를 환경변수 G2B_AWARDS_SERVICE_KEY 로 설정
    (나라장터 입찰공고정보서비스와 같은 계정이면 같은 인증키를 써도 되는 경우가 많습니다.
-    안 되면 이 서비스도 별도로 활용신청 후 발급받은 키를 넣어주세요)
+   안 되면 이 서비스도 별도로 활용신청 후 발급받은 키를 넣어주세요)
 
-주의: 엔드포인트/오퍼레이션명은 "입찰공고정보서비스"와 같은 규칙일 것으로 추정해 작성했습니다.
-      만약 0건이거나 에러가 나면, data.go.kr에서 이 서비스 상세페이지의 End Point 주소를
-      확인해서 ENDPOINT 값을 맞춰주세요.
+참고: data.go.kr의 "조달청_나라장터 낙찰정보서비스" Swagger 문서 기준 Base URL은
+      apis.data.go.kr/1230000/as/ScsbidInfoService 입니다 (경로가 /ad/ 가 아니라 /as/ 입니다).
+      오퍼레이션명(getScsbidListSttusCnstwk)과 파라미터는 문서와 일치합니다.
 """
 
 import sys
@@ -24,7 +24,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import G2B_AWARDS_SERVICE_KEY, LOOKBACK_DAYS
 from scrapers._common import is_deadline_in_range, get_with_retry
 
-ENDPOINT = "https://apis.data.go.kr/1230000/ad/ScsbidInfoService"
+ENDPOINT = "https://apis.data.go.kr/1230000/as/ScsbidInfoService"
 # 공사(工事) 낙찰(개찰결과) 목록 조회 오퍼레이션
 OPERATION = "getScsbidListSttusCnstwk"
 

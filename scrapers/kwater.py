@@ -6,9 +6,11 @@
 1) https://www.data.go.kr 에서 "한국수자원공사 전자조달 입찰공고" 검색 → 활용신청 (자동승인)
 2) 발급받은 서비스키를 환경변수 KWATER_SERVICE_KEY 로 설정
 
-주의: 정확한 오퍼레이션(세부기능) 이름을 Swagger 문서로 확인하지 못해서,
-      아래 후보 이름들을 순서대로 시도합니다. 성공한 이름이 로그에 찍히니,
-      확인되면 CANDIDATE_OPERATIONS 맨 앞으로 그 이름만 남겨도 됩니다.
+참고: data.go.kr의 Swagger 문서(Base URL: apis.data.go.kr/B500001/ebid/tndr3) 기준
+      공사 입찰공고 조회 오퍼레이션은 /cntrwkList 이며, 파라미터는
+      serviceKey, pageNo, numOfRows, _type(json/xml), searchDt(검색년월, YYYYMM)
+      입니다. searchDt는 월 단위로만 조회되므로, LOOKBACK_DAYS 범위에 걸친
+      연-월을 모두 순회하며 조회해서 합칩니다.
 """
 
 import sys
@@ -22,16 +24,7 @@ from config import REGIONS, ALWAYS_INCLUDE_ORGS, KWATER_SERVICE_KEY, LOOKBACK_DA
 from scrapers._common import is_deadline_in_range, is_eligible_region
 
 ENDPOINT = "https://apis.data.go.kr/B500001/ebid/tndr3"
-
-# 공사 입찰공고 조회로 추정되는 후보 오퍼레이션명들 (순서대로 시도)
-CANDIDATE_OPERATIONS = [
-    "getEbidPblancTndrCnstwkList",
-    "getBidPblancListInfoCnstwk",
-    "getPblancListCnstwk",
-    "getCnstwkPblancList",
-    "getTndrCnstwkList",
-    "getEbidPblancListCnstwk",
-]
+OPERATION = "cntrwkList"
 
 
 def _clean_key(key: str) -> str:
@@ -47,8 +40,28 @@ def _matches_region(region_text: str, org_text: str = "") -> bool:
     return any(r in region_text for r in REGIONS)
 
 
-def _try_fetch(operation, params):
-    url = f"{ENDPOINT}/{operation}"
+def _month_range(begin: datetime, end: datetime):
+    """begin~end 사이에 걸친 연-월(YYYYMM) 목록을 순서대로 반환 (searchDt가 월 단위라서 필요)."""
+    months = []
+    y, m = begin.year, begin.month
+    while (y, m) <= (end.year, end.month):
+        months.append(f"{y:04d}{m:02d}")
+        if m == 12:
+            y, m = y + 1, 1
+        else:
+            m += 1
+    return months
+
+
+def _fetch_month(search_dt):
+    url = f"{ENDPOINT}/{OPERATION}"
+    params = {
+        "serviceKey": _clean_key(KWATER_SERVICE_KEY),
+        "pageNo": 1,
+        "numOfRows": 1000,
+        "_type": "json",
+        "searchDt": search_dt,
+    }
     resp = requests.get(url, params=params, timeout=20)
     if resp.status_code != 200:
         return None, f"HTTP {resp.status_code}"
@@ -77,47 +90,33 @@ def fetch_kwater_bids():
 
     end = datetime.now()
     begin = end - timedelta(days=LOOKBACK_DAYS)
-    params = {
-        "serviceKey": _clean_key(KWATER_SERVICE_KEY),
-        "pageNo": 1,
-        "numOfRows": 1000,
-        "type": "json",
-        "inqryDiv": 1,
-        "inqryBgnDt": begin.strftime("%Y%m%d0000"),
-        "inqryEndDt": end.strftime("%Y%m%d2359"),
-    }
 
-    items = None
-    used_operation = None
+    all_items = []
     errors = []
-    for operation in CANDIDATE_OPERATIONS:
-        try:
-            found_items, error = _try_fetch(operation, params)
-        except Exception as e:
-            found_items, error = None, str(e)
+    for search_dt in _month_range(begin, end):
+        found_items, error = _fetch_month(search_dt)
+        if error is not None:
+            errors.append(f"{search_dt}: {error}")
+            continue
+        if found_items:
+            all_items.extend(found_items)
 
-        if error is None:
-            items = found_items
-            used_operation = operation
-            break
-        errors.append(f"{operation}: {error}")
-
-    if used_operation is None:
-        print("[K-water] 요청 실패: 시도한 오퍼레이션 전부 실패")
+    if errors and not all_items:
+        print("[K-water] 요청 실패: 조회한 월 전부 실패")
         for e in errors:
             print(f"[K-water]   - {e}")
         return []
+    for e in errors:
+        print(f"[K-water] 일부 월 조회 실패 - {e}")
 
-    print(f"[K-water] 성공한 오퍼레이션명: {used_operation} (config에 고정하려면 이 이름을 맨 앞으로)")
-
-    if not items:
+    if not all_items:
         print("[K-water] 수집된 항목이 없습니다.")
         return []
 
-    print(f"[K-water] 응답 필드명 예시: {list(items[0].keys())[:15]}")
+    print(f"[K-water] 응답 필드명 예시: {list(all_items[0].keys())[:15]}")
 
     results = []
-    for item in items:
+    for item in all_items:
         title = item.get("bidNtceNm") or item.get("ntceNm", "")
         region_text = item.get("rgnNm", "")
         deadline = item.get("bidClseDt", "")
