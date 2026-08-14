@@ -128,26 +128,32 @@ def fetch_kwater_bids():
 
     print(f"[K-water] 응답 필드명 예시: {list(all_items[0].keys())[:15]}")
 
+    def _s(v):
+        """이 API는 날짜/번호 같은 필드를 문자열이 아닌 숫자(int)로 내려줄 때가 있어서,
+        저장 전에 항상 문자열로 통일한다 (안 그러면 나중에 다른 소스의 문자열 값과
+        섞여 정렬할 때 'int'와 'str'을 비교할 수 없다는 TypeError가 난다)."""
+        return "" if v is None else str(v)
+
     results = []
     for item in all_items:
-        title = item.get("tndrPblancNm", "")
+        title = _s(item.get("tndrPblancNm", ""))
         # 이 API에는 공사현장 지역을 직접 나타내는 필드가 없어, 계약부서(지역본부)명으로 대체
-        region_text = item.get("cntrctDeptNm", "")
-        deadline = item.get("tndrPblancEnddt", "")
+        region_text = _s(item.get("cntrctDeptNm", ""))
+        deadline = _s(item.get("tndrPblancEnddt", ""))
         if not is_deadline_in_range(deadline):
             continue
 
         results.append({
             "source": "한국수자원공사",
             "title": title,
-            "industry": item.get("cntrctDivNm", ""),  # 계약구분명 (공사/용역/물품 등)
+            "industry": _s(item.get("cntrctDivNm", "")),  # 계약구분명 (공사/용역/물품 등)
             "org": "한국수자원공사",
-            "notice_no": item.get("tndrPbanno", ""),
+            "notice_no": _s(item.get("tndrPbanno", "")),
             "region": region_text,
             "base_amount": item.get("tndrPlnprc", ""),
-            "notice_date": item.get("tndrPblancDe", ""),
+            "notice_date": _s(item.get("tndrPblancDe", "")),
             "reg_deadline": "",
-            "bid_method": item.get("ctrmthdCdNm", ""),
+            "bid_method": _s(item.get("ctrmthdCdNm", "")),
             "restrictions": "",  # 이 API 응답에서 제한사항 관련 필드를 아직 확인하지 못해 비워둠
             "deadline": deadline,
             "url": "https://www.kwater.or.kr",
