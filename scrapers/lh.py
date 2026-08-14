@@ -101,6 +101,7 @@ def fetch_lh_bids():
             "notice_date": _xml_text(item, "tndrbidRegDt"),
             "reg_deadline": _xml_text(item, "tndrdocAcptBgninDtm"),  # 입찰서접수개시일시
             "bid_method": _xml_text(item, "tndrCtrctMedCd"),  # 입찰계약방법(제한경쟁 등)
+            "restrictions": f"지역제한({region_text})" if region_text else "",  # 참가지역1~4가 있으면 지역제한 공고
             "deadline": deadline,
             "url": "https://ebid.lh.or.kr",
             "eligible": is_eligible_region(region_text, "한국토지주택공사", title),

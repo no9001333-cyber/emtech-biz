@@ -97,6 +97,7 @@ def fetch_d2b_bids():
             "notice_date": _xml_text(item, "pblancDt", "ntceDt"),
             "reg_deadline": "",
             "bid_method": "",
+            "restrictions": "",  # 이 API 응답에서 제한사항 관련 필드를 아직 확인하지 못해 비워둠
             "deadline": deadline,
             "url": "https://www.d2b.go.kr",
             "eligible": True,

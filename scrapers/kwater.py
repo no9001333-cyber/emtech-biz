@@ -148,6 +148,7 @@ def fetch_kwater_bids():
             "notice_date": item.get("tndrPblancDe", ""),
             "reg_deadline": "",
             "bid_method": item.get("ctrmthdCdNm", ""),
+            "restrictions": "",  # 이 API 응답에서 제한사항 관련 필드를 아직 확인하지 못해 비워둠
             "deadline": deadline,
             "url": "https://www.kwater.or.kr",
             "eligible": is_eligible_region(region_text, "한국수자원공사"),

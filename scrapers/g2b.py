@@ -16,6 +16,11 @@
         - 업종: mainCnsttyNm (주공종명, 예: "정보통신공사업")
         - 지역: cnstrtsiteRgnNm (공사현장 지역명) → 없으면 jntcontrctDutyRgnNm1
                 (지역의무공동도급 지역명) → 그래도 없으면 incntvRgnNm1(인센티브 지역명)
+
+참고(입찰 제한사항): 공고문에 명시된 참가자격 제한을 아래 필드로 판단해 배지로 표기합니다.
+        - indstrytyLmtYn(업종제한여부), bidPrtcptLmtYn(참가자격제한여부),
+          rgnLmtBidLocplcJdgmBssNm(지역제한 소재지 판단기준), rgnDutyJntcontrctYn(지역의무공동도급여부),
+          bidMethdNm/cntrctCnclsMthdNm에 "제한"/"지명"이 포함된 경우(제한경쟁·지명경쟁 입찰)
 """
 
 import sys
@@ -58,6 +63,31 @@ def _fetch_page(begin_dt: str, end_dt: str, page_no: int, num_of_rows: int = 500
 
 def _matches_keyword(title: str) -> bool:
     return any(k in (title or "") for k in KEYWORDS)
+
+
+def _build_restrictions(item: dict) -> str:
+    """공고 항목에서 입찰 참가 제한 관련 정보를 뽑아 사람이 읽을 수 있는 배지 텍스트 목록으로 만든다."""
+    tags = []
+    if item.get("indstrytyLmtYn") == "Y":
+        tags.append("업종제한")
+    if item.get("bidPrtcptLmtYn") == "Y":
+        tags.append("참가자격제한")
+    rgn_lmt_bss = item.get("rgnLmtBidLocplcJdgmBssNm", "")
+    if rgn_lmt_bss:
+        tags.append(f"지역제한({rgn_lmt_bss})")
+    if item.get("rgnDutyJntcontrctYn") == "Y":
+        tags.append("지역의무공동도급")
+    bid_method = item.get("bidMethdNm", "") or item.get("cntrctCnclsMthdNm", "")
+    if "제한" in bid_method or "지명" in bid_method:
+        tags.append(bid_method)
+    # 순서를 유지하며 중복 제거
+    seen = set()
+    deduped = []
+    for t in tags:
+        if t not in seen:
+            seen.add(t)
+            deduped.append(t)
+    return ", ".join(deduped)
 
 
 def _matches_region(region_text: str, org_text: str = "", title_text: str = "") -> bool:
@@ -131,6 +161,7 @@ def fetch_g2b_bids():
                 "notice_date": item.get("bidNtceDt", ""),
                 "reg_deadline": item.get("bidQlfctRegDt", "") or item.get("prtcptRegYn", ""),
                 "bid_method": item.get("bidMethdNm", "") or item.get("cntrctCnclsMthdNm", ""),
+                "restrictions": _build_restrictions(item),
                 "deadline": deadline,
                 "url": item.get("bidNtceDtlUrl", ""),
                 "eligible": is_eligible_region(region_text, org_text, title),
