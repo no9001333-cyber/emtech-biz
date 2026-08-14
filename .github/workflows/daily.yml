@@ -26,6 +26,8 @@ jobs:
 
       - name: 공고 수집 + 대시보드 생성
         env:
+          PYTHONUTF8: "1"
+          PYTHONIOENCODING: "utf-8"
           G2B_SERVICE_KEY: ${{ secrets.G2B_SERVICE_KEY }}
           LH_SERVICE_KEY: ${{ secrets.LH_SERVICE_KEY }}
           D2B_SERVICE_KEY: ${{ secrets.D2B_SERVICE_KEY }}
@@ -36,6 +38,7 @@ jobs:
         run: python main.py
 
       - name: 변경사항 커밋
+        shell: bash
         run: |
           git config user.name "bid-monitor-bot"
           git config user.email "bot@users.noreply.github.com"
@@ -44,6 +47,7 @@ jobs:
           git push
 
       - name: 상태 점검 (문제 있으면 이 단계가 실패해서 GitHub이 이메일로 알려줌)
+        shell: bash
         run: |
           python -c "
           import json, sys
