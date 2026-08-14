@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   collect:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # 사용자 PC에서 실행 (data.go.kr이 GitHub 공용 서버 IP를 막아서 변경)
     steps:
       - name: 저장소 체크아웃
         uses: actions/checkout@v4
