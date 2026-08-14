@@ -58,6 +58,7 @@ POST_DEADLINE_TRACK_DAYS = 21
 # 공개 API가 없어 자동 수집은 못 하지만, 최소한 클릭 한 번으로 확인할 수 있게 대시보드에 노출.
 EXTERNAL_MANUAL_LINKS = [
     {"name": "한국철도공사(코레일) 자체 시스템", "url": "https://ebid.korail.com/"},
+    {"name": "국가철도공단", "url": "https://ebid.kr.or.kr/"},
     {"name": "한국가스공사", "url": "http://bid.kogas.or.kr/"},
     {"name": "한국석유공사", "url": "https://ebid.knoc.co.kr/"},
 ]
