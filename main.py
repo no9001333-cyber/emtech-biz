@@ -16,6 +16,7 @@
 
 import json
 import os
+import time
 from datetime import datetime
 
 from config import (
@@ -60,6 +61,7 @@ def _run_source(name, key_configured, fetch_fn, status_list):
         note = f"{len(results)}건 수집"
 
     status_list.append({"source": name, "ok": ok, "count": len(results), "note": note})
+    time.sleep(2)  # 다음 소스 요청 전 잠깐 쉬어서 data.go.kr 쪽에 너무 몰아치지 않게 함
     return results
 
 
