@@ -23,6 +23,7 @@ from config import KEYWORDS, D2B_SERVICE_KEY, LOOKBACK_DAYS
 from scrapers._common import is_deadline_in_range, get_with_retry
 
 ENDPOINT = "https://apis.data.go.kr/1690000/BidPblancInfoService"
+OPERATION = "getDmstcCmpetBidPblancList"  # 국내 경쟁입찰공고 목록
 
 
 def _clean_key(key: str) -> str:
@@ -62,7 +63,8 @@ def fetch_d2b_bids():
     }
 
     try:
-        resp = get_with_retry(ENDPOINT, params=params, timeout=30)
+        url = f"{ENDPOINT}/{OPERATION}"
+        resp = get_with_retry(url, params=params, timeout=30)
         root = ET.fromstring(resp.content)
     except Exception as e:
         print(f"[D2B] 요청 실패: {e}")
