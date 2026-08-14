@@ -188,7 +188,7 @@ TEMPLATE = """<!DOCTYPE html>
 <div id="mainContent" style="display:none;">
 <header>
   <h1>emtech-biz — 이엠테크 입찰 모니터</h1>
-  <p>나라장터 · LH · 국방전자조달(D2B) · 한국수자원공사 · 한국전력공사 · 한국철도공사 · 국가철도공단 전업종 공고 자동 수집 + 메모 + 투찰금액 계산</p>
+  <p>나라장터 · LH · 국방전자조달(D2B) · 한국수자원공사 · 한국전력공사 전업종 공고 자동 수집 + 메모 + 투찰금액 계산</p>
   <div class="meta">
     <span>마지막 업데이트: <b>{updated_at}</b></span>
     <span>업종: <b>전체 (직접 필터링)</b></span>
@@ -219,7 +219,6 @@ TEMPLATE = """<!DOCTYPE html>
     <option value="국방전자조달(D2B)">국방전자조달(D2B)</option>
     <option value="한국수자원공사">한국수자원공사</option>
     <option value="한국전력공사">한국전력공사</option>
-    <option value="한국철도공사">한국철도공사</option>
   </select>
   <select id="regionFilter">
     <option value="">전체 지역</option>
@@ -269,8 +268,7 @@ TEMPLATE = """<!DOCTYPE html>
         <th><select id="colFilterSource" class="col-filter"><option value="">전체</option>
           <option value="나라장터">나라장터</option><option value="LH">LH</option>
           <option value="국방전자조달(D2B)">D2B</option><option value="한국수자원공사">수자원공사</option>
-          <option value="한국전력공사">한전</option><option value="한국철도공사">철도공사</option>
-          <option value="국가철도공단">철도공단</option>
+          <option value="한국전력공사">한전</option>
         </select></th>
         <th><select id="colFilterStatus" class="col-filter"><option value="">전체</option>
           <option value="진행중">진행중</option><option value="마감">마감/개찰</option>
@@ -407,7 +405,7 @@ if (!PASSWORD_HASH) {{
   unlock();
 }}
 
-const tagClass = {{ "나라장터": "g2b", "LH": "lh", "국방전자조달(D2B)": "d2b", "한국수자원공사": "g2b", "한국전력공사": "g2b", "한국철도공사": "g2b", "국가철도공단": "g2b" }};
+const tagClass = {{ "나라장터": "g2b", "LH": "lh", "국방전자조달(D2B)": "d2b", "한국수자원공사": "g2b", "한국전력공사": "g2b" }};
 
 function loadMemos() {{
   try {{ return JSON.parse(localStorage.getItem(MEMO_KEY) || '{{}}'); }} catch (e) {{ return {{}}; }}
