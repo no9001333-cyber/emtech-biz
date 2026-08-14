@@ -305,7 +305,7 @@ TEMPLATE = """<!DOCTYPE html>
   <table>
     <thead>
       <tr>
-        <th>출처</th><th>상태</th><th>공고명</th><th>발주기관</th><th>업종</th><th>지역</th><th>입찰방식</th>
+        <th>출처</th><th>상태</th><th>공고명</th><th>발주기관</th><th>업종</th><th>지역</th><th>입찰방식</th><th>제한사항</th>
         <th>기초금액</th><th>투찰마감</th><th>참가등록마감</th><th>낙찰결과</th><th>메모</th><th></th>
       </tr>
       <tr class="filter-row">
@@ -322,6 +322,7 @@ TEMPLATE = """<!DOCTYPE html>
         <th><input id="colFilterIndustry" class="col-filter" type="text" placeholder="검색"></th>
         <th><input id="colFilterRegion" class="col-filter" type="text" placeholder="검색"></th>
         <th><input id="colFilterBidMethod" class="col-filter" type="text" placeholder="검색"></th>
+        <th><input id="colFilterRestrictions" class="col-filter" type="text" placeholder="검색"></th>
         <th>
           <div style="display:flex; gap:2px;">
             <input id="colFilterAmountMin" class="col-filter" type="number" placeholder="최소">
@@ -484,6 +485,14 @@ function ddayLabel(deadlineText, status) {{
   return 'D-' + diff;
 }}
 
+function restrictionsHtml(restrictions) {{
+  const text = (restrictions || '').trim();
+  if (!text) return '-';
+  return text.split(',').map(t => t.trim()).filter(Boolean)
+    .map(t => `<span class="tag" style="border-color:var(--accent); color:var(--accent); margin:1px 2px 1px 0;">${{t}}</span>`)
+    .join('');
+}}
+
 function setRange(days) {{
   const endInput = document.getElementById('dateEnd');
   const startInput = document.getElementById('dateStart');
@@ -535,6 +544,7 @@ function render() {{
   const colIndustry = document.getElementById('colFilterIndustry').value.trim().toLowerCase();
   const colRegion = document.getElementById('colFilterRegion').value.trim().toLowerCase();
   const colBidMethod = document.getElementById('colFilterBidMethod').value.trim().toLowerCase();
+  const colRestrictions = document.getElementById('colFilterRestrictions').value.trim().toLowerCase();
   const colAmountMin = parseFloat(document.getElementById('colFilterAmountMin').value);
   const colAmountMax = parseFloat(document.getElementById('colFilterAmountMax').value);
   const colMemo = document.getElementById('colFilterMemo').value.trim().toLowerCase();
@@ -577,6 +587,7 @@ function render() {{
     const matchColIndustry = !colIndustry || (b.industry || '').toLowerCase().includes(colIndustry);
     const matchColRegion = !colRegion || (b.region || '').toLowerCase().includes(colRegion);
     const matchColBidMethod = !colBidMethod || (b.bid_method || '').toLowerCase().includes(colBidMethod);
+    const matchColRestrictions = !colRestrictions || (b.restrictions || '').toLowerCase().includes(colRestrictions);
     const amount = parseAmount(b.base_amount);
     const matchColAmountMin = isNaN(colAmountMin) || (amount !== null && amount >= colAmountMin);
     const matchColAmountMax = isNaN(colAmountMax) || (amount !== null && amount <= colAmountMax);
@@ -586,7 +597,7 @@ function render() {{
 
     return matchEligible && matchTelecom && matchQ && matchSrc && matchRegion && matchDate &&
            matchColSrc && matchColTitle && matchColOrg && matchColIndustry &&
-           matchColRegion && matchColBidMethod && matchColAmountMin && matchColAmountMax && matchColMemo && matchColStatus;
+           matchColRegion && matchColBidMethod && matchColRestrictions && matchColAmountMin && matchColAmountMax && matchColMemo && matchColStatus;
   }});
 
   document.getElementById('count').textContent = filtered.length + '건 표시 중';
@@ -616,6 +627,7 @@ function render() {{
       <td data-label="업종">${{b.industry || '-'}}</td>
       <td data-label="지역">${{b.region || ''}}${{b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : ''}}</td>
       <td data-label="입찰방식">${{b.bid_method || '-'}}</td>
+      <td data-label="제한사항">${{restrictionsHtml(b.restrictions)}}</td>
       <td data-label="기초금액">${{b.base_amount ? Number(b.base_amount).toLocaleString('ko-KR') + '원' : '-'}}</td>
       <td data-label="투찰마감">${{b.deadline || '-'}}${{ddayLabel(b.deadline, b.status) ? ` <span class="tag" style="border-color:var(--accent); color:var(--accent);">${{ddayLabel(b.deadline, b.status)}}</span>` : ''}}</td>
       <td data-label="참가등록마감">${{b.reg_deadline || '-'}}</td>
@@ -633,7 +645,7 @@ function render() {{
 
 function clearColFilters() {{
   ['colFilterSource','colFilterStatus','colFilterTitle','colFilterOrg','colFilterIndustry',
-   'colFilterRegion','colFilterBidMethod','colFilterAmountMin','colFilterAmountMax','colFilterMemo'
+   'colFilterRegion','colFilterBidMethod','colFilterRestrictions','colFilterAmountMin','colFilterAmountMax','colFilterMemo'
   ].forEach(id => {{ document.getElementById(id).value = ''; }});
   render();
 }}
@@ -648,7 +660,7 @@ document.getElementById('dateBasis').addEventListener('change', () => {{ buildCa
 document.getElementById('dateStart').addEventListener('change', () => {{ buildCalendar(); render(); }});
 document.getElementById('dateEnd').addEventListener('change', () => {{ buildCalendar(); render(); }});
 ['colFilterSource','colFilterStatus','colFilterTitle','colFilterOrg','colFilterIndustry',
- 'colFilterRegion','colFilterBidMethod','colFilterAmountMin','colFilterAmountMax','colFilterMemo'
+ 'colFilterRegion','colFilterBidMethod','colFilterRestrictions','colFilterAmountMin','colFilterAmountMax','colFilterMemo'
 ].forEach(id => {{
   const evt = document.getElementById(id).tagName === 'SELECT' ? 'change' : 'input';
   document.getElementById(id).addEventListener(evt, render);
