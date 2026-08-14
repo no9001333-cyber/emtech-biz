@@ -114,7 +114,10 @@ def main():
             matched += 1
     print(f"낙찰결과 매칭: {matched}건")
 
-    kept.sort(key=lambda b: (b.get("status") == "마감", b.get("deadline", "")))
+    # deadline 값의 실제 타입이 수집기마다 다를 수 있어(문자열 vs 숫자),
+    # 정렬 키에서 항상 문자열로 맞춰서 비교한다 (안 그러면 서로 다른 타입끼리
+    # 비교하다가 "'<' not supported between instances of 'int' and 'str'" 에러가 남)
+    kept.sort(key=lambda b: (b.get("status") == "마감", str(b.get("deadline", "") or "")))
 
     with open(BIDS_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(kept, f, ensure_ascii=False, indent=2)
