@@ -1,11 +1,3 @@
-"""
-data/bids.json 을 읽어 docs/index.html ("맞춤입찰정보" 통합 대시보드)를 생성합니다.
-- 검색/지역 필터
-- 공고별 메모 (브라우저에 저장, localStorage)
-- 공고별 [투찰금액 계산] 버튼 -> 그 자리에서 복수예가 15개 생성 -> 4개 추첨 -> 최종 투찰금액까지 계산
-GitHub Pages가 /docs 폴더를 서빙하도록 설정하면 별도 서버 없이 바로 웹에서 볼 수 있습니다.
-"""
-
 import json
 import os
 import hashlib
@@ -106,6 +98,30 @@ TEMPLATE = """<!DOCTYPE html>
   .ext-links a:hover {{ background:var(--good-soft); }}
   footer {{ padding:20px 24px 40px; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); }}
 
+  /* 달력형 마감일 검색 */
+  .cal-section {{ padding:14px 24px; border-bottom:1px solid var(--line); }}
+  .cal-header {{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }}
+  .cal-legend {{ margin-left:auto; font-size:0.76rem; color:var(--muted); display:flex; gap:12px; }}
+  .cal-legend span {{ display:inline-flex; align-items:center; gap:4px; }}
+  .cal-legend .dot {{ width:8px; height:8px; border-radius:50%; display:inline-block; }}
+  .cal-legend .dot.reg {{ background:var(--good); }}
+  .cal-legend .dot.ddl {{ background:var(--accent); }}
+  .cal-strip {{ display:flex; gap:4px; overflow-x:auto; padding-bottom:6px; }}
+  .cal-day {{
+    min-width:66px; flex:0 0 auto; text-align:center; padding:8px 4px; border:1px solid var(--line);
+    border-radius:8px; cursor:pointer; background:var(--card);
+  }}
+  .cal-day:hover {{ border-color:var(--accent); }}
+  .cal-day.today {{ border-color:var(--good); border-width:2px; }}
+  .cal-day.active {{ background:var(--accent-soft); border-color:var(--accent); border-width:2px; }}
+  .cal-day.sun .cal-wd {{ color:#c0392b; }}
+  .cal-day.sat .cal-wd {{ color:#2a6f97; }}
+  .cal-date {{ font-weight:700; font-size:0.82rem; }}
+  .cal-wd {{ font-size:0.7rem; color:var(--muted); margin:2px 0 6px; }}
+  .cal-counts {{ display:flex; justify-content:center; gap:6px; font-size:0.72rem; min-height:14px; }}
+  .cal-counts .cnt-reg {{ color:var(--good); font-weight:600; }}
+  .cal-counts .cnt-ddl {{ color:var(--accent); font-weight:600; }}
+
   /* 모달 (투찰금액 계산기) */
   .modal-overlay {{
     display:none; position:fixed; inset:0; background:rgba(20,33,61,0.5);
@@ -205,6 +221,21 @@ TEMPLATE = """<!DOCTYPE html>
   </div>
 </header>
 
+<div class="cal-section">
+  <div class="cal-header">
+    <button class="btn-calc" onclick="calShift(-7)">◀ 7일</button>
+    <span id="calRangeLabel" style="font-weight:600; font-size:0.84rem;"></span>
+    <button class="btn-calc" onclick="calShift(7)">7일 ▶</button>
+    <button class="btn-calc" onclick="calToday()">오늘</button>
+    <div class="cal-legend">
+      <span><span class="dot reg"></span>참가등록마감</span>
+      <span><span class="dot ddl"></span>투찰마감</span>
+      <span>날짜를 클릭하면 해당 날짜로 필터링됩니다</span>
+    </div>
+  </div>
+  <div class="cal-strip" id="calStrip"></div>
+</div>
+
 <div id="bidsView">
 <div class="controls">
   <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
@@ -215,7 +246,13 @@ TEMPLATE = """<!DOCTYPE html>
     <input id="telecomOnly" type="checkbox" checked style="width:16px; height:16px;">
     통신 업종만 보기
   </label>
-  <input id="search" type="text" placeholder="공고명·발주기관·업종 검색...">
+  <select id="searchField" style="max-width:130px; flex:none;">
+    <option value="all">전체검색</option>
+    <option value="title">공고명</option>
+    <option value="notice_no">공고번호</option>
+    <option value="org">발주기관</option>
+  </select>
+  <input id="search" type="text" placeholder="검색어 입력...">
   <select id="sourceFilter">
     <option value="">전체 출처</option>
     <option value="나라장터">나라장터</option>
@@ -250,7 +287,10 @@ TEMPLATE = """<!DOCTYPE html>
 </div>
 
 <div class="controls" style="border-top:none;">
-  <span style="font-size:0.82rem; color:var(--muted); align-self:center;">투찰마감 기간</span>
+  <select id="dateBasis" style="flex:none;">
+    <option value="deadline">투찰마감 기준</option>
+    <option value="reg_deadline">참가등록마감 기준</option>
+  </select>
   <input id="dateStart" type="date">
   <span style="align-self:center; color:var(--muted);">~</span>
   <input id="dateEnd" type="date">
@@ -430,6 +470,10 @@ function parseDateStr(s) {{
   return new Date(`${{m[1]}}-${{m[2]}}-${{m[3]}}`);
 }}
 
+function fmtYMD(d) {{
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}}
+
 function ddayLabel(deadlineText, status) {{
   const d = parseDateStr(deadlineText);
   if (!d) return '';
@@ -454,6 +498,7 @@ function setRange(days) {{
     startInput.value = start.toISOString().slice(0, 10);
   }}
   render();
+  buildCalendar();
 }}
 
 function parseAmount(v) {{
@@ -462,12 +507,23 @@ function parseAmount(v) {{
   return isNaN(n) ? null : n;
 }}
 
+function fieldMatches(b, q, field) {{
+  if (!q) return true;
+  if (field === 'title') return (b.title || '').toLowerCase().includes(q);
+  if (field === 'notice_no') return (b.notice_no || '').toLowerCase().includes(q);
+  if (field === 'org') return (b.org || '').toLowerCase().includes(q);
+  return (b.title || '').toLowerCase().includes(q) || (b.org || '').toLowerCase().includes(q) ||
+         (b.industry || '').toLowerCase().includes(q) || (b.notice_no || '').toLowerCase().includes(q);
+}}
+
 function render() {{
   const eligibleOnly = document.getElementById('eligibleOnly').checked;
   const telecomOnly = document.getElementById('telecomOnly').checked;
   const q = document.getElementById('search').value.trim().toLowerCase();
+  const searchField = document.getElementById('searchField').value;
   const src = document.getElementById('sourceFilter').value;
   const region = document.getElementById('regionFilter').value;
+  const dateBasis = document.getElementById('dateBasis').value;
   const startVal = document.getElementById('dateStart').value;
   const endVal = document.getElementById('dateEnd').value;
   const startDate = startVal ? new Date(startVal) : null;
@@ -492,7 +548,7 @@ function render() {{
     const matchEligible = !eligibleOnly || b.eligible !== false;
     const matchTelecom = !telecomOnly || TELECOM_KEYWORDS.some(k =>
       (b.title || '').includes(k) || (b.industry || '').includes(k));
-    const matchQ = !q || (b.title || '').toLowerCase().includes(q) || (b.org || '').toLowerCase().includes(q) || (b.industry || '').toLowerCase().includes(q);
+    const matchQ = fieldMatches(b, q, searchField);
     const matchSrc = !src || b.source === src;
     let matchRegion;
     if (!region) {{
@@ -504,7 +560,8 @@ function render() {{
     }}
     let matchDate = true;
     if (startDate || endDate) {{
-      const d = parseDateStr(b.deadline) || parseDateStr(b.notice_date);
+      const basisText = dateBasis === 'reg_deadline' ? b.reg_deadline : b.deadline;
+      const d = parseDateStr(basisText) || parseDateStr(b.notice_date);
       if (!d) {{
         matchDate = false;
       }} else {{
@@ -584,10 +641,12 @@ function clearColFilters() {{
 document.getElementById('eligibleOnly').addEventListener('change', render);
 document.getElementById('telecomOnly').addEventListener('change', render);
 document.getElementById('search').addEventListener('input', render);
+document.getElementById('searchField').addEventListener('change', render);
 document.getElementById('sourceFilter').addEventListener('change', render);
 document.getElementById('regionFilter').addEventListener('change', render);
-document.getElementById('dateStart').addEventListener('change', render);
-document.getElementById('dateEnd').addEventListener('change', render);
+document.getElementById('dateBasis').addEventListener('change', () => {{ buildCalendar(); render(); }});
+document.getElementById('dateStart').addEventListener('change', () => {{ buildCalendar(); render(); }});
+document.getElementById('dateEnd').addEventListener('change', () => {{ buildCalendar(); render(); }});
 ['colFilterSource','colFilterStatus','colFilterTitle','colFilterOrg','colFilterIndustry',
  'colFilterRegion','colFilterBidMethod','colFilterAmountMin','colFilterAmountMax','colFilterMemo'
 ].forEach(id => {{
@@ -595,6 +654,73 @@ document.getElementById('dateEnd').addEventListener('change', render);
   document.getElementById(id).addEventListener(evt, render);
 }});
 render();
+
+/* ---------- 달력형 마감일 검색 ---------- */
+let calAnchor = new Date();
+calAnchor.setHours(0, 0, 0, 0);
+const CAL_DAYS = 16;
+
+function calShift(days) {{
+  calAnchor.setDate(calAnchor.getDate() + days);
+  buildCalendar();
+}}
+
+function calToday() {{
+  calAnchor = new Date();
+  calAnchor.setHours(0, 0, 0, 0);
+  buildCalendar();
+}}
+
+function buildCalendar() {{
+  const strip = document.getElementById('calStrip');
+  strip.innerHTML = '';
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+
+  const regCounts = {{}};
+  const ddlCounts = {{}};
+  BIDS.forEach(b => {{
+    const rd = parseDateStr(b.reg_deadline);
+    if (rd) {{ const k = fmtYMD(rd); regCounts[k] = (regCounts[k] || 0) + 1; }}
+    const dd = parseDateStr(b.deadline);
+    if (dd) {{ const k = fmtYMD(dd); ddlCounts[k] = (ddlCounts[k] || 0) + 1; }}
+  }});
+
+  const startVal = document.getElementById('dateStart').value;
+  const endVal = document.getElementById('dateEnd').value;
+
+  let labelStart = null, labelEnd = null;
+  for (let i = 0; i < CAL_DAYS; i++) {{
+    const d = new Date(calAnchor);
+    d.setDate(d.getDate() + i);
+    const key = fmtYMD(d);
+    if (i === 0) labelStart = key;
+    if (i === CAL_DAYS - 1) labelEnd = key;
+    const wd = d.getDay();
+    const isToday = key === fmtYMD(today);
+    const isActive = startVal === key && endVal === key;
+    const col = document.createElement('div');
+    col.className = 'cal-day' + (wd === 0 ? ' sun' : wd === 6 ? ' sat' : '') + (isToday ? ' today' : '') + (isActive ? ' active' : '');
+    col.innerHTML = `
+      <div class="cal-date">${{d.getMonth() + 1}}/${{d.getDate()}}</div>
+      <div class="cal-wd">${{weekdays[wd]}}${{isToday ? ' (오늘)' : ''}}</div>
+      <div class="cal-counts">
+        <span class="cnt-reg">${{regCounts[key] || ''}}</span>
+        <span class="cnt-ddl">${{ddlCounts[key] || ''}}</span>
+      </div>
+    `;
+    col.addEventListener('click', () => {{
+      document.getElementById('dateStart').value = key;
+      document.getElementById('dateEnd').value = key;
+      buildCalendar();
+      render();
+    }});
+    strip.appendChild(col);
+  }}
+  document.getElementById('calRangeLabel').textContent = labelStart + ' ~ ' + labelEnd;
+}}
+
+buildCalendar();
 
 /* ---------- 투찰금액 계산 모달 ---------- */
 let calcBids = [];
