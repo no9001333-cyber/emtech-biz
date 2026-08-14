@@ -13,6 +13,7 @@
 
 import sys
 import os
+import time
 from datetime import datetime, timedelta
 
 import requests
@@ -82,7 +83,7 @@ def fetch_g2b_bids():
 
     results = []
     page_no = 1
-    MAX_PAGES = 40  # 안전장치: 최대 40페이지(=최대 2만건)까지만 수집
+    MAX_PAGES = 15  # 안전장치: 최대 15페이지(=최대 7,500건)까지만 수집 (너무 많이 요청하면 IP 차단 위험)
     while page_no <= MAX_PAGES:
         try:
             data = _fetch_page(begin_dt, end_dt, page_no)
@@ -128,6 +129,7 @@ def fetch_g2b_bids():
         if page_no * 500 >= total_count:
             break
         page_no += 1
+        time.sleep(1)  # 요청 사이 1초씩 쉬어서 너무 빠르게 몰아치지 않게 함
 
     print(f"[G2B] 총 {len(results)}건 수집")
     return results
