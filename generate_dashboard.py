@@ -211,6 +211,10 @@ TEMPLATE = """<!DOCTYPE html>
     <input id="eligibleOnly" type="checkbox" checked style="width:16px; height:16px;">
     용인 참가가능만 보기
   </label>
+  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="telecomOnly" type="checkbox" checked style="width:16px; height:16px;">
+    통신 업종만 보기
+  </label>
   <input id="search" type="text" placeholder="공고명·발주기관·업종 검색...">
   <select id="sourceFilter">
     <option value="">전체 출처</option>
@@ -368,6 +372,7 @@ TEMPLATE = """<!DOCTYPE html>
 
 <script>
 const BIDS = {bids_json};
+const TELECOM_KEYWORDS = {keywords_json};
 const MEMO_KEY = 'bidmonitor_memos';
 
 /* ---------- 비밀번호 잠금화면 ---------- */
@@ -459,6 +464,7 @@ function parseAmount(v) {{
 
 function render() {{
   const eligibleOnly = document.getElementById('eligibleOnly').checked;
+  const telecomOnly = document.getElementById('telecomOnly').checked;
   const q = document.getElementById('search').value.trim().toLowerCase();
   const src = document.getElementById('sourceFilter').value;
   const region = document.getElementById('regionFilter').value;
@@ -484,6 +490,8 @@ function render() {{
 
   const filtered = BIDS.filter(b => {{
     const matchEligible = !eligibleOnly || b.eligible !== false;
+    const matchTelecom = !telecomOnly || TELECOM_KEYWORDS.some(k =>
+      (b.title || '').includes(k) || (b.industry || '').includes(k));
     const matchQ = !q || (b.title || '').toLowerCase().includes(q) || (b.org || '').toLowerCase().includes(q) || (b.industry || '').toLowerCase().includes(q);
     const matchSrc = !src || b.source === src;
     let matchRegion;
@@ -519,7 +527,7 @@ function render() {{
     const matchColMemo = !colMemo || memoVal.includes(colMemo);
     const matchColStatus = !colStatus || b.status === colStatus;
 
-    return matchEligible && matchQ && matchSrc && matchRegion && matchDate &&
+    return matchEligible && matchTelecom && matchQ && matchSrc && matchRegion && matchDate &&
            matchColSrc && matchColTitle && matchColOrg && matchColIndustry &&
            matchColRegion && matchColBidMethod && matchColAmountMin && matchColAmountMax && matchColMemo && matchColStatus;
   }});
@@ -574,6 +582,7 @@ function clearColFilters() {{
 }}
 
 document.getElementById('eligibleOnly').addEventListener('change', render);
+document.getElementById('telecomOnly').addEventListener('change', render);
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('sourceFilter').addEventListener('change', render);
 document.getElementById('regionFilter').addEventListener('change', render);
@@ -717,6 +726,7 @@ def generate_dashboard(bids=None, status_list=None):
         regions=", ".join(REGIONS),
         count=len(bids),
         bids_json=json.dumps(bids, ensure_ascii=False),
+        keywords_json=json.dumps(KEYWORDS, ensure_ascii=False),
         external_links_html=links_html,
         status_html=status_html,
         password_hash=password_hash,
