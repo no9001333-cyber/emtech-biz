@@ -84,6 +84,7 @@ def fetch_korail_bids():
 
     # 필드명을 못 찾는 경우를 대비해, 첫 항목의 실제 키 목록을 한 번 출력
     print(f"[코레일] 응답 필드명 예시: {list(items[0].keys())[:15]}")
+    print(f"[코레일] 첫 항목 마감일 원본값 확인용: {items[0]}")
 
     results = []
     for item in items:
