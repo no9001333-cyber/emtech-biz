@@ -30,7 +30,7 @@ from scrapers.d2b import fetch_d2b_bids
 from scrapers.kwater import fetch_kwater_bids
 from scrapers.kepco import fetch_kepco_bids
 from scrapers.g2b_awards import fetch_g2b_awards
-from scrapers._common import bid_status
+from scrapers._common import bid_status, deadline_sort_key
 from generate_dashboard import generate_dashboard
 
 
@@ -114,10 +114,13 @@ def main():
             matched += 1
     print(f"낙찰결과 매칭: {matched}건")
 
-    # deadline 값의 실제 타입이 수집기마다 다를 수 있어(문자열 vs 숫자),
-    # 정렬 키에서 항상 문자열로 맞춰서 비교한다 (안 그러면 서로 다른 타입끼리
-    # 비교하다가 "'<' not supported between instances of 'int' and 'str'" 에러가 남)
-    kept.sort(key=lambda b: (b.get("status") == "마감", str(b.get("deadline", "") or "")))
+    # deadline 값의 실제 타입/표기 형식이 수집기(소스)마다 다를 수 있어(문자열 vs 숫자,
+    # "2026-08-20 09:00"처럼 구분자가 있는 경우 vs "202608200900"처럼 숫자만 있는 경우),
+    # deadline_sort_key()로 숫자만 남긴 문자열로 통일해서 정렬한다. 이렇게 해야
+    # (1) 타입이 섞여서 "'<' not supported between instances of 'int' and 'str'" 에러가
+    # 나는 것도 막고, (2) 여러 소스가 섞인 목록에서도 마감이 이른 순으로 정확히
+    # 정렬된다 (raw 문자열을 그대로 비교하면 구분자 유무 때문에 소스 간 순서가 틀어짐).
+    kept.sort(key=lambda b: (b.get("status") == "마감", deadline_sort_key(b.get("deadline", ""))))
 
     with open(BIDS_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(kept, f, ensure_ascii=False, indent=2)
