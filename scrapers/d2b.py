@@ -151,8 +151,13 @@ def _parse_fclty_item(item) -> dict:
 
 def fetch_d2b_bids():
     """국방전자조달 입찰공고 목록 반환.
-    물품/용역(getDmstcCmpetBidPblancList)과 시설/공사(getFcltyCmpetBidPblancList)
-    두 오퍼레이션을 모두 조회해서 합칩니다. (통신공사 업체이므로 시설/공사 쪽이 특히 중요)
+    시설/공사(getFcltyCmpetBidPblancList)만 조회합니다. 물품/용역
+    (getDmstcCmpetBidPblancList)은 한동안 함께 수집했었는데, 이 회사는 공사만
+    입찰하므로 목록에 물품/탄약/부식 등 관련 없는 건이 100건 넘게 섞여 나오는
+    문제가 있었습니다(예: "암,와이퍼용 등 10종", "빵류 다수품목 구매"). 그래서
+    물품/용역 오퍼레이션 자체를 호출하지 않도록 뺐습니다 — API 호출도 그만큼
+    줄어듭니다. (_parse_goods_item/OPERATION_GOODS는 나중에 다시 필요해지면
+    쓸 수 있게 코드는 남겨뒀습니다.)
     (D2B는 출처 자체가 군부대로 한정되어 있어 지역 필터는 적용하지 않음)"""
     if not D2B_SERVICE_KEY:
         print("[D2B] 서비스키(D2B_SERVICE_KEY)가 설정되지 않아 건너뜁니다.")
@@ -165,16 +170,12 @@ def fetch_d2b_bids():
 
     results = []
 
-    for operation, parser in (
-        (OPERATION_GOODS, _parse_goods_item),
-        (OPERATION_FCLTY, _parse_fclty_item),
-    ):
-        items = _fetch_items(operation, begin_dt, end_dt)
-        for item in items:
-            parsed = parser(item)
-            if not is_deadline_in_range(parsed["deadline"]):
-                continue
-            results.append(parsed)
+    items = _fetch_items(OPERATION_FCLTY, begin_dt, end_dt)
+    for item in items:
+        parsed = _parse_fclty_item(item)
+        if not is_deadline_in_range(parsed["deadline"]):
+            continue
+        results.append(parsed)
 
     print(f"[D2B] 총 {len(results)}건 수집")
     return results

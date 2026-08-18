@@ -16,6 +16,7 @@
 
 import sys
 import os
+import time
 from datetime import datetime, timedelta
 
 import requests
@@ -34,59 +35,79 @@ def _clean_key(key: str) -> str:
     return urllib.parse.unquote(key)
 
 
+def _fetch_page(begin_dt: str, end_dt: str, page_no: int, num_of_rows: int = 500):
+    url = f"{ENDPOINT}/{OPERATION}"
+    params = {
+        "serviceKey": _clean_key(G2B_AWARDS_SERVICE_KEY),
+        "pageNo": page_no,
+        "numOfRows": num_of_rows,
+        "inqryDiv": 1,
+        "inqryBgnDt": begin_dt,
+        "inqryEndDt": end_dt,
+        "type": "json",
+    }
+    resp = get_with_retry(url, params=params, timeout=30)
+    return resp.json()
+
+
 def fetch_g2b_awards():
-    """나라장터 공사 낙찰(개찰결과) 정보를 최근 LOOKBACK_DAYS일 이내 기준으로 가져온다."""
+    """나라장터 공사 낙찰(개찰결과) 정보를 최근 LOOKBACK_DAYS일 이내 기준으로 가져온다.
+
+    예전 코드는 1페이지(최대 500건)만 조회하고 끝냈는데, 실제로 매번 정확히
+    500건이 잡혀서(=딱 페이지 한도만큼) 그 뒤에 더 있는데 잘려나가고 있었던
+    것으로 보입니다. g2b.py의 입찰공고 수집과 동일하게 totalCount를 보고
+    필요한 만큼 다음 페이지를 계속 가져오도록 고쳤습니다. 이렇게 해야 마감된
+    공고에 낙찰결과(낙찰자/낙찰금액)가 실제보다 적게 붙는 문제를 막을 수 있습니다.
+    """
     if not G2B_AWARDS_SERVICE_KEY:
         print("[낙찰정보] 서비스키(G2B_AWARDS_SERVICE_KEY)가 설정되지 않아 건너뜁니다.")
         return []
 
     end = datetime.now()
     begin = end - timedelta(days=LOOKBACK_DAYS)
-
-    url = f"{ENDPOINT}/{OPERATION}"
-    params = {
-        "serviceKey": _clean_key(G2B_AWARDS_SERVICE_KEY),
-        "pageNo": 1,
-        "numOfRows": 500,
-        "inqryDiv": 1,
-        "inqryBgnDt": begin.strftime("%Y%m%d0000"),
-        "inqryEndDt": end.strftime("%Y%m%d2359"),
-        "type": "json",
-    }
-
-    try:
-        resp = get_with_retry(url, params=params, timeout=30)
-        data = resp.json()
-    except Exception as e:
-        print(f"[낙찰정보] 요청 실패: {e}")
-        try:
-            print(f"[낙찰정보] 응답 내용(처음 300자): {resp.text[:300]}")
-        except Exception:
-            pass
-        return []
-
-    body = data.get("response", {}).get("body", {}) if isinstance(data, dict) else {}
-    items = body.get("items", [])
-    if isinstance(items, dict):
-        items = items.get("item", [])
+    begin_dt = begin.strftime("%Y%m%d0000")
+    end_dt = end.strftime("%Y%m%d2359")
 
     results = []
-    for item in items:
-        # 낙찰(예정)금액이 있는 것만 유의미한 결과로 취급
-        award_amount = item.get("sucsfbidAmt") or item.get("scsbidAmt", "")
+    page_no = 1
+    MAX_PAGES = 15  # 안전장치: 최대 15페이지(=최대 7,500건)까지만 수집
 
-        results.append({
-            "source": "나라장터",
-            "title": item.get("bidNtceNm", ""),
-            "org": item.get("ntceInsttNm", ""),
-            "notice_no": item.get("bidNtceNo", ""),
-            "winner": item.get("prcbdrNm") or item.get("opengCorpNm", ""),
-            "award_amount": award_amount,
-            "base_amount": item.get("presmptPrce", ""),
-            "assessed_rate": item.get("sucsfbidRate") or item.get("bidprcRate", ""),
-            "open_date": item.get("opengDt", ""),
-            "url": item.get("bidNtceDtlUrl", ""),
-        })
+    while page_no <= MAX_PAGES:
+        try:
+            data = _fetch_page(begin_dt, end_dt, page_no)
+        except Exception as e:
+            print(f"[낙찰정보] 요청 실패: {e}")
+            break
+
+        body = data.get("response", {}).get("body", {}) if isinstance(data, dict) else {}
+        items = body.get("items", [])
+        if isinstance(items, dict):
+            items = items.get("item", [])
+        if not items:
+            break
+
+        for item in items:
+            # 낙찰(예정)금액이 있는 것만 유의미한 결과로 취급
+            award_amount = item.get("sucsfbidAmt") or item.get("scsbidAmt", "")
+
+            results.append({
+                "source": "나라장터",
+                "title": item.get("bidNtceNm", ""),
+                "org": item.get("ntceInsttNm", ""),
+                "notice_no": item.get("bidNtceNo", ""),
+                "winner": item.get("prcbdrNm") or item.get("opengCorpNm", ""),
+                "award_amount": award_amount,
+                "base_amount": item.get("presmptPrce", ""),
+                "assessed_rate": item.get("sucsfbidRate") or item.get("bidprcRate", ""),
+                "open_date": item.get("opengDt", ""),
+                "url": item.get("bidNtceDtlUrl", ""),
+            })
+
+        total_count = int(body.get("totalCount", 0))
+        if page_no * 500 >= total_count:
+            break
+        page_no += 1
+        time.sleep(1)  # 요청 사이 1초씩 쉬어서 너무 빠르게 몰아치지 않게 함
 
     print(f"[낙찰정보] 총 {len(results)}건 수집")
     return results

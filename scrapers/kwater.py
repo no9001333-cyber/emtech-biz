@@ -152,6 +152,14 @@ def fetch_kwater_bids():
         if not is_deadline_in_range(deadline):
             continue
 
+        # 이 회사는 공사만 입찰하므로, 계약구분명(cntrctDivNm)이 "용역"/"물품"으로
+        # 명시된 건은 건너뜁니다. 지금까지 실제로 수집된 건은 전부 "공사"였지만,
+        # 이 API가 용역/물품도 함께 내려줄 수 있다고 안내돼 있어(위 참고 설명 참조)
+        # 나중에 섞여 나올 경우를 대비한 안전장치입니다.
+        contract_div = _s(item.get("cntrctDivNm", ""))
+        if contract_div in ("용역", "물품"):
+            continue
+
         results.append({
             "source": "한국수자원공사",
             "title": title,
