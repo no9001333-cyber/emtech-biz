@@ -144,6 +144,12 @@ TEMPLATE = """<!DOCTYPE html>
   .field input, .field select {{
     padding:8px 9px; border:1px solid var(--line); border-radius:6px; font-size:0.86rem; background:var(--paper); color:var(--ink);
   }}
+  .src-badge {{ display:inline-block; font-size:0.66rem; padding:1px 6px; border-radius:10px; margin-left:6px; font-weight:600; }}
+  .src-badge.ok {{ background:var(--good-soft); color:var(--good); }}
+  .src-badge.warn {{ background:var(--accent-soft); color:var(--accent); }}
+  .info-line {{ font-size:0.8rem; color:var(--muted); margin-bottom:12px; padding:8px 10px; background:var(--paper); border:1px solid var(--line); border-radius:6px; }}
+  .info-line b {{ color:var(--ink); }}
+  .calc-warn-box {{ background:var(--accent-soft); border:1px solid var(--accent); color:var(--accent); border-radius:8px; padding:9px 11px; font-size:0.78rem; margin-bottom:10px; display:none; white-space:pre-line; }}
   .btn-row {{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }}
   .btn {{ padding:9px 16px; border-radius:7px; border:none; font-size:0.84rem; font-weight:600; cursor:pointer; }}
   .btn-primary {{ background:var(--accent); color:#fff; }}
@@ -304,7 +310,7 @@ TEMPLATE = """<!DOCTYPE html>
     <thead>
       <tr>
         <th>출처</th><th>상태</th><th>공고명</th><th>발주기관</th><th>업종</th><th>지역</th><th>입찰방식</th><th>제한사항</th>
-        <th>기초금액</th><th>투찰마감</th><th>참가등록마감</th><th>낙찰결과</th><th>메모</th><th></th>
+        <th>금액정보(추정/기초/A값)</th><th>투찰마감</th><th>참가등록마감</th><th>낙찰결과</th><th>메모</th><th></th>
       </tr>
       <tr class="filter-row">
         <th><select id="colFilterSource" class="col-filter"><option value="">전체</option>
@@ -352,24 +358,26 @@ TEMPLATE = """<!DOCTYPE html>
     <h3 id="calcTitle">투찰금액 계산</h3>
     <div class="sub" id="calcOrg"></div>
 
+    <div class="info-line" id="calcEstLine">추정금액(공고 API 값): <b id="calcEstDisplay">-</b></div>
+
     <div class="grid2">
       <div class="field">
-        <label>기초금액 (원)</label>
+        <label>기초금액 (원) <span class="src-badge" id="badgeBase"></span></label>
         <input id="calcBase" type="number">
       </div>
       <div class="field">
-        <label>A값 (원)</label>
+        <label>A값 (원) <span class="src-badge" id="badgeAValue"></span></label>
         <input id="calcAValue" type="number" placeholder="법정 정산항목 합계">
       </div>
       <div class="field">
-        <label>예가변동폭 (%)</label>
+        <label>예가변동폭 (%) <span class="src-badge warn">공고문 직접확인</span></label>
         <select id="calcVariance">
           <option value="2">-2 / +2</option>
           <option value="3">-3 / +3</option>
         </select>
       </div>
       <div class="field">
-        <label>낙찰하한율</label>
+        <label>낙찰하한율 <span class="src-badge" id="badgeRate"></span></label>
         <select id="calcRateSel">
           <option value="0.89745">10억 미만 (89.745%)</option>
           <option value="0.88745">10억~50억 (88.745%)</option>
@@ -377,14 +385,24 @@ TEMPLATE = """<!DOCTYPE html>
           <option value="custom">직접입력</option>
         </select>
       </div>
+      <div class="field">
+        <label>복수예가 생성개수 <span class="src-badge" id="badgeTotalCount"></span></label>
+        <input id="calcTotalCount" type="number" min="2" max="50" value="15">
+      </div>
+      <div class="field">
+        <label>추첨개수 <span class="src-badge" id="badgeDrawCount"></span></label>
+        <input id="calcDrawCount" type="number" min="1" max="50" value="4">
+      </div>
     </div>
     <div class="field" id="calcCustomRateField" style="display:none;">
       <label>낙찰하한율 직접 입력 (%)</label>
       <input id="calcCustomRate" type="number" step="0.001">
     </div>
 
+    <div class="calc-warn-box" id="calcWarnBox"></div>
+
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="calcGenerate()">🎲 복수예가 15개 생성</button>
+      <button class="btn btn-primary" id="calcGenBtn" onclick="calcGenerate()">🎲 복수예가 15개 생성</button>
       <button class="btn btn-secondary" id="calcDrawBtn" onclick="calcDraw()" disabled>🎯 4개 추첨</button>
     </div>
 
@@ -534,6 +552,22 @@ function parseAmount(v) {{
   return isNaN(n) ? null : n;
 }}
 
+// 표에 추정금액/기초금액/A값을 한 셀에 요약 표시. 추정금액과 기초금액은 현재 수집
+// 단계에서 같은 API 필드(추정가격)를 사용하기 때문에 대부분 같은 값으로 보이는데,
+// 이건 버그가 아니라 "정식 기초금액" 필드 자체가 공개 API에 없어서 추정가격을
+// 참고용으로 대신 쓰고 있다는 뜻입니다(투찰금액 계산 모달에서 직접 수정 가능).
+function amountInfoHtml(b) {{
+  const est = parseAmount(b.est_amount);
+  const base = parseAmount(b.base_amount);
+  const a = parseAmount(b.a_value);
+  if (est === null && base === null) return '-';
+  const lines = [];
+  lines.push(`추정: ${{est !== null ? Number(est).toLocaleString('ko-KR') + '원' : '-'}}`);
+  lines.push(`기초: ${{base !== null ? Number(base).toLocaleString('ko-KR') + '원' : '-'}} <span style="color:var(--muted); font-size:0.7rem;">(참고용)</span>`);
+  lines.push(`A값: ${{a !== null && a > 0 ? Number(a).toLocaleString('ko-KR') + '원' : '<span style="color:var(--muted);">확인필요</span>'}}`);
+  return lines.join('<br>');
+}}
+
 function fieldMatches(b, q, field) {{
   if (!q) return true;
   if (field === 'title') return (b.title || '').toLowerCase().includes(q);
@@ -646,7 +680,7 @@ function render() {{
       <td data-label="지역">${{b.region || ''}}${{b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : ''}}</td>
       <td data-label="입찰방식">${{b.bid_method || '-'}}</td>
       <td data-label="제한사항">${{restrictionsHtml(b.restrictions)}}</td>
-      <td data-label="기초금액">${{b.base_amount ? Number(b.base_amount).toLocaleString('ko-KR') + '원' : '-'}}</td>
+      <td data-label="금액정보">${{amountInfoHtml(b)}}</td>
       <td data-label="투찰마감">${{fmtDateTime(b.deadline)}}${{ddayLabel(b.deadline, b.status) ? ` <span class="tag" style="border-color:var(--accent); color:var(--accent);">${{ddayLabel(b.deadline, b.status)}}</span>` : ''}}</td>
       <td data-label="참가등록마감">${{fmtDateTime(b.reg_deadline)}}</td>
       <td data-label="낙찰결과">${{resultHtml}}</td>
@@ -752,7 +786,14 @@ function buildCalendar() {{
 
 buildCalendar();
 
-/* ---------- 투찰금액 계산 모달 ---------- */
+/* ---------- 투찰금액 계산 모달 ----------
+   2026-08-18 개선: 추정금액/기초금액/A값/낙찰하한율/복수예가 생성·추첨 개수를
+   가능하면 실제 공고 데이터(g2b.py가 수집한 API 값)로 자동 채우고, 각 값 옆에
+   "공고 데이터(자동)" 또는 "확인필요(수동입력)" 배지로 출처를 명확히 표시합니다.
+   실제 데이터가 없거나 값이 비정상적인 범위(예: 낙찰하한율이 30~100%를 벗어남,
+   추첨개수가 생성개수보다 많음)면 자동으로 채우지 않고 수동 입력을 안내하며,
+   버튼을 눌러도 검증에 실패하면 결과를 계산/표시하지 않습니다(잘못된 값으로
+   그럴듯한 최종 투찰금액을 만들어내지 않기 위함). */
 let calcBids = [];
 let calcPicked = [];
 
@@ -760,11 +801,95 @@ document.getElementById('calcRateSel').addEventListener('change', (e) => {{
   document.getElementById('calcCustomRateField').style.display = e.target.value === 'custom' ? 'flex' : 'none';
 }});
 
+function setBadge(id, ok, okText, warnText) {{
+  const el = document.getElementById(id);
+  el.textContent = ok ? (okText || '공고 데이터(자동)') : (warnText || '확인필요(수동)');
+  el.className = 'src-badge ' + (ok ? 'ok' : 'warn');
+}}
+
+// 추정가격 규모에 따른 낙찰하한율 구간 자동 선택 (기존 3단계 드롭다운 기준).
+// 100억 이상이거나 금액을 알 수 없으면 구간을 확정할 수 없어 null 반환(수동확인 필요).
+function pickRateTierByAmount(amount) {{
+  if (amount === null || amount === undefined || amount <= 0) return null;
+  if (amount < 1e9) return '0.89745';
+  if (amount < 5e9) return '0.88745';
+  if (amount < 1e10) return '0.87495';
+  return null;
+}}
+
 function openCalc(bid) {{
   document.getElementById('calcTitle').textContent = bid.title || '투찰금액 계산';
   document.getElementById('calcOrg').textContent = (bid.org || '') + (bid.region ? ' · ' + bid.region : '');
-  document.getElementById('calcBase').value = parseAmount(bid.base_amount) || '';
-  document.getElementById('calcAValue').value = '';
+
+  const est = parseAmount(bid.est_amount);
+  const base = parseAmount(bid.base_amount);
+  const aValue = parseAmount(bid.a_value);
+  const rateRaw = parseFloat(bid.successful_bid_lower_rate);
+  const totalRaw = parseInt(bid.reserve_price_total_count, 10);
+  const drawRaw = parseInt(bid.reserve_price_draw_count, 10);
+
+  document.getElementById('calcEstDisplay').textContent = est !== null ? Number(est).toLocaleString('ko-KR') + '원' : '데이터 없음 - 공고문에서 직접 확인 필요';
+
+  // 기초금액: 공개 API에 정식 "기초금액" 필드가 없어 추정가격을 참고용으로 채웁니다.
+  // 실제 데이터이긴 하지만 발주기관이 정한 진짜 기초금액과 다를 수 있어 warn 배지를 씁니다.
+  const baseVal = base !== null ? base : est;
+  document.getElementById('calcBase').value = baseVal || '';
+  setBadge('badgeBase', false, '', baseVal ? '추정가격 기준(참고용) - 공고문 대조 필요' : '데이터 없음-직접입력');
+
+  // A값
+  if (aValue !== null && aValue > 0) {{
+    document.getElementById('calcAValue').value = aValue;
+    setBadge('badgeAValue', true, '공고 데이터(참고용)');
+  }} else {{
+    document.getElementById('calcAValue').value = '';
+    setBadge('badgeAValue', false, '', '데이터 없음-직접입력');
+  }}
+
+  // 낙찰하한율: 공고에 실제 값이 있고 30~100% 범위면 그대로 사용, 아니면 금액 구간으로
+  // 추정하되(그것도 안되면) 수동 입력을 안내.
+  const customField = document.getElementById('calcCustomRateField');
+  if (!isNaN(rateRaw) && rateRaw > 0.3 && rateRaw <= 1) {{
+    document.getElementById('calcRateSel').value = 'custom';
+    document.getElementById('calcCustomRate').value = (rateRaw * 100).toFixed(3);
+    customField.style.display = 'flex';
+    setBadge('badgeRate', true, '공고 데이터(실제값)');
+  }} else if (!isNaN(rateRaw) && rateRaw > 30 && rateRaw <= 100) {{
+    // 이미 %(예: 89.745) 단위로 온 경우
+    document.getElementById('calcRateSel').value = 'custom';
+    document.getElementById('calcCustomRate').value = rateRaw.toFixed(3);
+    customField.style.display = 'flex';
+    setBadge('badgeRate', true, '공고 데이터(실제값)');
+  }} else {{
+    const tier = pickRateTierByAmount(baseVal);
+    if (tier) {{
+      document.getElementById('calcRateSel').value = tier;
+      customField.style.display = 'none';
+      setBadge('badgeRate', false, '', '금액구간 추정값-확인필요');
+    }} else {{
+      document.getElementById('calcRateSel').value = 'custom';
+      document.getElementById('calcCustomRate').value = '';
+      customField.style.display = 'flex';
+      setBadge('badgeRate', false, '', '데이터 없음-직접입력');
+    }}
+  }}
+
+  // 복수예가 생성개수 / 추첨개수
+  if (!isNaN(totalRaw) && totalRaw >= 2 && totalRaw <= 50 && !isNaN(drawRaw) && drawRaw >= 1 && drawRaw <= totalRaw) {{
+    document.getElementById('calcTotalCount').value = totalRaw;
+    document.getElementById('calcDrawCount').value = drawRaw;
+    setBadge('badgeTotalCount', true, '공고 데이터(실제값)');
+    setBadge('badgeDrawCount', true, '공고 데이터(실제값)');
+  }} else {{
+    document.getElementById('calcTotalCount').value = 15;
+    document.getElementById('calcDrawCount').value = 4;
+    setBadge('badgeTotalCount', false, '', '기본값(15)-확인필요');
+    setBadge('badgeDrawCount', false, '', '기본값(4)-확인필요');
+  }}
+
+  document.getElementById('calcGenBtn').textContent = `🎲 복수예가 ${{document.getElementById('calcTotalCount').value}}개 생성`;
+  document.getElementById('calcDrawBtn').textContent = `🎯 ${{document.getElementById('calcDrawCount').value}}개 추첨`;
+
+  document.getElementById('calcWarnBox').style.display = 'none';
   document.getElementById('calcTable').style.display = 'none';
   document.getElementById('calcResultBox').style.display = 'none';
   document.getElementById('calcDrawBtn').disabled = true;
@@ -785,13 +910,26 @@ function calcRate() {{
 }}
 function won(n) {{ return Math.round(n).toLocaleString('ko-KR') + '원'; }}
 
+function showCalcWarn(errors) {{
+  const box = document.getElementById('calcWarnBox');
+  if (!errors.length) {{ box.style.display = 'none'; box.textContent = ''; return false; }}
+  box.textContent = '⚠ 계산을 진행할 수 없습니다 - 값을 확인 후 다시 시도해주세요.\\n' + errors.map(e => '· ' + e).join('\\n');
+  box.style.display = 'block';
+  return true;
+}}
+
 function calcGenerate() {{
   const base = parseFloat(document.getElementById('calcBase').value);
   const variance = parseFloat(document.getElementById('calcVariance').value);
-  if (!base || base <= 0) {{ alert('기초금액을 입력해주세요.'); return; }}
+  const totalCount = parseInt(document.getElementById('calcTotalCount').value, 10);
+
+  const errors = [];
+  if (!base || base <= 0) errors.push('기초금액을 입력해주세요.');
+  if (!totalCount || totalCount < 2 || totalCount > 50) errors.push('복수예가 생성개수가 올바르지 않습니다(2~50 사이여야 함).');
+  if (showCalcWarn(errors)) return;
 
   calcBids = [];
-  for (let i = 1; i <= 15; i++) {{
+  for (let i = 1; i <= totalCount; i++) {{
     const rate = (Math.random() * (variance * 2) - variance);
     const price = Math.round(base * (1 + rate / 100));
     calcBids.push({{ no: i, rate, price }});
@@ -801,6 +939,8 @@ function calcGenerate() {{
   document.getElementById('calcTable').style.display = 'table';
   document.getElementById('calcResultBox').style.display = 'none';
   document.getElementById('calcDrawBtn').disabled = false;
+  const drawCount = parseInt(document.getElementById('calcDrawCount').value, 10) || 4;
+  document.getElementById('calcDrawBtn').textContent = `🎯 ${{drawCount}}개 추첨`;
 }}
 
 function renderCalcTable() {{
@@ -816,13 +956,20 @@ function renderCalcTable() {{
 }}
 
 function calcDraw() {{
-  if (calcBids.length < 4) return;
+  const drawCount = parseInt(document.getElementById('calcDrawCount').value, 10);
+  const lowLimitRate = calcRate();
+
+  const errors = [];
+  if (!calcBids.length) errors.push('먼저 복수예가를 생성해주세요.');
+  if (!drawCount || drawCount < 1 || drawCount > calcBids.length) errors.push(`추첨개수는 1~${{calcBids.length || '?'}} 사이여야 합니다.`);
+  if (!lowLimitRate || lowLimitRate <= 0.3 || lowLimitRate > 1) errors.push('낙찰하한율 값이 비정상입니다(30%~100% 범위여야 함). 공고문에서 정확한 낙찰하한율을 확인한 뒤 "직접입력"으로 입력해주세요.');
+  if (showCalcWarn(errors)) {{ document.getElementById('calcResultBox').style.display = 'none'; return; }}
+
   const shuffled = [...calcBids].sort(() => Math.random() - 0.5);
-  calcPicked = shuffled.slice(0, 4).sort((a, b) => a.no - b.no);
+  calcPicked = shuffled.slice(0, drawCount).sort((a, b) => a.no - b.no);
   renderCalcTable();
 
   const aValue = parseFloat(document.getElementById('calcAValue').value) || 0;
-  const lowLimitRate = calcRate();
   const avgPrice = calcPicked.reduce((s, b) => s + b.price, 0) / calcPicked.length;
   const exclAmount = avgPrice - aValue;
   const appliedAmount = exclAmount * lowLimitRate;
