@@ -24,6 +24,15 @@
       "공사현장이 어느 지역인지"를 직접 알려주는 필드가 없어서, 지역(region)은
       계약부서명(지역본부명, 예: "한강권역본부")으로 대체 표기합니다 — 실제
       현장 소재지와 정확히 일치하지 않을 수 있는 추정값입니다.
+
+참고(참가가능 여부 판정): 계약부서명(예: "한강권역본부")은 "용인"/"경기도" 같은
+      문자열을 전혀 포함하지 않고, 여러 시·도에 걸친 광역 단위(강 유역)라서
+      is_eligible_region()의 문자열 매칭 조건에 항상 걸리지 않습니다. 실제 데이터로
+      집계해보니 이 때문에 K-water 공고의 약 90%(69/77건)가 실제로는 참가 가능한
+      건일 수도 있는데 무조건 "참가불가"로 잘못 분류되고 있었습니다. 지역을 정확히
+      판정할 방법이 없는 이상 잘못된 자동 제외보다는 노출시키는 쪽이 안전하다고 보고,
+      아래에서는 eligible을 항상 True로 두고 지역본부명은 화면(지역 컬럼)에만 참고용으로
+      표시해서, 사용자가 직접 걸러서 볼 수 있게 했습니다.
 """
 
 import sys
@@ -34,7 +43,7 @@ import requests
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import REGIONS, ALWAYS_INCLUDE_ORGS, KWATER_SERVICE_KEY, LOOKBACK_DAYS
-from scrapers._common import is_deadline_in_range, is_eligible_region
+from scrapers._common import is_deadline_in_range
 
 ENDPOINT = "https://apis.data.go.kr/B500001/ebid/tndr3"
 OPERATION = "cntrwkList"
@@ -157,7 +166,10 @@ def fetch_kwater_bids():
             "restrictions": "",  # 이 API 응답에서 제한사항 관련 필드를 아직 확인하지 못해 비워둠
             "deadline": deadline,
             "url": "https://www.kwater.or.kr",
-            "eligible": is_eligible_region(region_text, "한국수자원공사"),
+            # 계약부서명(지역본부)은 실제 공사현장 지역과 다를 수 있는 광역 단위 추정값이라
+            # 이걸로 참가가능 여부를 자동 판정하면 대부분(약 90%) 잘못 "참가불가"로 걸러짐.
+            # 그래서 자동 필터링 없이 항상 True로 두고, 지역본부명은 화면에만 참고용으로 노출.
+            "eligible": True,
         })
 
     print(f"[K-water] 총 {len(results)}건 수집")

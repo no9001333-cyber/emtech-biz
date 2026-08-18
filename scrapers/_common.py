@@ -44,6 +44,16 @@ def parse_deadline(deadline_text: str):
         return None
 
 
+def deadline_sort_key(deadline_text) -> str:
+    """정렬 전용 키. 소스마다 마감일시 표기 형식이 다릅니다
+    (예: 나라장터 "2026-08-20 09:00", D2B "202608200900" 처럼 구분자 유무가 다름).
+    main.py에서 여러 소스를 한꺼번에 문자열로 정렬하면 형식이 섞여서 마감이 이른
+    순서대로 정확히 정렬되지 않을 수 있어서, 숫자가 아닌 문자(-, :, 공백 등)를 모두
+    제거해 자리수를 통일한 순수 숫자 문자열로 변환합니다. 이렇게 하면 형식이 달라도
+    항상 같은 기준(연월일시분...)으로 사전식 비교가 가능해집니다."""
+    return re.sub(r"\D", "", str(deadline_text or ""))
+
+
 def is_deadline_in_range(deadline_text: str) -> bool:
     """투찰마감 기준으로 목록에 남길지 판단.
     - 아직 마감 전이면: 남은 일수가 MIN~MAX일 사이여야 함 (너무 임박/너무 먼 것 제외)
