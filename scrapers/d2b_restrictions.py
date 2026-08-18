@@ -32,14 +32,21 @@
 """
 
 D2B_LIST_URL = "https://www.d2b.go.kr/mainBidAnnounceList.do"
-ACTION_TIMEOUT_MS = 15000
-NAV_TIMEOUT_MS = 20000
+# 방화벽/백신이 막고 있던 문제를 해결한 뒤 실제로 확인해보니(2026-08-18 실행 로그),
+# DNS/네트워크 접속 자체는 정상화됐지만 이번엔 전부 "Timeout 15000ms exceeded -
+# waiting for locator(a.fgirdB)"로 실패했습니다. 즉 검색 버튼을 누른 뒤 결과 그리드
+# (구형 SBGrid 커스텀 컴포넌트)가 15초 안에 렌더링되지 않는다는 뜻입니다. 실제로
+# 사람이 브라우저로 똑같이 검색해봐도 결과가 뜨는 데 상당히 오래 걸리는 걸
+# 확인해서(사이트 자체가 오래된 방식이라 느림), 타임아웃을 넉넉하게 늘렸습니다.
+ACTION_TIMEOUT_MS = 45000
+NAV_TIMEOUT_MS = 45000
 UNVERIFIED_NOTE = "지역/면허제한 자동확인 실패-공고문 직접확인 필요"
-# 공고 한 건이 최악의 경우(타임아웃 연속) ~1분까지 걸릴 수 있어서, 사이트 자체가
-# 막혀있는 날(예: 점검, 자동화 차단)에 전체 수집이 너무 오래 걸리지 않도록 전체
-# 소요시간 상한을 둡니다. 이 시간을 넘기면 남은 공고는 더 시도하지 않고 바로
-# "자동확인 실패"로 표시합니다.
-MAX_TOTAL_SECONDS = 600
+# 공고 한 건이 최악의 경우(타임아웃 연속) ACTION_TIMEOUT_MS 근처까지 걸릴 수 있어서,
+# 사이트 자체가 막혀있는 날(예: 점검, 자동화 차단)에 전체 수집이 너무 오래 걸리지
+# 않도록 전체 소요시간 상한을 둡니다. 이 시간을 넘기면 남은 공고는 더 시도하지 않고
+# 바로 "자동확인 실패"로 표시합니다. (타임아웃을 45초로 늘렸으므로, 47건 기준
+# 최악의 경우 47 * 약 50초 ≈ 40분까지 걸릴 수 있어 상한도 함께 늘렸습니다.)
+MAX_TOTAL_SECONDS = 2700
 
 
 def enrich_d2b_bids_with_restrictions(bids):
@@ -115,7 +122,19 @@ def _lookup_one(page, title, pblanc_no):
     page.goto(D2B_LIST_URL, wait_until="domcontentloaded")
     page.fill("#anmt_name", title)
     page.click("#btn_search")
-    page.wait_for_selector("a.fgirdB", timeout=ACTION_TIMEOUT_MS)
+    try:
+        page.wait_for_selector("a.fgirdB", timeout=ACTION_TIMEOUT_MS)
+    except Exception:
+        # 결과 링크가 끝내 안 나타난 경우: "검색결과 0건"인지(정상 - 그냥 못 찾은 것)
+        # 아니면 그리드 자체가 안 뜬 것인지(비정상 - 사이트 구조 변경/차단 의심) 구분해서
+        # 로그에 남깁니다. 다음 실행 때 원인 파악에 필요한 최소한의 진단 정보입니다.
+        try:
+            no_data = page.query_selector("text=표시할 데이터가 없습니다")
+            diag = "검색결과 0건(정상)" if no_data else f"원인불명 - 현재 URL: {page.url}"
+        except Exception:
+            diag = "진단 실패"
+        print(f"[D2B 공고문 확인] 결과 그리드 미출현: {title[:30]} - {diag}")
+        raise
     page.wait_for_timeout(800)  # 커스텀 그리드(SBGrid) 렌더링 여유시간
 
     rows = page.query_selector_all("table tr")
