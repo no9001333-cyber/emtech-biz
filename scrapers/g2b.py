@@ -66,20 +66,21 @@ def _matches_keyword(title: str) -> bool:
 
 
 def _build_restrictions(item: dict) -> str:
-    """공고 항목에서 입찰 참가 제한 관련 정보를 뽑아 사람이 읽을 수 있는 배지 텍스트 목록으로 만든다."""
+    """공고 항목에서 입찰 참가 제한 관련 정보를 뽑아 사람이 읽을 수 있는 배지 텍스트 목록으로 만든다.
+
+    업종제한(indstrytyLmtYn)은 실제 데이터로 확인해보니 국내 공사입찰 대부분(약 90%)에
+    법적으로 항상 걸려있어 변별력이 없어서 배지에서 제외했습니다. 입찰방식명에 "제한/지명"이
+    포함된 경우도 지역제한·지역의무공동도급과 의미가 겹쳐서 함께 제외했습니다. 아래 세 가지만
+    남깁니다: 지역제한, 지역의무공동도급, 참가자격제한.
+    """
     tags = []
-    if item.get("indstrytyLmtYn") == "Y":
-        tags.append("업종제한")
-    if item.get("bidPrtcptLmtYn") == "Y":
-        tags.append("참가자격제한")
     rgn_lmt_bss = item.get("rgnLmtBidLocplcJdgmBssNm", "")
     if rgn_lmt_bss:
         tags.append(f"지역제한({rgn_lmt_bss})")
     if item.get("rgnDutyJntcontrctYn") == "Y":
         tags.append("지역의무공동도급")
-    bid_method = item.get("bidMethdNm", "") or item.get("cntrctCnclsMthdNm", "")
-    if "제한" in bid_method or "지명" in bid_method:
-        tags.append(bid_method)
+    if item.get("bidPrtcptLmtYn") == "Y":
+        tags.append("참가자격제한")
     # 순서를 유지하며 중복 제거
     seen = set()
     deduped = []
