@@ -473,6 +473,27 @@ function fmtYMD(d) {{
   return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
 }}
 
+// 투찰마감/참가등록마감 표시용 날짜·시간 통일 포맷터.
+// 소스(나라장터/LH/D2B/수자원공사 등)마다 원본 형식이 제각각이라(예: "202608201000"처럼
+// 구분자 없는 숫자, "2026-08-20 12:00:00"처럼 초까지 있는 문자열 등) 화면에 섞여 나오면
+// 날짜/시간이 한눈에 구분되지 않는 문제가 있었습니다. 숫자만 뽑아서 항상
+// "YYYY-MM-DD HH:MM" 형태로 통일해서 보여줍니다 (시간 정보가 없으면 날짜만 표시).
+function fmtDateTime(s) {{
+  if (!s) return '-';
+  const digits = String(s).replace(/\\D/g, '');
+  if (digits.length === 0) return '-';
+  if (digits.length >= 12) {{
+    const y = digits.slice(0, 4), mo = digits.slice(4, 6), da = digits.slice(6, 8);
+    const hh = digits.slice(8, 10), mi = digits.slice(10, 12);
+    return `${{y}}-${{mo}}-${{da}} ${{hh}}:${{mi}}`;
+  }}
+  if (digits.length >= 8) {{
+    const y = digits.slice(0, 4), mo = digits.slice(4, 6), da = digits.slice(6, 8);
+    return `${{y}}-${{mo}}-${{da}}`;
+  }}
+  return String(s); // 알 수 없는 형식이면 원본 그대로 표시 (데이터 유실 방지)
+}}
+
 function ddayLabel(deadlineText, status) {{
   const d = parseDateStr(deadlineText);
   if (!d) return '';
@@ -626,8 +647,8 @@ function render() {{
       <td data-label="입찰방식">${{b.bid_method || '-'}}</td>
       <td data-label="제한사항">${{restrictionsHtml(b.restrictions)}}</td>
       <td data-label="기초금액">${{b.base_amount ? Number(b.base_amount).toLocaleString('ko-KR') + '원' : '-'}}</td>
-      <td data-label="투찰마감">${{b.deadline || '-'}}${{ddayLabel(b.deadline, b.status) ? ` <span class="tag" style="border-color:var(--accent); color:var(--accent);">${{ddayLabel(b.deadline, b.status)}}</span>` : ''}}</td>
-      <td data-label="참가등록마감">${{b.reg_deadline || '-'}}</td>
+      <td data-label="투찰마감">${{fmtDateTime(b.deadline)}}${{ddayLabel(b.deadline, b.status) ? ` <span class="tag" style="border-color:var(--accent); color:var(--accent);">${{ddayLabel(b.deadline, b.status)}}</span>` : ''}}</td>
+      <td data-label="참가등록마감">${{fmtDateTime(b.reg_deadline)}}</td>
       <td data-label="낙찰결과">${{resultHtml}}</td>
       <td data-label="메모"><input class="memo-input" type="text" placeholder="메모 입력..." value="${{memoVal.replace(/"/g,'&quot;')}}" data-key="${{key}}"></td>
       <td><button class="btn-calc" data-idx="${{idx}}">투찰금액 계산</button></td>
