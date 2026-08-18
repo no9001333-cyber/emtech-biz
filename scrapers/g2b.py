@@ -157,6 +157,27 @@ def fetch_g2b_bids():
                 item.get("rgnDutyJntcontrctYn") == "Y"
             )
 
+            # 투찰금액 계산기용 실제 공고 데이터 (2026-08-18 추가):
+            #   - est_amount(추정금액)=presmptPrce: API가 제공하는 값 그대로.
+            #   - base_amount(기초금액)도 같은 presmptPrce를 씁니다. 실제 "기초금액"은
+            #     발주기관이 예정가격 산정 직전에 내부적으로 정하는 값이라 이 API에는
+            #     별도 필드가 없습니다 - 추정가격을 참고용 기초금액으로 쓰되, 대시보드에
+            #     "참고용(실제 기초금액과 다를 수 있음)"이라고 명시하고 사용자가 직접
+            #     공고문 금액과 대조/수정하도록 안내합니다.
+            #   - a_value(A값 후보)=관급자재금액 계열 필드. 실제 A값(관급자재대+도급자
+            #     설치비 등 정산제외 항목)과 완전히 같다는 보장은 없어 참고용입니다.
+            #   - successful_bid_lower_rate(낙찰하한율)=sucsfbidLwltRate: 공고에 박힌 실제 값.
+            #   - reserve_price_total_count/reserve_price_draw_count
+            #     (복수예가 생성개수/추첨개수)=totPrdprcNum/drwtPrdprcNum: 공고에 박힌 실제 값.
+            #   이 다섯 필드 모두 공고마다 비어있을 수 있고, 값이 있어도 비정상적인
+            #   범위일 수 있어 대시보드 JS(calcModal)에서 반드시 범위 검증 후 사용하고,
+            #   검증 실패/누락 시에는 자동으로 채우지 않고 수동 입력을 안내합니다.
+            a_value_raw = (
+                item.get("contrctrcnstrtnGovsplyMtrlAmt", "")
+                or item.get("govcnstrtnGovsplyMtrlAmt", "")
+                or item.get("govsplyAmt", "")
+            )
+
             results.append({
                 "source": "나라장터",
                 "title": title,
@@ -165,6 +186,11 @@ def fetch_g2b_bids():
                 "notice_no": item.get("bidNtceNo", ""),
                 "region": region_text,
                 "base_amount": item.get("presmptPrce", ""),
+                "est_amount": item.get("presmptPrce", ""),
+                "a_value": a_value_raw,
+                "successful_bid_lower_rate": item.get("sucsfbidLwltRate", ""),
+                "reserve_price_total_count": item.get("totPrdprcNum", ""),
+                "reserve_price_draw_count": item.get("drwtPrdprcNum", ""),
                 "notice_date": item.get("bidNtceDt", ""),
                 "reg_deadline": item.get("bidQlfctRegDt", "") or item.get("prtcptRegYn", ""),
                 "bid_method": item.get("bidMethdNm", "") or item.get("cntrctCnclsMthdNm", ""),
