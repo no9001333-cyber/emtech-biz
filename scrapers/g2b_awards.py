@@ -87,10 +87,6 @@ def fetch_g2b_awards():
             break
 
         if page_no == 1:
-            # award_amount/assessed_rate는 실제로 값이 잘 들어오는데 winner/open_date는
-            # 항상 빈 값이라, 필드명을 추정만 하고 실제 응답으로 검증한 적이 없었던 게
-            # 원인으로 보입니다(g2b.py/d2b.py/kwater.py는 처음부터 이렇게 로그로 확인).
-            # 다음 실행 로그에서 실제 필드명을 보고 winner/open_date 매핑을 바로잡습니다.
             print(f"[낙찰정보] 응답 필드명 예시: {list(items[0].keys())}")
 
         for item in items:
@@ -100,13 +96,19 @@ def fetch_g2b_awards():
             results.append({
                 "source": "나라장터",
                 "title": item.get("bidNtceNm", ""),
-                "org": item.get("ntceInsttNm", ""),
+                # ntceInsttNm(발주기관명)은 이 API 응답엔 없어서, 대신 있는
+                # dminsttNm(수요기관명)으로 대체
+                "org": item.get("ntceInsttNm") or item.get("dminsttNm", ""),
                 "notice_no": item.get("bidNtceNo", ""),
-                "winner": item.get("prcbdrNm") or item.get("opengCorpNm", ""),
+                # 예전엔 prcbdrNm/opengCorpNm으로 추정해서 항상 빈 값이었음.
+                # 위 필드명 로그로 확인한 실제 필드는 bidwinnrNm(낙찰자명).
+                "winner": item.get("bidwinnrNm", ""),
                 "award_amount": award_amount,
                 "base_amount": item.get("presmptPrce", ""),
                 "assessed_rate": item.get("sucsfbidRate") or item.get("bidprcRate", ""),
-                "open_date": item.get("opengDt", ""),
+                # 예전엔 opengDt로 추정했는데 이 응답엔 그 필드가 아예 없었음.
+                # 실제 필드는 rlOpengDt(실제개찰일시), 없으면 fnlSucsfDate(최종낙찰일자)
+                "open_date": item.get("rlOpengDt") or item.get("fnlSucsfDate", ""),
                 "url": item.get("bidNtceDtlUrl", ""),
             })
 
