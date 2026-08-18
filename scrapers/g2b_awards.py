@@ -86,6 +86,13 @@ def fetch_g2b_awards():
         if not items:
             break
 
+        if page_no == 1:
+            # award_amount/assessed_rate는 실제로 값이 잘 들어오는데 winner/open_date는
+            # 항상 빈 값이라, 필드명을 추정만 하고 실제 응답으로 검증한 적이 없었던 게
+            # 원인으로 보입니다(g2b.py/d2b.py/kwater.py는 처음부터 이렇게 로그로 확인).
+            # 다음 실행 로그에서 실제 필드명을 보고 winner/open_date 매핑을 바로잡습니다.
+            print(f"[낙찰정보] 응답 필드명 예시: {list(items[0].keys())}")
+
         for item in items:
             # 낙찰(예정)금액이 있는 것만 유의미한 결과로 취급
             award_amount = item.get("sucsfbidAmt") or item.get("scsbidAmt", "")
