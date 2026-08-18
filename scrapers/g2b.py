@@ -151,6 +151,12 @@ def fetch_g2b_bids():
             if not is_deadline_in_range(deadline):
                 continue
 
+            # 실제 지역제한이 있는지 (없다고 "확인된" 경우에만 False로 넘겨서,
+            # region_text의 시·군 이름만 보고 잘못 참가불가 처리하는 걸 막음)
+            has_region_restriction = bool(item.get("rgnLmtBidLocplcJdgmBssNm")) or (
+                item.get("rgnDutyJntcontrctYn") == "Y"
+            )
+
             results.append({
                 "source": "나라장터",
                 "title": title,
@@ -165,7 +171,10 @@ def fetch_g2b_bids():
                 "restrictions": _build_restrictions(item),
                 "deadline": deadline,
                 "url": item.get("bidNtceDtlUrl", ""),
-                "eligible": is_eligible_region(region_text, org_text, title),
+                "eligible": is_eligible_region(
+                    region_text, org_text, title,
+                    has_region_restriction=has_region_restriction,
+                ),
             })
 
         total_count = int(body.get("totalCount", 0))

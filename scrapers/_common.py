@@ -81,7 +81,8 @@ def bid_status(deadline_text: str) -> str:
     return "마감"
 
 
-def is_eligible_region(region_text: str, org_text: str = "", title_text: str = "") -> bool:
+def is_eligible_region(region_text: str, org_text: str = "", title_text: str = "",
+                        has_region_restriction=None) -> bool:
     """용인시 소재 업체가 이 공고에 실제로 입찰 참가 가능한지 판단.
 
     참가 가능:
@@ -95,6 +96,18 @@ def is_eligible_region(region_text: str, org_text: str = "", title_text: str = "
     참가 불가:
       - "경기도 안양시"처럼 용인이 아닌 다른 경기도 시·군이 명시된 경우
       - 다른 광역시/도(부산, 강원, 충북 등)가 명시된 경우
+
+    has_region_restriction: 공고에 실제 지역제한(나라장터 API의
+      rgnLmtBidLocplcJdgmBssNm/rgnDutyJntcontrctYn 같은 필드)이 걸려있는지
+      호출하는 쪽이 알고 있으면 넘겨줍니다.
+      - False로 넘어오면: 공식 데이터로 지역제한이 없다고 "확인된" 경우입니다.
+        region_text의 "경기도 OO시"는 실제로는 공사현장 소재지일 뿐 참가자격
+        제한이 아닌 경우가 많다는 게 실제 사례로 확인됐습니다 (예: "경기도
+        여주시"/"경기도 수원시"로 표기된 학교 통신공사 공고들이 지역제한
+        플래그는 비어있는데도 다른 시·군이라는 이유만으로 계속 참가불가 처리
+        되고 있었음 — 경쟁 서비스의 맞춤공고 목록과 대조해서 발견). 이 경우
+        "경기도"가 들어있으면 경기도 전역 대상 공고로 보고 참가 가능 처리합니다.
+      - None(모름, 기본값)이면 기존처럼 지역 시·군 이름만으로 추정합니다.
     """
     region_text = region_text or ""
     org_text = org_text or ""
@@ -108,6 +121,9 @@ def is_eligible_region(region_text: str, org_text: str = "", title_text: str = "
     if "전국" in region_text:
         return True
     if any(city in combined for city in GYEONGGI_OTHER_CITIES):
+        if has_region_restriction is False and HOME_PROVINCE in region_text:
+            # 실제 지역제한이 없다고 확인됐고, 경기도 소재 공고면 경기도 전역 대상으로 간주
+            return True
         # 용인이 아닌 다른 경기도 시·군이 특정되어 있으면 참가 불가
         return False
     if any(k in combined for k in EXCLUDE_REGION_KEYWORDS):
