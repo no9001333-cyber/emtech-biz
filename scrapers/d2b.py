@@ -162,7 +162,13 @@ def fetch_d2b_bids():
     그런데 "시설" 오퍼레이션(getFcltyCmpetBidPblancList) 안에도 순수 공사가 아닌
     "용역"(busiDivs="용역") 건이 섞여 나오는 게 실제로 확인돼서(예: 설계·감리 등
     시설 관련 용역), industry(busiDivs)가 "공사"인 것만 남기도록 한 번 더 걸러냅니다.
-    (D2B는 출처 자체가 군부대로 한정되어 있어 지역 필터는 적용하지 않음)"""
+
+    공식 API에는 면허제한/지역제한 필드가 아예 없어서(문서 상단 참고), 예전에는
+    D2B 공고를 전부 eligible=True(참가가능)로 무조건 표시하고 있었습니다. 실제로
+    공고문을 열어보면 "제주특별자치도에서만 참가가능" 처럼 공고마다 지역이 전혀
+    다른데도 전부 참가가능한 것처럼 보여준 셈이라, d2b_restrictions.py에서
+    Playwright로 실제 공고문 페이지를 열어 면허/지역 제한을 확인한 뒤 eligible을
+    다시 계산합니다 (확인 자체가 실패하면 안전하게 eligible=False로 표시)."""
     if not D2B_SERVICE_KEY:
         print("[D2B] 서비스키(D2B_SERVICE_KEY)가 설정되지 않아 건너뜁니다.")
         return []
@@ -183,7 +189,10 @@ def fetch_d2b_bids():
             continue
         results.append(parsed)
 
-    print(f"[D2B] 총 {len(results)}건 수집")
+    print(f"[D2B] 총 {len(results)}건 수집 (API 기준) - 공고문에서 면허/지역제한 확인 중...")
+    from scrapers.d2b_restrictions import enrich_d2b_bids_with_restrictions
+    results = enrich_d2b_bids_with_restrictions(results)
+
     return results
 
 
