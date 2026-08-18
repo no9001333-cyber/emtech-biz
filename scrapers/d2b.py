@@ -158,6 +158,10 @@ def fetch_d2b_bids():
     물품/용역 오퍼레이션 자체를 호출하지 않도록 뺐습니다 — API 호출도 그만큼
     줄어듭니다. (_parse_goods_item/OPERATION_GOODS는 나중에 다시 필요해지면
     쓸 수 있게 코드는 남겨뒀습니다.)
+
+    그런데 "시설" 오퍼레이션(getFcltyCmpetBidPblancList) 안에도 순수 공사가 아닌
+    "용역"(busiDivs="용역") 건이 섞여 나오는 게 실제로 확인돼서(예: 설계·감리 등
+    시설 관련 용역), industry(busiDivs)가 "공사"인 것만 남기도록 한 번 더 걸러냅니다.
     (D2B는 출처 자체가 군부대로 한정되어 있어 지역 필터는 적용하지 않음)"""
     if not D2B_SERVICE_KEY:
         print("[D2B] 서비스키(D2B_SERVICE_KEY)가 설정되지 않아 건너뜁니다.")
@@ -173,6 +177,8 @@ def fetch_d2b_bids():
     items = _fetch_items(OPERATION_FCLTY, begin_dt, end_dt)
     for item in items:
         parsed = _parse_fclty_item(item)
+        if parsed["industry"] and parsed["industry"] != "공사":
+            continue
         if not is_deadline_in_range(parsed["deadline"]):
             continue
         results.append(parsed)
