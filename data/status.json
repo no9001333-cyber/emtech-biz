@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-18 09:32",
+  "checked_at": "2026-08-18 10:08",
   "sources": [
     {
       "source": "나라장터",
@@ -16,14 +16,14 @@
     {
       "source": "국방전자조달(D2B)",
       "ok": true,
-      "count": 66,
-      "note": "66건 수집"
+      "count": 67,
+      "note": "67건 수집"
     },
     {
       "source": "한국수자원공사",
       "ok": true,
-      "count": 72,
-      "note": "72건 수집"
+      "count": 73,
+      "note": "73건 수집"
     },
     {
       "source": "한국전력공사",
