@@ -29,6 +29,12 @@ jobs:
       - name: 의존성 설치
         run: pip install -r requirements.txt
 
+      - name: Playwright 브라우저 설치 (D2B 공고문 확인용 - 이미 설치돼있으면 빠르게 넘어감)
+        # D2B(국방전자조달) 공고는 공식 API에 면허제한/지역제한 필드가 아예 없어서,
+        # scrapers/d2b_restrictions.py가 실제 공고문 페이지를 열어(Playwright) 그
+        # 정보를 가져옵니다. 그러려면 크로미움 브라우저가 이 PC에 있어야 합니다.
+        run: python -m playwright install chromium
+
       - name: 공고 수집 + 대시보드 생성
         env:
           PYTHONUTF8: "1"
