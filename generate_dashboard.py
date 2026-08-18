@@ -294,10 +294,8 @@ TEMPLATE = """<!DOCTYPE html>
   <input id="dateStart" type="date">
   <span style="align-self:center; color:var(--muted);">~</span>
   <input id="dateEnd" type="date">
-  <button class="btn-calc" onclick="setRange(30)">1개월</button>
-  <button class="btn-calc" onclick="setRange(90)">3개월</button>
-  <button class="btn-calc" onclick="setRange(180)">6개월</button>
-  <button class="btn-calc" onclick="setRange(null)">전체</button>
+  <button class="btn-calc" onclick="applyDateSearch()">검색</button>
+  <button class="btn-calc" onclick="clearDateRange()">전체</button>
 </div>
 
 <main>
@@ -493,19 +491,18 @@ function restrictionsHtml(restrictions) {{
     .join('');
 }}
 
-function setRange(days) {{
-  const endInput = document.getElementById('dateEnd');
-  const startInput = document.getElementById('dateStart');
-  if (days === null) {{
-    startInput.value = '';
-    endInput.value = '';
-  }} else {{
-    const end = new Date();
-    const start = new Date();
-    start.setDate(start.getDate() - days);
-    endInput.value = end.toISOString().slice(0, 10);
-    startInput.value = start.toISOString().slice(0, 10);
-  }}
+// "검색" 버튼: 사용자가 직접 입력/선택한 시작일~종료일 그대로 적용해서 필터링.
+// (예전에는 1개월/3개월/6개월 버튼이 "오늘 - N일 ~ 오늘"처럼 과거 방향으로만 동작해서,
+//  마감일이 미래인 공고를 찾을 때는 오히려 안 맞았습니다. 이제는 입력한 날짜를 그대로 검색합니다.)
+function applyDateSearch() {{
+  render();
+  buildCalendar();
+}}
+
+// "전체" 버튼: 날짜 범위를 비워서 날짜 필터를 끔.
+function clearDateRange() {{
+  document.getElementById('dateStart').value = '';
+  document.getElementById('dateEnd').value = '';
   render();
   buildCalendar();
 }}
