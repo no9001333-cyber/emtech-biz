@@ -28,6 +28,7 @@ from config import (
     KEPCO_API_KEY, KOGAS_SERVICE_KEY, G2B_AWARDS_SERVICE_KEY,
 )
 from scrapers.g2b import fetch_g2b_bids
+from scrapers.g2b_verify import verify_g2b_region_eligibility
 from scrapers.lh import fetch_lh_bids
 from scrapers.d2b import fetch_d2b_bids
 from scrapers.kwater import fetch_kwater_bids
@@ -76,7 +77,15 @@ def main():
 
     # 1) 입찰공고 수집 (소스별로 상태 기록)
     new_bids = []
-    new_bids += _run_source("나라장터", bool(G2B_SERVICE_KEY), fetch_g2b_bids, status_list)
+    g2b_bids = _run_source("나라장터", bool(G2B_SERVICE_KEY), fetch_g2b_bids, status_list)
+    # 2026-08-19: g2b.go.kr 상세페이지의 지역제한 필드가 "공고서참조"로만 나오는
+    # 경우가 흔해서, API 구조화 필드만으로는 실제 참가가능 지역을 알 수 없는
+    # 공고가 있다. 공고서(PDF) 원문을 직접 읽어 참가자격 지역조건을 재확인한다
+    # (자세한 배경은 scrapers/g2b_verify.py 상단 주석 참고). 시간이 걸려도
+    # 정확도를 우선하기로 했지만, 이 단계 자체가 실패해도 전체 수집이 죽지
+    # 않도록 g2b_verify 내부에서 예외를 전부 흡수한다.
+    verify_g2b_region_eligibility(g2b_bids)
+    new_bids += g2b_bids
     new_bids += _run_source("LH", bool(LH_SERVICE_KEY), fetch_lh_bids, status_list)
     new_bids += _run_source("국방전자조달(D2B)", bool(D2B_SERVICE_KEY), fetch_d2b_bids, status_list)
     new_bids += _run_source("한국수자원공사", bool(KWATER_SERVICE_KEY), fetch_kwater_bids, status_list)

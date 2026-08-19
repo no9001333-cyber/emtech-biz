@@ -69,6 +69,10 @@ TEMPLATE = """<!DOCTYPE html>
   .attach-links {{ margin-top:4px; display:flex; flex-wrap:wrap; gap:8px; }}
   .attach-links a {{ font-size:0.74rem; color:var(--good); text-decoration:none; }}
   .attach-links a:hover {{ text-decoration:underline; }}
+  .region-check {{ display:block; margin-top:2px; font-size:0.72rem; cursor:help; }}
+  .region-check.confirmed {{ color:var(--good); }}
+  .region-check.ambiguous {{ color:#a67c00; }}
+  .region-check.unverified {{ color:var(--muted); }}
 
   .tag {{ display:inline-block; font-size:0.72rem; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }}
   .tag.g2b {{ border-color:#2a6f97; color:#2a6f97; }}
@@ -531,6 +535,21 @@ function attachLinksHtml(attachments) {{
   return `<div class="attach-links">${{links}}</div>`;
 }}
 
+// 나라장터 공고서(PDF) 원문으로 재확인한 지역 참가자격 결과를 지역 컬럼에 작게 표시.
+// title 속성(브라우저 기본 툴팁)에 실제 공고서 발췌문을 그대로 넣어서,
+// 마우스를 올리면 원문 한 줄을 바로 확인할 수 있게 한다.
+function regionCheckHtml(regionCheck) {{
+  if (!regionCheck) return '';
+  const esc = (s) => (s || '').replace(/"/g, '&quot;');
+  if (!regionCheck.verified) {{
+    return `<span class="region-check unverified" title="${{esc(regionCheck.note)}}">⚠ 공고서 미검증</span>`;
+  }}
+  if (regionCheck.eligible_confirmed === null || regionCheck.eligible_confirmed === undefined) {{
+    return `<span class="region-check ambiguous" title="${{esc(regionCheck.note + ': ' + (regionCheck.snippet || ''))}}">❔ 공고서 확인필요</span>`;
+  }}
+  return `<span class="region-check confirmed" title="${{esc(regionCheck.note + ': ' + (regionCheck.snippet || ''))}}">✓ 공고서로 확인됨</span>`;
+}}
+
 function restrictionsHtml(restrictions) {{
   const text = (restrictions || '').trim();
   if (!text) return '-';
@@ -687,7 +706,7 @@ function render() {{
       <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener">${{b.title || ''}}</a>` : (b.title || '')}}${{attachLinksHtml(b.attachments)}}</td>
       <td data-label="발주기관">${{b.org || ''}}</td>
       <td data-label="업종">${{b.industry || '-'}}</td>
-      <td data-label="지역">${{b.region || ''}}${{b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : ''}}</td>
+      <td data-label="지역">${{b.region || ''}}${{b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : ''}}${{regionCheckHtml(b.region_check)}}</td>
       <td data-label="입찰방식">${{b.bid_method || '-'}}</td>
       <td data-label="제한사항">${{restrictionsHtml(b.restrictions)}}</td>
       <td data-label="금액정보">${{amountInfoHtml(b)}}</td>
