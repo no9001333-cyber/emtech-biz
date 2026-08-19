@@ -27,8 +27,13 @@ ENDPOINT = "http://openapi.ebid.lh.or.kr/ebid.com.openapi.service.OpenBidInfoLis
 
 
 def _clean_key(key: str) -> str:
+    """data.go.kr에서 Encoding/Decoding 어느 버전의 키를 넣어도 동작하도록,
+    URL 인코딩되어 있으면 한 번 풀어준다 (requests가 다시 인코딩하므로 이중 인코딩 방지).
+    (2026-08-19: 앞뒤 공백/줄바꿈이 섞여 들어와도 인증 실패로 이어질 수 있어 strip 추가.
+     "SERVICE KEY IS NOT REGISTERED ERROR"가 코드 문제가 아니라 실제로 등록 안 된
+     키/공백 문제일 수도 있어서, 아래 fetch_lh_bids()에 키 마스킹 진단 로그도 추가함.)"""
     import urllib.parse
-    return urllib.parse.unquote(key)
+    return urllib.parse.unquote(key).strip()
 
 
 def _xml_text(elem, tag):
@@ -46,9 +51,16 @@ def fetch_lh_bids():
 
     end = datetime.now()
     begin = end - timedelta(days=LOOKBACK_DAYS)
+    key = _clean_key(LH_SERVICE_KEY)
+    # 키 자체는 절대 로그에 남기지 않고, 길이/앞뒤 몇 글자만 마스킹해서 출력.
+    # "SERVICE KEY IS NOT REGISTERED ERROR"가 떴을 때 원인이 (1) 진짜 미승인 키인지
+    # (2) 복사 과정에서 공백/줄바꿈이 섞였거나 다른 API 키가 잘못 들어간 건지
+    # 구분하는 데 씀 (실행 로그에서 이 값과 data.go.kr 마이페이지의 실제 키 길이를 대조).
+    masked = f"{key[:4]}...{key[-4:]} (길이 {len(key)})" if len(key) >= 8 else "(키가 너무 짧음)"
+    print(f"[LH] 사용 중인 서비스키(마스킹): {masked}")
     # 공식 문서 기준 파라미터명: tndrbidRegDtStart / tndrbidRegDtEnd (YYYYMMDD, 8자리)
     params = {
-        "serviceKey": _clean_key(LH_SERVICE_KEY),
+        "serviceKey": key,
         "numOfRows": 1000,
         "pageNo": 1,
         "tndrbidRegDtStart": begin.strftime("%Y%m%d"),
