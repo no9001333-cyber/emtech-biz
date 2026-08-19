@@ -552,10 +552,11 @@ function parseAmount(v) {{
   return isNaN(n) ? null : n;
 }}
 
-// 표에 추정금액/기초금액/A값을 한 셀에 요약 표시. 추정금액과 기초금액은 현재 수집
-// 단계에서 같은 API 필드(추정가격)를 사용하기 때문에 대부분 같은 값으로 보이는데,
-// 이건 버그가 아니라 "정식 기초금액" 필드 자체가 공개 API에 없어서 추정가격을
-// 참고용으로 대신 쓰고 있다는 뜻입니다(투찰금액 계산 모달에서 직접 수정 가능).
+// 표에 추정금액/기초금액/A값을 한 셀에 요약 표시. 추정금액과 기초금액은 수집 단계에서
+// 같은 API 필드(bdgtAmt=예산금액)를 사용하기 때문에 대부분 같은 값으로 보이는데, 이건
+// 버그가 아니라 실제 공고 상세페이지의 "기초금액공개" 섹션 값도 예산금액과 일치한다는
+// 것을 확인했기 때문입니다(투찰금액 계산 모달에서 직접 수정 가능). A값은 0원도 정상적인
+// 실제 값(관급자재 없음)이라 null(데이터 없음)과 구분해서 표시합니다.
 function amountInfoHtml(b) {{
   const est = parseAmount(b.est_amount);
   const base = parseAmount(b.base_amount);
@@ -564,7 +565,7 @@ function amountInfoHtml(b) {{
   const lines = [];
   lines.push(`추정: ${{est !== null ? Number(est).toLocaleString('ko-KR') + '원' : '-'}}`);
   lines.push(`기초: ${{base !== null ? Number(base).toLocaleString('ko-KR') + '원' : '-'}} <span style="color:var(--muted); font-size:0.7rem;">(참고용)</span>`);
-  lines.push(`A값: ${{a !== null && a > 0 ? Number(a).toLocaleString('ko-KR') + '원' : '<span style="color:var(--muted);">확인필요</span>'}}`);
+  lines.push(`A값: ${{a !== null ? Number(a).toLocaleString('ko-KR') + '원' : '<span style="color:var(--muted);">확인필요</span>'}}`);
   return lines.join('<br>');
 }}
 
@@ -830,16 +831,18 @@ function openCalc(bid) {{
 
   document.getElementById('calcEstDisplay').textContent = est !== null ? Number(est).toLocaleString('ko-KR') + '원' : '데이터 없음 - 공고문에서 직접 확인 필요';
 
-  // 기초금액: 공개 API에 정식 "기초금액" 필드가 없어 추정가격을 참고용으로 채웁니다.
-  // 실제 데이터이긴 하지만 발주기관이 정한 진짜 기초금액과 다를 수 있어 warn 배지를 씁니다.
+  // 기초금액: 예산금액(bdgtAmt) 기준 실제 값을 채웁니다. 공고 상세페이지의 "기초금액공개"
+  // 값과 일치하는 것을 확인했지만, 발주기관이 별도로 산정한 진짜 기초금액과 다를 가능성이
+  // 완전히 배제되지는 않아 warn 배지로 공고문 대조를 안내합니다.
   const baseVal = base !== null ? base : est;
   document.getElementById('calcBase').value = baseVal || '';
-  setBadge('badgeBase', false, '', baseVal ? '추정가격 기준(참고용) - 공고문 대조 필요' : '데이터 없음-직접입력');
+  setBadge('badgeBase', false, '', baseVal ? '예산금액 기준(공고 데이터) - 공고문 대조 권장' : '데이터 없음-직접입력');
 
-  // A값
-  if (aValue !== null && aValue > 0) {{
+  // A값: 0원도 "관급자재 없음"을 의미하는 정상적인 실제 값이므로, null(데이터 없음)과
+  // 구분해서 처리합니다 - 0을 확인필요로 잘못 표시하지 않도록 주의.
+  if (aValue !== null) {{
     document.getElementById('calcAValue').value = aValue;
-    setBadge('badgeAValue', true, '공고 데이터(참고용)');
+    setBadge('badgeAValue', true, aValue > 0 ? '공고 데이터(실제값)' : '공고 데이터(실제값·0원)');
   }} else {{
     document.getElementById('calcAValue').value = '';
     setBadge('badgeAValue', false, '', '데이터 없음-직접입력');
