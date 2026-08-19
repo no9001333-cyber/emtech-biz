@@ -157,26 +157,46 @@ def fetch_g2b_bids():
                 item.get("rgnDutyJntcontrctYn") == "Y"
             )
 
-            # 투찰금액 계산기용 실제 공고 데이터 (2026-08-18 추가):
-            #   - est_amount(추정금액)=presmptPrce: API가 제공하는 값 그대로.
-            #   - base_amount(기초금액)도 같은 presmptPrce를 씁니다. 실제 "기초금액"은
-            #     발주기관이 예정가격 산정 직전에 내부적으로 정하는 값이라 이 API에는
-            #     별도 필드가 없습니다 - 추정가격을 참고용 기초금액으로 쓰되, 대시보드에
-            #     "참고용(실제 기초금액과 다를 수 있음)"이라고 명시하고 사용자가 직접
-            #     공고문 금액과 대조/수정하도록 안내합니다.
-            #   - a_value(A값 후보)=관급자재금액 계열 필드. 실제 A값(관급자재대+도급자
-            #     설치비 등 정산제외 항목)과 완전히 같다는 보장은 없어 참고용입니다.
+            # 투찰금액 계산기용 실제 공고 데이터 (2026-08-18 추가, 2026-08-19 필드 매핑 수정):
+            #   - est_amount(추정금액)/base_amount(기초금액)=bdgtAmt(예산금액): 실제 공고
+            #     상세페이지의 "가격" 섹션 및 "기초금액공개"(기초금액조회) 값과 일치하는 것을
+            #     사용자가 제보한 스크린샷으로 직접 확인했습니다(예: 예산금액=기초금액=
+            #     35,477,000원인 사례). presmptPrce(추정가격, 부가가치세 불포함)는 이와는
+            #     별개 개념이라(같은 사례에서 32,251,819원으로 약 9% 낮음) 더 이상
+            #     est_amount/base_amount에 쓰지 않고, 참고용 별도 필드
+            #     est_price_excl_vat 로만 보관합니다. bdgtAmt가 비어있는 공고에 한해서만
+            #     presmptPrce로 대체합니다(완전히 값이 없는 것보다는 낫기 때문).
+            #   - est_price_excl_vat(추정가격·VAT 불포함, 참고용)=presmptPrce 그대로.
+            #   - a_value(A값)=관급자재금액 두 항목의 합계: govcnstrtnGovsplyMtrlAmt
+            #     (관급자 설치 관급자재금액) + contrctrcnstrtnGovsplyMtrlAmt(도급자 설치
+            #     관급자재금액). 실제 공고 상세페이지의 "관급금액" 두 항목과 대응됩니다.
+            #     두 필드가 모두 없는(빈 문자열) 공고만 a_value도 빈 문자열("확인 필요")로
+            #     두고, 하나라도 값이 있으면(0 포함) 합계를 숫자로 저장합니다 - A값이
+            #     정확히 0원인 경우(관급자재 없음)는 매우 흔한 정상 값이라 "데이터 없음"과
+            #     구분해야 하기 때문입니다.
             #   - successful_bid_lower_rate(낙찰하한율)=sucsfbidLwltRate: 공고에 박힌 실제 값.
             #   - reserve_price_total_count/reserve_price_draw_count
             #     (복수예가 생성개수/추첨개수)=totPrdprcNum/drwtPrdprcNum: 공고에 박힌 실제 값.
-            #   이 다섯 필드 모두 공고마다 비어있을 수 있고, 값이 있어도 비정상적인
-            #   범위일 수 있어 대시보드 JS(calcModal)에서 반드시 범위 검증 후 사용하고,
-            #   검증 실패/누락 시에는 자동으로 채우지 않고 수동 입력을 안내합니다.
-            a_value_raw = (
-                item.get("contrctrcnstrtnGovsplyMtrlAmt", "")
-                or item.get("govcnstrtnGovsplyMtrlAmt", "")
-                or item.get("govsplyAmt", "")
-            )
+            #   이 필드들 모두 공고마다 비어있을 수 있고, 값이 있어도 비정상적인 범위일 수
+            #   있어 대시보드 JS(calcModal)에서 반드시 범위 검증 후 사용하고, 검증 실패/누락
+            #   시에는 자동으로 채우지 않고 수동 입력을 안내합니다.
+            budget_amount = item.get("bdgtAmt", "")
+            presmpt_price = item.get("presmptPrce", "")
+            amount_for_base_est = budget_amount or presmpt_price
+
+            def _to_int_or_none(v):
+                try:
+                    s = str(v).replace(",", "").strip()
+                    return int(s) if s else None
+                except (TypeError, ValueError):
+                    return None
+
+            gov_a_num = _to_int_or_none(item.get("govcnstrtnGovsplyMtrlAmt", ""))
+            gov_b_num = _to_int_or_none(item.get("contrctrcnstrtnGovsplyMtrlAmt", ""))
+            if gov_a_num is None and gov_b_num is None:
+                a_value_raw = ""
+            else:
+                a_value_raw = str((gov_a_num or 0) + (gov_b_num or 0))
 
             results.append({
                 "source": "나라장터",
@@ -185,8 +205,9 @@ def fetch_g2b_bids():
                 "industry": item.get("mainCnsttyNm", ""),
                 "notice_no": item.get("bidNtceNo", ""),
                 "region": region_text,
-                "base_amount": item.get("presmptPrce", ""),
-                "est_amount": item.get("presmptPrce", ""),
+                "base_amount": amount_for_base_est,
+                "est_amount": amount_for_base_est,
+                "est_price_excl_vat": presmpt_price,
                 "a_value": a_value_raw,
                 "successful_bid_lower_rate": item.get("sucsfbidLwltRate", ""),
                 "reserve_price_total_count": item.get("totPrdprcNum", ""),
