@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-19 11:25",
+  "checked_at": "2026-08-19 13:35",
   "sources": [
     {
       "source": "나라장터",
@@ -16,17 +16,23 @@
     {
       "source": "국방전자조달(D2B)",
       "ok": true,
-      "count": 65,
-      "note": "65건 수집"
+      "count": 72,
+      "note": "72건 수집"
     },
     {
       "source": "한국수자원공사",
-      "ok": false,
-      "count": 0,
-      "note": "실행 중 오류: HTTPSConnectionPool(host='apis.data.go.kr', port=443): Read timed out. (read timeout=20)"
+      "ok": true,
+      "count": 84,
+      "note": "84건 수집"
     },
     {
       "source": "한국전력공사",
+      "ok": true,
+      "count": 0,
+      "note": "키 미등록 (건너뜀)"
+    },
+    {
+      "source": "한국가스공사",
       "ok": true,
       "count": 0,
       "note": "키 미등록 (건너뜀)"
