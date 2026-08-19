@@ -64,10 +64,13 @@ POST_DEADLINE_TRACK_DAYS = 21
 
 # ── 자동 연동이 안 되는(자체 조달시스템만 운영하는) 발주기관 바로가기 링크 ──
 # 공개 API가 없어 자동 수집은 못 하지만, 최소한 클릭 한 번으로 확인할 수 있게 대시보드에 노출.
+# (2026-08-19: 한국가스공사는 data.go.kr에 실시간 오픈API가 있는 것을 확인해서
+#  kogas.py로 자동수집 대상에 편입시켰습니다 - 그래서 이 목록에서는 뺐습니다.
+#  한국석유공사는 입찰공고 API 자체가 없어(수의계약 관련 정적 파일만 존재) 계속
+#  수동 링크로만 남겨두고, 별도로 knoc.py 크롤러를 시도합니다.)
 EXTERNAL_MANUAL_LINKS = [
     {"name": "한국철도공사(코레일) 자체 시스템", "url": "https://ebid.korail.com/"},
     {"name": "국가철도공단", "url": "https://ebid.kr.or.kr/"},
-    {"name": "한국가스공사", "url": "http://bid.kogas.or.kr/"},
     {"name": "한국석유공사", "url": "https://ebid.knoc.co.kr/"},
 ]
 
@@ -77,6 +80,7 @@ EXTERNAL_MANUAL_LINKS = [
 # 군부대(D2B): "방위사업청_군수품조달정보 입찰공고" 활용신청 후 발급
 #            (참고: 군 공사 입찰공고는 법령상 나라장터에도 동시 공고되므로,
 #             G2B 수집만으로도 상당수 군 공사 건이 함께 잡힙니다.)
+# 한국가스공사: "한국가스공사_입찰정보" 활용신청 후 발급 (자동승인)
 G2B_SERVICE_KEY = os.environ.get("G2B_SERVICE_KEY", "")
 LH_SERVICE_KEY = os.environ.get("LH_SERVICE_KEY", "")
 D2B_SERVICE_KEY = os.environ.get("D2B_SERVICE_KEY", "")
@@ -84,6 +88,7 @@ KWATER_SERVICE_KEY = os.environ.get("KWATER_SERVICE_KEY", "")
 KEPCO_API_KEY = os.environ.get("KEPCO_API_KEY", "")
 KORAIL_SERVICE_KEY = os.environ.get("KORAIL_SERVICE_KEY", "")
 KR_SERVICE_KEY = os.environ.get("KR_SERVICE_KEY", "")
+KOGAS_SERVICE_KEY = os.environ.get("KOGAS_SERVICE_KEY", "")
 
 # ── 대시보드 접근 비밀번호 (선택) ──
 # 설정하면 대시보드를 열 때 비밀번호 입력 화면이 먼저 뜹니다.

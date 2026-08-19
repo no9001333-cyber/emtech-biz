@@ -1,9 +1,12 @@
 """
 메인 실행 스크립트
-- 나라장터 / LH / 국방전자조달(D2B) / 한국수자원공사 / 한국전력공사
+- 나라장터 / LH / 국방전자조달(D2B) / 한국수자원공사 / 한국전력공사 / 한국가스공사
   입찰공고 수집기와, 나라장터 낙찰정보(개찰결과) 수집기를 모두 돌립니다.
   (코레일/국가철도공단은 API 데이터가 실시간이 아닌 정적 과거 아카이브로 확인되어
-   자동수집 대상에서 제외하고, 대시보드 상단 바로가기 링크로만 제공합니다)
+   자동수집 대상에서 제외하고, 대시보드 상단 바로가기 링크로만 제공합니다.
+   한국가스공사는 2026-08-19에 data.go.kr에서 실시간 오픈API를 새로 확인해서
+   추가했습니다 - 다만 이 API는 추정금액/기초금액/지역 필드를 제공하지 않아
+   해당 항목은 대시보드에 "확인필요"로 표시됩니다.)
 - 매번 "오늘 새로 수집한 결과"로 완전히 새로 저장합니다 (예전 데이터와 병합하지 않음).
   (참고: 공고별 메모는 브라우저에 별도로 저장되므로 이 초기화와 무관하게 유지됩니다)
 - 투찰마감이 지난 나라장터 공고는, 같은 공고번호로 낙찰정보가 있으면
@@ -22,13 +25,14 @@ from datetime import datetime
 from config import (
     DATA_DIR, BIDS_JSON_PATH, AWARDS_JSON_PATH, STATUS_JSON_PATH,
     G2B_SERVICE_KEY, LH_SERVICE_KEY, D2B_SERVICE_KEY, KWATER_SERVICE_KEY,
-    KEPCO_API_KEY, G2B_AWARDS_SERVICE_KEY,
+    KEPCO_API_KEY, KOGAS_SERVICE_KEY, G2B_AWARDS_SERVICE_KEY,
 )
 from scrapers.g2b import fetch_g2b_bids
 from scrapers.lh import fetch_lh_bids
 from scrapers.d2b import fetch_d2b_bids
 from scrapers.kwater import fetch_kwater_bids
 from scrapers.kepco import fetch_kepco_bids
+from scrapers.kogas import fetch_kogas_bids
 from scrapers.g2b_awards import fetch_g2b_awards
 from scrapers._common import bid_status, deadline_sort_key
 from generate_dashboard import generate_dashboard
@@ -77,6 +81,7 @@ def main():
     new_bids += _run_source("국방전자조달(D2B)", bool(D2B_SERVICE_KEY), fetch_d2b_bids, status_list)
     new_bids += _run_source("한국수자원공사", bool(KWATER_SERVICE_KEY), fetch_kwater_bids, status_list)
     new_bids += _run_source("한국전력공사", bool(KEPCO_API_KEY), fetch_kepco_bids, status_list)
+    new_bids += _run_source("한국가스공사", bool(KOGAS_SERVICE_KEY), fetch_kogas_bids, status_list)
 
     deduped = {}
     for bid in new_bids:
