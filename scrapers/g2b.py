@@ -91,6 +91,26 @@ def _build_restrictions(item: dict) -> str:
     return ", ".join(deduped)
 
 
+def _collect_attachments(item: dict) -> list:
+    """공고 상세정보 API가 필드별로 흩어서 주는 첨부파일 URL들을 모아
+    대시보드에서 바로 다운로드 링크로 보여줄 수 있는 목록으로 만든다.
+    (조달청_OpenAPI참고자료_나라장터_입찰공고정보서비스_1.2.docx 기준 필드명:
+     stdNtceDocUrl=표준공고서, ntceSpecDocUrl1~10=공고규격서, sptDscrptDocUrl1~5=현장설명서)"""
+    attachments = []
+    std_url = item.get("stdNtceDocUrl", "")
+    if std_url:
+        attachments.append({"name": "표준공고서", "url": std_url})
+    for i in range(1, 11):
+        u = item.get(f"ntceSpecDocUrl{i}", "")
+        if u:
+            attachments.append({"name": f"규격서{i}", "url": u})
+    for i in range(1, 6):
+        u = item.get(f"sptDscrptDocUrl{i}", "")
+        if u:
+            attachments.append({"name": f"현장설명서{i}", "url": u})
+    return attachments
+
+
 def _matches_region(region_text: str, org_text: str = "", title_text: str = "") -> bool:
     # 한전/철도공단 등 전국구 발주기관은 무조건 통과
     if any(o in (org_text or "") for o in ALWAYS_INCLUDE_ORGS):
@@ -218,6 +238,7 @@ def fetch_g2b_bids():
                 "restrictions": _build_restrictions(item),
                 "deadline": deadline,
                 "url": item.get("bidNtceDtlUrl", ""),
+                "attachments": _collect_attachments(item),
                 "eligible": is_eligible_region(
                     region_text, org_text, title,
                     has_region_restriction=has_region_restriction,

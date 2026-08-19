@@ -66,6 +66,9 @@ TEMPLATE = """<!DOCTYPE html>
   td {{ padding:10px; }}
   td.title a {{ color:var(--ink); text-decoration:none; font-weight:500; }}
   td.title a:hover {{ color:var(--accent); text-decoration:underline; }}
+  .attach-links {{ margin-top:4px; display:flex; flex-wrap:wrap; gap:8px; }}
+  .attach-links a {{ font-size:0.74rem; color:var(--good); text-decoration:none; }}
+  .attach-links a:hover {{ text-decoration:underline; }}
 
   .tag {{ display:inline-block; font-size:0.72rem; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }}
   .tag.g2b {{ border-color:#2a6f97; color:#2a6f97; }}
@@ -522,6 +525,12 @@ function ddayLabel(deadlineText, status) {{
   return 'D-' + diff;
 }}
 
+function attachLinksHtml(attachments) {{
+  if (!attachments || !attachments.length) return '';
+  const links = attachments.map(a => `<a href="${{a.url}}" target="_blank" rel="noopener">📎 ${{a.name}}</a>`).join('');
+  return `<div class="attach-links">${{links}}</div>`;
+}}
+
 function restrictionsHtml(restrictions) {{
   const text = (restrictions || '').trim();
   if (!text) return '-';
@@ -675,7 +684,7 @@ function render() {{
     tr.innerHTML = `
       <td data-label="출처"><span class="tag ${{cls}}">${{b.source || ''}}</span></td>
       <td data-label="상태">${{statusBadge}}</td>
-      <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener">${{b.title || ''}}</a>` : (b.title || '')}}</td>
+      <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener">${{b.title || ''}}</a>` : (b.title || '')}}${{attachLinksHtml(b.attachments)}}</td>
       <td data-label="발주기관">${{b.org || ''}}</td>
       <td data-label="업종">${{b.industry || '-'}}</td>
       <td data-label="지역">${{b.region || ''}}${{b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : ''}}</td>
