@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-20 11:53",
+  "checked_at": "2026-08-20 13:44",
   "sources": [
     {
       "source": "나라장터",
@@ -16,26 +16,26 @@
     {
       "source": "국방전자조달(D2B)",
       "ok": true,
-      "count": 78,
-      "note": "78건 수집"
+      "count": 82,
+      "note": "82건 수집"
     },
     {
       "source": "한국수자원공사",
       "ok": true,
-      "count": 85,
-      "note": "85건 수집"
+      "count": 87,
+      "note": "87건 수집"
     },
     {
       "source": "한국전력공사",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "note": "키 미등록 (건너뜀)"
+      "note": "키는 있는데 0건 수집됨 (API 응답 확인 필요)"
     },
     {
       "source": "한국가스공사",
       "ok": true,
-      "count": 112,
-      "note": "112건 수집"
+      "count": 114,
+      "note": "114건 수집"
     },
     {
       "source": "나라장터 낙찰정보",
