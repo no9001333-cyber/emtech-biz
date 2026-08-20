@@ -23,6 +23,15 @@ from scrapers._common import is_deadline_in_range
 ENDPOINT = "https://bigdata.kepco.co.kr/openapi/v1/electContract.do"
 
 
+def _clean_key(key: str) -> str:
+    """다른 scrapers/*.py와 마찬가지로 앞뒤 공백/줄바꿈이 섞여 들어와도
+    인증 실패로 이어지지 않게 strip(). 2026-08-20: KEPCO_API_KEY를 처음
+    등록했을 때 이 정리 로직이 빠져있던 걸 발견 - 직접 테스트해보니
+    apiKey가 조금이라도 다르면 무조건 401 InvalidApiKeyException을
+    반환하는 API라, 복사 과정의 사소한 공백 하나도 치명적일 수 있다."""
+    return key.strip()
+
+
 def _matches_keyword(title: str) -> bool:
     return any(k in (title or "") for k in KEYWORDS)
 
@@ -37,11 +46,18 @@ def fetch_kepco_bids():
     end = datetime.now()
     begin = end - timedelta(days=min(LOOKBACK_DAYS, 90))  # 이 API는 최대 90일 제한
 
+    key = _clean_key(KEPCO_API_KEY)
+    # 키 자체는 절대 로그에 남기지 않고, 길이/앞뒤 몇 글자만 마스킹해서 출력.
+    # 401 InvalidApiKeyException이 뜰 때 원인이 진짜 미승인 키인지, 복사
+    # 과정에서 공백/오탈자가 섞였는지 구분하는 데 씀.
+    masked = f"{key[:4]}...{key[-4:]} (길이 {len(key)})" if len(key) >= 8 else "(키가 너무 짧음)"
+    print(f"[KEPCO] 사용 중인 API키(마스킹): {masked}")
+
     params = {
         "companyId": "COM01",  # 한국전력공사
         "noticeBeginDate": begin.strftime("%Y%m%d"),
         "noticeEndDate": end.strftime("%Y%m%d"),
-        "apiKey": KEPCO_API_KEY,
+        "apiKey": key,
         "returnType": "json",
     }
 
@@ -58,6 +74,11 @@ def fetch_kepco_bids():
         return []
 
     items = data.get("data", []) if isinstance(data, dict) else []
+    if not items:
+        # 정상 응답인데(200 OK) 항목이 0건일 때, data.get("data")가 진짜
+        # 빈 리스트인지 아니면 응답 구조 자체가 기대와 다른지(필드명이
+        # 바뀌었다든가) 구분할 수 있게 원본 응답을 그대로 남긴다.
+        print(f"[KEPCO] 수집된 항목이 없습니다. 응답 원본(처음 500자): {str(data)[:500]}")
 
     results = []
     for item in items:
