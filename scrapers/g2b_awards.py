@@ -41,7 +41,14 @@ def _fetch_page(begin_dt: str, end_dt: str, page_no: int, num_of_rows: int = 500
         "serviceKey": _clean_key(G2B_AWARDS_SERVICE_KEY),
         "pageNo": page_no,
         "numOfRows": num_of_rows,
-        "inqryDiv": 1,
+        # 2026-08-20: inqryDiv=1(등록일시) 기준으로 조회하고 있었는데, 이 API의
+        # 조회구분은 1=등록일시, 2=공고일시, 3=개찰일시, 4=입찰공고번호다(공식
+        # 참고자료로 확인함). "등록일시"는 이 낙찰 레코드가 시스템에 입력된
+        # 시점일 뿐 실제 개찰일(rlOpengDt, 화면의 open_date)과 무관하게 흩어져
+        # 있어서, 실제로는 올해 1월부터 지금까지 뒤섞인 결과가 7,500건 상한에
+        # 걸려 최근 개찰 결과 상당수가 누락되고 있었다. 우리가 원하는 건 "최근
+        # LOOKBACK_DAYS일 안에 개찰된 것"이므로 3(개찰일시) 기준으로 바꾼다.
+        "inqryDiv": 3,
         "inqryBgnDt": begin_dt,
         "inqryEndDt": end_dt,
         "type": "json",
@@ -117,6 +124,11 @@ def fetch_g2b_awards():
 
         total_count = int(body.get("totalCount", 0))
         if page_no * 500 >= total_count:
+            break
+        if page_no == MAX_PAGES:
+            # 안전장치(MAX_PAGES) 때문에 실제로 더 있는 데이터를 못 가져오고
+            # 잘라내는 상황 - 조용히 넘어가면 다음에 또 못 알아차리니 경고를 남긴다.
+            print(f"[낙찰정보] 경고: 실제 총 {total_count}건인데 상한({MAX_PAGES*500}건)에 걸려 나머지를 못 가져옴 - LOOKBACK_DAYS를 줄이거나 MAX_PAGES를 늘려야 할 수 있음")
             break
         page_no += 1
         time.sleep(1)  # 요청 사이 1초씩 쉬어서 너무 빠르게 몰아치지 않게 함
