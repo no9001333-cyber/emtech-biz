@@ -50,9 +50,13 @@ def _to_int_or_none(v):
 
 
 def _fetch_one(bid_ntce_no: str, bid_ntce_ord: str):
-    """공고 하나의 진짜 기초금액/A값을 조회. 아직 공개 전이거나 실패하면 None."""
+    """공고 하나의 진짜 기초금액/A값을 조회.
+    반환: (result_dict_또는_None, 실패사유_문자열_또는_None)
+    아직 공개 전이거나 실패하면 result는 None이고, 실패사유에 원인 카테고리를 남긴다
+    (enrich_g2b_bids_with_basis_amount가 이걸 모아서 요약 로그를 찍는다 - 개별
+    공고마다 로그를 찍으면 너무 많아지므로 카테고리별 집계만 남긴다)."""
     if not bid_ntce_no:
-        return None
+        return None, "no_notice_no"
     params = {
         "serviceKey": _clean_key(G2B_SERVICE_KEY),
         "type": "json",
@@ -65,15 +69,18 @@ def _fetch_one(bid_ntce_no: str, bid_ntce_ord: str):
         resp = requests.get(ENDPOINT, params=params, timeout=REQUEST_TIMEOUT)
         resp.raise_for_status()
         data = resp.json()
-    except Exception:
-        return None
+    except Exception as e:
+        return None, f"request_error:{type(e).__name__}"
 
-    body = data.get("response", {}).get("body", {})
+    header = data.get("response", {}).get("header", {}) if isinstance(data, dict) else {}
+    result_code = header.get("resultCode", "")
+
+    body = data.get("response", {}).get("body", {}) if isinstance(data, dict) else {}
     items = body.get("items", [])
     if isinstance(items, dict):
         items = items.get("item", [])
     if not items:
-        return None
+        return None, f"no_items(resultCode={result_code})"
 
     # bidNtceOrd(공고차수)가 일치하는 항목을 우선 찾고, 없으면 첫 항목을 씀
     # (재공고 등으로 차수가 여러 건일 수 있어서).
@@ -81,7 +88,7 @@ def _fetch_one(bid_ntce_no: str, bid_ntce_ord: str):
 
     bssamt = _to_int_or_none(item.get("bssamt"))
     if bssamt is None:
-        return None  # 아직 기초금액 자체가 공개 전
+        return None, "bssamt_not_disclosed"  # 아직 기초금액 자체가 공개 전
 
     a_components = [
         _to_int_or_none(item.get("sftyMngcst")) or 0,        # 산업안전보건관리비
@@ -100,7 +107,7 @@ def _fetch_one(bid_ntce_no: str, bid_ntce_ord: str):
     return {
         "base_amount": str(bssamt),
         "a_value": str(a_value),
-    }
+    }, None
 
 
 def enrich_g2b_bids_with_basis_amount(bids: list) -> None:
@@ -122,6 +129,7 @@ def enrich_g2b_bids_with_basis_amount(bids: list) -> None:
 
     try:
         updated = 0
+        fail_reasons = {}  # 카테고리별 실패 건수 집계 (개별 로그는 너무 많아서 요약만)
         with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
             future_to_bid = {
                 pool.submit(_fetch_one, b.get("notice_no", ""), b.get("notice_ord", "000")): b
@@ -130,15 +138,25 @@ def enrich_g2b_bids_with_basis_amount(bids: list) -> None:
             for future in concurrent.futures.as_completed(future_to_bid):
                 bid = future_to_bid[future]
                 try:
-                    result = future.result()
-                except Exception:
-                    result = None
+                    result, reason = future.result()
+                except Exception as e:
+                    result, reason = None, f"future_error:{type(e).__name__}"
                 if result:
                     bid["base_amount"] = result["base_amount"]
                     bid["a_value"] = result["a_value"]
                     bid["base_amount_confirmed"] = True
                     updated += 1
+                else:
+                    fail_reasons[reason] = fail_reasons.get(reason, 0) + 1
 
-        print(f"[나라장터 기초금액/A값 재확인] 참가가능 {len(candidates)}건 중 {updated}건을 실제 공개된 값으로 갱신함 (나머지는 아직 미공개-잠정 추정치 유지)")
+        # 실패사유를 종류별로 최대 몇 건인지만 요약 - "대부분 아직 미공개"인지
+        # "요청 자체가 죄다 실패"인지 다음 실행 로그에서 바로 구분할 수 있게.
+        reason_summary = ", ".join(
+            f"{k.split(':')[0].split('(')[0]}:{v}건"
+            for k, v in sorted(fail_reasons.items(), key=lambda kv: -kv[1])[:6]
+        )
+        print(f"[나라장터 기초금액/A값 재확인] 참가가능 {len(candidates)}건 중 {updated}건을 실제 공개된 값으로 갱신함")
+        if fail_reasons:
+            print(f"[나라장터 기초금액/A값 재확인] 미확인 {len(candidates)-updated}건 사유 요약: {reason_summary}")
     except Exception as e:
         print(f"[나라장터 기초금액/A값 재확인] 예상치 못한 오류로 중단됨(이미 처리된 결과는 유지): {e}")
