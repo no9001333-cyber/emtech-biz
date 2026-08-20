@@ -37,7 +37,7 @@ from scrapers.kepco import fetch_kepco_bids
 from scrapers.kogas import fetch_kogas_bids
 from scrapers.g2b_awards import fetch_g2b_awards
 from scrapers._common import bid_status, deadline_sort_key
-from generate_dashboard import generate_dashboard
+from generate_dashboard import generate_dashboard, generate_awards_page
 
 
 def _dedupe_key(bid):
@@ -156,6 +156,7 @@ def main():
         print("[상태 점검] 모든 소스 정상")
 
     generate_dashboard(kept, status_list)
+    generate_awards_page(list(awards_by_notice.values()), status_list)
 
 
 if __name__ == "__main__":

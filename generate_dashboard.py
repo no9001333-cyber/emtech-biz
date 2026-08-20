@@ -1,9 +1,12 @@
 import json
 import os
 import hashlib
-from datetime import datetime
+from datetime import datetime, timedelta
 
-from config import DOCS_DIR, DASHBOARD_HTML_PATH, BIDS_JSON_PATH, STATUS_JSON_PATH, KEYWORDS, REGIONS, EXTERNAL_MANUAL_LINKS, DASHBOARD_PASSWORD
+from config import (
+    DOCS_DIR, DASHBOARD_HTML_PATH, BIDS_JSON_PATH, STATUS_JSON_PATH, KEYWORDS, REGIONS,
+    EXTERNAL_MANUAL_LINKS, DASHBOARD_PASSWORD, AWARDS_JSON_PATH, AWARDS_HTML_PATH,
+)
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="ko">
@@ -66,9 +69,6 @@ TEMPLATE = """<!DOCTYPE html>
   td {{ padding:10px; }}
   td.title a {{ color:var(--ink); text-decoration:none; font-weight:500; }}
   td.title a:hover {{ color:var(--accent); text-decoration:underline; }}
-  .attach-links {{ margin-top:4px; display:flex; flex-wrap:wrap; gap:8px; }}
-  .attach-links a {{ font-size:0.74rem; color:var(--good); text-decoration:none; }}
-  .attach-links a:hover {{ text-decoration:underline; }}
   .region-check {{ display:block; margin-top:2px; font-size:0.72rem; cursor:help; }}
   .region-check.confirmed {{ color:var(--good); }}
   .region-check.ambiguous {{ color:#a67c00; }}
@@ -229,6 +229,10 @@ TEMPLATE = """<!DOCTYPE html>
     {external_links_html}
   </div>
   <div class="ext-links">
+    <span class="ext-label">낙찰 결과(과거 공고)는 별도 페이지:</span>
+    <a href="awards.html">낙찰결과 보기 →</a>
+  </div>
+  <div class="ext-links">
     <span class="ext-label">수집 상태:</span>
     {status_html}
   </div>
@@ -304,9 +308,9 @@ TEMPLATE = """<!DOCTYPE html>
     <option value="deadline">투찰마감 기준</option>
     <option value="reg_deadline">참가등록마감 기준</option>
   </select>
-  <input id="dateStart" type="date">
+  <input id="dateStart" type="date" value="{date_start_default}">
   <span style="align-self:center; color:var(--muted);">~</span>
-  <input id="dateEnd" type="date">
+  <input id="dateEnd" type="date" value="{date_end_default}">
   <button class="btn-calc" onclick="applyDateSearch()">검색</button>
   <button class="btn-calc" onclick="clearDateRange()">전체</button>
 </div>
@@ -541,12 +545,6 @@ function openBidWindow(e, url) {{
   return false;
 }}
 
-function attachLinksHtml(attachments) {{
-  if (!attachments || !attachments.length) return '';
-  const links = attachments.map(a => `<a href="${{a.url}}" target="_blank" rel="noopener">📎 ${{a.name}}</a>`).join('');
-  return `<div class="attach-links">${{links}}</div>`;
-}}
-
 // 나라장터 공고서(PDF) 원문으로 재확인한 지역 참가자격 결과를 지역 컬럼에 작게 표시.
 // title 속성(브라우저 기본 툴팁)에 실제 공고서 발췌문을 그대로 넣어서,
 // 마우스를 올리면 원문 한 줄을 바로 확인할 수 있게 한다.
@@ -716,7 +714,7 @@ function render() {{
     tr.innerHTML = `
       <td data-label="출처"><span class="tag ${{cls}}">${{b.source || ''}}</span></td>
       <td data-label="상태">${{statusBadge}}</td>
-      <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href)">${{b.title || ''}}</a>` : (b.title || '')}}${{attachLinksHtml(b.attachments)}}</td>
+      <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href)">${{b.title || ''}}</a>` : (b.title || '')}}</td>
       <td data-label="발주기관">${{b.org || ''}}</td>
       <td data-label="업종">${{b.industry || '-'}}</td>
       <td data-label="지역">${{b.region || ''}}${{b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : ''}}${{regionCheckHtml(b.region_check)}}</td>
@@ -1034,6 +1032,281 @@ function calcDraw() {{
 """
 
 
+AWARDS_TEMPLATE = """<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>emtech-biz | 낙찰결과</title>
+<style>
+  :root {{
+    --ink: #14213d; --paper: #fbfaf7; --line: #e4e1d8; --accent: #c8511b;
+    --accent-soft: #f5e3d8; --muted: #6b6b63; --card: #ffffff; --good: #2a6f97; --good-soft: #e4eef4;
+  }}
+  * {{ box-sizing: border-box; }}
+  body {{ margin:0; font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif; background:var(--paper); color:var(--ink); }}
+  header {{ padding: 28px 24px 16px; border-bottom: 1px solid var(--line); }}
+  header h1 {{ margin: 0 0 6px; font-size: 1.4rem; letter-spacing: -0.02em; }}
+  header p {{ margin: 0; color: var(--muted); font-size: 0.88rem; }}
+  .meta {{ display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; font-size:0.8rem; color:var(--muted); }}
+  .meta b {{ color: var(--ink); }}
+  .ext-links {{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:14px; font-size:0.8rem; }}
+  .ext-label {{ color:var(--muted); }}
+  .ext-links a {{ color:var(--good); text-decoration:none; padding:3px 10px; border:1px solid var(--line); border-radius:999px; font-size:0.78rem; }}
+  .ext-links a:hover {{ background:var(--good-soft); }}
+
+  .controls {{ display:flex; gap:10px; flex-wrap:wrap; padding:14px 24px; border-bottom:1px solid var(--line); position: sticky; top: 0; background: var(--paper); z-index: 5; }}
+  .controls input, .controls select {{ padding:8px 12px; border:1px solid var(--line); border-radius:6px; background:var(--card); font-size:0.85rem; color:var(--ink); }}
+  .controls input[type=text] {{ flex:1; min-width:160px; }}
+
+  main {{ padding: 8px 24px 60px; }}
+  .count {{ font-size:0.82rem; color:var(--muted); margin:14px 0; }}
+  table {{ width:100%; border-collapse:collapse; font-size:0.84rem; }}
+  thead th {{ text-align:left; padding:9px 10px; border-bottom:2px solid var(--ink); color:var(--muted); font-weight:600; white-space:nowrap; }}
+  tbody tr {{ border-bottom:1px solid var(--line); vertical-align: top; }}
+  tbody tr:hover {{ background: var(--accent-soft); }}
+  td {{ padding:10px; }}
+  td.title a {{ color:var(--ink); text-decoration:none; font-weight:500; }}
+  td.title a:hover {{ color:var(--accent); text-decoration:underline; }}
+  .btn-calc {{ padding:6px 10px; font-size:0.78rem; font-weight:600; border:none; border-radius:6px; background:var(--ink); color:#fff; cursor:pointer; white-space:nowrap; }}
+  .btn-calc:hover {{ background:#0c1730; }}
+  .empty {{ padding:60px 0; text-align:center; color:var(--muted); }}
+  footer {{ padding:20px 24px 40px; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); }}
+
+  @media (max-width: 720px) {{
+    table, thead, tbody, tr, td {{ display:block; }}
+    thead {{ display:none; }}
+    tbody tr {{ background:var(--card); border:1px solid var(--line); border-radius:8px; margin-bottom:12px; padding:8px 4px; }}
+    td {{ padding:6px 12px; }}
+    td::before {{ content: attr(data-label); display:block; font-size:0.7rem; color:var(--muted); margin-bottom:2px; }}
+  }}
+  .lock-screen {{ position:fixed; inset:0; background:var(--paper); z-index:200; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; }}
+  .lock-box {{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:32px 28px; width:280px; text-align:center; }}
+  .lock-box h2 {{ font-size:1.05rem; margin:0 0 16px; }}
+  .lock-box input {{ width:100%; box-sizing:border-box; padding:10px 12px; margin-bottom:10px; border:1px solid var(--line); border-radius:6px; font-size:0.9rem; text-align:center; }}
+  .lock-box button {{ width:100%; padding:10px; border:none; border-radius:6px; background:var(--accent); color:#fff; font-weight:600; cursor:pointer; }}
+  .lock-error {{ color:var(--accent); font-size:0.8rem; margin-top:8px; display:none; }}
+</style>
+</head>
+<body>
+
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-box">
+    <h2>비밀번호를 입력하세요</h2>
+    <input id="lockInput" type="password" placeholder="비밀번호" autofocus>
+    <button onclick="checkPassword()">입장</button>
+    <div class="lock-error" id="lockError">비밀번호가 틀렸습니다.</div>
+  </div>
+</div>
+
+<div id="mainContent" style="display:none;">
+<header>
+  <h1>emtech-biz — 낙찰결과</h1>
+  <p>나라장터 공사 낙찰(개찰결과) 정보 — 과거 공고 위주 (참가등록/투찰마감이 남은 공고는 입찰공고 목록에서 확인)</p>
+  <div class="meta">
+    <span>마지막 업데이트: <b>{updated_at}</b></span>
+    <span>총 <b>{count}</b>건</span>
+  </div>
+  <div class="ext-links">
+    <span class="ext-label"></span>
+    <a href="index.html">← 입찰공고 목록으로</a>
+  </div>
+</header>
+
+<div class="controls">
+  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="telecomOnly" type="checkbox" checked style="width:16px; height:16px;">
+    통신 업종만 보기
+  </label>
+  <select id="searchField" style="max-width:130px; flex:none;">
+    <option value="all">전체검색</option>
+    <option value="title">공고명</option>
+    <option value="notice_no">공고번호</option>
+    <option value="org">발주기관</option>
+    <option value="winner">낙찰자</option>
+  </select>
+  <input id="search" type="text" placeholder="검색어 입력...">
+</div>
+<div class="controls" style="border-top:none;">
+  <span style="align-self:center; font-size:0.82rem; color:var(--muted);">개찰일 기준</span>
+  <input id="dateStart" type="date" value="{date_start_default}">
+  <span style="align-self:center; color:var(--muted);">~</span>
+  <input id="dateEnd" type="date" value="{date_end_default}">
+  <button class="btn-calc" onclick="render()">검색</button>
+  <button class="btn-calc" onclick="clearDateRange()">전체</button>
+</div>
+
+<main>
+  <div class="count" id="count"></div>
+  <table>
+    <thead>
+      <tr><th>공고명</th><th>발주기관</th><th>낙찰자</th><th>낙찰금액</th><th>기초금액</th><th>사정율</th><th>개찰일</th></tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div class="empty" id="emptyMsg" style="display:none;">조건에 맞는 낙찰결과가 없습니다.</div>
+</main>
+
+<footer>emtech-biz | 이엠테크 낙찰결과 모니터</footer>
+</div>
+
+<script>
+const AWARDS = {awards_json};
+const TELECOM_KEYWORDS = {keywords_json};
+const MEMO_KEY = 'bidmonitor_memos';
+
+/* ---------- 비밀번호 잠금화면 (index.html과 동일한 키를 공유) ---------- */
+const PASSWORD_HASH = "{password_hash}";
+const LOCK_KEY = 'bidmonitor_unlocked';
+
+async function sha256Hex(text) {{
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}}
+
+async function checkPassword() {{
+  const input = document.getElementById('lockInput').value;
+  const hash = await sha256Hex(input);
+  if (hash === PASSWORD_HASH) {{
+    localStorage.setItem(LOCK_KEY, PASSWORD_HASH);
+    document.getElementById('lockScreen').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+  }} else {{
+    document.getElementById('lockError').style.display = 'block';
+  }}
+}}
+document.getElementById('lockInput').addEventListener('keydown', (e) => {{ if (e.key === 'Enter') checkPassword(); }});
+
+if (!PASSWORD_HASH) {{
+  document.getElementById('lockScreen').style.display = 'none';
+  document.getElementById('mainContent').style.display = 'block';
+}} else if (localStorage.getItem(LOCK_KEY) === PASSWORD_HASH) {{
+  document.getElementById('lockScreen').style.display = 'none';
+  document.getElementById('mainContent').style.display = 'block';
+}}
+
+function won(n) {{
+  const v = parseAmount(n);
+  return v === null ? '-' : Number(v).toLocaleString('ko-KR') + '원';
+}}
+function parseAmount(v) {{
+  if (v === null || v === undefined || v === '') return null;
+  const n = Number(String(v).replace(/,/g, ''));
+  return Number.isFinite(n) ? n : null;
+}}
+function fmtDateTime(text) {{
+  if (!text) return '-';
+  return String(text).replace('T', ' ').slice(0, 16);
+}}
+function clearDateRange() {{
+  document.getElementById('dateStart').value = '';
+  document.getElementById('dateEnd').value = '';
+  render();
+}}
+
+function openBidWindow(e, url) {{
+  if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return true;
+  e.preventDefault();
+  window.open(url, '_blank', 'noopener,noreferrer,width=1100,height=900');
+  return false;
+}}
+
+function render() {{
+  const telecomOnly = document.getElementById('telecomOnly').checked;
+  const searchField = document.getElementById('searchField').value;
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const startVal = document.getElementById('dateStart').value;
+  const endVal = document.getElementById('dateEnd').value;
+
+  let filtered = AWARDS.filter(a => {{
+    if (telecomOnly && !TELECOM_KEYWORDS.some(k => (a.title || '').includes(k))) return false;
+    if (q) {{
+      const hay = searchField === 'all'
+        ? [a.title, a.org, a.notice_no, a.winner].join(' ').toLowerCase()
+        : String(a[searchField] || '').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }}
+    if (startVal || endVal) {{
+      const d = (a.open_date || '').slice(0, 10);
+      if (!d) return false;
+      if (startVal && d < startVal) return false;
+      if (endVal && d > endVal) return false;
+    }}
+    return true;
+  }});
+
+  filtered.sort((a, b) => (b.open_date || '').localeCompare(a.open_date || ''));
+
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  document.getElementById('count').textContent = filtered.length + '건 표시 중';
+  document.getElementById('emptyMsg').style.display = filtered.length ? 'none' : 'block';
+
+  filtered.forEach(a => {{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td data-label="공고명" class="title">${{a.url ? `<a href="${{a.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href)">${{a.title || ''}}</a>` : (a.title || '')}}</td>
+      <td data-label="발주기관">${{a.org || ''}}</td>
+      <td data-label="낙찰자"><b>${{a.winner || '-'}}</b></td>
+      <td data-label="낙찰금액">${{won(a.award_amount)}}</td>
+      <td data-label="기초금액">${{won(a.base_amount)}}</td>
+      <td data-label="사정율">${{a.assessed_rate ? a.assessed_rate + '%' : '-'}}</td>
+      <td data-label="개찰일">${{fmtDateTime(a.open_date)}}</td>
+    `;
+    tbody.appendChild(tr);
+  }});
+}}
+
+document.getElementById('telecomOnly').addEventListener('change', render);
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('searchField').addEventListener('change', render);
+document.getElementById('dateStart').addEventListener('change', render);
+document.getElementById('dateEnd').addEventListener('change', render);
+render();
+</script>
+
+</body>
+</html>
+"""
+
+
+def generate_awards_page(awards=None, status_list=None):
+    os.makedirs(DOCS_DIR, exist_ok=True)
+
+    if awards is None:
+        if os.path.exists(AWARDS_JSON_PATH):
+            with open(AWARDS_JSON_PATH, "r", encoding="utf-8") as f:
+                awards = json.load(f)
+        else:
+            awards = []
+
+    password_hash = (
+        hashlib.sha256(DASHBOARD_PASSWORD.encode("utf-8")).hexdigest()
+        if DASHBOARD_PASSWORD else ""
+    )
+
+    # 기본 검색 범위: 1개월 전 ~ 오늘 (낙찰결과는 이미 끝난 과거 공고 위주라
+    # 과거 방향으로 잡음 - 입찰공고 목록 페이지의 미래 방향 기본값과 반대).
+    today = datetime.now().date()
+    date_start_default = (today - timedelta(days=30)).isoformat()
+    date_end_default = today.isoformat()
+
+    html = AWARDS_TEMPLATE.format(
+        updated_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
+        count=len(awards),
+        awards_json=json.dumps(awards, ensure_ascii=False),
+        keywords_json=json.dumps(KEYWORDS, ensure_ascii=False),
+        password_hash=password_hash,
+        date_start_default=date_start_default,
+        date_end_default=date_end_default,
+    )
+
+    with open(AWARDS_HTML_PATH, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print(f"낙찰결과 페이지 생성 완료: {AWARDS_HTML_PATH}")
+
+
 def generate_dashboard(bids=None, status_list=None):
     os.makedirs(DOCS_DIR, exist_ok=True)
 
@@ -1067,6 +1340,14 @@ def generate_dashboard(bids=None, status_list=None):
         if DASHBOARD_PASSWORD else ""
     )
 
+    # 기본 검색 범위: 오늘 ~ 1개월 후 (참가등록/투찰마감처럼 앞으로 다가올 일정
+    # 위주로 보는 페이지라 미래 방향으로 잡음). 낙찰결과(과거 방향)는
+    # awards.html이 별도로 담당합니다 - 한 페이지에서 미래/과거를 같이
+    # 검색하려니 날짜 범위가 서로 안 맞았던 문제를 이렇게 분리했습니다.
+    today = datetime.now().date()
+    date_start_default = today.isoformat()
+    date_end_default = (today + timedelta(days=30)).isoformat()
+
     html = TEMPLATE.format(
         updated_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
         keywords=", ".join(KEYWORDS),
@@ -1077,6 +1358,8 @@ def generate_dashboard(bids=None, status_list=None):
         external_links_html=links_html,
         status_html=status_html,
         password_hash=password_hash,
+        date_start_default=date_start_default,
+        date_end_default=date_end_default,
     )
 
     with open(DASHBOARD_HTML_PATH, "w", encoding="utf-8") as f:
@@ -1087,3 +1370,4 @@ def generate_dashboard(bids=None, status_list=None):
 
 if __name__ == "__main__":
     generate_dashboard()
+    generate_awards_page()
