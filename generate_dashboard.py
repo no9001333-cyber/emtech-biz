@@ -1,12 +1,26 @@
 import json
 import os
 import hashlib
-from datetime import datetime, timedelta
+import calendar
+from datetime import datetime
 
 from config import (
     DOCS_DIR, DASHBOARD_HTML_PATH, BIDS_JSON_PATH, STATUS_JSON_PATH, KEYWORDS, REGIONS,
     EXTERNAL_MANUAL_LINKS, DASHBOARD_PASSWORD, AWARDS_JSON_PATH, AWARDS_HTML_PATH,
 )
+
+
+def _add_months(d, delta_months):
+    """날짜에 달력 기준으로 정확히 n개월을 더한다(뺄 때는 음수).
+    timedelta(days=30)을 쓰면 큰 달(31일)이 껴서 하루씩 밀리는 문제가 있어서
+    (예: 2026-08-20 + "30일" = 09-19, 사용자가 기대한 09-20이 아님) 달력 월
+    단위로 정확히 계산한다. 말일 근처(예: 1/31 + 1개월)는 해당 월의 마지막
+    날로 자동 보정한다(예: 1/31 + 1개월 -> 2/28)."""
+    month_index = d.month - 1 + delta_months
+    year = d.year + month_index // 12
+    month = month_index % 12 + 1
+    day = min(d.day, calendar.monthrange(year, month)[1])
+    return d.replace(year=year, month=month, day=day)
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="ko">
@@ -321,7 +335,7 @@ TEMPLATE = """<!DOCTYPE html>
     <thead>
       <tr>
         <th>출처</th><th>상태</th><th>공고명</th><th>발주기관</th><th>업종</th><th>지역</th><th>입찰방식</th><th>제한사항</th>
-        <th>금액정보(추정/기초/A값)</th><th>투찰마감</th><th>참가등록마감</th><th>낙찰결과</th><th>메모</th><th></th>
+        <th>금액정보(추정/기초/A값)</th><th>투찰마감</th><th>참가등록마감</th><th>메모</th><th></th>
       </tr>
       <tr class="filter-row">
         <th><select id="colFilterSource" class="col-filter"><option value="">전체</option>
@@ -344,7 +358,6 @@ TEMPLATE = """<!DOCTYPE html>
             <input id="colFilterAmountMax" class="col-filter" type="number" placeholder="최대">
           </div>
         </th>
-        <th></th>
         <th></th>
         <th></th>
         <th><input id="colFilterMemo" class="col-filter" type="text" placeholder="검색"></th>
@@ -702,14 +715,6 @@ function render() {{
     const statusBadge = b.status === '마감'
       ? `<span class="tag" style="border-color:var(--muted); color:var(--muted);">마감</span>`
       : `<span class="tag" style="border-color:var(--good); color:var(--good);">진행중</span>`;
-    let resultHtml = '-';
-    if (b.result && b.result.winner) {{
-      const amt = b.result.award_amount ? Number(b.result.award_amount).toLocaleString('ko-KR') + '원' : '';
-      const rate = b.result.assessed_rate ? ` (사정율 ${{b.result.assessed_rate}})` : '';
-      resultHtml = `<b>${{b.result.winner}}</b><br>${{amt}}${{rate}}`;
-    }} else if (b.status === '마감') {{
-      resultHtml = '결과 대기중';
-    }}
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td data-label="출처"><span class="tag ${{cls}}">${{b.source || ''}}</span></td>
@@ -723,7 +728,6 @@ function render() {{
       <td data-label="금액정보">${{amountInfoHtml(b)}}</td>
       <td data-label="투찰마감">${{fmtDateTime(b.deadline)}}${{ddayLabel(b.deadline, b.status) ? ` <span class="tag" style="border-color:var(--accent); color:var(--accent);">${{ddayLabel(b.deadline, b.status)}}</span>` : ''}}</td>
       <td data-label="참가등록마감">${{fmtDateTime(b.reg_deadline)}}</td>
-      <td data-label="낙찰결과">${{resultHtml}}</td>
       <td data-label="메모"><input class="memo-input" type="text" placeholder="메모 입력..." value="${{memoVal.replace(/"/g,'&quot;')}}" data-key="${{key}}"></td>
       <td><button class="btn-calc" data-idx="${{idx}}">투찰금액 계산</button></td>
     `;
@@ -1288,7 +1292,7 @@ def generate_awards_page(awards=None, status_list=None):
     # 기본 검색 범위: 1개월 전 ~ 오늘 (낙찰결과는 이미 끝난 과거 공고 위주라
     # 과거 방향으로 잡음 - 입찰공고 목록 페이지의 미래 방향 기본값과 반대).
     today = datetime.now().date()
-    date_start_default = (today - timedelta(days=30)).isoformat()
+    date_start_default = _add_months(today, -1).isoformat()
     date_end_default = today.isoformat()
 
     html = AWARDS_TEMPLATE.format(
@@ -1346,7 +1350,7 @@ def generate_dashboard(bids=None, status_list=None):
     # 검색하려니 날짜 범위가 서로 안 맞았던 문제를 이렇게 분리했습니다.
     today = datetime.now().date()
     date_start_default = today.isoformat()
-    date_end_default = (today + timedelta(days=30)).isoformat()
+    date_end_default = _add_months(today, 1).isoformat()
 
     html = TEMPLATE.format(
         updated_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
