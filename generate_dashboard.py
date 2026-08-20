@@ -766,7 +766,9 @@ render();
 /* ---------- 달력형 마감일 검색 ---------- */
 let calAnchor = new Date();
 calAnchor.setHours(0, 0, 0, 0);
-const CAL_DAYS = 16;
+// 기본 검색범위(오늘~1개월 후)를 한 화면에서 다 볼 수 있도록 31일치를 한 번에
+// 보여준다(예전엔 16일씩만 보여서 나머지를 보려면 "7일 ▶"을 여러 번 눌러야 했음).
+const CAL_DAYS = 31;
 
 function calShift(days) {{
   calAnchor.setDate(calAnchor.getDate() + days);
@@ -1067,6 +1069,9 @@ AWARDS_TEMPLATE = """<!DOCTYPE html>
   .count {{ font-size:0.82rem; color:var(--muted); margin:14px 0; }}
   table {{ width:100%; border-collapse:collapse; font-size:0.84rem; }}
   thead th {{ text-align:left; padding:9px 10px; border-bottom:2px solid var(--ink); color:var(--muted); font-weight:600; white-space:nowrap; }}
+  .filter-row th {{ padding:4px 6px 8px; border-bottom:1px solid var(--line); }}
+  .col-filter {{ width:100%; box-sizing:border-box; padding:5px 6px; font-size:0.76rem; border:1px solid var(--line); border-radius:5px; background:var(--paper); color:var(--ink); }}
+  .col-filter[type="number"] {{ width:60px; }}
   tbody tr {{ border-bottom:1px solid var(--line); vertical-align: top; }}
   tbody tr:hover {{ background: var(--accent-soft); }}
   td {{ padding:10px; }}
@@ -1144,7 +1149,24 @@ AWARDS_TEMPLATE = """<!DOCTYPE html>
   <div class="count" id="count"></div>
   <table>
     <thead>
-      <tr><th>공고명</th><th>발주기관</th><th>낙찰자</th><th>낙찰금액</th><th>기초금액</th><th>사정율</th><th>개찰일</th></tr>
+      <tr>
+        <th>공고명</th><th>발주기관</th><th>낙찰자</th><th>낙찰자 전화번호</th><th>낙찰금액</th><th>기초금액</th><th>사정율</th><th>개찰일</th>
+      </tr>
+      <tr class="filter-row">
+        <th><input id="colFilterTitle" class="col-filter" type="text" placeholder="검색"></th>
+        <th><input id="colFilterOrg" class="col-filter" type="text" placeholder="검색"></th>
+        <th><input id="colFilterWinner" class="col-filter" type="text" placeholder="검색"></th>
+        <th></th>
+        <th>
+          <div style="display:flex; gap:2px;">
+            <input id="colFilterAmountMin" class="col-filter" type="number" placeholder="최소">
+            <input id="colFilterAmountMax" class="col-filter" type="number" placeholder="최대">
+          </div>
+        </th>
+        <th></th>
+        <th></th>
+        <th><button class="btn-calc" onclick="clearColFilters()">초기화</button></th>
+      </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
@@ -1215,12 +1237,24 @@ function openBidWindow(e, url) {{
   return false;
 }}
 
+function clearColFilters() {{
+  ['colFilterTitle','colFilterOrg','colFilterWinner','colFilterAmountMin','colFilterAmountMax'].forEach(id => {{
+    document.getElementById(id).value = '';
+  }});
+  render();
+}}
+
 function render() {{
   const telecomOnly = document.getElementById('telecomOnly').checked;
   const searchField = document.getElementById('searchField').value;
   const q = document.getElementById('search').value.trim().toLowerCase();
   const startVal = document.getElementById('dateStart').value;
   const endVal = document.getElementById('dateEnd').value;
+  const colTitle = document.getElementById('colFilterTitle').value.trim().toLowerCase();
+  const colOrg = document.getElementById('colFilterOrg').value.trim().toLowerCase();
+  const colWinner = document.getElementById('colFilterWinner').value.trim().toLowerCase();
+  const colAmountMin = parseAmount(document.getElementById('colFilterAmountMin').value);
+  const colAmountMax = parseAmount(document.getElementById('colFilterAmountMax').value);
 
   let filtered = AWARDS.filter(a => {{
     if (telecomOnly && !TELECOM_KEYWORDS.some(k => (a.title || '').includes(k))) return false;
@@ -1230,6 +1264,12 @@ function render() {{
         : String(a[searchField] || '').toLowerCase();
       if (!hay.includes(q)) return false;
     }}
+    if (colTitle && !(a.title || '').toLowerCase().includes(colTitle)) return false;
+    if (colOrg && !(a.org || '').toLowerCase().includes(colOrg)) return false;
+    if (colWinner && !(a.winner || '').toLowerCase().includes(colWinner)) return false;
+    const awardAmt = parseAmount(a.award_amount);
+    if (colAmountMin !== null && (awardAmt === null || awardAmt < colAmountMin)) return false;
+    if (colAmountMax !== null && (awardAmt === null || awardAmt > colAmountMax)) return false;
     if (startVal || endVal) {{
       const d = (a.open_date || '').slice(0, 10);
       if (!d) return false;
@@ -1252,6 +1292,7 @@ function render() {{
       <td data-label="공고명" class="title">${{a.url ? `<a href="${{a.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href)">${{a.title || ''}}</a>` : (a.title || '')}}</td>
       <td data-label="발주기관">${{a.org || ''}}</td>
       <td data-label="낙찰자"><b>${{a.winner || '-'}}</b></td>
+      <td data-label="낙찰자 전화번호">${{a.winner_tel || '-'}}</td>
       <td data-label="낙찰금액">${{won(a.award_amount)}}</td>
       <td data-label="기초금액">${{won(a.base_amount)}}</td>
       <td data-label="사정율">${{a.assessed_rate ? a.assessed_rate + '%' : '-'}}</td>
@@ -1266,6 +1307,9 @@ document.getElementById('search').addEventListener('input', render);
 document.getElementById('searchField').addEventListener('change', render);
 document.getElementById('dateStart').addEventListener('change', render);
 document.getElementById('dateEnd').addEventListener('change', render);
+['colFilterTitle','colFilterOrg','colFilterWinner','colFilterAmountMin','colFilterAmountMax'].forEach(id => {{
+  document.getElementById(id).addEventListener('input', render);
+}});
 render();
 </script>
 

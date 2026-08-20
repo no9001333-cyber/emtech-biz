@@ -103,6 +103,9 @@ def fetch_g2b_awards():
                 # 예전엔 prcbdrNm/opengCorpNm으로 추정해서 항상 빈 값이었음.
                 # 위 필드명 로그로 확인한 실제 필드는 bidwinnrNm(낙찰자명).
                 "winner": item.get("bidwinnrNm", ""),
+                # 협상 완료 후 최종낙찰업체 연락처. 공식 API 문서에 따르면 휴대폰번호는
+                # "*"로 마스킹되어 내려온다(공공데이터포털 정책) - 그런 경우는 버그가 아님.
+                "winner_tel": item.get("bidwinnrTelNo", ""),
                 "award_amount": award_amount,
                 "base_amount": item.get("presmptPrce", ""),
                 "assessed_rate": item.get("sucsfbidRate") or item.get("bidprcRate", ""),
