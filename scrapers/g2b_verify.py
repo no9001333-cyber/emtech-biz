@@ -84,45 +84,63 @@ def _snippet_around(text: str, keyword: str, radius: int = 80) -> str:
     return re.sub(r"\s+", " ", text[start:end]).strip()
 
 
+LOCAL_RADIUS = 100  # 지역단서(REGION_CUE_WORDS) 바로 근처만 진짜 제한조건으로 인정
+
+
 def _classify_region(window_text: str):
     """참가자격 텍스트 조각에서 지역 제한 여부를 판단.
     반환: (eligible: True/False/None, matched_snippet: str)
     None이면 이 조각만으로는 판단 근거를 못 찾은 것(기존 값 유지 + 발췌문만 남김).
 
-    판단 순서가 중요합니다 - "용인이 아닌 다른 특정 시·군"을 "경기도"보다
-    먼저 검사해야, "경기도 안양시에 본사를 둔 업체"처럼 특정 시·군까지 콕
-    집은 경우를 "경기도"라는 글자만 보고 참가가능으로 잘못 판단하지 않습니다.
+    2026-08-20 재작성 - 실제 운영 데이터로 확인된 심각한 오탐 사례 때문에
+    전면 재작성했습니다. 예전 버전은 500자짜리 넓은 창(window) 안에 지역단서
+    (소재지/본사 등)와 지역명이 "어딘가에" 같이 있기만 하면 제한조건으로
+    판단했는데, 실제로는 그 지역명이 발주기관 이름("경기도이천교육지원청",
+    "경기도부천교육지원청")이나 청렴신고 우편주소("부산광역시 남구
+    문현금융로")에서 나온 것이지 실제 참가자격 제한과 무관한 경우가 많았습니다
+    (샘플 8건 중 5건이 이런 오탐 - "이천"/"부천"/"남양주"/"평택"/"부산"이
+    전부 발주기관명·주소에서 나온 것이었고 진짜 지역제한 문구가 아니었음).
+    그 결과 실제로는 참가 가능한 통신 공고 상당수가 "참가불가"로 잘못
+    표시되는 문제가 있었습니다.
+
+    그래서 이제 "지역단서 단어 바로 옆(LOCAL_RADIUS 이내)"에 있는 지역명만
+    진짜 제한조건으로 인정합니다 - 문서 전체에서 지역단서가 나오는 모든
+    위치를 훑으면서, 그 주변에서만 지역명을 찾습니다. 판단 순서(용인이 아닌
+    다른 특정 시·군을 경기도보다 먼저 검사)는 동일하게 유지합니다 - "경기도
+    안양시에 본사를 둔 업체"처럼 특정 시·군까지 콕 집은 경우를 "경기도"라는
+    글자만 보고 참가가능으로 잘못 판단하지 않기 위함입니다.
     """
     if not window_text:
         return None, ""
 
-    # "용인"/"전국"이 참가자격 문단에 직접 등장하면 그 자체로 확실한 참가가능
-    # 신호라, 아래 cue word 게이트 없이 바로 True로 판단합니다 (예: "전국 소재
-    # 업체 참가 가능"처럼 "소재지"류 단어가 안 붙는 짧은 표현도 놓치지 않기 위함).
-    if HOME_CITY in window_text:
-        return True, _snippet_around(window_text, HOME_CITY)
-    if "전국" in window_text:
-        return True, _snippet_around(window_text, "전국")
+    for cue in REGION_CUE_WORDS:
+        search_from = 0
+        while True:
+            pos = window_text.find(cue, search_from)
+            if pos == -1:
+                break
+            search_from = pos + len(cue)
+            local_start = max(0, pos - LOCAL_RADIUS)
+            local_end = min(len(window_text), pos + len(cue) + LOCAL_RADIUS)
+            local = window_text[local_start:local_end]
 
-    # 여기부터(다른 시·군/도가 언급됐다고 참가불가로 판단하는 경우)는 그 지역
-    # 이름이 "본사 소재지 요건"으로 쓰인 게 맞는지 cue word로 한 번 더
-    # 걸러냅니다 - 공사현장 주소 등 요건과 무관한 언급까지 참가불가로
-    # 오판하지 않기 위한 안전장치입니다.
-    if not any(w in window_text for w in REGION_CUE_WORDS):
-        return None, ""
+            if HOME_CITY in local:
+                return True, _snippet_around(window_text, HOME_CITY)
+            if "전국" in local:
+                return True, _snippet_around(window_text, "전국")
 
-    other_city_hit = next((c for c in GYEONGGI_OTHER_CITIES if c in window_text), None)
-    if other_city_hit:
-        return False, _snippet_around(window_text, other_city_hit)
+            other_city_hit = next((c for c in GYEONGGI_OTHER_CITIES if c in local), None)
+            if other_city_hit:
+                return False, _snippet_around(window_text, other_city_hit)
 
-    other_region_hit = next((k for k in EXCLUDE_REGION_KEYWORDS if k in window_text), None)
-    if other_region_hit:
-        return False, _snippet_around(window_text, other_region_hit)
+            other_region_hit = next((k for k in EXCLUDE_REGION_KEYWORDS if k in local), None)
+            if other_region_hit:
+                return False, _snippet_around(window_text, other_region_hit)
 
-    if HOME_PROVINCE in window_text:
-        return True, _snippet_around(window_text, HOME_PROVINCE)
-    if "서울" in window_text:
-        return True, _snippet_around(window_text, "서울")
+            if HOME_PROVINCE in local:
+                return True, _snippet_around(window_text, HOME_PROVINCE)
+            if "서울" in local:
+                return True, _snippet_around(window_text, "서울")
 
     return None, window_text[:200].strip()
 
