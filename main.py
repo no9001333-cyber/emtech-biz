@@ -29,6 +29,7 @@ from config import (
 )
 from scrapers.g2b import fetch_g2b_bids
 from scrapers.g2b_verify import verify_g2b_region_eligibility
+from scrapers.g2b_basis_amount import enrich_g2b_bids_with_basis_amount
 from scrapers.lh import fetch_lh_bids
 from scrapers.d2b import fetch_d2b_bids
 from scrapers.kwater import fetch_kwater_bids
@@ -85,6 +86,10 @@ def main():
     # 정확도를 우선하기로 했지만, 이 단계 자체가 실패해도 전체 수집이 죽지
     # 않도록 g2b_verify 내부에서 예외를 전부 흡수한다.
     verify_g2b_region_eligibility(g2b_bids)
+    # 2026-08-20: g2b.py가 목록 조회 API로 잠정 채워둔 기초금액/A값을, 전용
+    # 오퍼레이션(공사기초금액조회)에서 실제 공개된 값으로 재확인해 덮어쓴다
+    # (자세한 배경은 scrapers/g2b_basis_amount.py 상단 주석 참고).
+    enrich_g2b_bids_with_basis_amount(g2b_bids)
     new_bids += g2b_bids
     new_bids += _run_source("LH", bool(LH_SERVICE_KEY), fetch_lh_bids, status_list)
     new_bids += _run_source("국방전자조달(D2B)", bool(D2B_SERVICE_KEY), fetch_d2b_bids, status_list)

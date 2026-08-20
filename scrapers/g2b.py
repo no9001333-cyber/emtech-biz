@@ -177,23 +177,23 @@ def fetch_g2b_bids():
                 item.get("rgnDutyJntcontrctYn") == "Y"
             )
 
-            # 투찰금액 계산기용 실제 공고 데이터 (2026-08-18 추가, 2026-08-19 필드 매핑 수정):
-            #   - est_amount(추정금액)/base_amount(기초금액)=bdgtAmt(예산금액): 실제 공고
-            #     상세페이지의 "가격" 섹션 및 "기초금액공개"(기초금액조회) 값과 일치하는 것을
-            #     사용자가 제보한 스크린샷으로 직접 확인했습니다(예: 예산금액=기초금액=
-            #     35,477,000원인 사례). presmptPrce(추정가격, 부가가치세 불포함)는 이와는
-            #     별개 개념이라(같은 사례에서 32,251,819원으로 약 9% 낮음) 더 이상
-            #     est_amount/base_amount에 쓰지 않고, 참고용 별도 필드
-            #     est_price_excl_vat 로만 보관합니다. bdgtAmt가 비어있는 공고에 한해서만
-            #     presmptPrce로 대체합니다(완전히 값이 없는 것보다는 낫기 때문).
-            #   - est_price_excl_vat(추정가격·VAT 불포함, 참고용)=presmptPrce 그대로.
-            #   - a_value(A값)=관급자재금액 두 항목의 합계: govcnstrtnGovsplyMtrlAmt
-            #     (관급자 설치 관급자재금액) + contrctrcnstrtnGovsplyMtrlAmt(도급자 설치
-            #     관급자재금액). 실제 공고 상세페이지의 "관급금액" 두 항목과 대응됩니다.
-            #     두 필드가 모두 없는(빈 문자열) 공고만 a_value도 빈 문자열("확인 필요")로
-            #     두고, 하나라도 값이 있으면(0 포함) 합계를 숫자로 저장합니다 - A값이
-            #     정확히 0원인 경우(관급자재 없음)는 매우 흔한 정상 값이라 "데이터 없음"과
-            #     구분해야 하기 때문입니다.
+            # 투찰금액 계산기용 실제 공고 데이터 (2026-08-18 추가, 2026-08-19 필드 매핑 수정,
+            # 2026-08-20 base_amount/a_value 계산 방식 재수정):
+            #   - est_amount(추정금액)=bdgtAmt(예산금액) 우선, 없으면 presmptPrce(추정가격,
+            #     VAT 불포함)로 대체. 이 목록 조회 API 시점에는 아직 정식 기초금액이
+            #     공개 전인 경우가 많아 이 값은 어디까지나 "잠정 추정치"입니다.
+            #   - base_amount(기초금액)/a_value(A값): 이 목록 조회 오퍼레이션에는 진짜
+            #     기초금액/A값이 없습니다(예산금액은 기초금액의 근사치일 뿐 실제로 다를 수
+            #     있음 - 사용자가 제보한 스크린샷으로 예산금액 1,118,254,000원 ≠ 실제
+            #     기초금액공개 1,124,760,000원인 사례를 확인했습니다). 진짜 값은
+            #     전용 오퍼레이션(getBidPblancListInfoCnstwkBsisAmount, 공사기초금액조회)
+            #     에서만 얻을 수 있어, 일단 est_amount로 잠정 채워두고 scrapers/
+            #     g2b_basis_amount.py가 이 값들을 실제 공개된 정확한 값으로 덮어씁니다
+            #     (아직 개찰 전이라 공개 안 됐으면 잠정치를 그대로 둡니다).
+            #     예전에는 a_value를 관급자재금액(govcnstrtnGovsplyMtrlAmt 등)으로
+            #     계산했는데, 이는 A값(국민연금·건강보험·퇴직공제부금·안전관리비 등
+            #     법정경비 합계)과 전혀 다른 개념이라 잘못된 값이었습니다 - 그래서
+            #     이제 여기서는 채우지 않고 "확인필요"로 비워둡니다.
             #   - successful_bid_lower_rate(낙찰하한율)=sucsfbidLwltRate: 공고에 박힌 실제 값.
             #   - reserve_price_total_count/reserve_price_draw_count
             #     (복수예가 생성개수/추첨개수)=totPrdprcNum/drwtPrdprcNum: 공고에 박힌 실제 값.
@@ -203,20 +203,7 @@ def fetch_g2b_bids():
             budget_amount = item.get("bdgtAmt", "")
             presmpt_price = item.get("presmptPrce", "")
             amount_for_base_est = budget_amount or presmpt_price
-
-            def _to_int_or_none(v):
-                try:
-                    s = str(v).replace(",", "").strip()
-                    return int(s) if s else None
-                except (TypeError, ValueError):
-                    return None
-
-            gov_a_num = _to_int_or_none(item.get("govcnstrtnGovsplyMtrlAmt", ""))
-            gov_b_num = _to_int_or_none(item.get("contrctrcnstrtnGovsplyMtrlAmt", ""))
-            if gov_a_num is None and gov_b_num is None:
-                a_value_raw = ""
-            else:
-                a_value_raw = str((gov_a_num or 0) + (gov_b_num or 0))
+            a_value_raw = ""
 
             results.append({
                 "source": "나라장터",
@@ -224,6 +211,7 @@ def fetch_g2b_bids():
                 "org": org_text,
                 "industry": item.get("mainCnsttyNm", ""),
                 "notice_no": item.get("bidNtceNo", ""),
+                "notice_ord": item.get("bidNtceOrd", "000"),
                 "region": region_text,
                 "base_amount": amount_for_base_est,
                 "est_amount": amount_for_base_est,

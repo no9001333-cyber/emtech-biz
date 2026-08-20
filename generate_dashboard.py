@@ -592,11 +592,12 @@ function parseAmount(v) {{
   return isNaN(n) ? null : n;
 }}
 
-// 표에 추정금액/기초금액/A값을 한 셀에 요약 표시. 추정금액과 기초금액은 수집 단계에서
-// 같은 API 필드(bdgtAmt=예산금액)를 사용하기 때문에 대부분 같은 값으로 보이는데, 이건
-// 버그가 아니라 실제 공고 상세페이지의 "기초금액공개" 섹션 값도 예산금액과 일치한다는
-// 것을 확인했기 때문입니다(투찰금액 계산 모달에서 직접 수정 가능). A값은 0원도 정상적인
-// 실제 값(관급자재 없음)이라 null(데이터 없음)과 구분해서 표시합니다.
+// 표에 추정금액/기초금액/A값을 한 셀에 요약 표시. 개찰 전이라 아직 기초금액이
+// 공개되지 않은 공고는 추정금액(예산금액)을 잠정치로 대신 보여주므로 둘이 같은
+// 값일 수 있습니다 - 실제로 기초금액이 공개된 공고는
+// scrapers/g2b_basis_amount.py가 진짜 기초금액/A값(국민연금·건강보험·
+// 퇴직공제부금·안전관리비 등 법정경비 합계)으로 덮어씁니다. A값은 0원도
+// 정상적인 실제 값이라 null(데이터 없음)과 구분해서 표시합니다.
 function amountInfoHtml(b) {{
   const est = parseAmount(b.est_amount);
   const base = parseAmount(b.base_amount);
@@ -878,7 +879,7 @@ function openCalc(bid) {{
   document.getElementById('calcBase').value = baseVal || '';
   setBadge('badgeBase', false, '', baseVal ? '예산금액 기준(공고 데이터) - 공고문 대조 권장' : '데이터 없음-직접입력');
 
-  // A값: 0원도 "관급자재 없음"을 의미하는 정상적인 실제 값이므로, null(데이터 없음)과
+  // A값(법정 정산항목 합계): 0원도 정상적인 실제 값일 수 있으므로, null(데이터 없음)과
   // 구분해서 처리합니다 - 0을 확인필요로 잘못 표시하지 않도록 주의.
   if (aValue !== null) {{
     document.getElementById('calcAValue').value = aValue;
