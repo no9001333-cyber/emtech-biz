@@ -1,6 +1,6 @@
 """
-data/bids.json, data/awards.json, data/status.json, docs/index.html 변경사항을
-커밋하고 푸시합니다. bash든 PowerShell이든 상관없이 동일하게 동작하도록
+data/bids.json, data/awards.json, data/status.json, docs/index.html, docs/awards.html
+변경사항을 커밋하고 푸시합니다. bash든 PowerShell이든 상관없이 동일하게 동작하도록
 파이썬으로 작성했습니다 (GitHub Actions가 리눅스든 사용자 Windows PC든 문제없이 돌아감).
 """
 
@@ -21,7 +21,7 @@ def run(cmd):
 def main():
     run(["git", "config", "user.name", "bid-monitor-bot"])
     run(["git", "config", "user.email", "bot@users.noreply.github.com"])
-    run(["git", "add", "data/bids.json", "data/awards.json", "data/status.json", "docs/index.html"])
+    run(["git", "add", "data/bids.json", "data/awards.json", "data/status.json", "docs/index.html", "docs/awards.html"])
 
     # 변경사항이 있는지 확인 (있으면 exit code 1)
     diff_code = run(["git", "diff", "--quiet", "--cached"])
