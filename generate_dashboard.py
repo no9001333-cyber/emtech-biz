@@ -630,7 +630,14 @@ function fieldMatches(b, q, field) {{
          (b.industry || '').toLowerCase().includes(q) || (b.notice_no || '').toLowerCase().includes(q);
 }}
 
-function render() {{
+// 표(render)와 달력(buildCalendar)이 항상 같은 기준으로 건수를 세도록 필터링 로직을
+// 하나로 공유한다. 2026-08-21: 전에는 달력 상단 마감건수가 체크박스 필터(용인
+// 참가가능만/통신 업종만 등)를 무시하고 항상 전체 BIDS 기준으로 계산돼서, 필터를
+// 켠 채로 보면 "달력엔 여러 건 있는데 표엔 1건만 뜨는" 혼란스러운 불일치가 있었다.
+// opts.skipDate=true면 날짜범위 필터만 제외한다 (달력 자체가 날짜범위 선택 UI라서,
+// 이미 선택된 날짜범위에 갇히지 않고 다른 날짜의 건수도 보여줘야 함).
+function getFilteredBids(opts) {{
+  opts = opts || {{}};
   const eligibleOnly = document.getElementById('eligibleOnly').checked;
   const telecomOnly = document.getElementById('telecomOnly').checked;
   const q = document.getElementById('search').value.trim().toLowerCase();
@@ -654,12 +661,9 @@ function render() {{
   const colAmountMax = parseFloat(document.getElementById('colFilterAmountMax').value);
   const colMemo = document.getElementById('colFilterMemo').value.trim().toLowerCase();
   const colStatus = document.getElementById('colFilterStatus').value;
-
   const memos = loadMemos();
-  const tbody = document.getElementById('tbody');
-  tbody.innerHTML = '';
 
-  const filtered = BIDS.filter(b => {{
+  return BIDS.filter(b => {{
     const matchEligible = !eligibleOnly || b.eligible !== false;
     const matchTelecom = !telecomOnly || TELECOM_KEYWORDS.some(k =>
       (b.title || '').includes(k) || (b.industry || '').includes(k));
@@ -674,7 +678,7 @@ function render() {{
       matchRegion = (b.region || '').includes(region);
     }}
     let matchDate = true;
-    if (startDate || endDate) {{
+    if (!opts.skipDate && (startDate || endDate)) {{
       const basisText = dateBasis === 'reg_deadline' ? b.reg_deadline : b.deadline;
       const d = parseDateStr(basisText) || parseDateStr(b.notice_date);
       if (!d) {{
@@ -704,6 +708,14 @@ function render() {{
            matchColSrc && matchColTitle && matchColOrg && matchColIndustry &&
            matchColRegion && matchColBidMethod && matchColRestrictions && matchColAmountMin && matchColAmountMax && matchColMemo && matchColStatus;
   }});
+}}
+
+function render() {{
+  const memos = loadMemos();
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+
+  const filtered = getFilteredBids();
 
   document.getElementById('count').textContent = filtered.length + '건 표시 중';
   document.getElementById('emptyMsg').style.display = filtered.length ? 'none' : 'block';
@@ -746,12 +758,12 @@ function clearColFilters() {{
   render();
 }}
 
-document.getElementById('eligibleOnly').addEventListener('change', render);
-document.getElementById('telecomOnly').addEventListener('change', render);
-document.getElementById('search').addEventListener('input', render);
-document.getElementById('searchField').addEventListener('change', render);
-document.getElementById('sourceFilter').addEventListener('change', render);
-document.getElementById('regionFilter').addEventListener('change', render);
+document.getElementById('eligibleOnly').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('telecomOnly').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('search').addEventListener('input', () => {{ render(); buildCalendar(); }});
+document.getElementById('searchField').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('sourceFilter').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('regionFilter').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('dateBasis').addEventListener('change', () => {{ buildCalendar(); render(); }});
 document.getElementById('dateStart').addEventListener('change', () => {{ buildCalendar(); render(); }});
 document.getElementById('dateEnd').addEventListener('change', () => {{ buildCalendar(); render(); }});
@@ -759,7 +771,7 @@ document.getElementById('dateEnd').addEventListener('change', () => {{ buildCale
  'colFilterRegion','colFilterBidMethod','colFilterRestrictions','colFilterAmountMin','colFilterAmountMax','colFilterMemo'
 ].forEach(id => {{
   const evt = document.getElementById(id).tagName === 'SELECT' ? 'change' : 'input';
-  document.getElementById(id).addEventListener(evt, render);
+  document.getElementById(id).addEventListener(evt, () => {{ render(); buildCalendar(); }});
 }});
 render();
 
@@ -787,9 +799,10 @@ function buildCalendar() {{
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
 
+  const calBids = getFilteredBids({{skipDate: true}});
   const regCounts = {{}};
   const ddlCounts = {{}};
-  BIDS.forEach(b => {{
+  calBids.forEach(b => {{
     const rd = parseDateStr(b.reg_deadline);
     if (rd) {{ const k = fmtYMD(rd); regCounts[k] = (regCounts[k] || 0) + 1; }}
     const dd = parseDateStr(b.deadline);
