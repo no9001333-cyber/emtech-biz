@@ -14,7 +14,7 @@ jobs:
     runs-on: self-hosted  # 사용자 PC에서 실행 (data.go.kr이 GitHub 공용 서버 IP를 막아서 변경)
     steps:
       - name: 저장소 체크아웃
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 파이썬 버전 확인 (이 PC에 이미 설치된 Python 그대로 사용)
         # actions/setup-python은 GitHub이 호스팅하는 임시 러너용으로, 매번 별도
