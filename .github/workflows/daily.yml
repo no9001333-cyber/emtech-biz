@@ -50,6 +50,9 @@ jobs:
         run: python main.py
 
       - name: 변경사항 커밋
+        env:
+          PYTHONUTF8: "1"
+          PYTHONIOENCODING: "utf-8"
         run: python commit_and_push.py
 
       - name: 상태 점검 (문제 있으면 이 단계가 실패해서 GitHub이 이메일로 알려줌)
