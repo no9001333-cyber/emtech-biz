@@ -143,59 +143,12 @@ TEMPLATE = """<!DOCTYPE html>
   .cal-counts .cnt-reg {{ color:var(--good); font-weight:600; }}
   .cal-counts .cnt-ddl {{ color:var(--accent); font-weight:600; }}
 
-  /* 모달 (투찰금액 계산기) */
-  .modal-overlay {{
-    display:none; position:fixed; inset:0; background:rgba(20,33,61,0.5);
-    z-index:50; align-items:flex-start; justify-content:center; overflow-y:auto; padding:30px 14px;
-  }}
-  .modal-overlay.open {{ display:flex; }}
-  .modal {{
-    background:var(--card); border-radius:10px; max-width:520px; width:100%;
-    padding:22px; position:relative;
-  }}
-  .modal h3 {{ margin:0 0 4px; font-size:1.05rem; }}
-  .modal .sub {{ font-size:0.8rem; color:var(--muted); margin-bottom:16px; }}
-  .modal-close {{
-    position:absolute; top:14px; right:16px; border:none; background:none;
-    font-size:1.2rem; cursor:pointer; color:var(--muted);
-  }}
-  .grid2 {{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }}
-  .field {{ display:flex; flex-direction:column; gap:4px; margin-bottom:10px; }}
-  .field label {{ font-size:0.76rem; color:var(--muted); }}
-  .field input, .field select {{
-    padding:8px 9px; border:1px solid var(--line); border-radius:6px; font-size:0.86rem; background:var(--paper); color:var(--ink);
-  }}
-  .src-badge {{ display:inline-block; font-size:0.66rem; padding:1px 6px; border-radius:10px; margin-left:6px; font-weight:600; }}
-  .src-badge.ok {{ background:var(--good-soft); color:var(--good); }}
-  .src-badge.warn {{ background:var(--accent-soft); color:var(--accent); }}
-  .info-line {{ font-size:0.8rem; color:var(--muted); margin-bottom:12px; padding:8px 10px; background:var(--paper); border:1px solid var(--line); border-radius:6px; }}
-  .info-line b {{ color:var(--ink); }}
-  .calc-warn-box {{ background:var(--accent-soft); border:1px solid var(--accent); color:var(--accent); border-radius:8px; padding:9px 11px; font-size:0.78rem; margin-bottom:10px; display:none; white-space:pre-line; }}
-  .btn-row {{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }}
-  .btn {{ padding:9px 16px; border-radius:7px; border:none; font-size:0.84rem; font-weight:600; cursor:pointer; }}
-  .btn-primary {{ background:var(--accent); color:#fff; }}
-  .btn-secondary {{ background:var(--ink); color:#fff; }}
-  .btn:disabled {{ background:var(--line); color:var(--muted); cursor:not-allowed; }}
-
-  .mini-table {{ width:100%; border-collapse:collapse; font-size:0.78rem; margin-top:8px; }}
-  .mini-table th, .mini-table td {{ padding:5px 6px; text-align:right; border-bottom:1px solid var(--line); }}
-  .mini-table th:first-child, .mini-table td:first-child {{ text-align:center; }}
-  .mini-table tr.picked {{ background:var(--accent-soft); font-weight:600; }}
-
-  .result-grid {{ display:grid; grid-template-columns:1fr auto; gap:5px 10px; font-size:0.84rem; margin-top:10px; }}
-  .result-grid .k {{ color:var(--muted); }}
-  .result-grid .v {{ font-weight:600; text-align:right; }}
-  .final-box {{ margin-top:12px; padding:14px; border-radius:8px; background:var(--good-soft); border:1px solid var(--good); text-align:center; }}
-  .final-box .label {{ font-size:0.78rem; color:var(--good); margin-bottom:3px; }}
-  .final-box .amount {{ font-size:1.3rem; font-weight:700; }}
-
   @media (max-width: 720px) {{
     table, thead, tbody, tr, td {{ display:block; }}
     thead {{ display:none; }}
     tbody tr {{ background:var(--card); border:1px solid var(--line); border-radius:8px; margin-bottom:12px; padding:8px 4px; }}
     td {{ padding:6px 12px; }}
     td::before {{ content: attr(data-label); display:block; font-size:0.7rem; color:var(--muted); margin-bottom:2px; }}
-    .grid2 {{ grid-template-columns:1fr; }}
   }}
   .lock-screen {{
     position:fixed; inset:0; background:var(--paper); z-index:200;
@@ -382,82 +335,6 @@ TEMPLATE = """<!DOCTYPE html>
   이 페이지는 매일 자동 실행되는 스크립트가 생성합니다. 메모는 이 브라우저에만 저장됩니다(다른 기기와 공유되지 않음).
   투찰 전에는 반드시 원본 사이트에서 공고 내용을 다시 확인하세요.
 </footer>
-
-<!-- 투찰금액 계산 모달 -->
-<div class="modal-overlay" id="calcModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeCalc()">✕</button>
-    <h3 id="calcTitle">투찰금액 계산</h3>
-    <div class="sub" id="calcOrg"></div>
-
-    <div class="info-line" id="calcEstLine">추정금액(공고 API 값): <b id="calcEstDisplay">-</b></div>
-
-    <div class="grid2">
-      <div class="field">
-        <label>기초금액 (원) <span class="src-badge" id="badgeBase"></span></label>
-        <input id="calcBase" type="number">
-      </div>
-      <div class="field">
-        <label>A값 (원) <span class="src-badge" id="badgeAValue"></span></label>
-        <input id="calcAValue" type="number" placeholder="법정 정산항목 합계">
-      </div>
-      <div class="field">
-        <label>예가변동폭 (%) <span class="src-badge" id="badgeVariance"></span></label>
-        <select id="calcVariance">
-          <option value="2">-2 / +2</option>
-          <option value="3">-3 / +3</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>낙찰하한율 <span class="src-badge" id="badgeRate"></span></label>
-        <select id="calcRateSel">
-          <option value="0.89745">10억 미만 (89.745%)</option>
-          <option value="0.88745">10억~50억 (88.745%)</option>
-          <option value="0.87495">50억~100억 (87.495%)</option>
-          <option value="custom">직접입력</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>복수예가 생성개수 <span class="src-badge" id="badgeTotalCount"></span></label>
-        <input id="calcTotalCount" type="number" min="2" max="50" value="15">
-      </div>
-      <div class="field">
-        <label>추첨개수 <span class="src-badge" id="badgeDrawCount"></span></label>
-        <input id="calcDrawCount" type="number" min="1" max="50" value="4">
-      </div>
-    </div>
-    <div class="field" id="calcCustomRateField" style="display:none;">
-      <label>낙찰하한율 직접 입력 (%)</label>
-      <input id="calcCustomRate" type="number" step="0.001">
-    </div>
-
-    <div class="calc-warn-box" id="calcWarnBox"></div>
-
-    <div class="btn-row">
-      <button class="btn btn-primary" id="calcGenBtn" onclick="calcGenerate()">🎲 복수예가 15개 생성</button>
-      <button class="btn btn-secondary" id="calcDrawBtn" onclick="calcDraw()" disabled>🎯 4개 추첨</button>
-    </div>
-
-    <table class="mini-table" id="calcTable" style="display:none;">
-      <thead><tr><th>번호</th><th>변동률</th><th>예가</th></tr></thead>
-      <tbody id="calcTbody"></tbody>
-    </table>
-
-    <div id="calcResultBox" style="display:none;">
-      <div class="result-grid">
-        <div class="k">4개 평균 (사정예정가격)</div><div class="v" id="c_assessed">-</div>
-        <div class="k">A값 제외 대상금액</div><div class="v" id="c_excl">-</div>
-        <div class="k">하한율 적용 금액</div><div class="v" id="c_applied">-</div>
-        <div class="k">A값 재합산 금액</div><div class="v" id="c_readded">-</div>
-      </div>
-      <div class="final-box">
-        <div class="label">🎯 최종 투찰금액 (원 단위 절사)</div>
-        <div class="amount" id="c_final">-</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 <script>
 const BIDS = {bids_json};
@@ -764,7 +641,7 @@ function render() {{
     tr.querySelector('.memo-input').addEventListener('change', (e) => {{
       saveMemo(e.target.dataset.key, e.target.value);
     }});
-    tr.querySelector('.btn-calc').addEventListener('click', () => openCalc(b));
+    tr.querySelector('.btn-calc').addEventListener('click', () => openCalcWindow(b));
     tbody.appendChild(tr);
   }});
 }}
@@ -865,29 +742,174 @@ function buildCalendar() {{
 
 buildCalendar();
 
-/* ---------- 투찰금액 계산 모달 ----------
-   2026-08-18 개선: 추정금액/기초금액/A값/낙찰하한율/복수예가 생성·추첨 개수를
-   가능하면 실제 공고 데이터(g2b.py가 수집한 API 값)로 자동 채우고, 각 값 옆에
-   "공고 데이터(자동)" 또는 "확인필요(수동입력)" 배지로 출처를 명확히 표시합니다.
-   실제 데이터가 없거나 값이 비정상적인 범위(예: 낙찰하한율이 30~100%를 벗어남,
-   추첨개수가 생성개수보다 많음)면 자동으로 채우지 않고 수동 입력을 안내하며,
-   버튼을 눌러도 검증에 실패하면 결과를 계산/표시하지 않습니다(잘못된 값으로
-   그럴듯한 최종 투찰금액을 만들어내지 않기 위함). */
+/* ---------- 투찰금액 계산 (완전히 별도의 새 브라우저 창) ----------
+   2026-08-24: 기존엔 대시보드 화면 안에서 모달(팝업창)로 떴는데, 계산하면서
+   공고문 원문을 같이 봐야 하는 경우가 많아 title 클릭과 동일하게 완전히
+   분리된 새 브라우저 창으로 열리도록 바꿨습니다. window.open('')으로 빈
+   창을 띄운 뒤 여기서 만든 독립된 HTML 문서를 그대로 써넣는 방식이라
+   (document.write), 대시보드 쪽 CSS/JS와 전혀 안 섞이고 이 창을 닫아도
+   대시보드 화면엔 영향이 없습니다. 계산창 위쪽에 "공고문 새창으로 보기"
+   링크도 넣어서, 낙찰하한율 등 확인이 필요한 값을 계산하면서 바로 원문을
+   대조할 수 있게 했습니다.
+   2026-08-18 개선(계산 로직 자체는 그대로 유지): 추정금액/기초금액/A값/
+   낙찰하한율/복수예가 생성·추첨 개수를 가능하면 실제 공고 데이터(g2b.py가
+   수집한 API 값)로 자동 채우고, 각 값 옆에 "공고 데이터(자동)" 또는
+   "확인필요(수동입력)" 배지로 출처를 명확히 표시합니다. 실제 데이터가
+   없거나 값이 비정상적인 범위(예: 낙찰하한율이 30~100%를 벗어남, 추첨개수가
+   생성개수보다 많음)면 자동으로 채우지 않고 수동 입력을 안내하며, 버튼을
+   눌러도 검증에 실패하면 결과를 계산/표시하지 않습니다(잘못된 값으로
+   그럴듯한 최종 투찰금액을 만들어내지 않기 위함).
+   주의: 아래 calcWindowHtml()이 만들어내는 문자열은 그 자체가 팝업창의
+   완전히 독립된 HTML 문서라, 안에 있는 <script>는 이 파일(대시보드 본문)의
+   템플릿 리터럴(백틱)과 겹치면 안 됩니다. 그래서 팝업 안쪽 스크립트에서는
+   백틱 템플릿 문자열을 쓰지 않고 전부 문자열 이어붙이기(+)로 작성했습니다. */
+function calcWindowHtml() {{
+  return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>투찰금액 계산</title>
+<style>
+  :root {{
+    --ink:#14213d; --paper:#fbfaf7; --line:#e4e1d8; --accent:#c8511b;
+    --accent-soft:#f5e3d8; --muted:#6b6b63; --card:#ffffff; --good:#2a6f97; --good-soft:#e4eef4;
+  }}
+  * {{ box-sizing:border-box; }}
+  body {{
+    margin:0; padding:20px; font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    background:var(--card); color:var(--ink);
+  }}
+  h3 {{ margin:0 0 4px; font-size:1.05rem; }}
+  .sub {{ font-size:0.8rem; color:var(--muted); margin-bottom:12px; }}
+  .notice-link {{
+    display:inline-block; margin-bottom:16px; font-size:0.82rem; color:var(--good);
+    text-decoration:none; padding:6px 12px; border:1px solid var(--good); border-radius:999px;
+  }}
+  .notice-link:hover {{ background:var(--good-soft); }}
+  .grid2 {{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }}
+  .field {{ display:flex; flex-direction:column; gap:4px; margin-bottom:10px; }}
+  .field label {{ font-size:0.76rem; color:var(--muted); }}
+  .field input, .field select {{
+    width:100%; padding:8px 9px; border:1px solid var(--line); border-radius:6px; font-size:0.86rem; background:var(--paper); color:var(--ink);
+  }}
+  .src-badge {{ display:inline-block; font-size:0.66rem; padding:1px 6px; border-radius:10px; margin-left:6px; font-weight:600; }}
+  .src-badge.ok {{ background:var(--good-soft); color:var(--good); }}
+  .src-badge.warn {{ background:var(--accent-soft); color:var(--accent); }}
+  .info-line {{ font-size:0.8rem; color:var(--muted); margin-bottom:12px; padding:8px 10px; background:var(--paper); border:1px solid var(--line); border-radius:6px; }}
+  .info-line b {{ color:var(--ink); }}
+  .calc-warn-box {{ background:var(--accent-soft); border:1px solid var(--accent); color:var(--accent); border-radius:8px; padding:9px 11px; font-size:0.78rem; margin-bottom:10px; display:none; white-space:pre-line; }}
+  .btn-row {{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }}
+  .btn {{ padding:9px 16px; border-radius:7px; border:none; font-size:0.84rem; font-weight:600; cursor:pointer; }}
+  .btn-primary {{ background:var(--accent); color:#fff; }}
+  .btn-secondary {{ background:var(--ink); color:#fff; }}
+  .btn:disabled {{ background:var(--line); color:var(--muted); cursor:not-allowed; }}
+  .mini-table {{ width:100%; border-collapse:collapse; font-size:0.78rem; margin-top:8px; }}
+  .mini-table th, .mini-table td {{ padding:5px 6px; text-align:right; border-bottom:1px solid var(--line); }}
+  .mini-table th:first-child, .mini-table td:first-child {{ text-align:center; }}
+  .mini-table tr.picked {{ background:var(--accent-soft); font-weight:600; }}
+  .result-grid {{ display:grid; grid-template-columns:1fr auto; gap:5px 10px; font-size:0.84rem; margin-top:10px; }}
+  .result-grid .k {{ color:var(--muted); }}
+  .result-grid .v {{ font-weight:600; text-align:right; }}
+  .final-box {{ margin-top:12px; padding:14px; border-radius:8px; background:var(--good-soft); border:1px solid var(--good); text-align:center; }}
+  .final-box .label {{ font-size:0.78rem; color:var(--good); margin-bottom:3px; }}
+  .final-box .amount {{ font-size:1.3rem; font-weight:700; }}
+  @media (max-width: 480px) {{ .grid2 {{ grid-template-columns:1fr; }} }}
+</style>
+</head>
+<body>
+  <h3 id="calcTitle">투찰금액 계산</h3>
+  <div class="sub" id="calcOrg"></div>
+  <a class="notice-link" id="calcNoticeLink" href="#" target="_blank" rel="noopener">📄 공고문 새창으로 보기</a>
+
+  <div class="info-line" id="calcEstLine">추정금액(공고 API 값): <b id="calcEstDisplay">-</b></div>
+
+  <div class="grid2">
+    <div class="field">
+      <label>기초금액 (원) <span class="src-badge" id="badgeBase"></span></label>
+      <input id="calcBase" type="number">
+    </div>
+    <div class="field">
+      <label>A값 (원) <span class="src-badge" id="badgeAValue"></span></label>
+      <input id="calcAValue" type="number" placeholder="법정 정산항목 합계">
+    </div>
+    <div class="field">
+      <label>예가변동폭 (%) <span class="src-badge" id="badgeVariance"></span></label>
+      <select id="calcVariance">
+        <option value="2">-2 / +2</option>
+        <option value="3">-3 / +3</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>낙찰하한율 <span class="src-badge" id="badgeRate"></span></label>
+      <select id="calcRateSel">
+        <option value="0.89745">10억 미만 (89.745%)</option>
+        <option value="0.88745">10억~50억 (88.745%)</option>
+        <option value="0.87495">50억~100억 (87.495%)</option>
+        <option value="custom">직접입력</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>복수예가 생성개수 <span class="src-badge" id="badgeTotalCount"></span></label>
+      <input id="calcTotalCount" type="number" min="2" max="50" value="15">
+    </div>
+    <div class="field">
+      <label>추첨개수 <span class="src-badge" id="badgeDrawCount"></span></label>
+      <input id="calcDrawCount" type="number" min="1" max="50" value="4">
+    </div>
+  </div>
+  <div class="field" id="calcCustomRateField" style="display:none;">
+    <label>낙찰하한율 직접 입력 (%)</label>
+    <input id="calcCustomRate" type="number" step="0.001">
+  </div>
+
+  <div class="calc-warn-box" id="calcWarnBox"></div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" id="calcGenBtn" onclick="calcGenerate()">🎲 복수예가 15개 생성</button>
+    <button class="btn btn-secondary" id="calcDrawBtn" onclick="calcDraw()" disabled>🎯 4개 추첨</button>
+  </div>
+
+  <table class="mini-table" id="calcTable" style="display:none;">
+    <thead><tr><th>번호</th><th>변동률</th><th>예가</th></tr></thead>
+    <tbody id="calcTbody"></tbody>
+  </table>
+
+  <div id="calcResultBox" style="display:none;">
+    <div class="result-grid">
+      <div class="k">4개 평균 (사정예정가격)</div><div class="v" id="c_assessed">-</div>
+      <div class="k">A값 제외 대상금액</div><div class="v" id="c_excl">-</div>
+      <div class="k">하한율 적용 금액</div><div class="v" id="c_applied">-</div>
+      <div class="k">A값 재합산 금액</div><div class="v" id="c_readded">-</div>
+    </div>
+    <div class="final-box">
+      <div class="label">🎯 최종 투찰금액 (원 단위 절사)</div>
+      <div class="amount" id="c_final">-</div>
+    </div>
+  </div>
+
+<script>
 let calcBids = [];
 let calcPicked = [];
 
-document.getElementById('calcRateSel').addEventListener('change', (e) => {{
+document.getElementById('calcRateSel').addEventListener('change', function(e) {{
   document.getElementById('calcCustomRateField').style.display = e.target.value === 'custom' ? 'flex' : 'none';
 }});
 
+function parseAmount(v) {{
+  if (!v) return null;
+  var n = parseInt(String(v).replace(/[^0-9]/g, ''), 10);
+  return isNaN(n) ? null : n;
+}}
+
+function won(n) {{ return Math.round(n).toLocaleString('ko-KR') + '원'; }}
+
 function setBadge(id, ok, okText, warnText) {{
-  const el = document.getElementById(id);
+  var el = document.getElementById(id);
   el.textContent = ok ? (okText || '공고 데이터(자동)') : (warnText || '확인필요(수동)');
   el.className = 'src-badge ' + (ok ? 'ok' : 'warn');
 }}
 
-// 추정가격 규모에 따른 낙찰하한율 구간 자동 선택 (기존 3단계 드롭다운 기준).
-// 100억 이상이거나 금액을 알 수 없으면 구간을 확정할 수 없어 null 반환(수동확인 필요).
 function pickRateTierByAmount(amount) {{
   if (amount === null || amount === undefined || amount <= 0) return null;
   if (amount < 1e9) return '0.89745';
@@ -896,28 +918,31 @@ function pickRateTierByAmount(amount) {{
   return null;
 }}
 
-function openCalc(bid) {{
+function initCalc(bid) {{
+  document.title = '투찰금액 계산 - ' + (bid.title || '');
   document.getElementById('calcTitle').textContent = bid.title || '투찰금액 계산';
   document.getElementById('calcOrg').textContent = (bid.org || '') + (bid.region ? ' · ' + bid.region : '');
 
-  const est = parseAmount(bid.est_amount);
-  const base = parseAmount(bid.base_amount);
-  const aValue = parseAmount(bid.a_value);
-  const rateRaw = parseFloat(bid.successful_bid_lower_rate);
-  const totalRaw = parseInt(bid.reserve_price_total_count, 10);
-  const drawRaw = parseInt(bid.reserve_price_draw_count, 10);
+  var noticeLink = document.getElementById('calcNoticeLink');
+  if (bid.url) {{
+    noticeLink.href = bid.url;
+  }} else {{
+    noticeLink.style.display = 'none';
+  }}
+
+  var est = parseAmount(bid.est_amount);
+  var base = parseAmount(bid.base_amount);
+  var aValue = parseAmount(bid.a_value);
+  var rateRaw = parseFloat(bid.successful_bid_lower_rate);
+  var totalRaw = parseInt(bid.reserve_price_total_count, 10);
+  var drawRaw = parseInt(bid.reserve_price_draw_count, 10);
 
   document.getElementById('calcEstDisplay').textContent = est !== null ? Number(est).toLocaleString('ko-KR') + '원' : '데이터 없음 - 공고문에서 직접 확인 필요';
 
-  // 기초금액: 예산금액(bdgtAmt) 기준 실제 값을 채웁니다. 공고 상세페이지의 "기초금액공개"
-  // 값과 일치하는 것을 확인했지만, 발주기관이 별도로 산정한 진짜 기초금액과 다를 가능성이
-  // 완전히 배제되지는 않아 warn 배지로 공고문 대조를 안내합니다.
-  const baseVal = base !== null ? base : est;
+  var baseVal = base !== null ? base : est;
   document.getElementById('calcBase').value = baseVal || '';
   setBadge('badgeBase', false, '', baseVal ? '예산금액 기준(공고 데이터) - 공고문 대조 권장' : '데이터 없음-직접입력');
 
-  // A값(법정 정산항목 합계): 0원도 정상적인 실제 값일 수 있으므로, null(데이터 없음)과
-  // 구분해서 처리합니다 - 0을 확인필요로 잘못 표시하지 않도록 주의.
   if (aValue !== null) {{
     document.getElementById('calcAValue').value = aValue;
     setBadge('badgeAValue', true, aValue > 0 ? '공고 데이터(실제값)' : '공고 데이터(실제값·0원)');
@@ -926,37 +951,29 @@ function openCalc(bid) {{
     setBadge('badgeAValue', false, '', '데이터 없음-직접입력');
   }}
 
-  // 예가변동폭: 현재는 D2B 공고문 상세페이지("기초예비가격" 탭)에서 실제 하한/상한%를
-  // 읽어온 경우에만 채워집니다(bid.bid_variance_pct). 드롭다운 옵션(2/3)과 정확히
-  // 일치하는 값만 자동선택하고, 옵션에 없는 값(예: 2.5%)이거나 데이터 자체가 없으면
-  // 기존 기본값(2, 즉 ±2%)을 그대로 두되 배지로 수동확인을 안내합니다 - 틀린 값을
-  // 자동선택된 것처럼 보이게 하지 않기 위함입니다.
-  const variancePct = bid.bid_variance_pct;
-  const varianceSel = document.getElementById('calcVariance');
+  var variancePct = bid.bid_variance_pct;
+  var varianceSel = document.getElementById('calcVariance');
   if (variancePct !== undefined && variancePct !== null &&
-      Array.from(varianceSel.options).some(o => Number(o.value) === Number(variancePct))) {{
+      Array.from(varianceSel.options).some(function(o) {{ return Number(o.value) === Number(variancePct); }})) {{
     varianceSel.value = String(Math.round(variancePct));
     setBadge('badgeVariance', true, '공고 데이터(실제값 ±' + variancePct + '%)');
   }} else {{
     setBadge('badgeVariance', false, '', '공고문 직접확인');
   }}
 
-  // 낙찰하한율: 공고에 실제 값이 있고 30~100% 범위면 그대로 사용, 아니면 금액 구간으로
-  // 추정하되(그것도 안되면) 수동 입력을 안내.
-  const customField = document.getElementById('calcCustomRateField');
+  var customField = document.getElementById('calcCustomRateField');
   if (!isNaN(rateRaw) && rateRaw > 0.3 && rateRaw <= 1) {{
     document.getElementById('calcRateSel').value = 'custom';
     document.getElementById('calcCustomRate').value = (rateRaw * 100).toFixed(3);
     customField.style.display = 'flex';
     setBadge('badgeRate', true, '공고 데이터(실제값)');
   }} else if (!isNaN(rateRaw) && rateRaw > 30 && rateRaw <= 100) {{
-    // 이미 %(예: 89.745) 단위로 온 경우
     document.getElementById('calcRateSel').value = 'custom';
     document.getElementById('calcCustomRate').value = rateRaw.toFixed(3);
     customField.style.display = 'flex';
     setBadge('badgeRate', true, '공고 데이터(실제값)');
   }} else {{
-    const tier = pickRateTierByAmount(baseVal);
+    var tier = pickRateTierByAmount(baseVal);
     if (tier) {{
       document.getElementById('calcRateSel').value = tier;
       customField.style.display = 'none';
@@ -969,7 +986,6 @@ function openCalc(bid) {{
     }}
   }}
 
-  // 복수예가 생성개수 / 추첨개수
   if (!isNaN(totalRaw) && totalRaw >= 2 && totalRaw <= 50 && !isNaN(drawRaw) && drawRaw >= 1 && drawRaw <= totalRaw) {{
     document.getElementById('calcTotalCount').value = totalRaw;
     document.getElementById('calcDrawCount').value = drawRaw;
@@ -982,95 +998,90 @@ function openCalc(bid) {{
     setBadge('badgeDrawCount', false, '', '기본값(4)-확인필요');
   }}
 
-  document.getElementById('calcGenBtn').textContent = `🎲 복수예가 ${{document.getElementById('calcTotalCount').value}}개 생성`;
-  document.getElementById('calcDrawBtn').textContent = `🎯 ${{document.getElementById('calcDrawCount').value}}개 추첨`;
+  document.getElementById('calcGenBtn').textContent = '🎲 복수예가 ' + document.getElementById('calcTotalCount').value + '개 생성';
+  document.getElementById('calcDrawBtn').textContent = '🎯 ' + document.getElementById('calcDrawCount').value + '개 추첨';
 
   document.getElementById('calcWarnBox').style.display = 'none';
   document.getElementById('calcTable').style.display = 'none';
   document.getElementById('calcResultBox').style.display = 'none';
   document.getElementById('calcDrawBtn').disabled = true;
   calcBids = []; calcPicked = [];
-  document.getElementById('calcModal').classList.add('open');
-}}
-function closeCalc() {{
-  document.getElementById('calcModal').classList.remove('open');
 }}
 
 function calcRate() {{
-  const sel = document.getElementById('calcRateSel').value;
+  var sel = document.getElementById('calcRateSel').value;
   if (sel === 'custom') {{
-    const v = parseFloat(document.getElementById('calcCustomRate').value);
+    var v = parseFloat(document.getElementById('calcCustomRate').value);
     return isNaN(v) ? 0 : v / 100;
   }}
   return parseFloat(sel);
 }}
-function won(n) {{ return Math.round(n).toLocaleString('ko-KR') + '원'; }}
 
 function showCalcWarn(errors) {{
-  const box = document.getElementById('calcWarnBox');
+  var box = document.getElementById('calcWarnBox');
   if (!errors.length) {{ box.style.display = 'none'; box.textContent = ''; return false; }}
-  box.textContent = '⚠ 계산을 진행할 수 없습니다 - 값을 확인 후 다시 시도해주세요.\\n' + errors.map(e => '· ' + e).join('\\n');
+  box.textContent = '⚠ 계산을 진행할 수 없습니다 - 값을 확인 후 다시 시도해주세요.\\\\n' + errors.map(function(e) {{ return '· ' + e; }}).join('\\\\n');
   box.style.display = 'block';
   return true;
 }}
 
 function calcGenerate() {{
-  const base = parseFloat(document.getElementById('calcBase').value);
-  const variance = parseFloat(document.getElementById('calcVariance').value);
-  const totalCount = parseInt(document.getElementById('calcTotalCount').value, 10);
+  var base = parseFloat(document.getElementById('calcBase').value);
+  var variance = parseFloat(document.getElementById('calcVariance').value);
+  var totalCount = parseInt(document.getElementById('calcTotalCount').value, 10);
 
-  const errors = [];
+  var errors = [];
   if (!base || base <= 0) errors.push('기초금액을 입력해주세요.');
   if (!totalCount || totalCount < 2 || totalCount > 50) errors.push('복수예가 생성개수가 올바르지 않습니다(2~50 사이여야 함).');
   if (showCalcWarn(errors)) return;
 
   calcBids = [];
-  for (let i = 1; i <= totalCount; i++) {{
-    const rate = (Math.random() * (variance * 2) - variance);
-    const price = Math.round(base * (1 + rate / 100));
-    calcBids.push({{ no: i, rate, price }});
+  for (var i = 1; i <= totalCount; i++) {{
+    var rate = (Math.random() * (variance * 2) - variance);
+    var price = Math.round(base * (1 + rate / 100));
+    calcBids.push({{ no: i, rate: rate, price: price }});
   }}
   calcPicked = [];
   renderCalcTable();
   document.getElementById('calcTable').style.display = 'table';
   document.getElementById('calcResultBox').style.display = 'none';
   document.getElementById('calcDrawBtn').disabled = false;
-  const drawCount = parseInt(document.getElementById('calcDrawCount').value, 10) || 4;
-  document.getElementById('calcDrawBtn').textContent = `🎯 ${{drawCount}}개 추첨`;
+  var drawCount = parseInt(document.getElementById('calcDrawCount').value, 10) || 4;
+  document.getElementById('calcDrawBtn').textContent = '🎯 ' + drawCount + '개 추첨';
 }}
 
 function renderCalcTable() {{
-  const tbody = document.getElementById('calcTbody');
+  var tbody = document.getElementById('calcTbody');
   tbody.innerHTML = '';
-  const pickedNos = calcPicked.map(p => p.no);
-  calcBids.forEach(b => {{
-    const tr = document.createElement('tr');
+  var pickedNos = calcPicked.map(function(p) {{ return p.no; }});
+  calcBids.forEach(function(b) {{
+    var tr = document.createElement('tr');
     if (pickedNos.includes(b.no)) tr.className = 'picked';
-    tr.innerHTML = `<td>${{b.no}}</td><td>${{b.rate >= 0 ? '+' : ''}}${{b.rate.toFixed(3)}}%</td><td>${{won(b.price)}}</td>`;
+    tr.innerHTML = '<td>' + b.no + '</td><td>' + (b.rate >= 0 ? '+' : '') + b.rate.toFixed(3) + '%</td><td>' + won(b.price) + '</td>';
     tbody.appendChild(tr);
   }});
 }}
 
 function calcDraw() {{
-  const drawCount = parseInt(document.getElementById('calcDrawCount').value, 10);
-  const lowLimitRate = calcRate();
+  var drawCount = parseInt(document.getElementById('calcDrawCount').value, 10);
+  var lowLimitRate = calcRate();
 
-  const errors = [];
+  var errors = [];
   if (!calcBids.length) errors.push('먼저 복수예가를 생성해주세요.');
-  if (!drawCount || drawCount < 1 || drawCount > calcBids.length) errors.push(`추첨개수는 1~${{calcBids.length || '?'}} 사이여야 합니다.`);
+  if (!drawCount || drawCount < 1 || drawCount > calcBids.length) errors.push('추첨개수는 1~' + (calcBids.length || '?') + ' 사이여야 합니다.');
   if (!lowLimitRate || lowLimitRate <= 0.3 || lowLimitRate > 1) errors.push('낙찰하한율 값이 비정상입니다(30%~100% 범위여야 함). 공고문에서 정확한 낙찰하한율을 확인한 뒤 "직접입력"으로 입력해주세요.');
   if (showCalcWarn(errors)) {{ document.getElementById('calcResultBox').style.display = 'none'; return; }}
 
-  const shuffled = [...calcBids].sort(() => Math.random() - 0.5);
-  calcPicked = shuffled.slice(0, drawCount).sort((a, b) => a.no - b.no);
+  var shuffled = calcBids.slice().sort(function() {{ return Math.random() - 0.5; }});
+  calcPicked = shuffled.slice(0, drawCount).sort(function(a, b) {{ return a.no - b.no; }});
   renderCalcTable();
 
-  const aValue = parseFloat(document.getElementById('calcAValue').value) || 0;
-  const avgPrice = calcPicked.reduce((s, b) => s + b.price, 0) / calcPicked.length;
-  const exclAmount = avgPrice - aValue;
-  const appliedAmount = exclAmount * lowLimitRate;
-  const readdedAmount = appliedAmount + aValue;
-  const finalAmount = Math.floor(readdedAmount);
+  var aValue = parseFloat(document.getElementById('calcAValue').value) || 0;
+  var avgPrice = calcPicked.reduce(function(s, b) {{ return s + b.price; }}, 0) / calcPicked.length;
+  var exclAmount = avgPrice - aValue;
+  var appliedAmount = exclAmount * lowLimitRate;
+  var readdedAmount = appliedAmount + aValue;
+  var finalAmount = Math.floor(readdedAmount);
 
   document.getElementById('c_assessed').textContent = won(avgPrice);
   document.getElementById('c_excl').textContent = won(exclAmount);
@@ -1078,6 +1089,22 @@ function calcDraw() {{
   document.getElementById('c_readded').textContent = won(readdedAmount);
   document.getElementById('c_final').textContent = won(finalAmount);
   document.getElementById('calcResultBox').style.display = 'block';
+}}
+<\\/script>
+</body>
+</html>`;
+}}
+
+function openCalcWindow(bid) {{
+  const win = window.open('', '_blank', 'width=560,height=920,menubar=no,toolbar=no,location=no,status=no');
+  if (!win) {{
+    alert('팝업이 차단되었습니다. 브라우저 설정에서 이 사이트의 팝업 허용을 켜주세요.');
+    return;
+  }}
+  win.document.open();
+  win.document.write(calcWindowHtml());
+  win.document.close();
+  win.initCalc(bid);
 }}
 </script>
 
