@@ -103,6 +103,16 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
         굳이 용인/경기도/전국 셋 중 하나로 억지로 분류하지 않고, 대시보드
         지역 드롭다운에서 "서울"을 직접 선택해 따로 찾아보도록 남겨둡니다.
 
+    2026-08-24: "인천광역시,경기도"처럼 참가가능지역이 여러 개 나열된 공고(=그중
+    아무 지역에서나 등록된 업체면 참가 가능한 OR 조건)가, EXCLUDE_REGION_KEYWORDS에
+    걸리는 다른 지역이 하나라도 같이 적혀있으면 무조건 참가불가로 처리되고 있었다
+    (경쟁 서비스 대박낙찰정보와 대조해서 발견 - 예: "26-M-포상진지 통신공사(3091)"
+    같은 D2B 공고가 거기선 정상적으로 뜨는데 여기선 빠짐). 실제로는 나열된 지역 중
+    "경기"가 포함되어 있으면 참가 가능한 것이므로, "경기" 매칭을
+    EXCLUDE_REGION_KEYWORDS 검사보다 먼저 하도록 순서를 바꿨다 (단, 안양/수원처럼
+    경기도 안의 다른 특정 시·군이 지목된 경우는 여전히 그 아래 GYEONGGI_OTHER_CITIES
+    검사에서 먼저 걸러진다 - 그건 "OR 조건"이 아니라 그 시·군 하나로 못박힌 경우라서).
+
     has_region_restriction: 공고에 실제 지역제한(나라장터 API의
       rgnLmtBidLocplcJdgmBssNm/rgnDutyJntcontrctYn 같은 필드)이 걸려있는지
       호출하는 쪽이 알고 있으면 넘겨줍니다.
@@ -132,12 +142,15 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
             return "경기"
         # 용인이 아닌 다른 경기도 시·군이 특정되어 있으면 참가 불가
         return None
-    if any(k in combined for k in EXCLUDE_REGION_KEYWORDS):
-        # 경기도 밖 다른 광역시/도가 특정되어 있으면 참가 불가
-        return None
     if HOME_PROVINCE in region_text:
-        # "경기도"만 있고 특정 시·군은 없음 = 경기도 전체 대상
+        # "경기도"(또는 "경기도"를 포함해 여러 지역이 나열된 경우)면 경기도 업체는
+        # 참가 가능 - 나열된 다른 지역(EXCLUDE_REGION_KEYWORDS)에 걸리는지는
+        # 상관없다. 여러 지역이 나열된 공고는 그중 아무 곳에나 등록된 업체면
+        # 참가할 수 있는 OR 조건이기 때문.
         return "경기"
+    if any(k in combined for k in EXCLUDE_REGION_KEYWORDS):
+        # "경기"가 전혀 없이 경기도 밖 다른 광역시/도만 특정되어 있으면 참가 불가
+        return None
     if not region_text:
         # 지역 정보 자체가 없음 = 전국 대상으로 간주
         return "전국"
