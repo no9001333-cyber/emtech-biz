@@ -7,8 +7,9 @@
    한국가스공사는 2026-08-19에 data.go.kr에서 실시간 오픈API를 새로 확인해서
    추가했습니다 - 다만 이 API는 추정금액/기초금액/지역 필드를 제공하지 않아
    해당 항목은 대시보드에 "확인필요"로 표시됩니다.)
-- 매번 "오늘 새로 수집한 결과"로 완전히 새로 저장합니다 (예전 데이터와 병합하지 않음).
-  (참고: 공고별 메모는 브라우저에 별도로 저장되므로 이 초기화와 무관하게 유지됩니다)
+- 기본적으로 매번 "오늘 새로 수집한 결과"로 저장하지만, 나라장터만 예외적으로
+  이전 데이터와 부분 병합합니다 - 아래 3-1) 참고. (참고: 공고별 메모는 브라우저에
+  별도로 저장되므로 이 초기화와 무관하게 유지됩니다)
 - 투찰마감이 지난 나라장터 공고는, 같은 공고번호로 낙찰정보가 있으면
   그 결과(낙찰자/낙찰금액/사정율)를 공고 데이터에 그대로 붙여서 저장합니다.
 - 소스별 수집 건수를 data/status.json에 기록합니다. 키가 등록된 소스인데 0건이 나오면
@@ -102,6 +103,38 @@ def main():
         bid["collected_at"] = now_str
         bid["status"] = bid_status(bid.get("deadline", ""))
         deduped[_dedupe_key(bid)] = bid
+
+    # 1-1) 나라장터 공고 목록 API(getBidPblancListInfoCnstwk)는 "등록일시" 기준으로만
+    # 조회가 가능한 구조라(개찰일시/마감일 기준 조회를 지원하지 않음), 최근
+    # LOOKBACK_DAYS일 이내에 "등록"된 것만 매번 새로 수집된다. 그런데 등록~마감
+    # 기간이 30일을 훌쩍 넘는 대형 공고(실제로 게시~마감 간격이 최대 73일까지
+    # 나오는 사례를 확인함)는, 아직 마감 전인데도 등록일 기준 조회 창을 벗어나는
+    # 순간 다음 실행부터 조용히 목록에서 사라져버린다(사용자가 "한 달치라면서
+    # 실제로는 일주일치만 보이는 것 아니냐"고 지적해서 발견 - 확인해보니 실제로
+    # 게시된 지 25일 넘은 것만 552건이었다). 그래서 나라장터에 한해, 오늘 새로
+    # 못 받아왔지만 이전에 이미 발견해뒀고 아직 마감 전인 공고는 이전 데이터에서
+    # 그대로 이월해서 계속 살려둔다. (다른 소스는 이 문제와 무관하므로 이월하지 않음)
+    try:
+        with open(BIDS_JSON_PATH, encoding="utf-8") as f:
+            previous_bids = json.load(f)
+    except Exception:
+        previous_bids = []
+
+    carried_over = 0
+    for old_bid in previous_bids:
+        if old_bid.get("source") != "나라장터":
+            continue
+        key = _dedupe_key(old_bid)
+        if key in deduped:
+            continue  # 오늘 새로 받아온 최신 정보가 있으니 그걸 우선 사용
+        if bid_status(old_bid.get("deadline", "")) != "진행중":
+            continue  # 이미 마감된 건 이월 대상 아님 (등록일시 조회 창 문제와 무관)
+        old_bid["status"] = "진행중"
+        deduped[key] = old_bid
+        carried_over += 1
+    if carried_over:
+        print(f"[나라장터 이월] 등록일시 조회 창 밖으로 밀려났지만 아직 마감 전인 공고 {carried_over}건을 이전 데이터에서 이월")
+
     kept = list(deduped.values())
 
     # 2) 낙찰정보(개찰결과) 수집 - 나라장터만 지원
