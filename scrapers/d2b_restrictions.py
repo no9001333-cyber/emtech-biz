@@ -23,71 +23,37 @@
     일시적으로 느려지면 깨질 수 있습니다. 그래서 공고 하나가 실패해도 전체
     수집이 죽지 않도록 개별적으로 try/except로 감쌉니다.
   - 확인에 실패한 공고는 restrictions에 "자동확인 실패 - 공고문 직접 확인
-    필요"라고 명시합니다. 2026-08-25까지는 이 경우 eligible=False(참가불가
-    확정)로 덮어썼는데, 이 자동확인 자체가 TouchEn nxWeb 미설치로 사실상
-    100% 실패하는 상태라(아래 2026-08-18 원인 참고), 결과적으로 D2B 공고
-    전체가 실제 자격과 무관하게 매일 "참가불가"로 숨겨지고 있었습니다.
-    확인이 안 됐다는 것과 확인 결과 참가불가라는 것은 다른 얘기라, 이제는
-    eligible을 건드리지 않고(d2b.py가 기본값 True로 채워둔 것을 그대로 둠)
-    "확인필요" 표시만 남깁니다 - 놓치는 것보다 나중에 공고문 직접 확인해서
-    거르는 쪽이 안전합니다.
+    필요"라고 명시할 뿐, eligible은 건드리지 않습니다(d2b.py가 기본값 True로
+    채워둔 것을 그대로 둠). 확인 안 됐다는 것과 확인 결과 참가불가라는 것은
+    다른 얘기라, 실패했다고 "참가불가"로 확정해서 목록에서 숨기지 않습니다.
   - Playwright 자체가 설치 안 되어 있거나 브라우저 실행이 안 되면, 이 기능
     전체를 건너뛰고 기존 수집 결과를 그대로 반환합니다 - 이것 때문에 전체
     수집(공고 목록 자체)이 죽으면 안 되기 때문입니다.
 
-중요 - 2026-08-18에 밝혀진 진짜 원인 (타임아웃 문제가 아니었음):
-  타임아웃을 45초로 늘려도 47건이 전부 동일하게 실패해서 직접 조사해보니,
-  d2b.go.kr은 라온시큐어(RaonSecure)사의 "TouchEn nxWeb"이라는 콘텐츠 보호
-  프로그램이 PC에 설치·실행되어 있어야만 정상 동작합니다. 이게 없으면
-  페이지가 조용히 `/raonnx/nxWeb/help/help.html`로 리다이렉트되면서 검색 자체가
-  안 됩니다(사이트가 느린 게 아니라 이 보안 체크에 막힌 것). Playwright가
-  실행하는 브라우저(기본은 Playwright 전용 크로미움)에는 이 프로그램이 당연히
-  없어서 100% 실패합니다.
-
-  그래서 아래처럼 바꿨습니다: 이 PC(자체 호스팅 러너)에 실제로 설치된 Edge
-  브라우저(TouchEn nxWeb를 정상 설치해둔 프로필)를 Playwright가 그대로
-  구동하도록 시도합니다. TouchEn nxWeb 프로그램 자체를 우회/무력화하려는 게
-  아니라, 정상적으로 설치된 실제 브라우저를 자동화 도구로 조작하는 것뿐입니다
-  (사람이 마우스로 클릭하는 것과 원리상 동일). 이 방식도 실패하면(예: 그 PC에
-  Edge가 없거나 TouchEn nxWeb이 설치 안 되어 있으면) 기존 방식(Playwright 전용
-  크로미움, headless)으로 자동 대체하되, 이 경우 사이트 보안 체크를 통과하지
-  못해 계속 "자동확인 실패"로 표시될 가능성이 높습니다.
-
-  ** 이 방식이 동작하려면 사용자가 먼저 그 PC에서 직접 해야 하는 일 **
-  1) 그 PC의 실제 Edge 브라우저로 https://www.d2b.go.kr 접속
-  2) TouchEn nxWeb 설치 안내가 뜨면 정상적으로 설치 완료
-  3) 설치 후 실제로 공고 검색이 되는지 Edge에서 직접 확인
-  이 과정을 거쳐야 D2B_EDGE_PROFILE_DIR 아래에 TouchEn nxWeb이 인식하는
-  프로필이 만들어집니다. 이 단계 없이는 아래 코드도 소용없습니다.
+중요 - 2026-08-25에 밝혀진 진짜 원인 (TouchEn nxWeb 문제가 아니었음):
+  한동안 이 검색이 headless 크로미움에서 계속 멈추거나 실패해서, "d2b.go.kr이
+  라온시큐어 TouchEn nxWeb 보안 프로그램을 요구하고, 그게 설치 안 된 브라우저는
+  막힌다"고 잘못 진단하고 실제 Edge 프로필을 띄우는 우회 로직까지 만들었었습니다.
+  그런데 사용자가 "나는 그냥 홈페이지에서 공고명 넣으면 바로 들어간다"고 알려줘서
+  직접 재현해보니: **입찰공고 목록 페이지(mainBidAnnounceList.do)로 곧장
+  이동(page.goto)하면 그 페이지 자체가 응답 없이 멈춰버리지만, 홈페이지
+  (index.do)를 먼저 열고 거기 내장된 검색창(#anmt_name)에 입력 후 검색
+  버튼(#btn_search)을 누르면 아무 보안 프로그램 없이도 정상적으로
+  mainBidAnnounceList.do로 결과가 뜹니다.** 즉 원인은 보안 소프트웨어가 아니라
+  진입 경로(직접 URL 이동 vs 홈페이지 경유 검색 제출)였습니다. 두 페이지의
+  검색창/버튼 id, 결과 링크(a.fgirdB), 상세 테이블(table[summary="상세테이블"])
+  구조가 전부 동일해서, 시작 URL만 홈페이지로 바꾸면 나머지 코드는 그대로
+  씁니다. Edge/TouchEn nxWeb 우회 로직은 불필요해져서 제거했습니다.
 """
 
-import os
-
-# 자체 호스팅 러너 PC에서 TouchEn nxWeb이 정상 설치된 실제 Edge 프로필 경로.
-# 환경변수로 지정하지 않으면 기본값(사용자 홈 폴더 아래 고정 경로)을 씁니다.
-# 이 폴더는 "일반 Edge 사용자 데이터 폴더"와 똑같은 구조이므로, 사용자가 평소
-# 쓰는 프로필을 그대로 가리켜도 되고, 자동화 전용으로 새 폴더를 하나 만들어
-# 거기서 한 번 수동으로 TouchEn nxWeb을 설치해둬도 됩니다.
-D2B_EDGE_PROFILE_DIR = os.environ.get(
-    "D2B_EDGE_PROFILE_DIR",
-    os.path.expanduser("~/.d2b_edge_profile"),
-)
-
-D2B_LIST_URL = "https://www.d2b.go.kr/mainBidAnnounceList.do"
-# 방화벽/백신이 막고 있던 문제를 해결한 뒤 실제로 확인해보니(2026-08-18 실행 로그),
-# DNS/네트워크 접속 자체는 정상화됐지만 이번엔 전부 "Timeout 15000ms exceeded -
-# waiting for locator(a.fgirdB)"로 실패했습니다. 즉 검색 버튼을 누른 뒤 결과 그리드
-# (구형 SBGrid 커스텀 컴포넌트)가 15초 안에 렌더링되지 않는다는 뜻입니다. 실제로
-# 사람이 브라우저로 똑같이 검색해봐도 결과가 뜨는 데 상당히 오래 걸리는 걸
-# 확인해서(사이트 자체가 오래된 방식이라 느림), 타임아웃을 넉넉하게 늘렸습니다.
+D2B_LIST_URL = "https://www.d2b.go.kr/index.do"
 ACTION_TIMEOUT_MS = 45000
 NAV_TIMEOUT_MS = 45000
 UNVERIFIED_NOTE = "지역/면허제한 자동확인 실패-공고문 직접확인 필요"
 # 공고 한 건이 최악의 경우(타임아웃 연속) ACTION_TIMEOUT_MS 근처까지 걸릴 수 있어서,
 # 사이트 자체가 막혀있는 날(예: 점검, 자동화 차단)에 전체 수집이 너무 오래 걸리지
 # 않도록 전체 소요시간 상한을 둡니다. 이 시간을 넘기면 남은 공고는 더 시도하지 않고
-# 바로 "자동확인 실패"로 표시합니다. (타임아웃을 45초로 늘렸으므로, 47건 기준
-# 최악의 경우 47 * 약 50초 ≈ 40분까지 걸릴 수 있어 상한도 함께 늘렸습니다.)
+# 바로 "자동확인 실패"로 표시합니다.
 MAX_TOTAL_SECONDS = 2700
 
 
@@ -113,18 +79,18 @@ def enrich_d2b_bids_with_restrictions(bids):
     skipped_count = 0
     try:
         with sync_playwright() as p:
-            context, browser, mode = _launch_browser_context(p)
-            if context is None:
-                print("[D2B 공고문 확인] 브라우저 실행 자체가 실패해서 건너뜀")
+            try:
+                browser = p.chromium.launch(headless=True)
+            except Exception as e:
+                print(f"[D2B 공고문 확인] 브라우저 실행 자체가 실패해서 건너뜀: {e}")
                 for bid in bids:
                     if "eligible" not in bid or bid.get("restrictions", "") == "":
                         _mark_unverified(bid)
                 return bids
 
-            print(f"[D2B 공고문 확인] 브라우저 모드: {mode}")
             start = time.time()
             try:
-                page = context.new_page()
+                page = browser.new_context().new_page()
                 page.set_default_timeout(ACTION_TIMEOUT_MS)
                 page.set_default_navigation_timeout(NAV_TIMEOUT_MS)
 
@@ -148,9 +114,7 @@ def enrich_d2b_bids_with_restrictions(bids):
                         _apply_restriction_result(bid, licenses, regions)
                         ok_count += 1
             finally:
-                context.close()
-                if browser is not None:
-                    browser.close()
+                browser.close()
     except Exception as e:
         print(f"[D2B 공고문 확인] 예상치 못한 오류로 중단됨: {e}")
         for bid in bids:
@@ -165,40 +129,6 @@ def enrich_d2b_bids_with_restrictions(bids):
     return bids
 
 
-def _launch_browser_context(p):
-    """가능하면 이 PC에 실제 설치된 Edge(TouchEn nxWeb이 설치된 프로필)를 그대로
-    구동하고, 안 되면 Playwright 전용 크로미움(headless)으로 대체한다.
-    (context, browser_또는_None, 사용된 모드 설명) 튜플을 반환한다.
-    완전히 실패하면 (None, None, None).
-
-    실제 Edge 프로필을 쓰는 경우 headless=False로 띄운다 - TouchEn nxWeb 같은
-    콘텐츠 보호 프로그램은 브라우저 확장/프로세스를 정상적으로 인식해야 동작
-    하는데, 그러려면 실제로 화면에 렌더링되는 일반 실행 방식이어야 할 가능성이
-    높기 때문입니다(이 PC는 실제 사람이 로그인해 쓰는 데스크톱이라 화면 표시가
-    가능합니다). launch_persistent_context는 context 자체가 곧 browser 역할을
-    해서 별도 browser 객체가 없으므로 두 번째 값은 None을 반환한다."""
-    try:
-        context = p.chromium.launch_persistent_context(
-            D2B_EDGE_PROFILE_DIR,
-            channel="msedge",
-            headless=False,
-        )
-        return context, None, f"실제 Edge 브라우저 (프로필: {D2B_EDGE_PROFILE_DIR})"
-    except Exception as e:
-        print(
-            f"[D2B 공고문 확인] 실제 Edge 프로필로 실행 실패, 기본 방식(headless "
-            f"크로미움)으로 대체합니다 - 이 경우 TouchEn nxWeb 보안 체크를 통과하지 "
-            f"못해 계속 '자동확인 실패'로 표시될 가능성이 높습니다: {e}"
-        )
-
-    try:
-        browser = p.chromium.launch(headless=True)
-        return browser.new_context(), browser, "Playwright 기본 크로미움 (headless, TouchEn nxWeb 없음)"
-    except Exception as e:
-        print(f"[D2B 공고문 확인] 기본 크로미움 실행도 실패: {e}")
-        return None, None, None
-
-
 def _lookup_one(page, title, pblanc_no):
     """공고명으로 검색해서, 우리가 수집한 공고번호(pblancNo)와 일치하고
     "취소공고"가 아닌 결과를 찾아 열고 (면허목록, 지역목록)을 반환한다.
@@ -206,6 +136,8 @@ def _lookup_one(page, title, pblanc_no):
     if not title or not pblanc_no:
         return None
 
+    # 목록 페이지로 곧장 이동하면 응답 없이 멈춰버려서, 반드시 홈페이지를 먼저
+    # 열고 거기 내장된 검색창으로 제출해야 한다 (모듈 docstring의 2026-08-25 원인 참고).
     page.goto(D2B_LIST_URL, wait_until="domcontentloaded")
     page.fill("#anmt_name", title)
     page.click("#btn_search")
