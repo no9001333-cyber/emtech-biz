@@ -114,12 +114,25 @@ def fetch_g2b_awards():
                 # "*"로 마스킹되어 내려온다(공공데이터포털 정책) - 그런 경우는 버그가 아님.
                 "winner_tel": item.get("bidwinnrTelNo", ""),
                 "award_amount": award_amount,
+                # 이 API 응답엔 presmptPrce(추정가격)에 해당하는 필드가 아예 없다
+                # (필드명 로그로 확인함) - 낙찰결과 대시보드의 "기초금액"이 항상
+                # "-"로 뜨는 건 버그가 아니라 이 API가 애초에 그 정보를 안 주기 때문.
                 "base_amount": item.get("presmptPrce", ""),
                 "assessed_rate": item.get("sucsfbidRate") or item.get("bidprcRate", ""),
                 # 예전엔 opengDt로 추정했는데 이 응답엔 그 필드가 아예 없었음.
                 # 실제 필드는 rlOpengDt(실제개찰일시), 없으면 fnlSucsfDate(최종낙찰일자)
                 "open_date": item.get("rlOpengDt") or item.get("fnlSucsfDate", ""),
-                "url": item.get("bidNtceDtlUrl", ""),
+                # 2026-08-24: 이 API(낙찰정보서비스) 응답엔 bidNtceDtlUrl 필드가
+                # 아예 없어서(공고 목록 API인 g2b.py와는 다른 서비스) url이 항상
+                # 빈 값이었고, 그래서 낙찰결과 대시보드에서 공고명을 눌러도 반응이
+                # 없었다. 대신 bidNtceNo/bidNtceOrd는 그대로 내려오므로, 나라장터
+                # 공고 상세페이지 URL을 g2b.py가 실제로 쓰는 것과 같은 패턴으로
+                # 직접 조합한다(bidNtceOrd는 이미 "003"처럼 0패딩된 문자열로 옴).
+                "url": (
+                    f"https://www.g2b.go.kr/link/PNPE027_01/single/"
+                    f"?bidPbancNo={item.get('bidNtceNo', '')}&bidPbancOrd={item.get('bidNtceOrd', '000')}"
+                    if item.get("bidNtceNo") else ""
+                ),
             })
 
         total_count = int(body.get("totalCount", 0))
