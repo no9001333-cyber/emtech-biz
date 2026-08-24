@@ -17,6 +17,16 @@
   2) 우리가 공식 API로 이미 수집해둔 공고번호(pblancNo)와 일치하는(그리고
      "취소공고"가 아닌) 결과를 찾아 클릭
   3) 상세 페이지의 면허제한/제한지역 표를 읽어옵니다.
+  4) (2026-08-25 추가) "기초예비가격" 탭도 같은 페이지에서 클릭해서 실제
+     기초금액/예가변동폭(하한·상한%)/A값 구성요소(국민건강보험료·국민연금
+     보험료·요양보험료·산업안전보건관리비·퇴직공제부금·안전관리비·품질관리비)
+     를 읽어옵니다. 사용자가 투찰금액 계산 모달에서 D2B 공고는 전부
+     "기본값"/"확인필요"만 뜬다고 지적해서 확인해보니, 공식 API(getFcltyCmpetBidPblancList)엔
+     이 정보가 아예 없지만 실제 공고문 상세페이지엔 이미 다 공개돼 있었습니다
+     (투찰하려면 입찰자가 기초금액을 미리 알아야 하니 당연히 공고 시점에
+     정해져 있는 게 맞다고 사용자가 지적한 대로). 다만 D2B의 낙찰하한율은
+     G2B처럼 명확한 퍼센트 값으로 안 나오고 별도 규정 문구로만 있어서,
+     잘못된 값을 억지로 계산해 채우지 않고 계속 "확인필요"로 남겨둡니다.
 
 주의 (일부러 방어적으로 짬):
   - 공식 API가 아니라 실제 웹페이지를 여는 방식이라 사이트 구조가 바뀌거나
@@ -110,8 +120,8 @@ def enrich_d2b_bids_with_restrictions(bids):
                         fail_count += 1
                         _mark_unverified(bid)
                     else:
-                        licenses, regions = result
-                        _apply_restriction_result(bid, licenses, regions)
+                        licenses, regions, basis_info = result
+                        _apply_restriction_result(bid, licenses, regions, basis_info)
                         ok_count += 1
             finally:
                 browser.close()
@@ -131,8 +141,10 @@ def enrich_d2b_bids_with_restrictions(bids):
 
 def _lookup_one(page, title, pblanc_no):
     """공고명으로 검색해서, 우리가 수집한 공고번호(pblancNo)와 일치하고
-    "취소공고"가 아닌 결과를 찾아 열고 (면허목록, 지역목록)을 반환한다.
-    못 찾으면 None."""
+    "취소공고"가 아닌 결과를 찾아 열고 (면허목록, 지역목록, 기초금액정보)를
+    반환한다. 못 찾으면 None. 기초금액정보는 탭이 없거나(물품/용역 등) 파싱에
+    실패하면 None으로 채워지되, 그것 때문에 면허/지역 확인 자체가 실패로
+    처리되지는 않는다(둘은 독립적인 정보라 한쪽이 없어도 다른 쪽은 살림)."""
     if not title or not pblanc_no:
         return None
 
@@ -173,7 +185,9 @@ def _lookup_one(page, title, pblanc_no):
         except Exception:
             return None
         page.wait_for_timeout(500)
-        return _extract_restriction_info(page)
+        licenses, regions = _extract_restriction_info(page)
+        basis_info = _extract_basis_amount_info(page)
+        return licenses, regions, basis_info
 
     return None
 
@@ -216,7 +230,93 @@ def _extract_restriction_info(page):
     return licenses, regions
 
 
-def _apply_restriction_result(bid, licenses, regions):
+def _cell_text_to_int(text):
+    """'1,144,179 원' 같은 표시 문자열에서 숫자만 뽑아 int로. 빈 값/파싱 실패는 None."""
+    if not text:
+        return None
+    digits = "".join(ch for ch in text if ch.isdigit())
+    return int(digits) if digits else None
+
+
+def _cell_text_to_float(text):
+    """'-2.0 %' 같은 표시 문자열에서 부호 있는 소수만 뽑아 float로. 파싱 실패는 None."""
+    import re
+    if not text:
+        return None
+    m = re.search(r"-?[0-9]+(\.[0-9]+)?", text)
+    return float(m.group()) if m else None
+
+
+# A값(법정 정산항목 합계)을 구성하는 항목들 - g2b_basis_amount.py가 나라장터에서
+# 쓰는 정의(산업안전보건관리비/안전관리비/퇴직공제부금비/국민건강보험료/
+# 국민연금보험료/노인장기요양보험료/품질관리비)와 이름만 다를 뿐 동일한 개념이라
+# 그대로 맞춰서 합산합니다.
+A_VALUE_LABELS = [
+    "국민건강보험료", "국민연금보험료", "요양보험료",
+    "산업안전보건관리비", "퇴직공제부금", "안전관리비", "품질관리비",
+]
+
+
+def _extract_basis_amount_info(page):
+    """상세 페이지의 "기초예비가격" 탭에서 실제 기초금액/예가변동폭/A값 구성요소를
+    읽는다. 탭 자체가 없거나(물품/용역 등 기초예비가격 미적용 공고) 파싱에
+    실패하면 None을 반환한다 - 없는 값을 억지로 만들어내지 않는다."""
+    try:
+        tab_link = page.query_selector('a[href="#tab_content03"]')
+        if not tab_link:
+            return None
+        tab_link.click()
+        page.wait_for_timeout(300)
+
+        # th(라벨)-td(값) 쌍을 같은 행(tr) 안에서 DOM 순서 그대로 짝지어야 정확합니다 -
+        # 페이지 전체의 th 목록과 td 목록을 따로 뽑아 인덱스로 매칭하면, 라벨 없는
+        # 빈 td(예: 기초예비가격 한글 표기용 셀)가 하나 끼어있어서 그 뒤로 전부
+        # 한 칸씩 밀리는 오탐이 있었습니다(직접 재현해서 확인함).
+        pairs = page.evaluate("""
+            () => {
+                const el = document.getElementById('tab_content03');
+                if (!el) return null;
+                const out = {};
+                for (const tr of el.querySelectorAll('tr')) {
+                    const cells = Array.from(tr.children);
+                    for (let i = 0; i < cells.length - 1; i++) {
+                        if (cells[i].tagName === 'TH' && cells[i].textContent.trim()) {
+                            if (cells[i + 1].tagName === 'TD') {
+                                out[cells[i].textContent.trim()] = cells[i + 1].textContent.trim();
+                            }
+                        }
+                    }
+                }
+                return out;
+            }
+        """)
+        if not pairs:
+            return None
+
+        base_amount = _cell_text_to_int(pairs.get("기초예비가격"))
+        variance_low = _cell_text_to_float(pairs.get("하한(%)"))
+        variance_high = _cell_text_to_float(pairs.get("상한(%)"))
+
+        a_value = None
+        a_components = [_cell_text_to_int(pairs.get(label)) for label in A_VALUE_LABELS]
+        if any(v is not None for v in a_components):
+            a_value = sum(v or 0 for v in a_components)
+
+        if base_amount is None and a_value is None and variance_low is None:
+            return None  # 탭은 있었지만 값이 전부 비어있음(기초예비가격 미적용 공고 등)
+
+        return {
+            "base_amount": base_amount,
+            "a_value": a_value,
+            "variance_pct": abs(variance_low) if variance_low is not None else (
+                variance_high if variance_high is not None else None
+            ),
+        }
+    except Exception:
+        return None
+
+
+def _apply_restriction_result(bid, licenses, regions, basis_info=None):
     from scrapers._common import get_region_scope
 
     region_text = ",".join(dict.fromkeys(regions))  # 순서 유지 중복제거 ("지역" 컬럼 표시용)
@@ -238,6 +338,16 @@ def _apply_restriction_result(bid, licenses, regions):
     )
     bid["region_scope"] = scope
     bid["eligible"] = scope is not None
+
+    if basis_info:
+        if basis_info.get("base_amount") is not None:
+            bid["base_amount"] = str(basis_info["base_amount"])
+            bid["base_amount_confirmed"] = True
+        # A값은 0원도 정상적인 실제값이라 None(데이터 없음)과 구분해서 채운다.
+        if basis_info.get("a_value") is not None:
+            bid["a_value"] = str(basis_info["a_value"])
+        if basis_info.get("variance_pct") is not None:
+            bid["bid_variance_pct"] = basis_info["variance_pct"]
 
 
 def _mark_unverified(bid):

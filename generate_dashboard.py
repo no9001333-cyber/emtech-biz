@@ -402,7 +402,7 @@ TEMPLATE = """<!DOCTYPE html>
         <input id="calcAValue" type="number" placeholder="법정 정산항목 합계">
       </div>
       <div class="field">
-        <label>예가변동폭 (%) <span class="src-badge warn">공고문 직접확인</span></label>
+        <label>예가변동폭 (%) <span class="src-badge" id="badgeVariance"></span></label>
         <select id="calcVariance">
           <option value="2">-2 / +2</option>
           <option value="3">-3 / +3</option>
@@ -924,6 +924,21 @@ function openCalc(bid) {{
   }} else {{
     document.getElementById('calcAValue').value = '';
     setBadge('badgeAValue', false, '', '데이터 없음-직접입력');
+  }}
+
+  // 예가변동폭: 현재는 D2B 공고문 상세페이지("기초예비가격" 탭)에서 실제 하한/상한%를
+  // 읽어온 경우에만 채워집니다(bid.bid_variance_pct). 드롭다운 옵션(2/3)과 정확히
+  // 일치하는 값만 자동선택하고, 옵션에 없는 값(예: 2.5%)이거나 데이터 자체가 없으면
+  // 기존 기본값(2, 즉 ±2%)을 그대로 두되 배지로 수동확인을 안내합니다 - 틀린 값을
+  // 자동선택된 것처럼 보이게 하지 않기 위함입니다.
+  const variancePct = bid.bid_variance_pct;
+  const varianceSel = document.getElementById('calcVariance');
+  if (variancePct !== undefined && variancePct !== null &&
+      Array.from(varianceSel.options).some(o => Number(o.value) === Number(variancePct))) {{
+    varianceSel.value = String(Math.round(variancePct));
+    setBadge('badgeVariance', true, '공고 데이터(실제값 ±' + variancePct + '%)');
+  }} else {{
+    setBadge('badgeVariance', false, '', '공고문 직접확인');
   }}
 
   // 낙찰하한율: 공고에 실제 값이 있고 30~100% 범위면 그대로 사용, 아니면 금액 구간으로
