@@ -16,20 +16,26 @@ getBidPblancListInfoCnstwkBsisAmount(공사기초금액조회)에서만 얻을 �
 이 오퍼레이션은 기초금액(bssamt)뿐 아니라 A값 구성 항목 전부와, 품질관리비/
 표준시장단가금액이 A값에 포함되는지 여부(Y/N)까지 함께 내려줍니다.
 
-주의: 기초금액/A값은 보통 개찰일 즈음에야 공개됩니다("기초금액공개일시"가
-찍혀있음). 아직 공개 전인 공고는 이 오퍼레이션이 데이터를 안 주므로, 그런
-공고는 g2b.py가 채워둔 잠정 추정치(예산금액)를 그대로 두고 건드리지 않습니다 -
-없는 값을 억지로 채우는 것보다는 "확인필요"로 남겨두는 게 안전합니다.
+2026-08-25 정정: "기초금액/A값은 보통 개찰일 즈음에야 공개된다"고 잘못 알고
+있었습니다 - 사용자가 지적한 대로, 투찰금액을 계산하려면 입찰자가 기초금액을
+미리 알아야 하니 애초에 공고 시점에 이미 정해져 있는 게 맞습니다(실제로 개찰
+하루 전 공고를 직접 열어봐도 기초금액/A값이 이미 공개되어 있는 것을 확인함).
+그런데 실제 운영 로그를 보니 미확인 건의 95%(572건 중 542건)가 "아직 공개
+안 됨"이 아니라 **요청 자체 실패(request_error)**였습니다 - MAX_WORKERS=8로
+짧은 시간에 몰아쳐 요청하다 보니 타임아웃/연결오류 같은 일시적 문제가 흔했던
+것으로 보입니다. 재시도 없는 단발성 요청이던 것을 g2b.py 등 다른 수집기가
+쓰는 get_with_retry(재시도 2회+backoff)로 바꿨습니다. 그래도 실패하는
+소수(진짜 아직 미공개인 경우 등)는 g2b.py가 채워둔 잠정 추정치(예산금액)를
+그대로 두고 "확인필요"로 남겨둡니다 - 없는 값을 억지로 채우지는 않습니다.
 """
 
 import concurrent.futures
 import sys
 import os
 
-import requests
-
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import G2B_SERVICE_KEY
+from scrapers._common import get_with_retry
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService/getBidPblancListInfoCnstwkBsisAmount"
 REQUEST_TIMEOUT = 20
@@ -66,11 +72,16 @@ def _fetch_one(bid_ntce_no: str, bid_ntce_ord: str):
         "bidNtceNo": bid_ntce_no,
     }
     try:
-        resp = requests.get(ENDPOINT, params=params, timeout=REQUEST_TIMEOUT)
-        resp.raise_for_status()
+        # 2026-08-25: 원래 재시도 없는 단발성 requests.get()이었는데, 실제 실행
+        # 로그로 확인해보니 실패 사유의 95%(572건 중 542건)가 "아직 공개 전"이
+        # 아니라 "요청 자체 실패"였다 - MAX_WORKERS=8로 짧은 시간에 몰아쳐 요청하다
+        # 보니 타임아웃/연결 오류 같은 일시적 문제가 흔했던 것으로 보인다. g2b.py
+        # 등 다른 수집기가 이미 쓰는 get_with_retry(재시도 2회+backoff)로 바꿔서
+        # 일시적 실패는 자동으로 다시 시도하게 했다.
+        resp = get_with_retry(ENDPOINT, params=params, timeout=REQUEST_TIMEOUT)
         data = resp.json()
     except Exception as e:
-        return None, f"request_error:{type(e).__name__}"
+        return None, f"request_error:{type(e).__name__}:{str(e)[:120]}"
 
     header = data.get("response", {}).get("header", {}) if isinstance(data, dict) else {}
     result_code = header.get("resultCode", "")
@@ -150,10 +161,22 @@ def enrich_g2b_bids_with_basis_amount(bids: list) -> None:
                     fail_reasons[reason] = fail_reasons.get(reason, 0) + 1
 
         # 실패사유를 종류별로 최대 몇 건인지만 요약 - "대부분 아직 미공개"인지
-        # "요청 자체가 죄다 실패"인지 다음 실행 로그에서 바로 구분할 수 있게.
+        # "요청 자체가 죄다 실패"인지, 실패라면 어떤 예외(타임아웃/연결오류 등)인지
+        # 다음 실행 로그에서 바로 구분할 수 있게. 2026-08-25: 예전엔 ':' 기준
+        # 첫 조각만 남겨서 "request_error"로 죄다 뭉뚱그려졌는데, 정작 무슨
+        # 예외였는지가 원인 파악에 제일 중요해서 카테고리+예외타입까지는 남긴다
+        # (구체적 에러 메시지는 너무 다양해 집계가 안 되니 요약에서는 뺌).
+        def _summary_key(reason):
+            parts = reason.split(":")
+            return ":".join(parts[:2]) if len(parts) > 1 else parts[0]
+
+        by_category = {}
+        for k, v in fail_reasons.items():
+            ck = _summary_key(k)
+            by_category[ck] = by_category.get(ck, 0) + v
         reason_summary = ", ".join(
-            f"{k.split(':')[0].split('(')[0]}:{v}건"
-            for k, v in sorted(fail_reasons.items(), key=lambda kv: -kv[1])[:6]
+            f"{k}:{v}건"
+            for k, v in sorted(by_category.items(), key=lambda kv: -kv[1])[:6]
         )
         print(f"[나라장터 기초금액/A값 재확인] 참가가능 {len(candidates)}건 중 {updated}건을 실제 공개된 값으로 갱신함")
         if fail_reasons:
