@@ -63,12 +63,21 @@ def fetch_kepco_bids():
 
     try:
         resp = requests.get(ENDPOINT, params=params, timeout=30)
+        # 2026-08-24: 실제 키로도 계속 "Expecting value"(빈 응답 본문)로 실패하는데
+        # status_code/헤더를 안 남겨서 200인지 204인지 다른 상태인지조차 몰랐다.
+        # raise_for_status() 이전에 무조건 남겨서 다음 실행 로그로 원인을 좁힌다.
+        print(
+            f"[KEPCO] 응답 상태: {resp.status_code}, "
+            f"Content-Length={resp.headers.get('Content-Length')}, "
+            f"Content-Type={resp.headers.get('Content-Type')}, "
+            f"최종 URL={resp.url}"
+        )
         resp.raise_for_status()
         data = resp.json()
     except Exception as e:
         print(f"[KEPCO] 요청 실패: {e}")
         try:
-            print(f"[KEPCO] 응답 내용(처음 300자): {resp.text[:300]}")
+            print(f"[KEPCO] 응답 내용(처음 300자): {resp.text[:300]!r}")
         except Exception:
             pass
         return []
