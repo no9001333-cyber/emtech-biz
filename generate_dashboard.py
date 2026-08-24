@@ -270,8 +270,16 @@ TEMPLATE = """<!DOCTYPE html>
 <div id="bidsView">
 <div class="controls">
   <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
-    <input id="eligibleOnly" type="checkbox" checked style="width:16px; height:16px;">
-    용인 참가가능만 보기
+    <input id="scopeYongin" type="checkbox" checked style="width:16px; height:16px;">
+    용인
+  </label>
+  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="scopeGyeonggi" type="checkbox" checked style="width:16px; height:16px;">
+    경기도
+  </label>
+  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="scopeNationwide" type="checkbox" checked style="width:16px; height:16px;">
+    전국
   </label>
   <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
     <input id="telecomOnly" type="checkbox" checked style="width:16px; height:16px;">
@@ -638,7 +646,9 @@ function fieldMatches(b, q, field) {{
 // 이미 선택된 날짜범위에 갇히지 않고 다른 날짜의 건수도 보여줘야 함).
 function getFilteredBids(opts) {{
   opts = opts || {{}};
-  const eligibleOnly = document.getElementById('eligibleOnly').checked;
+  const scopeYongin = document.getElementById('scopeYongin').checked;
+  const scopeGyeonggi = document.getElementById('scopeGyeonggi').checked;
+  const scopeNationwide = document.getElementById('scopeNationwide').checked;
   const telecomOnly = document.getElementById('telecomOnly').checked;
   const q = document.getElementById('search').value.trim().toLowerCase();
   const searchField = document.getElementById('searchField').value;
@@ -663,8 +673,16 @@ function getFilteredBids(opts) {{
   const colStatus = document.getElementById('colFilterStatus').value;
   const memos = loadMemos();
 
+  const anyScopeChecked = scopeYongin || scopeGyeonggi || scopeNationwide;
+
   return BIDS.filter(b => {{
-    const matchEligible = !eligibleOnly || b.eligible !== false;
+    // 세 체크박스를 하나도 안 켰으면 지역 범위로는 아예 거르지 않는다 (예: 서울처럼
+    // 용인/경기도/전국 어디에도 안 걸리는 지역은 이렇게 다 끄고 지역 드롭다운에서
+    // 직접 찾아본다). 하나라도 켜져 있으면 그 범위(region_scope)에 해당하는 것만 남긴다.
+    const matchEligible = !anyScopeChecked ||
+      (scopeYongin && b.region_scope === '용인') ||
+      (scopeGyeonggi && b.region_scope === '경기') ||
+      (scopeNationwide && b.region_scope === '전국');
     const matchTelecom = !telecomOnly || TELECOM_KEYWORDS.some(k =>
       (b.title || '').includes(k) || (b.industry || '').includes(k));
     const matchQ = fieldMatches(b, q, searchField);
@@ -758,7 +776,9 @@ function clearColFilters() {{
   render();
 }}
 
-document.getElementById('eligibleOnly').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('scopeYongin').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('scopeGyeonggi').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('scopeNationwide').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('telecomOnly').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('search').addEventListener('input', () => {{ render(); buildCalendar(); }});
 document.getElementById('searchField').addEventListener('change', () => {{ render(); buildCalendar(); }});

@@ -89,8 +89,17 @@ LOCAL_RADIUS = 100  # 지역단서(REGION_CUE_WORDS) 바로 근처만 진짜 제
 
 def _classify_region(window_text: str):
     """참가자격 텍스트 조각에서 지역 제한 여부를 판단.
-    반환: (eligible: True/False/None, matched_snippet: str)
-    None이면 이 조각만으로는 판단 근거를 못 찾은 것(기존 값 유지 + 발췌문만 남김).
+    반환: (result, matched_snippet)
+    result: "용인"|"경기"|"전국"(참가가능, 해당 범위) / False(참가불가 확정) /
+             None(이 조각만으로는 판단 근거를 못 찾음 - 기존 값 유지 + 발췌문만 남김)
+
+    2026-08-24: "서울"은 더 이상 이 함수가 자동으로 참가가능 처리하지 않습니다.
+    대시보드가 용인/경기도/전국 세 범위를 독립적으로 켜고 끄는 체크박스로
+    바뀌면서, 그 셋 중 어디에도 안 들어가는 서울 같은 지역은 억지로 끼워
+    넣지 않고 지역 드롭다운에서 직접 찾아보도록 남겨두기로 했습니다(예전엔
+    "서울"만 나와도 무조건 True였는데, 정작 1차 판정(is_eligible_region)은
+    애초에 서울을 참가가능으로 보지 않아서 PDF 재확인 후보로도 안 뽑히는
+    모순이 있었습니다).
 
     2026-08-20 재작성 - 실제 운영 데이터로 확인된 심각한 오탐 사례 때문에
     전면 재작성했습니다. 예전 버전은 500자짜리 넓은 창(window) 안에 지역단서
@@ -139,18 +148,16 @@ def _classify_region(window_text: str):
             local = window_text[local_start:local_end]
 
             if HOME_CITY in local:
-                return True, _snippet_around(window_text, HOME_CITY)
+                return "용인", _snippet_around(window_text, HOME_CITY)
             if "전국" in local:
-                return True, _snippet_around(window_text, "전국")
+                return "전국", _snippet_around(window_text, "전국")
 
             other_city_hit = next((c for c in GYEONGGI_OTHER_CITIES if c in local), None)
             if other_city_hit:
                 return False, _snippet_around(window_text, other_city_hit)
 
             if HOME_PROVINCE in local:
-                return True, _snippet_around(window_text, HOME_PROVINCE)
-            if "서울" in local:
-                return True, _snippet_around(window_text, "서울")
+                return "경기", _snippet_around(window_text, HOME_PROVINCE)
 
             other_region_hit = next((k for k in EXCLUDE_REGION_KEYWORDS if k in local), None)
             if other_region_hit:
@@ -192,10 +199,10 @@ def _verify_one(bid: dict) -> dict:
         if not text:
             continue
         window = _find_eligibility_window(text)
-        eligible, snippet = _classify_region(window)
+        scope, snippet = _classify_region(window)
         if not window:
             continue  # 이 PDF엔 참가자격 조항이 없음 - 다른 첨부파일도 시도
-        return {"source": "pdf", "eligible": eligible, "snippet": snippet}
+        return {"source": "pdf", "scope": scope, "snippet": snippet}
 
     return {"source": "pdf-unavailable"}
 
@@ -251,7 +258,7 @@ def verify_g2b_region_eligibility(bids: list) -> None:
 
                 verified += 1
                 snippet = result.get("snippet", "")
-                confirmed = result.get("eligible")
+                confirmed = result.get("scope")  # "용인"|"경기"|"전국" / False / None
                 if confirmed is None:
                     bid["region_check"] = {
                         "verified": True, "eligible_confirmed": None,
@@ -259,9 +266,12 @@ def verify_g2b_region_eligibility(bids: list) -> None:
                     }
                     continue
 
+                new_eligible = confirmed is not False
+                new_scope = confirmed if new_eligible else None
                 before = bid.get("eligible")
-                bid["eligible"] = confirmed
-                if before != confirmed:
+                bid["eligible"] = new_eligible
+                bid["region_scope"] = new_scope
+                if before != new_eligible:
                     changed += 1
                 bid["region_check"] = {
                     "verified": True, "eligible_confirmed": confirmed,

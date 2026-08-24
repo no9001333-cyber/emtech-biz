@@ -217,7 +217,7 @@ def _extract_restriction_info(page):
 
 
 def _apply_restriction_result(bid, licenses, regions):
-    from scrapers._common import is_eligible_region
+    from scrapers._common import get_region_scope
 
     region_text = ",".join(dict.fromkeys(regions))  # 순서 유지 중복제거 ("지역" 컬럼 표시용)
     has_restriction = bool(regions)
@@ -232,10 +232,12 @@ def _apply_restriction_result(bid, licenses, regions):
 
     bid["restrictions"] = ", ".join(tags)
     bid["region"] = region_text
-    bid["eligible"] = is_eligible_region(
+    scope = get_region_scope(
         region_text, bid.get("org", ""), bid.get("title", ""),
         has_region_restriction=has_restriction,
     )
+    bid["region_scope"] = scope
+    bid["eligible"] = scope is not None
 
 
 def _mark_unverified(bid):

@@ -178,6 +178,7 @@ def fetch_kwater_bids():
             # 이걸로 참가가능 여부를 자동 판정하면 대부분(약 90%) 잘못 "참가불가"로 걸러짐.
             # 그래서 자동 필터링 없이 항상 True로 두고, 지역본부명은 화면에만 참고용으로 노출.
             "eligible": True,
+            "region_scope": "전국",
         })
 
     print(f"[K-water] 총 {len(results)}건 수집")

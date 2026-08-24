@@ -111,6 +111,7 @@ def fetch_kogas_bids():
             "deadline": deadline,
             "url": "http://bid.kogas.or.kr/",
             "eligible": True,
+            "region_scope": "전국",
         })
 
     print(f"[한국가스공사] 총 {len(results)}건 수집")

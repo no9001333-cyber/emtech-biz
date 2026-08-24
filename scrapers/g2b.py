@@ -32,7 +32,7 @@ import requests
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import KEYWORDS, REGIONS, ALWAYS_INCLUDE_ORGS, EXCLUDE_REGION_KEYWORDS, G2B_SERVICE_KEY, LOOKBACK_DAYS
-from scrapers._common import is_deadline_in_range, get_with_retry, is_eligible_region
+from scrapers._common import is_deadline_in_range, get_with_retry, get_region_scope
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService"
 # 공사(工事) 입찰공고 목록 조회 오퍼레이션
@@ -227,10 +227,11 @@ def fetch_g2b_bids():
                 "deadline": deadline,
                 "url": item.get("bidNtceDtlUrl", ""),
                 "attachments": _collect_attachments(item),
-                "eligible": is_eligible_region(
+                "region_scope": (_scope := get_region_scope(
                     region_text, org_text, title,
                     has_region_restriction=has_region_restriction,
-                ),
+                )),
+                "eligible": _scope is not None,
             })
 
         total_count = int(body.get("totalCount", 0))

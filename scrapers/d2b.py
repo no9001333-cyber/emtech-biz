@@ -124,6 +124,7 @@ def _parse_goods_item(item) -> dict:
         "deadline": deadline,
         "url": "https://www.d2b.go.kr",
         "eligible": True,
+        "region_scope": "전국",
     }
 
 
@@ -146,6 +147,7 @@ def _parse_fclty_item(item) -> dict:
         "deadline": deadline,
         "url": "https://www.d2b.go.kr",
         "eligible": True,
+        "region_scope": "전국",
     }
 
 

@@ -110,6 +110,7 @@ def fetch_kepco_bids():
             "deadline": deadline,
             "url": "https://bigdata.kepco.co.kr",
             "eligible": True,
+            "region_scope": "전국",
         })
 
     print(f"[KEPCO] 총 {len(results)}건 수집")

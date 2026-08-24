@@ -81,21 +81,27 @@ def bid_status(deadline_text: str) -> str:
     return "마감"
 
 
-def is_eligible_region(region_text: str, org_text: str = "", title_text: str = "",
-                        has_region_restriction=None) -> bool:
-    """용인시 소재 업체가 이 공고에 실제로 입찰 참가 가능한지 판단.
+def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
+                      has_region_restriction=None):
+    """용인시 소재 업체가 이 공고에 실제로 입찰 참가 가능한 범위를 판단.
 
-    참가 가능:
-      - 지역 정보가 비어있음 (=지역제한 없음, 전국 대상으로 간주)
-      - "전국" 명시
-      - "용인" 명시
-      - "경기도"라고만 되어있고, 용인이 아닌 다른 경기도 시·군이 안 붙어있는 경우
-        (=경기도 전체 대상 공고)
-      - 한전/철도공사 등 전국구 발주기관 (ALWAYS_INCLUDE_ORGS)
+    반환값: "용인" | "경기" | "전국" | None(참가불가/판단불가)
 
-    참가 불가:
+    2026-08-24: 예전엔 True/False만 반환했는데, 대시보드에서 "용인만"/"경기도만"/
+    "전국만"을 독립적으로 켜고 끌 수 있게 해달라는 요청으로 범위까지 반환하도록
+    바꿨습니다. 판단 기준 자체는 그대로입니다:
+
+    "용인": "용인" 명시
+    "경기": "경기도"라고만 되어있고, 용인이 아닌 다른 경기도 시·군이 안 붙어있는 경우
+            (=경기도 전체 대상 공고)
+    "전국": 지역 정보가 비어있음 / "전국" 명시 / 한전·철도공사 등 전국구 발주기관
+            (ALWAYS_INCLUDE_ORGS)
+    None (참가 불가):
       - "경기도 안양시"처럼 용인이 아닌 다른 경기도 시·군이 명시된 경우
       - 다른 광역시/도(부산, 강원, 충북 등)가 명시된 경우
+      - "서울"만 있는 경우도 여기 포함됩니다 - 경기/용인과는 별개 지역이라
+        굳이 용인/경기도/전국 셋 중 하나로 억지로 분류하지 않고, 대시보드
+        지역 드롭다운에서 "서울"을 직접 선택해 따로 찾아보도록 남겨둡니다.
 
     has_region_restriction: 공고에 실제 지역제한(나라장터 API의
       rgnLmtBidLocplcJdgmBssNm/rgnDutyJntcontrctYn 같은 필드)이 걸려있는지
@@ -115,24 +121,30 @@ def is_eligible_region(region_text: str, org_text: str = "", title_text: str = "
     combined = region_text + " " + org_text + " " + title_text
 
     if any(o in org_text for o in ALWAYS_INCLUDE_ORGS):
-        return True
+        return "전국"
     if HOME_CITY in region_text:
-        return True
+        return "용인"
     if "전국" in region_text:
-        return True
+        return "전국"
     if any(city in combined for city in GYEONGGI_OTHER_CITIES):
         if has_region_restriction is False and HOME_PROVINCE in region_text:
             # 실제 지역제한이 없다고 확인됐고, 경기도 소재 공고면 경기도 전역 대상으로 간주
-            return True
+            return "경기"
         # 용인이 아닌 다른 경기도 시·군이 특정되어 있으면 참가 불가
-        return False
+        return None
     if any(k in combined for k in EXCLUDE_REGION_KEYWORDS):
         # 경기도 밖 다른 광역시/도가 특정되어 있으면 참가 불가
-        return False
+        return None
     if HOME_PROVINCE in region_text:
         # "경기도"만 있고 특정 시·군은 없음 = 경기도 전체 대상
-        return True
+        return "경기"
     if not region_text:
         # 지역 정보 자체가 없음 = 전국 대상으로 간주
-        return True
-    return False
+        return "전국"
+    return None
+
+
+def is_eligible_region(region_text: str, org_text: str = "", title_text: str = "",
+                        has_region_restriction=None) -> bool:
+    """(하위 호환용) get_region_scope()가 None이 아니면 참가가능."""
+    return get_region_scope(region_text, org_text, title_text, has_region_restriction) is not None
