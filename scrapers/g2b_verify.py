@@ -109,6 +109,20 @@ def _classify_region(window_text: str):
     다른 특정 시·군을 경기도보다 먼저 검사)는 동일하게 유지합니다 - "경기도
     안양시에 본사를 둔 업체"처럼 특정 시·군까지 콕 집은 경우를 "경기도"라는
     글자만 보고 참가가능으로 잘못 판단하지 않기 위함입니다.
+
+    2026-08-24 순서 버그 수정: EXCLUDE_REGION_KEYWORDS(다른 시·도) 체크가
+    HOME_PROVINCE 체크보다 먼저였던 탓에, "경기도, 충청남도, 경상북도, 대구
+    광역시... 관할구역 안에 소재한 업체" 처럼 여러 지역을 OR로 나열하면서
+    경기도도 그 목록에 포함된 경우(실제로는 참가 가능)가 다른 지역 이름이
+    먼저 걸려서 무조건 참가불가로 잘못 판정되고 있었습니다(코레일
+    "경부고속선 광명역 등 14개소 구내 광케이블 개량공사" 건에서 발견).
+    EXCLUDE_REGION_KEYWORDS는 "이 공고는 완전히 다른 지역 전용"이라는
+    뜻이어야 하는데, 같은 local 창 안에 우리 지역(경기/서울)도 같이 나열돼
+    있으면 그 전제가 깨지므로, HOME_PROVINCE/서울 체크를 먼저 하도록
+    순서를 바꿨습니다. GYEONGGI_OTHER_CITIES(경기도 내 다른 특정 시·군)
+    체크는 여전히 그보다 먼저 유지합니다 - "경기도 안양시"처럼 시·군까지
+    콕 집은 경우는 "경기도"라는 글자만으로 참가가능 처리하면 안 되기
+    때문입니다.
     """
     if not window_text:
         return None, ""
@@ -133,14 +147,14 @@ def _classify_region(window_text: str):
             if other_city_hit:
                 return False, _snippet_around(window_text, other_city_hit)
 
-            other_region_hit = next((k for k in EXCLUDE_REGION_KEYWORDS if k in local), None)
-            if other_region_hit:
-                return False, _snippet_around(window_text, other_region_hit)
-
             if HOME_PROVINCE in local:
                 return True, _snippet_around(window_text, HOME_PROVINCE)
             if "서울" in local:
                 return True, _snippet_around(window_text, "서울")
+
+            other_region_hit = next((k for k in EXCLUDE_REGION_KEYWORDS if k in local), None)
+            if other_region_hit:
+                return False, _snippet_around(window_text, other_region_hit)
 
     return None, window_text[:200].strip()
 
