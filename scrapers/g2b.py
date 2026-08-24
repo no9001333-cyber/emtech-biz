@@ -221,10 +221,19 @@ def fetch_g2b_bids():
                 "reserve_price_total_count": item.get("totPrdprcNum", ""),
                 "reserve_price_draw_count": item.get("drwtPrdprcNum", ""),
                 "notice_date": item.get("bidNtceDt", ""),
-                "reg_deadline": item.get("bidQlfctRegDt", "") or item.get("prtcptRegYn", ""),
+                # 2026-08-25: "bidQlfctRegDt"는 실제 API 필드명이 아닙니다(오타 -
+                # 진짜 필드는 "bidQlfctRgstDt", g자리가 하나 빠져있었음). 그래서
+                # 이 값은 계속 빈 문자열이었고 fallback인 prtcptRegYn(참가등록
+                # 여부 Y/N 플래그, 날짜가 아님)도 대부분 안 채워져서 나라장터
+                # 공고 전체에서 "참가등록마감" 컬럼이 거의 항상 "-"로 비어
+                # 보였습니다. 실제 필드명으로 수정.
+                "reg_deadline": item.get("bidQlfctRgstDt", ""),
                 "bid_method": item.get("bidMethdNm", "") or item.get("cntrctCnclsMthdNm", ""),
                 "restrictions": _build_restrictions(item),
                 "deadline": deadline,
+                # 개찰일시 - 투찰마감(deadline)과 보통 같은 날 몇 시간 뒤라, 대시보드
+                # "투찰마감" 컬럼 아래에 함께 표시하기 위해 추가.
+                "open_date": item.get("opengDt", ""),
                 "url": item.get("bidNtceDtlUrl", ""),
                 "attachments": _collect_attachments(item),
                 "region_scope": (_scope := get_region_scope(

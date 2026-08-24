@@ -186,8 +186,11 @@ def _lookup_one(page, title, pblanc_no):
             return None
         page.wait_for_timeout(500)
         licenses, regions = _extract_restriction_info(page)
-        basis_info = _extract_basis_amount_info(page)
-        return licenses, regions, basis_info
+        basis_info = _extract_basis_amount_info(page) or {}
+        open_date = _extract_open_date(page)
+        if open_date:
+            basis_info["open_date"] = open_date
+        return licenses, regions, (basis_info or None)
 
     return None
 
@@ -316,6 +319,27 @@ def _extract_basis_amount_info(page):
         return None
 
 
+def _extract_open_date(page):
+    """상세 페이지 기본 탭(입찰진행정보)에서 개찰일시를 읽는다. D2B 공식 API
+    (getFcltyCmpetBidPblancList)엔 개찰일시 필드가 없어서, 이미 지역/면허제한
+    확인을 위해 열어둔 이 상세페이지에서 같이 읽어온다. 못 찾으면 빈 문자열."""
+    try:
+        th = page.query_selector('th:has-text("개찰일시")')
+        if not th:
+            return ""
+        # th 바로 다음 형제가 값이 든 td인 구조 (기초예비가격 탭과 동일 패턴).
+        value = page.evaluate("""
+            (thEl) => {
+                let sib = thEl.nextElementSibling;
+                while (sib && sib.tagName !== 'TD') sib = sib.nextElementSibling;
+                return sib ? sib.textContent.trim() : '';
+            }
+        """, th)
+        return value or ""
+    except Exception:
+        return ""
+
+
 def _apply_restriction_result(bid, licenses, regions, basis_info=None):
     from scrapers._common import get_region_scope
 
@@ -348,6 +372,8 @@ def _apply_restriction_result(bid, licenses, regions, basis_info=None):
             bid["a_value"] = str(basis_info["a_value"])
         if basis_info.get("variance_pct") is not None:
             bid["bid_variance_pct"] = basis_info["variance_pct"]
+        if basis_info.get("open_date"):
+            bid["open_date"] = basis_info["open_date"]
 
 
 def _mark_unverified(bid):

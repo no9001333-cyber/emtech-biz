@@ -756,8 +756,8 @@ function render() {{
       <td data-label="입찰방식">${{b.bid_method || '-'}}</td>
       <td data-label="제한사항">${{restrictionsHtml(b.restrictions)}}</td>
       <td data-label="금액정보">${{amountInfoHtml(b)}}</td>
-      <td data-label="투찰마감">${{fmtDateTime(b.deadline)}}${{ddayLabel(b.deadline, b.status) ? ` <span class="tag" style="border-color:var(--accent); color:var(--accent);">${{ddayLabel(b.deadline, b.status)}}</span>` : ''}}</td>
-      <td data-label="참가등록마감">${{fmtDateTime(b.reg_deadline)}}</td>
+      <td data-label="투찰마감">${{fmtDateTime(b.deadline)}}${{ddayLabel(b.deadline, b.status) ? ` <span class="tag" style="border-color:var(--accent); color:var(--accent);">${{ddayLabel(b.deadline, b.status)}}</span>` : ''}}${{b.open_date ? `<br><span style="color:var(--muted); font-size:0.72rem;">개찰 ${{fmtDateTime(b.open_date)}}</span>` : ''}}</td>
+      <td data-label="참가등록마감">${{b.reg_deadline ? (b.notice_date ? `<span style="color:var(--muted); font-size:0.72rem;">${{fmtDateTime(b.notice_date)}} ~</span><br>` : '') + fmtDateTime(b.reg_deadline) : '-'}}</td>
       <td data-label="메모"><input class="memo-input" type="text" placeholder="메모 입력..." value="${{memoVal.replace(/"/g,'&quot;')}}" data-key="${{key}}"></td>
       <td><button class="btn-calc" data-idx="${{idx}}">투찰금액 계산</button></td>
     `;

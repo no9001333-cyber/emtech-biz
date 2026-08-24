@@ -109,6 +109,7 @@ def fetch_kogas_bids():
             "reg_deadline": "",
             "bid_method": _text(item, "CONT_METHOD_NAME"),
             "deadline": deadline,
+            "open_date": _text(item, "OPEN_DT"),
             "url": "http://bid.kogas.or.kr/",
             "eligible": True,
             "region_scope": "전국",
