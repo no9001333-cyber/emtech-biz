@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-08-25 09:04",
+  "checked_at": "2026-08-26 08:40",
   "sources": [
     {
       "source": "나라장터",
       "ok": true,
-      "count": 6347,
-      "note": "6347건 수집"
+      "count": 5944,
+      "note": "5944건 수집"
     },
     {
       "source": "LH",
@@ -34,14 +34,14 @@
     {
       "source": "한국가스공사",
       "ok": true,
-      "count": 130,
-      "note": "130건 수집"
+      "count": 128,
+      "note": "128건 수집"
     },
     {
       "source": "나라장터 낙찰정보",
       "ok": true,
-      "count": 5339,
-      "note": "5339건 수집"
+      "count": 5675,
+      "note": "5675건 수집"
     }
   ]
 }
