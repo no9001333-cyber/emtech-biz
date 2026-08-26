@@ -117,13 +117,20 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
       rgnLmtBidLocplcJdgmBssNm/rgnDutyJntcontrctYn 같은 필드)이 걸려있는지
       호출하는 쪽이 알고 있으면 넘겨줍니다.
       - False로 넘어오면: 공식 데이터로 지역제한이 없다고 "확인된" 경우입니다.
-        region_text의 "경기도 OO시"는 실제로는 공사현장 소재지일 뿐 참가자격
-        제한이 아닌 경우가 많다는 게 실제 사례로 확인됐습니다 (예: "경기도
-        여주시"/"경기도 수원시"로 표기된 학교 통신공사 공고들이 지역제한
-        플래그는 비어있는데도 다른 시·군이라는 이유만으로 계속 참가불가 처리
-        되고 있었음 — 경쟁 서비스의 맞춤공고 목록과 대조해서 발견). 이 경우
-        "경기도"가 들어있으면 경기도 전역 대상 공고로 보고 참가 가능 처리합니다.
+        이때는 region_text가 무슨 지역을 담고 있든(경기도든 충청남도든) 그냥
+        공사현장 소재지 설명일 뿐 참가자격 제한이 아니므로, 전국 어디 업체든
+        참가 가능한 것으로 보고 무조건 "전국"을 반환합니다.
       - None(모름, 기본값)이면 기존처럼 지역 시·군 이름만으로 추정합니다.
+
+    2026-08-26: 위 has_region_restriction=False 처리를 "경기도 시·군이 같이
+    적힌 경우"에만 적용하고 있었는데, 실제로는 경기도가 아예 안 나오고 다른
+    도(道)만 적힌 경우(예: "충청남도 예산군")도 지역제한이 없다고 확인되면
+    참가 가능한 게 맞았다 (대박낙찰정보와 대조해서 발견 - "예산시험장 1종대형
+    장내기능시험장 시설 보수공사"/"내포공동구 소방 무선통신보조설비 보강공사"
+    둘 다 restrictions가 비어있는데도(=지역제한 없음 확인됨) region이
+    "충청남도"라는 이유만으로 계속 참가불가 처리되고 있었음). 그래서
+    has_region_restriction is False 체크를 지역명 매칭보다 먼저, 무조건
+    "전국"을 반환하도록 맨 위로 옮겼다.
     """
     region_text = region_text or ""
     org_text = org_text or ""
@@ -132,15 +139,17 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
 
     if any(o in org_text for o in ALWAYS_INCLUDE_ORGS):
         return "전국"
+    if has_region_restriction is False:
+        # 실제 지역제한이 없다고 API로 확인된 경우: region_text에 어떤 지역이
+        # 적혀있든 공사현장 소재지 설명일 뿐이라, 지역명 매칭 없이 바로 전국 대상.
+        return "전국"
     if HOME_CITY in region_text:
         return "용인"
     if "전국" in region_text:
         return "전국"
     if any(city in combined for city in GYEONGGI_OTHER_CITIES):
-        if has_region_restriction is False and HOME_PROVINCE in region_text:
-            # 실제 지역제한이 없다고 확인됐고, 경기도 소재 공고면 경기도 전역 대상으로 간주
-            return "경기"
         # 용인이 아닌 다른 경기도 시·군이 특정되어 있으면 참가 불가
+        # (has_region_restriction이 False로 확인된 경우는 위에서 이미 전국으로 처리됨)
         return None
     if HOME_PROVINCE in region_text:
         # "경기도"(또는 "경기도"를 포함해 여러 지역이 나열된 경우)면 경기도 업체는
