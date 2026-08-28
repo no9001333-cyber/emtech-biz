@@ -40,12 +40,23 @@ from scrapers.kwater import fetch_kwater_bids
 from scrapers.kepco import fetch_kepco_bids
 from scrapers.kogas import fetch_kogas_bids
 from scrapers.g2b_awards import fetch_g2b_awards
-from scrapers._common import bid_status, deadline_sort_key
+from scrapers._common import bid_status, deadline_sort_key, get_region_scope
 from generate_dashboard import generate_dashboard, generate_awards_page
 
 
 def _dedupe_key(bid):
     return f"{bid.get('source')}::{bid.get('notice_no') or bid.get('title')}"
+
+
+def _has_region_restriction_from_stored(restrictions_text: str):
+    """이월된(재조회 안 된) 나라장터 공고의 restrictions 문자열에서 실제
+    지역제한 여부를 역으로 추정한다. g2b.py의 _build_restrictions()가
+    "지역제한(...)"/"지역의무공동도급" 태그를 붙이는 조건이 곧 has_region_restriction=True
+    조건과 정확히 같으므로(참가자격제한 태그는 별개 - 시평액 등 참가자격 문제라
+    지역과 무관해서 제외), 이 두 태그의 유무만 보면 재조회 없이도 정확히
+    복원할 수 있다."""
+    text = restrictions_text or ""
+    return ("지역제한(" in text) or ("지역의무공동도급" in text)
 
 
 def _run_source(name, key_configured, fetch_fn, status_list):
@@ -124,6 +135,7 @@ def main():
         previous_bids = []
 
     carried_over = 0
+    rescoped = 0
     for old_bid in previous_bids:
         if old_bid.get("source") != "나라장터":
             continue
@@ -133,10 +145,29 @@ def main():
         if bid_status(old_bid.get("deadline", "")) != "진행중":
             continue  # 이미 마감된 건 이월 대상 아님 (등록일시 조회 창 문제와 무관)
         old_bid["status"] = "진행중"
+        # 2026-08-28: 이월된 공고는 재조회를 안 하니 region/org/title/restrictions
+        # 값 자체는 그대로인데, region_scope는 "그 공고를 맨 처음 수집했던 날"의
+        # get_region_scope() 로직으로 계산된 채 그대로 얼어붙어 있었다. 그래서
+        # get_region_scope() 판정 기준을 나중에 고쳐도(예: 2026-08-26 지역제한
+        # 없음 확인된 공고를 전국으로 처리하는 수정) 오늘 새로 조회된 공고만
+        # 바로 반영되고, 이미 이월 중이던 공고는 마감될 때까지 계속 옛날 판정을
+        # 달고 있었다(대박낙찰정보와 대조하다가 발견). 재조회 없이도 이미 저장된
+        # region/org/title/restrictions만으로 다시 계산 가능하므로, 이월할 때마다
+        # 최신 로직으로 다시 계산해서 덮어쓴다.
+        new_scope = get_region_scope(
+            old_bid.get("region", ""), old_bid.get("org", ""), old_bid.get("title", ""),
+            has_region_restriction=_has_region_restriction_from_stored(old_bid.get("restrictions", "")),
+        )
+        if new_scope != old_bid.get("region_scope"):
+            rescoped += 1
+        old_bid["region_scope"] = new_scope
+        old_bid["eligible"] = new_scope is not None
         deduped[key] = old_bid
         carried_over += 1
     if carried_over:
         print(f"[나라장터 이월] 등록일시 조회 창 밖으로 밀려났지만 아직 마감 전인 공고 {carried_over}건을 이전 데이터에서 이월")
+    if rescoped:
+        print(f"[나라장터 이월] 이월하면서 최신 지역판정 로직으로 region_scope가 바뀐 공고 {rescoped}건")
 
     kept = list(deduped.values())
 
