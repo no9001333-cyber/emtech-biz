@@ -117,9 +117,10 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
       rgnLmtBidLocplcJdgmBssNm/rgnDutyJntcontrctYn 같은 필드)이 걸려있는지
       호출하는 쪽이 알고 있으면 넘겨줍니다.
       - False로 넘어오면: 공식 데이터로 지역제한이 없다고 "확인된" 경우입니다.
-        이때는 region_text가 무슨 지역을 담고 있든(경기도든 충청남도든) 그냥
-        공사현장 소재지 설명일 뿐 참가자격 제한이 아니므로, 전국 어디 업체든
-        참가 가능한 것으로 보고 무조건 "전국"을 반환합니다.
+        이 경우 region_text에 EXCLUDE_REGION_KEYWORDS(충남/강원 등 다른 도)만
+        적혀있다면 그건 공사현장 소재지 설명일 뿐이므로 참가불가 처리하지
+        않습니다. 아래 2026-08-28 항목 참고 - "서울"처럼 원래도 판단을
+        보류하던 지역까지 이걸로 무조건 전국 처리해버리면 안 됩니다.
       - None(모름, 기본값)이면 기존처럼 지역 시·군 이름만으로 추정합니다.
 
     2026-08-26: 위 has_region_restriction=False 처리를 "경기도 시·군이 같이
@@ -128,9 +129,20 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
     참가 가능한 게 맞았다 (대박낙찰정보와 대조해서 발견 - "예산시험장 1종대형
     장내기능시험장 시설 보수공사"/"내포공동구 소방 무선통신보조설비 보강공사"
     둘 다 restrictions가 비어있는데도(=지역제한 없음 확인됨) region이
-    "충청남도"라는 이유만으로 계속 참가불가 처리되고 있었음). 그래서
-    has_region_restriction is False 체크를 지역명 매칭보다 먼저, 무조건
-    "전국"을 반환하도록 맨 위로 옮겼다.
+    "충청남도"라는 이유만으로 계속 참가불가 처리되고 있었음).
+
+    2026-08-28 되돌림: 위 수정을 함수 맨 위(모든 지역명 검사보다 먼저)에서
+    무조건 "전국"을 반환하도록 넣었었는데, 이게 너무 넓었다. "서울특별시"처럼
+    EXCLUDE_REGION_KEYWORDS에도 안 걸리고 경기/용인/전국 어디에도 안 걸리는
+    지역명은, has_region_restriction이 False(API 구조화 필드로만 확인된 것)여도
+    실제로는 PDF 원문에만 진짜 지역제한이 적혀있고 API 필드는 그냥 비어있는
+    경우가 흔하다(g2b_verify.py가 생긴 이유 자체가 이거다). 원래 코드는 이런
+    "인식 못 하는 지역명"을 안전하게 None(참가불가) 처리했는데, 맨 위 우선
+    처리 때문에 서울 등 전혀 상관없는 지역 공고까지 "전국"으로 잘못 새서 대시보드에
+    올라오고 있었다(사용자가 직접 발견). 그래서 has_region_restriction=False
+    처리를 "EXCLUDE_REGION_KEYWORDS(다른 도) 검사 바로 앞"으로 좁혀서, 검증된
+    다른 도(道) 사례만 구제하고 서울처럼 원래도 판단 보류하던 지역은 계속
+    None으로 안전하게 남게 했다.
     """
     region_text = region_text or ""
     org_text = org_text or ""
@@ -139,17 +151,12 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
 
     if any(o in org_text for o in ALWAYS_INCLUDE_ORGS):
         return "전국"
-    if has_region_restriction is False:
-        # 실제 지역제한이 없다고 API로 확인된 경우: region_text에 어떤 지역이
-        # 적혀있든 공사현장 소재지 설명일 뿐이라, 지역명 매칭 없이 바로 전국 대상.
-        return "전국"
     if HOME_CITY in region_text:
         return "용인"
     if "전국" in region_text:
         return "전국"
     if any(city in combined for city in GYEONGGI_OTHER_CITIES):
         # 용인이 아닌 다른 경기도 시·군이 특정되어 있으면 참가 불가
-        # (has_region_restriction이 False로 확인된 경우는 위에서 이미 전국으로 처리됨)
         return None
     if HOME_PROVINCE in region_text:
         # "경기도"(또는 "경기도"를 포함해 여러 지역이 나열된 경우)면 경기도 업체는
@@ -158,11 +165,24 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
         # 참가할 수 있는 OR 조건이기 때문.
         return "경기"
     if any(k in combined for k in EXCLUDE_REGION_KEYWORDS):
-        # "경기"가 전혀 없이 경기도 밖 다른 광역시/도만 특정되어 있으면 참가 불가
+        # has_region_restriction=False 구제는 region_text 자체에 다른 도(道)가
+        # 적힌 경우만 해당한다 - combined에는 org_text/title_text도 섞여있어서,
+        # "세종대학교"처럼 기관명에 우연히 지역명(세종)이 들어간 경우까지
+        # region_text 판단 없이 구제해버리면 서울 소재 공고가 전국으로
+        # 잘못 새는 문제가 있었다(사용자가 발견).
+        if has_region_restriction is False and any(k in region_text for k in EXCLUDE_REGION_KEYWORDS):
+            # region_text 자체가 다른 도(道)인데 실제 지역제한은 없다고 확인된
+            # 경우 - 공사현장 소재지 설명일 뿐이므로 전국 대상으로 간주.
+            return "전국"
+        # 지역제한 여부를 모르거나(None) 실제로 있는 경우는 참가 불가
         return None
     if not region_text:
         # 지역 정보 자체가 없음 = 전국 대상으로 간주
         return "전국"
+    # "서울"처럼 EXCLUDE_REGION_KEYWORDS에도 없고 경기/용인/전국 어디에도 안
+    # 걸리는 지역명은, has_region_restriction이 False여도 안전하게 판단
+    # 보류(None)한다 - PDF 원문에만 진짜 제한이 있고 API 필드는 비어있는
+    # 경우가 흔해서, 여기서 섣불리 전국으로 단정하면 안 되기 때문.
     return None
 
 
