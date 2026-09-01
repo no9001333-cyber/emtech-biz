@@ -8,6 +8,18 @@ data.go.kr이 아닌 KEPCO 자체 빅데이터 포털(bigdata.kepco.co.kr)에서
 
 주의: 이 API는 companyId(회사구분)와 noticeBeginDate~noticeEndDate(공고기간, 최대 90일)를
       반드시 지정해야 합니다. companyId=COM01은 한국전력공사입니다.
+
+2026-08-28: 이 API 응답엔 지역 필드가 아예 없어서 region은 항상 빈 값이고
+      region_scope도 항상 "전국"으로 고정되어 있습니다(대시보드에서 "지역"
+      칸이 항상 비어 보이는 게 버그가 아니라 이 API 자체의 한계 - 사용자가
+      대박낙찰정보와 비교하다 발견). 대박낙찰정보는 공고문 원문 전체를 읽어서
+      "지역제한: 경기도에 본점을 둔 업체" 같은 문구를 직접 추출해 보여주는
+      것으로 확인했는데, 이건 D2B(d2b_restrictions.py)처럼 Playwright로 실제
+      한전 입찰 시스템(srm.kepco.net) 페이지를 열어 원문을 긁어와야 가능한
+      수준이라 아직 구현하지 않았습니다. url 필드도 같은 이유로 개별 공고
+      상세페이지가 아니라 통합검색 화면(srm.kepco.net/index.do)까지만 안내합니다
+      - 그 사이트가 완전한 SPA라(직접 확인함) G2B/D2B와 달리 공고별로 URL이
+      바뀌는 구조 자체가 없습니다.
 """
 
 import sys
@@ -108,7 +120,14 @@ def fetch_kepco_bids():
             "reg_deadline": "",
             "bid_method": "",
             "deadline": deadline,
-            "url": "https://bigdata.kepco.co.kr",
+            # 2026-08-28: "https://bigdata.kepco.co.kr"는 이 API를 제공하는
+            # 통계 포털일 뿐 실제 입찰 시스템이 아니라서, 눌러도 그냥 그 홈페이지로만
+            # 갔었다(사용자가 대박낙찰정보와 비교하다 발견). 진짜 입찰 시스템은
+            # srm.kepco.net인데, 이쪽은 완전한 SPA라 개별 공고로 바로 연결되는
+            # URL 구조 자체가 없다(직접 확인함 - 검색해서 공고를 클릭해도 주소창이
+            # 안 바뀜). 그래서 최소한 통합검색 화면으로는 보내고, 공고번호로 직접
+            # 찾아보도록 안내한다.
+            "url": "https://srm.kepco.net/index.do",
             "eligible": True,
             "region_scope": "전국",
         })
