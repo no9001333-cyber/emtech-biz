@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>emtech-biz | 오늘의 신규공고 전략브리핑</title>
+<title>오늘의 신규공고 전략브리핑 | 이엠테크</title>
 <style>
   :root {
     --ink: #14213d;
@@ -24,88 +24,70 @@
     color: var(--ink);
   }
   header { padding: 28px 24px 16px; border-bottom: 1px solid var(--line); }
-  header .back { display:inline-block; margin-bottom:10px; font-size:0.82rem; color:var(--good); text-decoration:none; }
-  header .back:hover { text-decoration:underline; }
   header h1 { margin: 0 0 6px; font-size: 1.4rem; letter-spacing: -0.02em; }
   header p { margin: 0; color: var(--muted); font-size: 0.88rem; }
-  .meta { display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; font-size:0.8rem; color:var(--muted); }
+  .meta { display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; font-size:0.85rem; color:var(--muted); }
   .meta b { color: var(--ink); }
-  .meta .count-badge {
-    display:inline-block; padding:2px 10px; border-radius:999px;
-    background:var(--accent-soft); color:var(--accent); font-weight:700;
-  }
+  .back-link { display:inline-block; margin-top:14px; font-size:0.82rem; color:var(--good); text-decoration:none; }
+  .back-link:hover { text-decoration:underline; }
 
-  main { padding: 20px 24px 60px; max-width: 900px; margin: 0 auto; }
+  main { padding: 24px 24px 60px; max-width: 960px; margin: 0 auto; }
 
   .empty-state {
-    text-align:center; padding:80px 20px; color:var(--muted);
-    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    text-align:center; padding: 80px 20px; color: var(--muted);
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
   }
-  .empty-state .big { font-size:1.1rem; color:var(--ink); margin-bottom:8px; font-weight:600; }
+  .empty-state .big { font-size: 1.1rem; color: var(--ink); margin-bottom: 8px; font-weight: 600; }
 
+  .cards { display:flex; flex-direction:column; gap:16px; }
   .card {
-    background:var(--card); border:1px solid var(--line); border-radius:12px;
-    padding:20px 22px; margin-bottom:18px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px 22px;
   }
-  .card h2 { margin:0 0 10px; font-size:1.05rem; letter-spacing:-0.01em; }
-  .card h2 a { color:var(--ink); text-decoration:none; }
-  .card h2 a:hover { color:var(--accent); text-decoration:underline; }
+  .card h2 { margin:0 0 4px; font-size: 1.05rem; letter-spacing:-0.01em; }
+  .card h2 a { color: var(--ink); text-decoration: none; }
+  .card h2 a:hover { color: var(--accent); text-decoration: underline; }
+  .card .org { color: var(--muted); font-size: 0.82rem; margin-bottom: 12px; }
+  .facts { display:flex; flex-wrap:wrap; gap:8px 18px; font-size:0.82rem; margin-bottom:14px; }
+  .facts span b { color: var(--ink); }
+  .facts span { color: var(--muted); }
+  .tag { display:inline-block; font-size:0.72rem; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); margin-left:6px; }
+  .tag.confirmed { border-color: var(--good); color: var(--good); }
+  .tag.tentative { border-color: #a67c00; color: #a67c00; }
 
-  .badges { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
-  .badge { font-size:0.72rem; padding:2px 9px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
-  .badge.notice { border-color:var(--good); color:var(--good); }
-
-  .facts {
-    display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap:6px 16px; font-size:0.84rem; margin-bottom:14px;
-    padding:12px 14px; background:var(--paper); border-radius:8px; border:1px solid var(--line);
-  }
-  .facts div span.label { display:block; color:var(--muted); font-size:0.72rem; margin-bottom:2px; }
-  .facts div span.val { font-weight:600; }
-  .tentative { color:var(--accent); font-weight:500; font-size:0.76rem; }
-
-  .section-label {
-    font-size:0.78rem; font-weight:700; color:var(--muted); margin:12px 0 4px;
-    text-transform:uppercase; letter-spacing:0.02em;
-  }
-  .section-body { font-size:0.9rem; line-height:1.65; margin:0 0 4px; }
-
+  .analysis { border-top:1px dashed var(--line); padding-top:12px; font-size:0.88rem; line-height:1.6; }
+  .analysis p { margin: 4px 0; }
+  .analysis .label { color: var(--accent); font-weight:600; }
   .conclusion {
-    margin-top:14px; padding:10px 14px; border-radius:8px; font-size:0.9rem; font-weight:600;
-    background:var(--good-soft); color:var(--good); border:1px solid var(--good);
+    margin-top:10px; padding:8px 12px; border-radius:8px; background: var(--good-soft);
+    color: var(--good); font-weight:600; font-size:0.85rem;
   }
-  .conclusion.caution { background:var(--accent-soft); color:var(--accent); border-color:var(--accent); }
 
-  footer { padding:20px 24px 40px; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); max-width:900px; margin:0 auto; }
-  @media (max-width: 600px) {
-    .facts { grid-template-columns: 1fr 1fr; }
-  }
+  footer { padding:20px 24px 40px; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); margin-top:20px; }
 </style>
 </head>
 <body>
 
 <header>
-  <a class="back" href="index.html">← 입찰공고 목록으로</a>
   <h1>오늘의 신규공고 전략브리핑</h1>
-  <p>나라장터 통신·정보통신 관련 신규 공고를 어제자 수집본과 비교하여 자동 선별 + 수주전략 분석</p>
+  <p>나라장터 통신공사(정보통신공사업) 신규 공고 — 이엠테크 수주전략가 관점 분석</p>
   <div class="meta">
-    <span>기준일: <b>2026-09-01</b></span>
-    <span>비교 기준(직전 수집본): <b>2026-08-31 10:47</b></span>
-    <span>신규 공고: <span class="count-badge">0건</span></span>
+    <span>기준일: <b>2026-09-02</b></span>
+    <span>신규 공고: <b>0건</b></span>
+    <span>비교 기준: 직전 수집(2026-09-01) 대비</span>
   </div>
+  <a class="back-link" href="index.html">← 입찰공고 목록으로</a>
 </header>
 
 <main>
-
-<div class="empty-state">
-  <div class="big">오늘은 신규 없음</div>
-  <p>어제자 수집본(2026-08-31) 대비 조건에 맞는 새 통신 관련 공고가 없습니다. 오늘 후보 64건은 모두 어제 이미 확인된 건입니다.</p>
-</div>
-
+  <div class="empty-state">
+    <div class="big">오늘은 신규 없음</div>
+    어제(2026-09-01) 수집 결과 대비, 나라장터 통신공사 관련 신규 공고가 없습니다.
+  </div>
 </main>
 
 <footer>
-  선별 기준: source=나라장터, eligible=true, 제목에 [통신·정보통신·네트워크·광통신·무선통신] 중 하나 포함, notice_no가 직전 스냅샷에 없던 건. 본 브리핑은 수집 데이터 기반 자동 분석이며, 참가 결정 전 반드시 공고 원문을 직접 확인하시기 바랍니다.
+  이엠테크(경기도 용인, 정보통신공사업, 시공능력평가액 약 54억원) 내부 참고용 자동 분석입니다. 실제 투찰 전 반드시 공고 원문과 첨부 규격서를 직접 확인하세요.
 </footer>
 
 </body>
