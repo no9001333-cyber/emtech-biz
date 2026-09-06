@@ -15,6 +15,8 @@
     --card: #ffffff;
     --good: #2a6f97;
     --good-soft: #e4eef4;
+    --warn: #a67c00;
+    --warn-soft: #fbf2dc;
   }
   * { box-sizing: border-box; }
   body {
@@ -38,6 +40,13 @@
     background: var(--card); border: 1px solid var(--line); border-radius: 12px;
   }
   .empty-state .big { font-size: 1.1rem; color: var(--ink); margin-bottom: 8px; font-weight: 600; }
+
+  .notice {
+    margin-top: 18px; padding: 14px 16px; border-radius: 10px;
+    background: var(--warn-soft); border: 1px solid #e9d9a8; color: #6b5300;
+    font-size: 0.85rem; line-height: 1.6; text-align: left;
+  }
+  .notice b { color: #4a3900; }
 
   .cards { display:flex; flex-direction:column; gap:16px; }
   .card {
@@ -73,32 +82,24 @@
   <h1>오늘의 신규공고 전략브리핑</h1>
   <p>나라장터 통신공사(정보통신공사업) 신규 공고 — 이엠테크 수주전략가 관점 분석</p>
   <div class="meta">
-    <span>기준일: <b>2026-09-04</b></span>
-    <span>신규 공고: <b>1건</b></span>
-    <span>비교 기준: 직전 수집(2026-09-03) 대비</span>
+    <span>기준일: <b>2026-09-06</b></span>
+    <span>신규 공고: <b>0건</b></span>
+    <span>비교 기준: 직전 수집(2026-09-04) 대비</span>
   </div>
   <a class="back-link" href="index.html">← 입찰공고 목록으로</a>
 </header>
 
 <main>
-  <div class="cards">
-
-    <div class="card">
-      <h2><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01700368&bidPbancOrd=000" target="_blank" rel="noopener">왕곡면 기초생활거점조성사업(농촌협약) 통신공사</a></h2>
-      <div class="org">한국농어촌공사 전남지역본부 나주지사 · R26BK01700368</div>
-      <div class="facts">
-        <span>추정가격: <b>44,550,000원</b> <span class="tag tentative">잠정추정치</span></span>
-        <span>투찰마감: <b>2026-08-28 12:00</b> <span class="tag closed">이미 마감(약 1주일 전)</span></span>
-        <span>지역: <b>전남 나주시</b> (전국 공고)</span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 소액 전자시담 건(추정가격 약 4,455만원). 데이터 수집 로직상 오늘 처음 "신규"로 잡혔으나, 실제 투찰마감(2026-08-28 12:00)과 개찰(같은 날 13:00)은 이미 약 1주일 전에 지났고, 낙찰자까지 확정된 상태 — 목록 반영이 뒤늦었을 뿐 실제로는 신규 기회가 아님(추측).</p>
-        <p><span class="label">참가자격/PQ:</span> restrictions·지역제한 확인 필드가 비어 있어 자동판단 불가 — 공고문 직접 확인 필요. 다만 이미 마감된 건이라 실익 없음. 시평액 기준도 공고문에서 직접 확인 필요하나, 규모(약 4,455만원)는 이엠테크 시평액(54억) 대비 전혀 문제되지 않는 소액 건.</p>
-        <p><span class="label">가격전략:</span> successful_bid_lower_rate·a_value 데이터 없음. 참고로 이미 개찰된 결과가 있음 — 낙찰자 주식회사 이현정보, 낙찰금액 40,100,000원(낙찰률 90.011%). 유사 소액 농어촌공사 전자시담 건의 낙찰률 참고자료로만 활용.</p>
-        <p class="conclusion">Go/No-Go: 이미 낙찰자가 확정된 과거 건 — 참여 불가(No-Go), 액션 불필요. 참고로만 기록. 향후 이런 지연 반영 건이 반복되면 신규 판정 로직(수집 시차) 점검 권장.</p>
-      </div>
+  <div class="empty-state">
+    <div class="big">오늘은 신규 없음</div>
+    <p>나라장터 통신공사 관련 신규 공고가 확인되지 않았습니다.</p>
+    <div class="notice">
+      <b>데이터 안내:</b> 자동 수집 파이프라인(GitHub Actions, 매일 08:50 KST)이 2026-09-04 10:14 수집 이후
+      2026-09-05, 2026-09-06 실행에서 정상 완료되지 못했습니다(장시간 실행 후 취소/대기 상태 확인).
+      현재 대시보드에 반영된 데이터는 2026-09-04 수집본과 동일하여, 위 "신규 0건"은
+      "시장에 새 공고가 없다"는 뜻이 아니라 <b>이 기간 실제로 새 수집이 이루어지지 않았다</b>는 의미입니다.
+      수집 파이프라인(자동화 PC/러너) 상태를 점검해 주세요.
     </div>
-
   </div>
 </main>
 
