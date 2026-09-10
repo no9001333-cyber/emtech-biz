@@ -132,12 +132,27 @@ def fetch_lh_bids():
         ]
         region_text = ",".join(p for p in region_parts if p)
 
+        bid_num = _xml_text(item, "bidNum")
+        # 공고차수. 상세페이지 URL은 2자리(예: "00")를 받는다.
+        bid_degree = _xml_text(item, "bidDegree") or "0"
+        try:
+            bid_degree = f"{int(bid_degree):02d}"
+        except ValueError:
+            pass
+        # LH e-Bid 입찰공고 상세조회(외부, 로그인 불필요). bidNum+bidDegree로
+        # 실제 공고문 페이지로 바로 들어간다. 확인해보니 공사/용역/물품 모두
+        # 이 BidsrvcsDetailListCmd 하나로 열린다(페이지 제목만 "(용역)"으로 고정).
+        detail_url = (
+            f"https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev"
+            f"?bidNum={bid_num}&bidDegree={bid_degree}"
+        ) if bid_num else "https://ebid.lh.or.kr"
+
         results.append({
             "source": "LH",
             "title": title,
             "org": "한국토지주택공사",
             "industry": _xml_text(item, "cstrtnJobGbNm"),  # 업무구분(시설공사 등)
-            "notice_no": _xml_text(item, "bidNum"),
+            "notice_no": bid_num,
             "region": region_text,
             "base_amount": _xml_text(item, "fdmtlAmt") or _xml_text(item, "presmtPrc"),
             "notice_date": _xml_text(item, "tndrbidRegDt"),
@@ -145,7 +160,7 @@ def fetch_lh_bids():
             "bid_method": _xml_text(item, "tndrCtrctMedCd"),  # 입찰계약방법(제한경쟁 등)
             "restrictions": f"지역제한({region_text})" if region_text else "",  # 참가지역1~4가 있으면 지역제한 공고
             "deadline": deadline,
-            "url": "https://ebid.lh.or.kr",
+            "url": detail_url,
             # g2b.py와 마찬가지로 region_scope("용인"/"경기"/"전국"/None)를 직접
             # 세팅해야 대시보드의 지역 체크박스(region_scope 기준 필터)에 걸린다 -
             # 예전 lh.py는 eligible만 세팅하고 region_scope는 안 넣어서 LH 공고가
