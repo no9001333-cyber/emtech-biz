@@ -35,7 +35,7 @@ import requests
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import REGIONS, ALWAYS_INCLUDE_ORGS, EXCLUDE_REGION_KEYWORDS, LH_SERVICE_KEY, LOOKBACK_DAYS
-from scrapers._common import is_deadline_in_range, is_eligible_region
+from scrapers._common import is_deadline_in_range, get_region_scope
 
 # 신규 "_GW" API. B552555 = 한국토지주택공사 기관코드, OpenBidInfoList = 서비스,
 # getOpenBidInfo = "입찰정보 조회" 오퍼레이션.
@@ -146,7 +146,24 @@ def fetch_lh_bids():
             "restrictions": f"지역제한({region_text})" if region_text else "",  # 참가지역1~4가 있으면 지역제한 공고
             "deadline": deadline,
             "url": "https://ebid.lh.or.kr",
-            "eligible": is_eligible_region(region_text, "한국토지주택공사", title),
+            # g2b.py와 마찬가지로 region_scope("용인"/"경기"/"전국"/None)를 직접
+            # 세팅해야 대시보드의 지역 체크박스(region_scope 기준 필터)에 걸린다 -
+            # 예전 lh.py는 eligible만 세팅하고 region_scope는 안 넣어서 LH 공고가
+            # 지역 필터에서 전부 빠지고 있었다(LH 복구 후 발견).
+            #
+            # LH는 zoneRstrct1~4(참가가능지역)가 명시적/신뢰할 수 있는 필드다:
+            #  - 비어 있으면 지역제한 없음 = 전국 대상. 이 경우 굳이 공고명을
+            #    파싱하지 않고 바로 "전국"으로 둔다. LH 공고명엔 "울산다운2",
+            #    "경산대임", "대구국가산단"처럼 사업지구명이 잔뜩 들어가 있어서
+            #    get_region_scope에 공고명까지 넘기면 EXCLUDE_REGION_KEYWORDS(울산 등)에
+            #    엉뚱하게 걸려 참가불가로 잘못 처리된다.
+            #  - 채워져 있으면 실제 지역제한 공고 → region_text만으로 판정.
+            "region_scope": (_scope := (
+                "전국" if not region_text
+                else get_region_scope(region_text, "한국토지주택공사", "",
+                                      has_region_restriction=True)
+            )),
+            "eligible": _scope is not None,
         })
 
     print(f"[LH] 총 {len(results)}건 수집")

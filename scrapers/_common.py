@@ -155,6 +155,15 @@ def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
         return "용인"
     if "전국" in region_text:
         return "전국"
+    # 2026-09-10: region_text 자체에 "경기"가 명시돼 있고 그 안에 용인이 아닌
+    # 다른 경기도 시·군은 안 적혀 있으면(=경기도 전역 대상), 아래 GIONGGI_OTHER_CITIES
+    # 검사(combined = region+org+title)보다 먼저 "경기"로 확정한다. LH 신규 API에서
+    # region이 깔끔하게 "경기"로 오는데 공고명에 "남양주왕숙2"/"용인 국가산단" 같은
+    # 사업지구명이 들어가 있어서, 그 도시명이 combined에 걸려 계속 참가불가로
+    # 처리되던 문제가 있었다(사용자가 LH 복구 후 발견). region 필드에 명시된
+    # 실제 참가가능지역이 공고명 속 사업지명보다 우선이다.
+    if HOME_PROVINCE in region_text and not any(city in region_text for city in GYEONGGI_OTHER_CITIES):
+        return "경기"
     if any(city in combined for city in GYEONGGI_OTHER_CITIES):
         # 용인이 아닌 다른 경기도 시·군이 특정되어 있으면 참가 불가
         return None
