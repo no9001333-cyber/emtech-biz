@@ -1,15 +1,29 @@
 """
 한국토지주택공사(LH) 입찰공고 수집기
-공공데이터포털의 "한국토지주택공사 입찰공고정보" OpenAPI 사용
-(LH가 배포한 "Open API 활용가이드_20210407.docx" 문서 기준으로 정확한 파라미터/필드명 반영)
+공공데이터포털의 "한국토지주택공사 입찰공고정보_GW" OpenAPI 사용
+
+2026-09-10: 기존에 쓰던 API("한국토지주택공사 입찰공고정보", 엔드포인트
+openapi.ebid.lh.or.kr/...OpenBidInfoList.dev)가 2026-08-20 즈음 LH 전자조달
+Open API 6종 고도화 과정에서 폐기(중지)됐다. 사용자 data.go.kr 마이페이지에서
+해당 활용신청이 "중지" 상태로 뜨는 것을 확인함. 그동안 수집이 계속 0건
+("SERVICE KEY IS NOT REGISTERED ERROR")이었던 진짜 원인이 이것.
+
+대체 API는 "한국토지주택공사 입찰공고정보_GW"(data.go.kr 데이터번호 15159012,
+수정일 2026-09-01, 자동승인)다. 요청 파라미터명(tndrbidRegDtStart/End 등)과
+응답 필드명(bidnmKor, zoneRstrct1~4, tndrdocAcptEndDtm 등)은 구 API와 동일하게
+유지됐고, 바뀐 건 엔드포인트와 (구 API의 EUC-KR 대신) apis.data.go.kr 표준
+UTF-8 응답이라는 점 정도다. 그래서 코드 변경은 ENDPOINT 교체 + 인코딩 처리
+정도로 최소화했다.
 
 사전 준비:
-1) https://www.data.go.kr 에서 "한국토지주택공사 입찰공고정보" 검색 → 활용신청 (자동승인)
-2) 발급받은 서비스키를 환경변수 LH_SERVICE_KEY 로 설정
+1) https://www.data.go.kr → "한국토지주택공사 입찰공고정보_GW" 검색 → 활용신청
+   (자동승인, 즉시 발급). ※ 구 "입찰공고정보"(_GW 없는 것)가 아니라 반드시
+   "_GW" 붙은 신규 API여야 함.
+2) 발급받은 서비스키를 GitHub Secrets의 LH_SERVICE_KEY 로 설정(기존 값 교체)
 
-주의: 이 API는 XML로만 응답하고, EUC-KR 인코딩입니다.
-      필수 조건: 입찰공고일자(시작+끝) 또는 공고번호 중 하나는 반드시 있어야 합니다.
-      (여기서는 조회기간을 기준으로 시작/끝 날짜를 함께 보냅니다)
+주의: 이 API는 XML로만 응답합니다. 조회 필수 파라미터는 입찰공고일자
+      (tndrbidRegDtStart + tndrbidRegDtEnd, YYYYMMDD 8자리) 또는 공고번호(bidNum)
+      중 하나입니다. 여기서는 조회기간 기준으로 시작/끝 날짜를 함께 보냅니다.
 """
 
 import sys
@@ -23,7 +37,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import REGIONS, ALWAYS_INCLUDE_ORGS, EXCLUDE_REGION_KEYWORDS, LH_SERVICE_KEY, LOOKBACK_DAYS
 from scrapers._common import is_deadline_in_range, is_eligible_region
 
-ENDPOINT = "http://openapi.ebid.lh.or.kr/ebid.com.openapi.service.OpenBidInfoList.dev"
+# 신규 "_GW" API. B552555 = 한국토지주택공사 기관코드, OpenBidInfoList = 서비스,
+# getOpenBidInfo = "입찰정보 조회" 오퍼레이션.
+ENDPOINT = "https://apis.data.go.kr/B552555/OpenBidInfoList/getOpenBidInfo"
 
 
 def _clean_key(key: str) -> str:
@@ -70,9 +86,14 @@ def fetch_lh_bids():
     try:
         resp = requests.get(ENDPOINT, params=params, timeout=30)
         resp.raise_for_status()
-        # 이 API는 EUC-KR로 응답하는데, 파이썬 기본 XML 파서는 바이트에서 곧바로
-        # 다중바이트 인코딩(EUC-KR)을 못 읽으므로, 먼저 문자열로 디코딩한 뒤 파싱한다.
-        raw_text = resp.content.decode("euc-kr", errors="replace")
+        # 신규 apis.data.go.kr API는 UTF-8 응답이지만, 혹시 몰라 UTF-8 우선 +
+        # EUC-KR 폴백으로 디코딩한다(구 API는 EUC-KR이었음). XML 선언에 인코딩이
+        # 박혀 있으면 ET.fromstring이 바이트를 직접 읽는 게 안전하지만, 인코딩이
+        # 응답 헤더에만 있는 경우도 있어 문자열로 먼저 확정한다.
+        try:
+            raw_text = resp.content.decode("utf-8")
+        except UnicodeDecodeError:
+            raw_text = resp.content.decode("euc-kr", errors="replace")
         root = ET.fromstring(raw_text)
     except Exception as e:
         print(f"[LH] 요청 실패: {e}")
@@ -86,8 +107,17 @@ def fetch_lh_bids():
     if not items:
         # 에러 메시지가 있으면 같이 출력 (resultCode/resultMsg는 header 안에 있음)
         result_msg = root.find(".//resultMsg")
-        print(f"[LH] item을 찾지 못함. resultMsg: {result_msg.text if result_msg is not None else '(없음)'}")
+        result_code = root.find(".//resultCode")
+        print(
+            f"[LH] item을 찾지 못함. resultCode: "
+            f"{result_code.text if result_code is not None else '(없음)'}, "
+            f"resultMsg: {result_msg.text if result_msg is not None else '(없음)'}"
+        )
         return []
+
+    # 첫 실행 검증용: 신규 _GW API 응답 필드명이 구 API와 정말 같은지 로그로 확인.
+    # (다른 scrapers/*.py와 동일한 진단 패턴)
+    print(f"[LH] 응답 필드명 예시: {[c.tag for c in items[0]]}")
 
     results = []
     for item in items:
