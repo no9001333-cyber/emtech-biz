@@ -624,7 +624,7 @@ function render() {{
       : `<span class="tag" style="border-color:var(--good); color:var(--good);">진행중</span>`;
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td data-label="출처"><span class="tag ${{cls}}">${{b.source || ''}}</span></td>
+      <td data-label="출처"><span class="tag ${{cls}}">${{b.source || ''}}</span>${{b.notice_kind === '용역' ? ` <span class="tag" style="border-color:var(--muted); color:var(--muted);">용역</span>` : ''}}</td>
       <td data-label="상태">${{statusBadge}}</td>
       <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href)">${{b.title || ''}}</a>` : (b.title || '')}}</td>
       <td data-label="발주기관">${{b.org || ''}}</td>

@@ -1,6 +1,16 @@
 """
-나라장터(조달청) 공사 입찰공고 수집기
+나라장터(조달청) 입찰공고 수집기 - 공사(工事) + 용역(用役)
 공공데이터포털의 "조달청_나라장터 입찰공고정보서비스" OpenAPI 사용
+
+2026-09-10: 원래 공사(getBidPblancListInfoCnstwk)만 조회했는데, 대박낙찰정보와
+대조해보니 재개발조합 "시공자 선정", "통신보안 솔루션 업체 선정", 통신 구축
+용역처럼 용역입찰로 게시되는 통신 관련 공고가 통째로 빠지고 있었다. 그래서
+용역(getBidPblancListInfoServc)도 같이 조회하도록 확장했다. 두 오퍼레이션의
+응답 필드는 공통 필드(bidNtceNo/bidNtceNm/ntceInsttNm/bidClseDt/bdgtAmt/
+presmptPrce/rgnLmtBidLocplcJdgmBssNm 등)가 거의 같고, 공사 전용 필드
+(mainCnsttyNm=주공종명, cnstrtsiteRgnNm=공사현장지역)는 용역엔 없어서 그냥
+빈 값으로 들어온다(코드가 .get()으로 관대하게 처리). 공고 dict에
+notice_kind("공사"/"용역")를 넣어 구분한다.
 
 사전 준비:
 1) https://www.data.go.kr 가입 → "나라장터 입찰공고정보서비스" 검색 → 활용신청 (즉시 자동승인)
@@ -35,8 +45,11 @@ from config import KEYWORDS, REGIONS, ALWAYS_INCLUDE_ORGS, EXCLUDE_REGION_KEYWOR
 from scrapers._common import is_deadline_in_range, get_with_retry, get_region_scope
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService"
-# 공사(工事) 입찰공고 목록 조회 오퍼레이션
-OPERATION = "getBidPblancListInfoCnstwk"
+# (종류, 오퍼레이션) 목록. 순서대로 조회해서 합친다.
+OPERATIONS = [
+    ("공사", "getBidPblancListInfoCnstwk"),
+    ("용역", "getBidPblancListInfoServc"),
+]
 
 
 def _clean_key(key: str) -> str:
@@ -46,8 +59,8 @@ def _clean_key(key: str) -> str:
     return urllib.parse.unquote(key)
 
 
-def _fetch_page(begin_dt: str, end_dt: str, page_no: int, num_of_rows: int = 500):
-    url = f"{ENDPOINT}/{OPERATION}"
+def _fetch_page(operation: str, begin_dt: str, end_dt: str, page_no: int, num_of_rows: int = 500):
+    url = f"{ENDPOINT}/{operation}"
     params = {
         "serviceKey": _clean_key(G2B_SERVICE_KEY),
         "pageNo": page_no,
@@ -128,8 +141,119 @@ def _matches_region(region_text: str, org_text: str = "", title_text: str = "") 
     return False
 
 
+def _parse_item(item: dict, notice_kind: str):
+    """목록 조회 응답 item 하나를 대시보드용 dict로 변환. 대상 기간(마감일)
+    밖이면 None. 공사/용역 공통 로직."""
+    title = item.get("bidNtceNm", "")
+    org_text = item.get("ntceInsttNm", "")
+    region_text = (
+        item.get("cnstrtsiteRgnNm", "")       # 공사현장 지역(공사 전용)
+        or item.get("jntcontrctDutyRgnNm1", "")  # 지역의무공동도급 지역
+        or item.get("incntvRgnNm1", "")          # 인센티브 지역
+    )
+    deadline = item.get("bidClseDt", "")
+    if not is_deadline_in_range(deadline):
+        return None
+
+    # 실제 지역제한이 있는지 (없다고 "확인된" 경우에만 False로 넘겨서,
+    # region_text의 시·군 이름만 보고 잘못 참가불가 처리하는 걸 막음)
+    has_region_restriction = bool(item.get("rgnLmtBidLocplcJdgmBssNm")) or (
+        item.get("rgnDutyJntcontrctYn") == "Y"
+    )
+
+    # 투찰금액 계산기용 실제 공고 데이터 (2026-08-18 추가, 2026-08-19 필드 매핑 수정,
+    # 2026-08-20 base_amount/a_value 계산 방식 재수정):
+    #   - est_amount(추정금액)=bdgtAmt(예산금액) 우선, 없으면 presmptPrce(추정가격,
+    #     VAT 불포함)로 대체. 이 목록 조회 API 시점에는 아직 정식 기초금액이
+    #     공개 전인 경우가 많아 이 값은 어디까지나 "잠정 추정치"입니다.
+    #   - base_amount(기초금액)/a_value(A값): 이 목록 조회 오퍼레이션에는 진짜
+    #     기초금액/A값이 없습니다(예산금액은 기초금액의 근사치일 뿐 실제로 다를 수
+    #     있음). 진짜 값은 전용 오퍼레이션(공사기초금액조회)에서만 얻을 수 있어,
+    #     일단 est_amount로 잠정 채워두고 g2b_basis_amount.py가 덮어씁니다.
+    #   - successful_bid_lower_rate/reserve_price_total_count/draw_count: 공고에
+    #     박힌 실제 값. 비거나 비정상 범위일 수 있어 대시보드 JS에서 재검증함.
+    budget_amount = item.get("bdgtAmt", "")
+    presmpt_price = item.get("presmptPrce", "")
+    amount_for_base_est = budget_amount or presmpt_price
+
+    _scope = get_region_scope(
+        region_text, org_text, title,
+        has_region_restriction=has_region_restriction,
+    )
+    return {
+        "source": "나라장터",
+        "notice_kind": notice_kind,  # "공사" | "용역"
+        "title": title,
+        "org": org_text,
+        "industry": item.get("mainCnsttyNm", ""),  # 용역엔 없음(빈값)
+        "notice_no": item.get("bidNtceNo", ""),
+        "notice_ord": item.get("bidNtceOrd", "000"),
+        "region": region_text,
+        "base_amount": amount_for_base_est,
+        "est_amount": amount_for_base_est,
+        "est_price_excl_vat": presmpt_price,
+        "a_value": "",
+        "successful_bid_lower_rate": item.get("sucsfbidLwltRate", ""),
+        "reserve_price_total_count": item.get("totPrdprcNum", ""),
+        "reserve_price_draw_count": item.get("drwtPrdprcNum", ""),
+        "notice_date": item.get("bidNtceDt", ""),
+        # 실제 필드명은 bidQlfctRgstDt (bidQlfctRegDt는 오타).
+        "reg_deadline": item.get("bidQlfctRgstDt", ""),
+        "bid_method": item.get("bidMethdNm", "") or item.get("cntrctCnclsMthdNm", ""),
+        "restrictions": _build_restrictions(item),
+        "deadline": deadline,
+        # 개찰일시 - 투찰마감 아래에 함께 표시.
+        "open_date": item.get("opengDt", ""),
+        "url": item.get("bidNtceDtlUrl", ""),
+        "attachments": _collect_attachments(item),
+        "region_scope": _scope,
+        "eligible": _scope is not None,
+    }
+
+
+def _fetch_operation(kind: str, operation: str, begin_dt: str, end_dt: str):
+    """한 오퍼레이션(공사 또는 용역)을 페이지네이션하며 전부 가져와 파싱한다."""
+    out = []
+    page_no = 1
+    MAX_PAGES = 15  # 안전장치: 최대 15페이지(=최대 7,500건). IP 차단 위험 회피.
+    while page_no <= MAX_PAGES:
+        try:
+            data = _fetch_page(operation, begin_dt, end_dt, page_no)
+        except Exception as e:
+            print(f"[G2B/{kind}] 요청 실패: {e}")
+            break
+
+        body = data.get("response", {}).get("body", {})
+        items = body.get("items", [])
+        if isinstance(items, dict):
+            items = items.get("item", [])
+        if not items:
+            break
+
+        if page_no == 1:
+            print(f"[G2B/{kind}] 응답 필드명 예시: {list(items[0].keys())}")
+
+        for item in items:
+            parsed = _parse_item(item, kind)
+            if parsed is not None:
+                out.append(parsed)
+
+        total_count = int(body.get("totalCount", 0))
+        if page_no * 500 >= total_count:
+            break
+        if page_no == MAX_PAGES:
+            print(f"[G2B/{kind}] 경고: 총 {total_count}건인데 상한(7,500건)에 걸려 일부 누락됨")
+            break
+        page_no += 1
+        time.sleep(1)  # data.go.kr에 너무 몰아치지 않게 요청 사이 1초 휴식
+
+    print(f"[G2B/{kind}] {len(out)}건 수집(대상 기간 필터 후)")
+    return out
+
+
 def fetch_g2b_bids():
-    """나라장터 공사 입찰공고 전체(업종 무관) 중 대상 지역/기간에 해당하는 공고 리스트 반환"""
+    """나라장터 공사+용역 입찰공고 전체(업종 무관) 중 대상 기간에 해당하는 공고 리스트 반환.
+    (지역/통신 필터링은 대시보드에서 처리)"""
     if not G2B_SERVICE_KEY:
         print("[G2B] 서비스키(G2B_SERVICE_KEY)가 설정되지 않아 건너뜁니다.")
         return []
@@ -140,116 +264,16 @@ def fetch_g2b_bids():
     end_dt = end.strftime("%Y%m%d2359")
 
     results = []
-    page_no = 1
-    MAX_PAGES = 15  # 안전장치: 최대 15페이지(=최대 7,500건)까지만 수집 (너무 많이 요청하면 IP 차단 위험)
-    while page_no <= MAX_PAGES:
-        try:
-            data = _fetch_page(begin_dt, end_dt, page_no)
-        except Exception as e:
-            print(f"[G2B] 요청 실패: {e}")
-            break
-
-        body = data.get("response", {}).get("body", {})
-        items = body.get("items", [])
-        if isinstance(items, dict):
-            items = items.get("item", [])
-        if not items:
-            break
-
-        if page_no == 1 and items:
-            print(f"[G2B] 응답 필드명 예시: {list(items[0].keys())}")
-
-        for item in items:
-            title = item.get("bidNtceNm", "")
-            org_text = item.get("ntceInsttNm", "")
-            region_text = (
-                item.get("cnstrtsiteRgnNm", "")
-                or item.get("jntcontrctDutyRgnNm1", "")
-                or item.get("incntvRgnNm1", "")
-            )
-            deadline = item.get("bidClseDt", "")
-            if not is_deadline_in_range(deadline):
+    seen = set()  # 공사/용역에서 같은 공고번호가 중복될 일은 거의 없지만 안전하게 dedupe
+    for kind, operation in OPERATIONS:
+        for bid in _fetch_operation(kind, operation, begin_dt, end_dt):
+            key = f"{bid.get('notice_no')}::{bid.get('notice_ord')}"
+            if key in seen:
                 continue
+            seen.add(key)
+            results.append(bid)
 
-            # 실제 지역제한이 있는지 (없다고 "확인된" 경우에만 False로 넘겨서,
-            # region_text의 시·군 이름만 보고 잘못 참가불가 처리하는 걸 막음)
-            has_region_restriction = bool(item.get("rgnLmtBidLocplcJdgmBssNm")) or (
-                item.get("rgnDutyJntcontrctYn") == "Y"
-            )
-
-            # 투찰금액 계산기용 실제 공고 데이터 (2026-08-18 추가, 2026-08-19 필드 매핑 수정,
-            # 2026-08-20 base_amount/a_value 계산 방식 재수정):
-            #   - est_amount(추정금액)=bdgtAmt(예산금액) 우선, 없으면 presmptPrce(추정가격,
-            #     VAT 불포함)로 대체. 이 목록 조회 API 시점에는 아직 정식 기초금액이
-            #     공개 전인 경우가 많아 이 값은 어디까지나 "잠정 추정치"입니다.
-            #   - base_amount(기초금액)/a_value(A값): 이 목록 조회 오퍼레이션에는 진짜
-            #     기초금액/A값이 없습니다(예산금액은 기초금액의 근사치일 뿐 실제로 다를 수
-            #     있음 - 사용자가 제보한 스크린샷으로 예산금액 1,118,254,000원 ≠ 실제
-            #     기초금액공개 1,124,760,000원인 사례를 확인했습니다). 진짜 값은
-            #     전용 오퍼레이션(getBidPblancListInfoCnstwkBsisAmount, 공사기초금액조회)
-            #     에서만 얻을 수 있어, 일단 est_amount로 잠정 채워두고 scrapers/
-            #     g2b_basis_amount.py가 이 값들을 실제 공개된 정확한 값으로 덮어씁니다
-            #     (아직 개찰 전이라 공개 안 됐으면 잠정치를 그대로 둡니다).
-            #     예전에는 a_value를 관급자재금액(govcnstrtnGovsplyMtrlAmt 등)으로
-            #     계산했는데, 이는 A값(국민연금·건강보험·퇴직공제부금·안전관리비 등
-            #     법정경비 합계)과 전혀 다른 개념이라 잘못된 값이었습니다 - 그래서
-            #     이제 여기서는 채우지 않고 "확인필요"로 비워둡니다.
-            #   - successful_bid_lower_rate(낙찰하한율)=sucsfbidLwltRate: 공고에 박힌 실제 값.
-            #   - reserve_price_total_count/reserve_price_draw_count
-            #     (복수예가 생성개수/추첨개수)=totPrdprcNum/drwtPrdprcNum: 공고에 박힌 실제 값.
-            #   이 필드들 모두 공고마다 비어있을 수 있고, 값이 있어도 비정상적인 범위일 수
-            #   있어 대시보드 JS(calcModal)에서 반드시 범위 검증 후 사용하고, 검증 실패/누락
-            #   시에는 자동으로 채우지 않고 수동 입력을 안내합니다.
-            budget_amount = item.get("bdgtAmt", "")
-            presmpt_price = item.get("presmptPrce", "")
-            amount_for_base_est = budget_amount or presmpt_price
-            a_value_raw = ""
-
-            results.append({
-                "source": "나라장터",
-                "title": title,
-                "org": org_text,
-                "industry": item.get("mainCnsttyNm", ""),
-                "notice_no": item.get("bidNtceNo", ""),
-                "notice_ord": item.get("bidNtceOrd", "000"),
-                "region": region_text,
-                "base_amount": amount_for_base_est,
-                "est_amount": amount_for_base_est,
-                "est_price_excl_vat": presmpt_price,
-                "a_value": a_value_raw,
-                "successful_bid_lower_rate": item.get("sucsfbidLwltRate", ""),
-                "reserve_price_total_count": item.get("totPrdprcNum", ""),
-                "reserve_price_draw_count": item.get("drwtPrdprcNum", ""),
-                "notice_date": item.get("bidNtceDt", ""),
-                # 2026-08-25: "bidQlfctRegDt"는 실제 API 필드명이 아닙니다(오타 -
-                # 진짜 필드는 "bidQlfctRgstDt", g자리가 하나 빠져있었음). 그래서
-                # 이 값은 계속 빈 문자열이었고 fallback인 prtcptRegYn(참가등록
-                # 여부 Y/N 플래그, 날짜가 아님)도 대부분 안 채워져서 나라장터
-                # 공고 전체에서 "참가등록마감" 컬럼이 거의 항상 "-"로 비어
-                # 보였습니다. 실제 필드명으로 수정.
-                "reg_deadline": item.get("bidQlfctRgstDt", ""),
-                "bid_method": item.get("bidMethdNm", "") or item.get("cntrctCnclsMthdNm", ""),
-                "restrictions": _build_restrictions(item),
-                "deadline": deadline,
-                # 개찰일시 - 투찰마감(deadline)과 보통 같은 날 몇 시간 뒤라, 대시보드
-                # "투찰마감" 컬럼 아래에 함께 표시하기 위해 추가.
-                "open_date": item.get("opengDt", ""),
-                "url": item.get("bidNtceDtlUrl", ""),
-                "attachments": _collect_attachments(item),
-                "region_scope": (_scope := get_region_scope(
-                    region_text, org_text, title,
-                    has_region_restriction=has_region_restriction,
-                )),
-                "eligible": _scope is not None,
-            })
-
-        total_count = int(body.get("totalCount", 0))
-        if page_no * 500 >= total_count:
-            break
-        page_no += 1
-        time.sleep(1)  # 요청 사이 1초씩 쉬어서 너무 빠르게 몰아치지 않게 함
-
-    print(f"[G2B] 총 {len(results)}건 수집")
+    print(f"[G2B] 총 {len(results)}건 수집 (공사+용역 합계)")
     return results
 
 
