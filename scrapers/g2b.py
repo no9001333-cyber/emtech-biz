@@ -12,6 +12,14 @@ presmptPrce/rgnLmtBidLocplcJdgmBssNm 등)가 거의 같고, 공사 전용 필드
 빈 값으로 들어온다(코드가 .get()으로 관대하게 처리). 공고 dict에
 notice_kind("공사"/"용역")를 넣어 구분한다.
 
+2026-09-11: 용역 추가 직후 실제 운영 실행 로그를 보니 공사(9,340건)/용역(12,170건)
+둘 다 30일치 총건수가 페이지 상한(15페이지×500=7,500건)을 넘어 "일부 누락됨" 경고가
+떴다. 응답이 공고게시일시 오름차순이라 상한에 걸리면 뒤쪽(=가장 최근) 공고가 잘려서,
+실제로 수집 데이터의 notice_date 최댓값이 실행 시점보다 3~4일이나 뒤처져 있었다
+(가장 놓치면 안 되는 최신 공고가 매번 빠지고 있었던 셈). 그래서 30일 조회기간을
+CHUNK_DAYS(5일) 단위로 쪼개 오퍼레이션별로 여러 번 나눠 조회하도록 바꿨다 - 구간당
+건수가 상한보다 훨씬 작아져서 안전하다.
+
 사전 준비:
 1) https://www.data.go.kr 가입 → "나라장터 입찰공고정보서비스" 검색 → 활용신청 (즉시 자동승인)
 2) 발급받은 서비스키를 환경변수 G2B_SERVICE_KEY 로 설정
@@ -251,6 +259,21 @@ def _fetch_operation(kind: str, operation: str, begin_dt: str, end_dt: str):
     return out
 
 
+CHUNK_DAYS = 5  # 조회기간을 잘게 쪼개는 단위. 30일 전체를 한 번에 조회하면
+# 공사/용역 모두 건수가 페이지 상한(15페이지=7,500건)을 넘겨서 최신 공고가
+# 잘려나가는 문제가 있었다(응답이 공고게시일시 오름차순이라 상한에 걸리면
+# 가장 최근 3~4일치가 통째로 누락됨 - 2026-09-11 대박입찰 대조 중 발견).
+# 5일 단위로 쪼개면 구간당 건수가 상한보다 훨씬 작아져 안전하다.
+
+
+def _date_chunks(begin: datetime, end: datetime, chunk_days: int):
+    cur = begin
+    while cur < end:
+        chunk_end = min(cur + timedelta(days=chunk_days), end)
+        yield cur, chunk_end
+        cur = chunk_end
+
+
 def fetch_g2b_bids():
     """나라장터 공사+용역 입찰공고 전체(업종 무관) 중 대상 기간에 해당하는 공고 리스트 반환.
     (지역/통신 필터링은 대시보드에서 처리)"""
@@ -260,18 +283,20 @@ def fetch_g2b_bids():
 
     end = datetime.now()
     begin = end - timedelta(days=LOOKBACK_DAYS)
-    begin_dt = begin.strftime("%Y%m%d0000")
-    end_dt = end.strftime("%Y%m%d2359")
 
     results = []
-    seen = set()  # 공사/용역에서 같은 공고번호가 중복될 일은 거의 없지만 안전하게 dedupe
+    seen = set()  # 공사/용역 중복 + 조회기간 쪼갠 구간 경계 중복 제거
     for kind, operation in OPERATIONS:
-        for bid in _fetch_operation(kind, operation, begin_dt, end_dt):
-            key = f"{bid.get('notice_no')}::{bid.get('notice_ord')}"
-            if key in seen:
-                continue
-            seen.add(key)
-            results.append(bid)
+        for chunk_begin, chunk_end in _date_chunks(begin, end, CHUNK_DAYS):
+            begin_dt = chunk_begin.strftime("%Y%m%d0000")
+            end_dt = chunk_end.strftime("%Y%m%d2359")
+            for bid in _fetch_operation(kind, operation, begin_dt, end_dt):
+                key = f"{bid.get('notice_no')}::{bid.get('notice_ord')}"
+                if key in seen:
+                    continue
+                seen.add(key)
+                results.append(bid)
+            time.sleep(1)  # 구간 사이에도 한 템포 쉬어 API에 몰아치지 않게 함
 
     print(f"[G2B] 총 {len(results)}건 수집 (공사+용역 합계)")
     return results
