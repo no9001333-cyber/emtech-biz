@@ -9,6 +9,14 @@ on:
 permissions:
   contents: write
 
+# 예약 실행과 수동 실행(workflow_dispatch)이 겹치면 둘 다 main.py로 데이터를 수집해
+# 서로 다른 내용으로 data/bids.json 등을 커밋하게 되고, 나중에 푸시하는 쪽이
+# non-fast-forward + rebase 충돌로 실패한다(2026-09-11 run #109 실패 원인).
+# 같은 브랜치에서는 한 번에 하나만 돌게 큐잉해서 이 충돌 자체를 막는다.
+concurrency:
+  group: daily-collect-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   collect:
     runs-on: self-hosted  # 사용자 PC에서 실행 (data.go.kr이 GitHub 공용 서버 IP를 막아서 변경)
