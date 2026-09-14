@@ -18,6 +18,16 @@ rebase-merge directory" 오류로 즉시 실패한다(run #109 실패 원인). �
 호스팅 러너는 실행 사이에 .git이 그대로 남기 때문에 이 상태가 다음 날
 실행까지도 이어질 수 있다. rebase 시도 전에 이전에 남은 미해결 rebase를
 먼저 정리하도록 방어 코드를 추가했다.
+
+2026-09-14: 이 PC는 매일 저녁 꺼졌다가 아침에 다시 켜지는데, 그 사이에
+실행이 중간에 끊기면(러너가 "lost communication with the server") 이
+스크립트가 만든 로컬 커밋이 푸시되지 못한 채 그대로 남는다. 그러면 다음
+실행이 그 커밋을 origin 위에 재적용하려다 충돌하고, 실패해도 로컬 커밋을
+치우지 않아 그 다음 실행까지 똑같은 충돌이 계속 반복됐다(09-12~09-14
+사흘 연속 data/bids.json 갱신 실패의 원인). push_with_retry가 끝내
+실패하면 이 실행이 만든 로컬 커밋을 origin/main 기준으로 완전히 버려서
+(git reset --hard) 최소한 다음 실행은 깨끗한 상태에서 시작하게 한다 -
+이번에 수집한 데이터는 유실되지만, 매일 반복해서 전부 막히는 것보다는 낫다.
 """
 
 import subprocess
@@ -66,7 +76,11 @@ def main():
 
     if not push_with_retry():
         print("[commit_and_push] git push가 계속 실패해 이번에 수집한 데이터가 "
-              "원격에 반영되지 못했습니다. 실행을 실패로 표시합니다.")
+              "원격에 반영되지 못했습니다. 다음 실행에 영향이 이어지지 않도록 "
+              "로컬 커밋을 origin/main 기준으로 되돌립니다.")
+        run(["git", "fetch", "origin", "main"])
+        run(["git", "reset", "--hard", "origin/main"])
+        print("[commit_and_push] 실행을 실패로 표시합니다.")
         sys.exit(1)
 
 
