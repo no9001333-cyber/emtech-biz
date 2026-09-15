@@ -102,6 +102,20 @@ def _fetch_items(operation: str, begin_dt: str, end_dt: str):
         return []
 
     print(f"[D2B:{operation}] 응답 태그명 예시: {[c.tag for c in items[0]]}")
+    # 2026-09-15 진단: dbsbid와 대조해보니 이 API의 수집량이 실제 시장 규모보다
+    # 훨씬 적어서(경기 지역만도 dbsbid는 월 50건대인데 전국 기준 이 API는 33건),
+    # 원인이 (1) totalCount가 numOfRows(1000)보다 커서 페이지네이션 없이 잘리는
+    # 건지, (2) busiDivs 필터에서 "공사"가 아닌 값으로 대부분 걸러지는 건지
+    # 확인하기 위해 totalCount와 busiDivs 분포를 로그로 남긴다.
+    total_count_elem = root.find(".//totalCount")
+    total_count = total_count_elem.text if total_count_elem is not None else "(없음)"
+    print(f"[D2B:{operation}] API 응답 totalCount: {total_count} (실제 받은 item 수: {len(items)})")
+    from collections import Counter
+    busi_divs_counts = Counter(
+        (it.find("busiDivs").text.strip() if it.find("busiDivs") is not None and it.find("busiDivs").text else "(빈값)")
+        for it in items
+    )
+    print(f"[D2B:{operation}] busiDivs 분포: {dict(busi_divs_counts)}")
     return items
 
 
@@ -181,16 +195,22 @@ def fetch_d2b_bids():
     end_dt = end.strftime("%Y%m%d2359")
 
     results = []
+    dropped_industry = 0
+    dropped_deadline = 0
 
     items = _fetch_items(OPERATION_FCLTY, begin_dt, end_dt)
     for item in items:
         parsed = _parse_fclty_item(item)
         if parsed["industry"] and parsed["industry"] != "공사":
+            dropped_industry += 1
             continue
         if not is_deadline_in_range(parsed["deadline"]):
+            dropped_deadline += 1
             continue
         results.append(parsed)
 
+    print(f"[D2B] 필터링 내역: API 원본 {len(items)}건 -> busiDivs!=공사로 제외 {dropped_industry}건, "
+          f"마감일 범위 밖으로 제외 {dropped_deadline}건 -> 최종 {len(results)}건")
     print(f"[D2B] 총 {len(results)}건 수집 (API 기준) - 공고문에서 면허/지역제한 확인 중...")
     from scrapers.d2b_restrictions import enrich_d2b_bids_with_restrictions
     results = enrich_d2b_bids_with_restrictions(results)
