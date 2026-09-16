@@ -36,6 +36,17 @@ Playwright 같은 브라우저 자동화 없이 requests + pypdf만으로 충분
 안전 원칙(d2b_restrictions.py와 동일): 자동판단에 실패하거나 애매하면 기존
 값을 함부로 뒤집지 않고, "확인 필요" 메모와 함께 실제 원문 발췌(snippet)를
 남겨서 사람이 2줄만 읽고도 직접 판단할 수 있게 합니다.
+
+2026-09-16: 대시보드에 "❔ 공고서 확인필요" 배지가 너무 많이 뜬다는 지적으로
+확인해보니, ambiguous 4,154건 중 4,064건(98%)이 애초에 참가자격 조항에
+REGION_CUE_WORDS(소재지/본사/관내/지역제한 등) 자체가 전혀 없는 공고였다
+(면허·실적 요건만 있고 지역 얘기가 아예 없음). 무작위 샘플을 실제 PDF로
+재확인해도 대부분(15건 중 14건, 그리고 원래 참가불가였던 경기 그룹에서도
+15건 중 13건) 정말로 지역 제한 문구가 없었다. 즉 "지역단서 단어가 하나도
+없다"는 것은 "애매해서 판단 불가"가 아니라 "이 공고는 지역 제한을 두지
+않았다"는 뜻이므로, _classify_region()이 이제 이 경우를 "전국"(확정)으로
+반환한다. 지역단서 단어는 있는데 근처에서 지역명을 못 찾은, 진짜 애매한
+경우(2%, 90건)만 계속 "확인필요"로 남는다.
 """
 
 import io
@@ -136,12 +147,14 @@ def _classify_region(window_text: str):
     if not window_text:
         return None, ""
 
+    found_cue = False
     for cue in REGION_CUE_WORDS:
         search_from = 0
         while True:
             pos = window_text.find(cue, search_from)
             if pos == -1:
                 break
+            found_cue = True
             search_from = pos + len(cue)
             local_start = max(0, pos - LOCAL_RADIUS)
             local_end = min(len(window_text), pos + len(cue) + LOCAL_RADIUS)
@@ -162,6 +175,18 @@ def _classify_region(window_text: str):
             other_region_hit = next((k for k in EXCLUDE_REGION_KEYWORDS if k in local), None)
             if other_region_hit:
                 return False, _snippet_around(window_text, other_region_hit)
+
+    if not found_cue:
+        # 2026-09-16: 실제 운영 데이터 확인 결과, "확인필요"(ambiguous)로 빠지는
+        # 4,154건 중 98%(4,064건)가 참가자격 조항에 지역단서(REGION_CUE_WORDS)
+        # 단어 자체가 아예 없었다(면허·실적 요건만 있고 지역 얘기가 없는 경우).
+        # 무작위 15건을 실제 PDF로 재확인해도 14건이 진짜로 지역 제한 문구가
+        # 없었다(1건만 지역단서가 있었는데 앞의 500자 윈도우 밖이라 못 봤을 뿐).
+        # 즉 "지역단서 단어가 하나도 없음"은 대부분 "이 공고는 지역 제한을 두지
+        # 않았다"는 뜻이지 "애매해서 판단 불가"가 아니다. 지역단서가 있는데도
+        # 근처에서 지역명을 못 찾은 경우(진짜 애매한 경우)만 아래에서 계속
+        # None(확인필요)으로 남긴다.
+        return "전국", "(참가자격 조항에 지역 제한 관련 문구 없음 - 전국 참가가능으로 판단)"
 
     return None, window_text[:200].strip()
 
