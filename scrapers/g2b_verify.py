@@ -66,8 +66,19 @@ DOWNLOAD_TIMEOUT = 20
 MAX_TOTAL_SECONDS = 2400  # 40분 상한
 MAX_WORKERS = 5
 
-PARTICIPATION_HEADERS = ["입찰참가자격", "참가자격", "투찰참가자격"]
-REGION_CUE_WORDS = ["소재지", "본사", "본점", "주된 영업소", "주된영업소", "관내", "관내업체", "지역제한", "지역업체", "본점소재지"]
+# 2026-09-17: "입찰참가자의 자격에 관한 사항"처럼 "참가"와 "자격" 사이에 조사
+# ("의", "자의" 등)가 끼어드는 실제 공고문 표기를 못 잡아서, 정작 진짜 자격
+# 조항은 못 찾고 완전히 다른 절(예: "8. 현장설명회 ① 참가자격: 현장설명 참석
+# 대상자")에 우연히 들어있는 "참가자격"에 걸려 엉뚱한 곳을 창(window)으로
+# 잡는 사고가 있었다(사례: 사회복지법인한우리 공고 - "본점 소재지가
+# 대구광역시 또는 경상북도" 제한이 실제 자격 조항에 있는데, 헤더 매칭이
+# 무관한 현장설명회 절의 "참가자격"에 걸려 그 제한 문구를 통째로 놓침).
+# 정규식으로 "참가"~"자격" 사이 0~4자를 허용해 이런 변형 표기도 잡는다.
+PARTICIPATION_HEADER_PATTERN = re.compile(r"참가.{0,4}?자격")
+REGION_CUE_WORDS = [
+    "소재지", "본사", "본점", "주된 영업소", "주된영업소", "관내", "관내업체",
+    "지역제한", "지역 제한", "지역업체", "본점소재지", "관할구역", "관할 구역",
+]
 
 UNVERIFIED_NOTE = "PDF 첨부파일 없음/다운로드 실패 - 원본(HWP) 직접 확인 필요"
 AMBIGUOUS_NOTE = "공고서는 확인했으나 참가자격 지역조건을 자동판단하지 못함 - 아래 발췌문 직접 확인 필요"
@@ -77,12 +88,14 @@ CONFIRMED_NOTE = "공고서(PDF) 원문으로 참가자격 지역조건을 직�
 def _find_eligibility_window(text: str, window: int = 500) -> str:
     """본문에서 '참가자격' 계열 헤더가 나오는 위치들을 찾아, 그 뒤 window자씩
     이어붙여 반환한다. 헤더를 하나도 못 찾으면 빈 문자열(=이 파일에서 참가자격
-    조건을 못 찾음 - 다른 첨부파일이거나 자동판단 불가로 처리됨)."""
+    조건을 못 찾음 - 다른 첨부파일이거나 자동판단 불가로 처리됨).
+
+    "참가"와 "자격" 사이에 조사가 끼는 표기("입찰참가자의 자격")까지 잡도록
+    정규식(PARTICIPATION_HEADER_PATTERN)을 쓴다."""
     chunks = []
-    for header in PARTICIPATION_HEADERS:
-        for m in re.finditer(re.escape(header), text):
-            start = m.end()
-            chunks.append(text[start:start + window])
+    for m in PARTICIPATION_HEADER_PATTERN.finditer(text):
+        start = m.end()
+        chunks.append(text[start:start + window])
     return "\n...\n".join(chunks)
 
 
@@ -98,7 +111,7 @@ def _snippet_around(text: str, keyword: str, radius: int = 80) -> str:
 LOCAL_RADIUS = 100  # 지역단서(REGION_CUE_WORDS) 바로 근처만 진짜 제한조건으로 인정
 
 
-def _classify_region(window_text: str):
+def _classify_region(window_text: str, full_text: str = ""):
     """참가자격 텍스트 조각에서 지역 제한 여부를 판단.
     반환: (result, matched_snippet)
     result: "용인"|"경기"|"전국"(참가가능, 해당 범위) / False(참가불가 확정) /
@@ -147,34 +160,9 @@ def _classify_region(window_text: str):
     if not window_text:
         return None, ""
 
-    found_cue = False
-    for cue in REGION_CUE_WORDS:
-        search_from = 0
-        while True:
-            pos = window_text.find(cue, search_from)
-            if pos == -1:
-                break
-            found_cue = True
-            search_from = pos + len(cue)
-            local_start = max(0, pos - LOCAL_RADIUS)
-            local_end = min(len(window_text), pos + len(cue) + LOCAL_RADIUS)
-            local = window_text[local_start:local_end]
-
-            if HOME_CITY in local:
-                return "용인", _snippet_around(window_text, HOME_CITY)
-            if "전국" in local:
-                return "전국", _snippet_around(window_text, "전국")
-
-            other_city_hit = next((c for c in GYEONGGI_OTHER_CITIES if c in local), None)
-            if other_city_hit:
-                return False, _snippet_around(window_text, other_city_hit)
-
-            if HOME_PROVINCE in local:
-                return "경기", _snippet_around(window_text, HOME_PROVINCE)
-
-            other_region_hit = next((k for k in EXCLUDE_REGION_KEYWORDS if k in local), None)
-            if other_region_hit:
-                return False, _snippet_around(window_text, other_region_hit)
+    result, snippet, found_cue = _scan_for_region(window_text)
+    if result is not None:
+        return result, snippet
 
     if not found_cue:
         # 2026-09-16: 실제 운영 데이터 확인 결과, "확인필요"(ambiguous)로 빠지는
@@ -186,9 +174,73 @@ def _classify_region(window_text: str):
         # 않았다"는 뜻이지 "애매해서 판단 불가"가 아니다. 지역단서가 있는데도
         # 근처에서 지역명을 못 찾은 경우(진짜 애매한 경우)만 아래에서 계속
         # None(확인필요)으로 남긴다.
+        #
+        # 2026-09-17 안전장치 추가: 위 "98%는 진짜 전국"이라는 결론은 window가
+        # 실제 자격 조항을 제대로 잡았다는 전제 하에서만 맞다. 그런데 헤더
+        # 매칭이 엉뚱한 절(예: "8. 현장설명회 ① 참가자격: 현장설명 참석 대상자")에
+        # 걸려서 정작 진짜 자격 조항("7. 입찰참가자의 자격")을 통째로 놓치는
+        # 사례가 실제로 있었다(사회복지법인한우리 공고 - "본점 소재지가
+        # 대구광역시 또는 경상북도" 지역제한이 있는데도 전국으로 잘못 확정됨).
+        # region 필드가 경기/용인과 무관한 타 지역인데 "전국 확정"된 419건을
+        # 표본검사하니 15건 중 7건이 이 케이스였다. window만 보고 "단서 없음"
+        # 이라고 성급히 "전국"을 확정하면 안 되고, 첨부파일 전체 본문에도
+        # 지역단서가 정말 하나도 없는지 한 번 더 확인해야 한다 - window 밖에
+        # 단서가 있다면 자격 조항 자체를 놓쳤을 가능성이 크므로 안전하게
+        # "확인필요"로 남긴다(참가불가한 공고를 참가가능으로 잘못 보여주는
+        # 것이 확인필요 배지 하나 더 뜨는 것보다 훨씬 위험함).
+        #
+        # 다만 단순히 "cue 단어가 본문 어딘가에 있다"만 보면 오탐이 난다
+        # (예: "본사 안전담당자의 현장 안전보건점검" 같은 안전관리 조항에
+        # "본사"가 나오는데 이건 지역 제한과 무관함). 그래서 window와 똑같은
+        # _scan_for_region()을 full_text 전체에 다시 돌려서, cue 옆에 실제
+        # 지역명까지 붙어있는 "진짜" 매치가 있을 때만 확인필요로 보류한다.
+        if full_text:
+            full_result, full_snippet, _ = _scan_for_region(full_text)
+            if full_result is not None:
+                return None, (
+                    "(참가자격 조항 근처에는 지역단서가 없었으나, 공고문 다른 곳에 "
+                    f"지역 제한으로 보이는 문구가 있어 자동판단을 보류함: {full_snippet})"
+                )
         return "전국", "(참가자격 조항에 지역 제한 관련 문구 없음 - 전국 참가가능으로 판단)"
 
     return None, window_text[:200].strip()
+
+
+def _scan_for_region(text: str):
+    """text 안에서 REGION_CUE_WORDS가 나오는 모든 위치를 훑으며, 그 바로
+    옆(LOCAL_RADIUS 이내)에서 실제 지역명을 찾는다.
+    반환: (result, snippet, found_cue) - result는 _classify_region과 동일한
+    의미(정의된 지역/False/None), found_cue는 cue 단어를 하나라도 찾았는지."""
+    found_cue = False
+    for cue in REGION_CUE_WORDS:
+        search_from = 0
+        while True:
+            pos = text.find(cue, search_from)
+            if pos == -1:
+                break
+            found_cue = True
+            search_from = pos + len(cue)
+            local_start = max(0, pos - LOCAL_RADIUS)
+            local_end = min(len(text), pos + len(cue) + LOCAL_RADIUS)
+            local = text[local_start:local_end]
+
+            if HOME_CITY in local:
+                return "용인", _snippet_around(text, HOME_CITY), found_cue
+            if "전국" in local:
+                return "전국", _snippet_around(text, "전국"), found_cue
+
+            other_city_hit = next((c for c in GYEONGGI_OTHER_CITIES if c in local), None)
+            if other_city_hit:
+                return False, _snippet_around(text, other_city_hit), found_cue
+
+            if HOME_PROVINCE in local:
+                return "경기", _snippet_around(text, HOME_PROVINCE), found_cue
+
+            other_region_hit = next((k for k in EXCLUDE_REGION_KEYWORDS if k in local), None)
+            if other_region_hit:
+                return False, _snippet_around(text, other_region_hit), found_cue
+
+    return None, "", found_cue
 
 
 def _extract_pdf_text(url: str) -> str:
@@ -224,7 +276,7 @@ def _verify_one(bid: dict) -> dict:
         if not text:
             continue
         window = _find_eligibility_window(text)
-        scope, snippet = _classify_region(window)
+        scope, snippet = _classify_region(window, full_text=text)
         if not window:
             continue  # 이 PDF엔 참가자격 조항이 없음 - 다른 첨부파일도 시도
         return {"source": "pdf", "scope": scope, "snippet": snippet}
