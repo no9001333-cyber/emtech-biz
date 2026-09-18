@@ -1186,7 +1186,7 @@ AWARDS_TEMPLATE = """<!DOCTYPE html>
 <div id="mainContent" style="display:none;">
 <header>
   <h1>emtech-biz — 낙찰결과</h1>
-  <p>나라장터 공사 낙찰(개찰결과) 정보 — 과거 공고 위주 (참가등록/투찰마감이 남은 공고는 입찰공고 목록에서 확인)</p>
+  <p>나라장터·LH 낙찰(개찰결과) 정보 — 과거 공고 위주 (참가등록/투찰마감이 남은 공고는 입찰공고 목록에서 확인)</p>
   <div class="meta">
     <span>마지막 업데이트: <b>{updated_at}</b></span>
     <span>총 <b>{count}</b>건</span>
