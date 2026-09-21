@@ -284,6 +284,25 @@ def _verify_one(bid: dict) -> dict:
     return {"source": "pdf-unavailable"}
 
 
+def _downgrade_provisional(bid: dict, reason: str) -> bool:
+    """공사현장이 타 지역이라 API 필드만으로 잠정 "전국" 처리됐던 공고(scope_provisional)를,
+    공고서에서 지역제한 없음을 확인하지 못했을 때 제외 처리한다.
+    (대박낙찰정보 맞춤입찰정보 건별 대조 결과 - 새만금(전북)/충북/충남 현장 공고가
+    우리만 전국으로 표시하던 문제. 참가불가를 참가가능으로 보여주는 쪽이 훨씬 위험함)"""
+    if not bid.get("scope_provisional"):
+        return False
+    bid["eligible"] = False
+    bid["region_scope"] = None
+    bid["scope_provisional"] = False
+    prev = bid.get("region_check") or {}
+    bid["region_check"] = {
+        **prev,
+        "downgraded": True,
+        "note": f"공사현장이 타 지역이고 공고서에서 지역제한 없음을 확인하지 못해 제외 ({reason})",
+    }
+    return True
+
+
 def verify_g2b_region_eligibility(bids: list) -> None:
     """나라장터 공고 리스트를 받아, 대상 공고에 한해 region_check 필드를 채우고
     필요하면 eligible 값을 실제 공고서 확인 결과로 덮어쓴다 (in-place 수정).
@@ -308,6 +327,7 @@ def verify_g2b_region_eligibility(bids: list) -> None:
     verified = 0
     changed = 0
     no_pdf = 0
+    downgraded = 0
 
     try:
         with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
@@ -327,10 +347,14 @@ def verify_g2b_region_eligibility(bids: list) -> None:
 
                 source = result.get("source")
                 if source == "no-attachment":
+                    if _downgrade_provisional(bid, "첨부파일 없음"):
+                        downgraded += 1
                     continue
                 if source in ("pdf-unavailable", "error"):
                     no_pdf += 1
                     bid["region_check"] = {"verified": False, "note": UNVERIFIED_NOTE}
+                    if _downgrade_provisional(bid, "PDF 확인 실패"):
+                        downgraded += 1
                     continue
 
                 verified += 1
@@ -341,7 +365,10 @@ def verify_g2b_region_eligibility(bids: list) -> None:
                         "verified": True, "eligible_confirmed": None,
                         "note": AMBIGUOUS_NOTE, "snippet": snippet,
                     }
+                    if _downgrade_provisional(bid, "자동판단 보류"):
+                        downgraded += 1
                     continue
+                bid["scope_provisional"] = False  # 공고서로 확정됨(전국 확정이든 제한 확정이든)
 
                 new_eligible = confirmed is not False
                 new_scope = confirmed if new_eligible else None
@@ -357,7 +384,12 @@ def verify_g2b_region_eligibility(bids: list) -> None:
     except Exception as e:
         print(f"[나라장터 공고문 검증] 예상치 못한 오류로 중단됨(이미 처리된 결과는 유지): {e}")
 
+    for b in candidates:
+        if _downgrade_provisional(b, "검증 시간 상한/오류로 확인 못 함"):
+            downgraded += 1
+
     elapsed = int(time.time() - start)
+    print(f"[나라장터 공고문 검증] 타 지역 현장 잠정 전국 판정 중 공고서로 확인 못 해 제외: {downgraded}건")
     print(
         f"[나라장터 공고문 검증] {verified}건 PDF로 확인 완료, {no_pdf}건 미확인(PDF 없음/실패), "
         f"{changed}건 판정이 바뀜 ({elapsed}초 소요)"

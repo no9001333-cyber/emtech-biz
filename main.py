@@ -36,6 +36,7 @@ from config import (
 )
 from scrapers.g2b import fetch_g2b_bids
 from scrapers.g2b_verify import verify_g2b_region_eligibility
+from scrapers.g2b_regions import apply_official_regions
 from scrapers.g2b_basis_amount import enrich_g2b_bids_with_basis_amount
 from scrapers.lh import fetch_lh_bids
 from scrapers.d2b import fetch_d2b_bids
@@ -44,7 +45,7 @@ from scrapers.kepco import fetch_kepco_bids
 from scrapers.kogas import fetch_kogas_bids
 from scrapers.g2b_awards import fetch_g2b_awards
 from scrapers.lh_awards import fetch_lh_awards
-from scrapers._common import bid_status, deadline_sort_key, get_region_scope
+from scrapers._common import bid_status, deadline_sort_key, get_region_scope, needs_pdf_confirmation
 from generate_dashboard import generate_dashboard, generate_awards_page
 
 
@@ -104,7 +105,11 @@ def main():
     # (자세한 배경은 scrapers/g2b_verify.py 상단 주석 참고). 시간이 걸려도
     # 정확도를 우선하기로 했지만, 이 단계 자체가 실패해도 전체 수집이 죽지
     # 않도록 g2b_verify 내부에서 예외를 전부 흡수한다.
-    verify_g2b_region_eligibility(g2b_bids)
+    # 2026-09-21: 공식 API의 공고별 참가가능지역/면허제한을 먼저 반영한다(scrapers/g2b_regions.py).
+    # 대박낙찰정보 맞춤입찰정보와 건별 대조해보니 PDF 문구 추정은 계속 틀렸고, 대박의 지역/업종
+    # 컬럼은 이 공식 값이었다. 공식 값이 있는 공고는 PDF 검증 대상에서 빠진다.
+    apply_official_regions(g2b_bids)
+    verify_g2b_region_eligibility([b for b in g2b_bids if not (b.get("region_check") or {}).get("note", "").startswith("나라장터 ")])
     # 2026-08-20: g2b.py가 목록 조회 API로 잠정 채워둔 기초금액/A값을, 전용
     # 오퍼레이션(공사기초금액조회)에서 실제 공개된 값으로 재확인해 덮어쓴다
     # (자세한 배경은 scrapers/g2b_basis_amount.py 상단 주석 참고).
@@ -158,10 +163,20 @@ def main():
         # 달고 있었다(대박낙찰정보와 대조하다가 발견). 재조회 없이도 이미 저장된
         # region/org/title/restrictions만으로 다시 계산 가능하므로, 이월할 때마다
         # 최신 로직으로 다시 계산해서 덮어쓴다.
+        # 2026-09-21: 공고서(PDF)로 이미 확정/제외된 판정은 재계산으로 되돌리지 않는다.
+        # (타 지역 현장의 잠정 "전국" 판정은 PDF에서 지역제한 없음이 확인돼야만 유지)
+        rc = old_bid.get("region_check") or {}
+        has_restr = _has_region_restriction_from_stored(old_bid.get("restrictions", ""))
         new_scope = get_region_scope(
             old_bid.get("region", ""), old_bid.get("org", ""), old_bid.get("title", ""),
-            has_region_restriction=_has_region_restriction_from_stored(old_bid.get("restrictions", "")),
+            has_region_restriction=has_restr,
         )
+        if rc.get("downgraded"):
+            new_scope = None
+        elif rc.get("verified") and rc.get("eligible_confirmed") is not None:
+            new_scope = old_bid.get("region_scope")
+        elif needs_pdf_confirmation(old_bid.get("region", ""), new_scope, has_restr):
+            new_scope = None  # 확인 안 된 잠정 전국 판정은 제외
         if new_scope != old_bid.get("region_scope"):
             rescoped += 1
         old_bid["region_scope"] = new_scope

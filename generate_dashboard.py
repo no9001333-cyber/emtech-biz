@@ -238,6 +238,10 @@ TEMPLATE = """<!DOCTYPE html>
     <input id="telecomOnly" type="checkbox" checked style="width:16px; height:16px;">
     통신 업종만 보기
   </label>
+  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="constructionOnly" type="checkbox" checked style="width:16px; height:16px;">
+    공사만 보기
+  </label>
   <select id="searchField" style="max-width:130px; flex:none;">
     <option value="all">전체검색</option>
     <option value="title">공고명</option>
@@ -551,6 +555,7 @@ function getFilteredBids(opts) {{
   const memos = loadMemos();
 
   const anyScopeChecked = scopeYongin || scopeGyeonggi || scopeNationwide;
+  const constructionOnly = document.getElementById('constructionOnly').checked;
 
   return BIDS.filter(b => {{
     // 세 체크박스를 하나도 안 켰으면 지역 범위로는 아예 거르지 않는다 (예: 서울처럼
@@ -563,6 +568,8 @@ function getFilteredBids(opts) {{
     const matchTelecom = !telecomOnly || TELECOM_KEYWORDS.some(k =>
       (b.title || '').includes(k) || (b.industry || '').includes(k));
     const matchQ = fieldMatches(b, q, searchField);
+    // 우리는 공사만 투찰한다(사용자 지시) - 용역으로 분류된 공고는 기본으로 숨긴다.
+    if (constructionOnly && b.notice_kind === '용역') return false;
     const matchSrc = !src || b.source === src;
     let matchRegion;
     if (!region) {{
@@ -656,6 +663,7 @@ function clearColFilters() {{
 document.getElementById('scopeYongin').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('scopeGyeonggi').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('scopeNationwide').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('constructionOnly').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('telecomOnly').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('search').addEventListener('input', () => {{ render(); buildCalendar(); }});
 document.getElementById('searchField').addEventListener('change', () => {{ render(); buildCalendar(); }});

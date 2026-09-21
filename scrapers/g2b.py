@@ -50,7 +50,7 @@ import requests
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import KEYWORDS, REGIONS, ALWAYS_INCLUDE_ORGS, EXCLUDE_REGION_KEYWORDS, G2B_SERVICE_KEY, LOOKBACK_DAYS
-from scrapers._common import is_deadline_in_range, get_with_retry, get_region_scope
+from scrapers._common import is_deadline_in_range, get_with_retry, get_region_scope, needs_pdf_confirmation
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService"
 # (종류, 오퍼레이션) 목록. 순서대로 조회해서 합친다.
@@ -216,6 +216,9 @@ def _parse_item(item: dict, notice_kind: str):
         "attachments": _collect_attachments(item),
         "region_scope": _scope,
         "eligible": _scope is not None,
+        # 타 지역 공사현장인데 API 필드가 비어서 "전국"으로 구제된 잠정 판정 -
+        # 공고서(PDF)에서 지역제한 없음이 확인돼야 유지된다(g2b_verify.py).
+        "scope_provisional": needs_pdf_confirmation(region_text, _scope, has_region_restriction),
     }
 
 

@@ -81,6 +81,24 @@ def bid_status(deadline_text: str) -> str:
     return "마감"
 
 
+def needs_pdf_confirmation(region_text, scope, has_region_restriction):
+    """공사현장이 타 지역(EXCLUDE_REGION_KEYWORDS)인데 API 구조화 필드에 지역제한이 없다는
+    이유만으로 get_region_scope()가 "전국"으로 구제한 잠정 판정인지.
+
+    2026-09-21: 대박낙찰정보 맞춤입찰정보와 건별 대조해보니, 이런 잠정 "전국" 판정이
+    실제로는 지역제한 공고인 경우가 있었다(예: 새만금 자율운송 통합관제 실증지원센터
+    통신공사 = 전북, Ai-Edutech 융합교육센터 통신설비공사 = 충북, xEV 안전성
+    평가센터 통신 신축공사 = 충남 - 전부 우리는 "전국"으로 표시했고 대박은 해당
+    도(道)로 분류). API 필드가 비어있어도 진짜 제한은 공고서 원문에만 있는 경우가
+    많기 때문이다. 이런 잠정 판정은 공고서(PDF)에서 "지역제한 없음"이 확인될
+    때만 전국으로 인정하고, 확인이 안 되면 제외한다(g2b_verify.py 참고)."""
+    return (
+        scope == "전국"
+        and has_region_restriction is False
+        and any(k in (region_text or "") for k in EXCLUDE_REGION_KEYWORDS)
+    )
+
+
 def get_region_scope(region_text: str, org_text: str = "", title_text: str = "",
                       has_region_restriction=None):
     """용인시 소재 업체가 이 공고에 실제로 입찰 참가 가능한 범위를 판단.
