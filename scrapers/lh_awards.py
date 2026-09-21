@@ -36,6 +36,7 @@
 
 import sys
 import os
+import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 
@@ -75,6 +76,32 @@ def _fetch_page(key, begin_dt, end_dt, page_no, num_of_rows=500):
     return ET.fromstring(raw_text)
 
 
+DISQUALIFIED_HINTS = ("미만", "초과", "부적격", "탈락", "무효")
+
+
+def _amount(row):
+    try:
+        return float(_xml_text(row, "decTndrAmt").replace(",", ""))
+    except ValueError:
+        return float("inf")
+
+
+def _pick_winner(rows):
+    """개찰결과 행들 중 낙찰(1순위) 후보를 고른다.
+    실제 응답의 vndrSccfBidStatusNm 값은 '낙찰하한율미만/예가초과/미심사'뿐이라 "낙찰"이라는
+    명시 값이 없다. 낙찰하한율미만·예가초과는 탈락, '미심사'는 아직 심사 순번이 안 온 후보이므로
+    상태가 비어 있는 행(=심사 대상 1순위)을 우선하고, 없으면 탈락이 아닌 행 중 최저 투찰금액을 쓴다."""
+    explicit = [r for r in rows if WIN_STATUS_HINT in _xml_text(r, "vndrSccfBidStatusNm")
+                and "미만" not in _xml_text(r, "vndrSccfBidStatusNm")]
+    if explicit:
+        return min(explicit, key=_amount)
+    blank = [r for r in rows if not _xml_text(r, "vndrSccfBidStatusNm")]
+    if blank:
+        return min(blank, key=_amount)
+    alive = [r for r in rows if not any(h in _xml_text(r, "vndrSccfBidStatusNm") for h in DISQUALIFIED_HINTS)]
+    return min(alive or rows, key=_amount)
+
+
 def fetch_lh_awards():
     """LH 낙찰결과(개찰결과) 목록을 최근 LOOKBACK_DAYS일(개찰일 기준)로 가져온다.
 
@@ -90,43 +117,46 @@ def fetch_lh_awards():
     end = datetime.now()
     begin = end - timedelta(days=LOOKBACK_DAYS)
     key = _clean_key(LH_SERVICE_KEY)
-    begin_dt = begin.strftime("%Y%m%d")
-    end_dt = end.strftime("%Y%m%d")
 
     NUM_OF_ROWS = 500
-    MAX_PAGES = 15  # 안전장치: 최대 15페이지(=최대 7,500행)까지만 수집
+    MAX_PAGES = 30  # 하루 단위 조회당 상한(=15,000행)
 
+    # 2026-09-21: 이 API는 공고 1건당 참여업체 전원의 행을 준다(30일치 47,000행+).
+    # 한 번에 조회하면 상한(7,500행)에 걸려 대부분 잘리므로 하루씩 나눠 가져온다.
     items = []
-    page_no = 1
-    while page_no <= MAX_PAGES:
-        try:
-            root = _fetch_page(key, begin_dt, end_dt, page_no, NUM_OF_ROWS)
-        except Exception as e:
-            print(f"[LH 낙찰정보] 요청 실패(페이지 {page_no}): {e}")
-            break
-
-        page_items = root.findall(".//item")
-        if not page_items:
-            if page_no == 1:
-                result_msg = root.find(".//resultMsg")
-                result_code = root.find(".//resultCode")
-                print(
-                    f"[LH 낙찰정보] item을 찾지 못함. resultCode: "
-                    f"{result_code.text if result_code is not None else '(없음)'}, "
-                    f"resultMsg: {result_msg.text if result_msg is not None else '(없음)'}"
-                )
-            break
-
-        items.extend(page_items)
-
-        total_count_elem = root.find(".//totalCount")
-        total_count = int(total_count_elem.text) if total_count_elem is not None and total_count_elem.text else len(items)
-        if page_no * NUM_OF_ROWS >= total_count:
-            break
-        if page_no == MAX_PAGES:
-            print(f"[LH 낙찰정보] 경고: 총 {total_count}행인데 상한({MAX_PAGES*NUM_OF_ROWS}행)에 걸려 일부 누락됨")
-            break
-        page_no += 1
+    day = begin
+    while day <= end:
+        d = day.strftime("%Y%m%d")
+        page_no = 1
+        while page_no <= MAX_PAGES:
+            try:
+                root = _fetch_page(key, d, d, page_no, NUM_OF_ROWS)
+            except Exception as e:
+                print(f"[LH 낙찰정보] 요청 실패({d} 페이지 {page_no}): {e}")
+                break
+            page_items = root.findall(".//item")
+            if not page_items:
+                if page_no == 1 and not items and day == begin:
+                    result_msg = root.find(".//resultMsg")
+                    result_code = root.find(".//resultCode")
+                    print(
+                        f"[LH 낙찰정보] item을 찾지 못함. resultCode: "
+                        f"{result_code.text if result_code is not None else '(없음)'}, "
+                        f"resultMsg: {result_msg.text if result_msg is not None else '(없음)'}"
+                    )
+                break
+            items.extend(page_items)
+            total_count_elem = root.find(".//totalCount")
+            total_count = int(total_count_elem.text) if total_count_elem is not None and total_count_elem.text else len(items)
+            if page_no * NUM_OF_ROWS >= total_count:
+                break
+            if page_no == MAX_PAGES:
+                print(f"[LH 낙찰정보] 경고: {d} 총 {total_count}행이 상한에 걸려 일부 누락")
+                break
+            page_no += 1
+            time.sleep(0.3)
+        day += timedelta(days=1)
+        time.sleep(0.3)
 
     if not items:
         return []
@@ -150,10 +180,7 @@ def fetch_lh_awards():
     results = []
     skipped_non_construction = 0
     for (bid_num, bid_degree), rows in groups.items():
-        winner_row = next(
-            (r for r in rows if WIN_STATUS_HINT in _xml_text(r, "vndrSccfBidStatusNm")),
-            rows[0],
-        )
+        winner_row = _pick_winner(rows)
 
         # 2026-09-21: 우리는 공사만 투찰한다(사용자 지시). 업무구분에 "공사"가
         # 없으면(용역/물품 등) 낙찰결과에서도 제외한다. 값이 비어있으면(판단불가)
