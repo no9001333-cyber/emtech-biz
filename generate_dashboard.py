@@ -1186,7 +1186,7 @@ AWARDS_TEMPLATE = """<!DOCTYPE html>
 <div id="mainContent" style="display:none;">
 <header>
   <h1>emtech-biz — 낙찰결과</h1>
-  <p>나라장터·LH 낙찰(개찰결과) 정보 — 과거 공고 위주 (참가등록/투찰마감이 남은 공고는 입찰공고 목록에서 확인)</p>
+  <p>나라장터·LH 공사 낙찰(개찰결과) 정보 (용인시·경기도·전국 참가 가능 건만) — 과거 공고 위주 (참가등록/투찰마감이 남은 공고는 입찰공고 목록에서 확인)</p>
   <div class="meta">
     <span>마지막 업데이트: <b>{updated_at}</b></span>
     <span>총 <b>{count}</b>건</span>
@@ -1201,6 +1201,18 @@ AWARDS_TEMPLATE = """<!DOCTYPE html>
   <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
     <input id="telecomOnly" type="checkbox" checked style="width:16px; height:16px;">
     통신 업종만 보기
+  </label>
+  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="scopeYongin" type="checkbox" checked style="width:16px; height:16px;">
+    용인시
+  </label>
+  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="scopeGyeonggi" type="checkbox" checked style="width:16px; height:16px;">
+    경기도
+  </label>
+  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="scopeNationwide" type="checkbox" checked style="width:16px; height:16px;">
+    전국
   </label>
   <select id="searchField" style="max-width:130px; flex:none;">
     <option value="all">전체검색</option>
@@ -1331,7 +1343,18 @@ function render() {{
   const colAmountMin = parseAmount(document.getElementById('colFilterAmountMin').value);
   const colAmountMax = parseAmount(document.getElementById('colFilterAmountMax').value);
 
+  const scopeYongin = document.getElementById('scopeYongin').checked;
+  const scopeGyeonggi = document.getElementById('scopeGyeonggi').checked;
+  const scopeNationwide = document.getElementById('scopeNationwide').checked;
+
   let filtered = AWARDS.filter(a => {{
+    // 우리가 실제로 투찰할 것만: 공사 + 용인/경기도/전국. 지역을 판정 못 한 건
+    // (region_scope 없음/None)은 다른 지역일 가능성이 있어 보여주지 않는다.
+    if ((a.notice_kind || '공사') !== '공사') return false;
+    const okScope = (scopeYongin && a.region_scope === '용인') ||
+      (scopeGyeonggi && a.region_scope === '경기') ||
+      (scopeNationwide && a.region_scope === '전국');
+    if (!okScope) return false;
     if (telecomOnly && !TELECOM_KEYWORDS.some(k => (a.title || '').includes(k))) return false;
     if (q) {{
       const hay = searchField === 'all'
@@ -1378,6 +1401,7 @@ function render() {{
 }}
 
 document.getElementById('telecomOnly').addEventListener('change', render);
+['scopeYongin','scopeGyeonggi','scopeNationwide'].forEach(id => document.getElementById(id).addEventListener('change', render));
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('searchField').addEventListener('change', render);
 document.getElementById('dateStart').addEventListener('change', render);

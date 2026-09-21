@@ -134,6 +134,8 @@ def fetch_lh_awards():
     print(f"[LH 낙찰정보] 응답 필드명 예시: {[c.tag for c in items[0]]}")
     status_values = sorted({_xml_text(it, "vndrSccfBidStatusNm") for it in items} - {""})
     print(f"[LH 낙찰정보] vndrSccfBidStatusNm 값 종류: {status_values}")
+    job_values = sorted({_xml_text(it, "cstrtnJobGbNm") for it in items} - {""})
+    print(f"[LH 낙찰정보] cstrtnJobGbNm(업무구분) 값 종류: {job_values}")
 
     # (bidNum, bidDegree)별로 묶어서, "낙찰" 상태인 행을 우선 채택한다.
     groups = {}
@@ -146,11 +148,20 @@ def fetch_lh_awards():
         groups.setdefault(key_tuple, []).append(item)
 
     results = []
+    skipped_non_construction = 0
     for (bid_num, bid_degree), rows in groups.items():
         winner_row = next(
             (r for r in rows if WIN_STATUS_HINT in _xml_text(r, "vndrSccfBidStatusNm")),
             rows[0],
         )
+
+        # 2026-09-21: 우리는 공사만 투찰한다(사용자 지시). 업무구분에 "공사"가
+        # 없으면(용역/물품 등) 낙찰결과에서도 제외한다. 값이 비어있으면(판단불가)
+        # 버리지 않고 둔다.
+        job = _xml_text(winner_row, "cstrtnJobGbNm")
+        if job and "공사" not in job:
+            skipped_non_construction += 1
+            continue
 
         try:
             degree_padded = f"{int(bid_degree):02d}"
@@ -175,9 +186,10 @@ def fetch_lh_awards():
             "assessed_rate": _xml_text(winner_row, "invtgtRate"),
             "open_date": _xml_text(winner_row, "openDtm"),
             "url": detail_url,
+            "notice_kind": "공사",
         })
 
-    print(f"[LH 낙찰정보] 총 {len(results)}건 수집 (원본 {len(items)}행 -> 공고별 그룹핑)")
+    print(f"[LH 낙찰정보] 총 {len(results)}건 수집 (원본 {len(items)}행 -> 공고별 그룹핑, 공사 아닌 {skipped_non_construction}건 제외)")
     return results
 
 

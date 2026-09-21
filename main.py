@@ -32,6 +32,7 @@ from config import (
     DATA_DIR, BIDS_JSON_PATH, AWARDS_JSON_PATH, STATUS_JSON_PATH,
     G2B_SERVICE_KEY, LH_SERVICE_KEY, D2B_SERVICE_KEY, KWATER_SERVICE_KEY,
     KEPCO_API_KEY, KOGAS_SERVICE_KEY, G2B_AWARDS_SERVICE_KEY,
+    ALWAYS_INCLUDE_ORGS,
 )
 from scrapers.g2b import fetch_g2b_bids
 from scrapers.g2b_verify import verify_g2b_region_eligibility
@@ -187,6 +188,47 @@ def main():
         # 절대 매칭이 안 되는 버그가 될 뻔했다.
         key = f"{award.get('source')}::{award.get('notice_no') or award.get('title')}"
         awards_by_notice[key] = award
+
+    # 2026-09-21: 낙찰결과 페이지에 전국 모든 지역·용역까지 다 올라온다는 지적.
+    # 낙찰 API엔 지역 필드가 없어서, 입찰공고 쪽에서 이미 (PDF 원문 검증까지 거쳐)
+    # 판정해둔 region_scope/공사·용역 구분을 같은 공고번호로 가져다 붙인다.
+    # 입찰공고는 마감 후 일정 기간만 남으므로, 한 번 판정된 값은 이전 awards.json에서
+    # 이월해 오래된 낙찰도 계속 판정 상태를 유지한다.
+    prev_awards = {}
+    if os.path.exists(AWARDS_JSON_PATH):
+        try:
+            with open(AWARDS_JSON_PATH, "r", encoding="utf-8") as f:
+                for pa in json.load(f):
+                    prev_awards[f"{pa.get('source')}::{pa.get('notice_no') or pa.get('title')}"] = pa
+        except Exception:
+            prev_awards = {}
+    bids_by_key = {_dedupe_key(b): b for b in kept}
+    scoped = carried = unknown = 0
+    for key, award in awards_by_notice.items():
+        bid = bids_by_key.get(key)
+        prev = prev_awards.get(key)
+        if bid is not None and "region_scope" in bid:
+            award["region_scope"] = bid.get("region_scope")
+            award["region"] = bid.get("region", "")
+            award["notice_kind"] = bid.get("notice_kind") or award.get("notice_kind") or "공사"
+            scoped += 1
+        elif prev is not None and "region_scope" in prev:
+            award["region_scope"] = prev.get("region_scope")
+            award["region"] = prev.get("region", "")
+            award["notice_kind"] = prev.get("notice_kind") or award.get("notice_kind") or "공사"
+            carried += 1
+        else:
+            # 매칭되는 공고가 없으면 지역을 알 수 없다. 발주기관명만으로 추정하되
+            # "지역 정보 없음 = 전국" 기본값은 믿지 않고(한전·철도 같은 전국구 기관과
+            # 용인/경기 명시만 인정), 나머지는 None(=숨김)으로 둔다.
+            scope = get_region_scope("", award.get("org", ""), award.get("title", ""))
+            org = award.get("org", "")
+            trusted = scope in ("용인", "경기") or (scope == "전국" and any(o in org for o in ALWAYS_INCLUDE_ORGS))
+            award["region_scope"] = scope if trusted else None
+            award["region"] = ""
+            award["notice_kind"] = award.get("notice_kind") or "공사"
+            unknown += 1
+    print(f"[낙찰 지역판정] 공고와 매칭 {scoped}건, 이전 판정 이월 {carried}건, 미확인(발주기관명으로만 추정) {unknown}건")
 
     with open(AWARDS_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(list(awards_by_notice.values()), f, ensure_ascii=False, indent=2)
