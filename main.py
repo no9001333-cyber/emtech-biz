@@ -99,6 +99,11 @@ def main():
     # 1) 입찰공고 수집 (소스별로 상태 기록)
     new_bids = []
     g2b_bids = _run_source("나라장터", bool(G2B_SERVICE_KEY), fetch_g2b_bids, status_list)
+    try:
+        from scrapers.g2b_probe import probe_missing_notices
+        probe_missing_notices()
+    except Exception as e:
+        print(f"[G2B 진단] 건너뜀: {e}")
     # 2026-08-19: g2b.go.kr 상세페이지의 지역제한 필드가 "공고서참조"로만 나오는
     # 경우가 흔해서, API 구조화 필드만으로는 실제 참가가능 지역을 알 수 없는
     # 공고가 있다. 공고서(PDF) 원문을 직접 읽어 참가자격 지역조건을 재확인한다
