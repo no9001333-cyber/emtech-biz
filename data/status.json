@@ -1,17 +1,17 @@
 {
-  "checked_at": "2026-09-21 09:04",
+  "checked_at": "2026-09-21 12:16",
   "sources": [
     {
       "source": "나라장터",
       "ok": true,
-      "count": 18835,
-      "note": "18835건 수집"
+      "count": 19124,
+      "note": "19124건 수집"
     },
     {
       "source": "LH",
       "ok": true,
-      "count": 325,
-      "note": "325건 수집"
+      "count": 330,
+      "note": "330건 수집"
     },
     {
       "source": "국방전자조달(D2B)",
@@ -40,8 +40,8 @@
     {
       "source": "나라장터 낙찰정보",
       "ok": true,
-      "count": 5579,
-      "note": "5579건 수집"
+      "count": 5636,
+      "note": "5636건 수집"
     },
     {
       "source": "LH 낙찰정보",
