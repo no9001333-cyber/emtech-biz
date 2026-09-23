@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>오늘의 신규공고 전략브리핑 | 이엠테크</title>
+<title>emtech-biz | 오늘의 신규공고 전략브리핑</title>
 <style>
   :root {
     --ink: #14213d;
@@ -15,8 +15,6 @@
     --card: #ffffff;
     --good: #2a6f97;
     --good-soft: #e4eef4;
-    --warn: #a67c00;
-    --warn-soft: #fbf2dc;
   }
   * { box-sizing: border-box; }
   body {
@@ -33,82 +31,174 @@
   .back-link { display:inline-block; margin-top:14px; font-size:0.82rem; color:var(--good); text-decoration:none; }
   .back-link:hover { text-decoration:underline; }
 
-  main { padding: 24px 24px 60px; max-width: 960px; margin: 0 auto; }
+  main { padding: 20px 24px 60px; max-width: 980px; margin: 0 auto; }
 
-  .empty-state {
-    text-align:center; padding: 80px 20px; color: var(--muted);
-    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  .empty {
+    padding: 80px 24px; text-align:center; color:var(--muted);
+    font-size: 1rem; border: 1px dashed var(--line); border-radius: 12px; margin-top: 20px;
   }
-  .empty-state .big { font-size: 1.1rem; color: var(--ink); margin-bottom: 8px; font-weight: 600; }
 
-  .notice {
-    margin-top: 18px; padding: 14px 16px; border-radius: 10px;
-    background: var(--warn-soft); border: 1px solid #e9d9a8; color: #6b5300;
-    font-size: 0.85rem; line-height: 1.6; text-align: left;
-  }
-  .notice b { color: #4a3900; }
-
-  .cards { display:flex; flex-direction:column; gap:16px; }
   .card {
     background: var(--card); border: 1px solid var(--line); border-radius: 12px;
-    padding: 20px 22px;
+    padding: 20px 22px; margin-bottom: 18px;
   }
-  .card h2 { margin:0 0 4px; font-size: 1.05rem; letter-spacing:-0.01em; }
+  .card h2 {
+    margin: 0 0 4px; font-size: 1.05rem; letter-spacing: -0.01em; line-height: 1.4;
+  }
   .card h2 a { color: var(--ink); text-decoration: none; }
   .card h2 a:hover { color: var(--accent); text-decoration: underline; }
-  .card .org { color: var(--muted); font-size: 0.82rem; margin-bottom: 12px; }
-  .facts { display:flex; flex-wrap:wrap; gap:8px 18px; font-size:0.82rem; margin-bottom:14px; }
-  .facts span b { color: var(--ink); }
-  .facts span { color: var(--muted); }
-  .tag { display:inline-block; font-size:0.72rem; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); margin-left:6px; }
-  .tag.confirmed { border-color: var(--good); color: var(--good); }
-  .tag.tentative { border-color: #a67c00; color: #a67c00; }
-  .tag.closed { border-color: var(--accent); color: var(--accent); }
+  .card .notice-no { font-size: 0.72rem; color: var(--muted); font-family: monospace; margin-bottom: 12px; }
 
-  .analysis { border-top:1px dashed var(--line); padding-top:12px; font-size:0.88rem; line-height:1.6; }
-  .analysis p { margin: 4px 0; }
-  .analysis .label { color: var(--accent); font-weight:600; }
-  .conclusion {
-    margin-top:10px; padding:8px 12px; border-radius:8px; background: var(--good-soft);
-    color: var(--good); font-weight:600; font-size:0.85rem;
+  .badges { display:flex; gap:6px; flex-wrap:wrap; margin: 8px 0 14px; }
+  .badge {
+    font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted);
+  }
+  .badge.go { border-color: var(--good); color: var(--good); background: var(--good-soft); font-weight:600; }
+  .badge.nogo { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); font-weight:600; }
+  .badge.check { border-color: #a67c00; color: #a67c00; background: #fbf1dd; font-weight:600; }
+  .badge.na { color: var(--muted); }
+
+  .facts {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px 16px; font-size: 0.82rem; margin-bottom: 14px;
+    padding: 12px 14px; background: var(--paper); border-radius: 8px;
+  }
+  .facts div span { display:block; color: var(--muted); font-size: 0.72rem; margin-bottom: 2px; }
+  .facts div b { font-size: 0.86rem; }
+
+  .section { margin-bottom: 10px; font-size: 0.87rem; line-height: 1.6; }
+  .section .label { font-weight: 700; color: var(--ink); margin-right: 4px; }
+  .section.conclusion {
+    margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);
+    font-size: 0.9rem; font-weight: 600;
   }
 
-  footer { padding:20px 24px 40px; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); margin-top:20px; }
+  footer { padding: 20px 24px 40px; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--line); text-align:center; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>오늘의 신규공고 전략브리핑</h1>
-  <p>나라장터 통신공사(정보통신공사업) 신규 공고 — 이엠테크 수주전략가 관점 분석</p>
+  <h1>emtech-biz — 오늘의 신규공고 전략브리핑</h1>
+  <p>어제 수집분 대비 오늘 새로 뜬 나라장터 통신공사 관련 공고만 골라 이엠테크 관점의 입찰전략을 분석합니다.</p>
   <div class="meta">
-    <span>기준일: <b>2026-09-22</b></span>
-    <span>신규 공고: <b>0건</b></span>
-    <span>대시보드 최신 수집: <b>2026-09-21 17:38</b> (오늘자 수집 아직 없음)</span>
+    <span>기준일: <b>2026-09-23</b></span>
+    <span>신규 공고: <b>7건</b></span>
+    <span>비교 기준: 어제 마지막 수집(2026-09-22 16:44) → 오늘 수집(2026-09-23 10:44)</span>
   </div>
   <a class="back-link" href="index.html">← 입찰공고 목록으로</a>
 </header>
 
 <main>
-  <div class="empty-state">
-    <div class="big">오늘은 신규 없음</div>
-    <p>현재 저장소에 반영된 최신 수집본(2026-09-21 17:38)과 그 직전 커밋을 비교한 결과, 통신공사 관련 나라장터 신규 공고가 없습니다.</p>
-    <div class="notice">
-      <b>데이터 안내:</b> data/bids.json의 가장 최근 커밋은 여전히 2026-09-21 17:38(KST)이며, 오늘(09-22) 기준으로도
-      새로운 수집 커밋이 반영되지 않았습니다. 이 때문에 "오늘의 후보"와 "어제의 후보"가 동일한 스냅샷(나라장터·
-      eligible·통신 키워드 조건 166건)으로 비교되어 신규 0건으로 나온 것으로, <b>"시장에 새 공고가 없다"</b>는 뜻이 아니라
-      <b>"오늘 수집이 아직 반영되지 않았다"</b>는 의미입니다. 억지로 지난 스냅샷을 비교해 분석을 만들어내지
-      않았습니다. GitHub Actions("매일 입찰공고 수집", 자체 러너 방식) 확인 결과, 어제(09-21) 17:40 KST 수동 실행(run #133)은
-      "공고 수집 + 대시보드 생성" 단계 도중 13분 만에 <b>failure</b>로 종료됐고, 오늘(09-22) 08:51 KST 수동 실행(run #134)은
-      두 시간 넘게 <b>in_progress</b> 상태로 멈춰 있으며, 오늘 08:50 KST 예약 실행(run #135)도 여전히
-      <b>pending</b> 상태로 대기 중입니다 — 자체 러너(사용자 PC, DESKTOP-ILSF82F)가 다시 오프라인/미연결 상태인 것으로
-      보입니다. 스크립트 오류가 아니라 <b>러너 PC 전원/연결 상태</b>를 우선 점검해 주세요.
-    </div>
+
+<div class="card">
+  <h2><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01742538&bidPbancOrd=000" target="_blank" rel="noopener">한국정보통신진흥협회 창립 40주년 사사 편찬 및 발간</a></h2>
+  <div class="notice-no">R26BK01742538 · 나라장터</div>
+  <div class="badges"><span class="badge nogo">No-Go</span><span class="badge na">키워드 오검출 의심</span></div>
+  <div class="facts">
+    <div><span>발주기관</span><b>사단법인 한국정보통신진흥협회</b></div>
+    <div><span>추정가격</span><b>9,091만원 (잠정추정치)</b></div>
+    <div><span>투찰마감</span><b>미기재 (개찰 10/7 15:00)</b></div>
+    <div><span>지역</span><b>전국</b></div>
   </div>
+  <div class="section"><span class="label">핵심조건:</span>발주기관명에 "통신"이 들어가 키워드에 걸렸을 뿐, 실제 과업은 협회 창립 40주년 기념 사사(社史) 편찬·발간 출판 용역입니다.</div>
+  <div class="section"><span class="label">참가자격/PQ:</span>공사가 아닌 편찬·출판 용역이라 정보통신공사업과 무관 — PQ 판단 자체가 무의미합니다.</div>
+  <div class="section conclusion">Go/No-Go: No-Go — 이엠테크 업종(정보통신공사)과 무관한 키워드 오검출 건, 검토 불필요.</div>
+</div>
+
+<div class="card">
+  <h2><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01742045&bidPbancOrd=000" target="_blank" rel="noopener">한양대ERICA 데이터보안·활용 혁신융합대학 사업단 교과목(데이터센터 네트워크) 콘텐츠 개발 용역_재공고</a></h2>
+  <div class="notice-no">R26BK01742045 · 나라장터</div>
+  <div class="badges"><span class="badge nogo">No-Go</span><span class="badge na">업종 불일치</span></div>
+  <div class="facts">
+    <div><span>발주기관</span><b>한양대학교 에리카산학협력단</b></div>
+    <div><span>추정가격</span><b>5,000만원 (잠정추정치)</b></div>
+    <div><span>투찰마감</span><b>2026-09-29 17:00</b></div>
+    <div><span>지역</span><b>전국</b></div>
+  </div>
+  <div class="section"><span class="label">핵심조건:</span>"데이터센터 네트워크"는 강의 교과목 주제일 뿐, 실제 과업은 이러닝 콘텐츠 개발입니다.</div>
+  <div class="section"><span class="label">참가자격/PQ:</span>요구 면허가 소프트웨어사업자(디지털콘텐츠개발서비스사업)·이러닝콘텐츠업으로, 정보통신공사업과 무관합니다.</div>
+  <div class="section conclusion">Go/No-Go: No-Go — 시공업이 아닌 콘텐츠 개발 용역, 이엠테크 본업과 불일치.</div>
+</div>
+
+<div class="card">
+  <h2><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01741899&bidPbancOrd=000" target="_blank" rel="noopener">GH 창업특화주택 인테리어공사(통신)</a></h2>
+  <div class="notice-no">R26BK01741899 · 나라장터</div>
+  <div class="badges"><span class="badge go">Go (적극 검토)</span></div>
+  <div class="facts">
+    <div><span>발주기관</span><b>경기주택도시공사</b></div>
+    <div><span>기초금액</span><b>2억 1,524만원 (확정치)</b></div>
+    <div><span>투찰마감</span><b>2026-09-30 10:00</b></div>
+    <div><span>지역</span><b>경기도 수원시 권선구 (참가가능지역: 경기도 확인)</b></div>
+  </div>
+  <div class="section"><span class="label">참가자격/PQ:</span>정보통신공사업 면허 요건 확인됨, 별도 제한사항 명시 없음. 시평액 대비 기초금액이 작아 시평액 충족은 무난할 것으로 보이나, 공고문상 정확한 시평액 배점 기준은 직접 확인 필요.</div>
+  <div class="section"><span class="label">가격전략:</span>낙찰하한율 89.745%, A값 1,417만원 — 통상적인 적격심사 방식으로 추정됩니다.</div>
+  <div class="section conclusion">Go/No-Go: Go — 규모(2.1억)와 지역(경기, 용인 본사 인접) 모두 이엠테크 단독 수행에 적합한 전형적인 스윗스팟 물건입니다.</div>
+</div>
+
+<div class="card">
+  <h2><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01742228&bidPbancOrd=000" target="_blank" rel="noopener">성남금토지구 고속도로(제2경인,용인서울) 통신설비(ITS) 이설공사</a></h2>
+  <div class="notice-no">R26BK01742228 · 나라장터</div>
+  <div class="badges"><span class="badge check">공고문 직접 확인 후 판단</span></div>
+  <div class="facts">
+    <div><span>발주기관</span><b>경기주택도시공사</b></div>
+    <div><span>추정가격</span><b>7억 1,878만원 (잠정추정치)</b></div>
+    <div><span>투찰마감</span><b>2026-09-30 11:00</b></div>
+    <div><span>지역</span><b>경기도 (참가가능지역: 경기도 확인)</b></div>
+  </div>
+  <div class="section"><span class="label">참가자격/PQ:</span>정보통신공사업 면허 확인됨, 별도 제한사항 명시 없음. 다만 ITS(지능형교통시스템) 통신설비 이설은 일반 통신공사와 달리 도로시설 연계 유사실적을 요구하는 경우가 많아, 공고문에서 유사실적·시평액 기준을 직접 확인해야 합니다.</div>
+  <div class="section"><span class="label">가격전략:</span>낙찰하한율 89.745%.</div>
+  <div class="section conclusion">Go/No-Go: 공고문 직접 확인 후 판단 — 규모(7억대)는 단독 수행 가능한 수준이나 ITS 이설 특수 실적요건 여부가 관건(추측).</div>
+</div>
+
+<div class="card">
+  <h2><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01742710&bidPbancOrd=000" target="_blank" rel="noopener">산업용 무선통신망 통합관제 NMS 소프트웨어 개발 용역</a></h2>
+  <div class="notice-no">R26BK01742710 · 나라장터</div>
+  <div class="badges"><span class="badge nogo">No-Go (추정)</span><span class="badge na">민간발주 추정</span></div>
+  <div class="facts">
+    <div><span>발주기관</span><b>주식회사 라임씨에스아이</b></div>
+    <div><span>추정가격</span><b>6,000만원 (잠정추정치)</b></div>
+    <div><span>투찰마감</span><b>2026-10-06 10:00</b></div>
+    <div><span>지역</span><b>전국</b></div>
+  </div>
+  <div class="section"><span class="label">핵심조건:</span>발주기관이 공공기관이 아닌 민간기업으로 보입니다(나라장터 등재 민간발주 건으로 추정). 과업도 NMS 소프트웨어 개발로 시공이 아닙니다.</div>
+  <div class="section"><span class="label">참가자격/PQ:</span>면허 요건 명시 없음(SW 개발 용역) — 정보통신공사업과 불일치. 대금지급 안정성 등 발주처 신용도는 공고문·발주처 정보를 직접 확인해야 합니다.</div>
+  <div class="section conclusion">Go/No-Go: No-Go(추정) — 업종 불일치 + 민간발주 리스크로 판단되나, 최종 확인은 공고문 직접 확인 후 하세요.</div>
+</div>
+
+<div class="card">
+  <h2><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01741754&bidPbancOrd=000" target="_blank" rel="noopener">보령시 국가정보통신망 서비스 사업자 선정</a></h2>
+  <div class="notice-no">R26BK01741754 · 나라장터</div>
+  <div class="badges"><span class="badge check">공고문 직접 확인 후 판단</span><span class="badge na">컨소시엄 검토 권장</span></div>
+  <div class="facts">
+    <div><span>발주기관</span><b>조달청 (수요기관 보령시 추정)</b></div>
+    <div><span>추정가격</span><b>22억 9,729만원 (잠정추정치)</b></div>
+    <div><span>투찰마감</span><b>2026-10-07 10:00</b></div>
+    <div><span>지역</span><b>전국</b></div>
+  </div>
+  <div class="section"><span class="label">참가자격/PQ:</span>정보통신공사업 외에 "기간통신사업"(전기통신사업법상 별도 등록) 면허도 요구됩니다. 이는 일반 통신공사업체가 통상 보유하지 않는 진입장벽 높은 면허로, 이엠테크의 단독 충족 여부는 공고문에서 직접 확인이 필요합니다.</div>
+  <div class="section"><span class="label">참가자격/PQ(규모):</span>22.9억은 시평액(54억) 대비 감당 못 할 규모는 아니나, 시평액 배점 기준은 공고문에서 직접 확인 필요.</div>
+  <div class="section conclusion">Go/No-Go: 공고문 직접 확인 후 판단 — 기간통신사업 면허 요건 충족 여부가 핵심 변수이며, 충족되더라도 단독보다 공동수급(컨소시엄) 검토를 권장합니다.</div>
+</div>
+
+<div class="card">
+  <h2><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01698743&bidPbancOrd=000" target="_blank" rel="noopener">세연고등학교 공간재구조화(리모델링) 정보통신공사</a></h2>
+  <div class="notice-no">R26BK01698743 · 나라장터</div>
+  <div class="badges"><span class="badge na">해당 없음 (이미 종료)</span></div>
+  <div class="facts">
+    <div><span>발주기관</span><b>부산광역시교육청 세연고등학교</b></div>
+    <div><span>기초금액</span><b>4억 9,313만원 (잠정추정치)</b></div>
+    <div><span>투찰마감</span><b>2026-09-03 (이미 경과)</b></div>
+    <div><span>지역</span><b>전국</b></div>
+  </div>
+  <div class="section"><span class="label">핵심조건:</span>공고일(8/26)·마감(9/3) 모두 이미 지난 과거 건으로, 오늘 데이터 수집 시스템에 뒤늦게 반영되며 "신규"로 잡힌 것으로 보입니다. 이미 개찰·낙찰까지 종료된 상태입니다(낙찰자: 주식회사 우림이앤씨, 낙찰률 90.24%).</div>
+  <div class="section conclusion">Go/No-Go: 해당 없음 — 참여 가능한 신규 기회가 아니므로 판단 대상에서 제외합니다. 경쟁사 낙찰률 벤치마크 정도로만 참고하세요.</div>
+</div>
+
 </main>
 
 <footer>
-  이엠테크(경기도 용인, 정보통신공사업, 시공능력평가액 약 54억원) 내부 참고용 자동 분석입니다. 실제 투찰 전 반드시 공고 원문과 첨부 규격서를 직접 확인하세요.
+  이 페이지는 자동 수집 데이터를 기반으로 한 참고용 분석이며, 실제 입찰 참가 여부는 반드시 나라장터 원문 공고와 첨부 시방서를 직접 확인한 후 결정하세요.
 </footer>
 
 </body>
