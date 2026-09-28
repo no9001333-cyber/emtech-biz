@@ -30,6 +30,7 @@ rebase-merge directory" 오류로 즉시 실패한다(run #109 실패 원인). �
 이번에 수집한 데이터는 유실되지만, 매일 반복해서 전부 막히는 것보다는 낫다.
 """
 
+import os
 import subprocess
 import sys
 from datetime import datetime
@@ -64,6 +65,9 @@ def main():
     run(["git", "config", "user.name", "bid-monitor-bot"])
     run(["git", "config", "user.email", "bot@users.noreply.github.com"])
     run(["git", "add", "data/bids.json", "data/awards.json", "data/status.json", "docs/index.html", "docs/awards.html"])
+    # 한전 공고별 지역제한 조회 결과 캐시(scrapers/kepco_regions.py) - 매번 다시 조회하지 않도록 같이 보관
+    if os.path.exists("data/kepco_regions_cache.json"):
+        run(["git", "add", "data/kepco_regions_cache.json"])
 
     # 변경사항이 있는지 확인 (있으면 exit code 1)
     diff_code = run(["git", "diff", "--quiet", "--cached"])

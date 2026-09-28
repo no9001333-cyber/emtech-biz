@@ -569,7 +569,7 @@ function getFilteredBids(opts) {{
       (b.title || '').includes(k) || (b.industry || '').includes(k));
     const matchQ = fieldMatches(b, q, searchField);
     // 우리는 공사만 투찰한다(사용자 지시) - 용역으로 분류된 공고는 기본으로 숨긴다.
-    if (constructionOnly && b.notice_kind === '용역') return false;
+    if (constructionOnly && b.notice_kind && b.notice_kind !== '공사') return false;
     const matchSrc = !src || b.source === src;
     let matchRegion;
     if (!region) {{
@@ -631,7 +631,7 @@ function render() {{
       : `<span class="tag" style="border-color:var(--good); color:var(--good);">진행중</span>`;
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td data-label="출처"><span class="tag ${{cls}}">${{b.source || ''}}</span>${{b.notice_kind === '용역' ? ` <span class="tag" style="border-color:var(--muted); color:var(--muted);">용역</span>` : ''}}</td>
+      <td data-label="출처"><span class="tag ${{cls}}">${{b.source || ''}}</span>${{b.notice_kind && b.notice_kind !== '공사' ? ` <span class="tag" style="border-color:var(--muted); color:var(--muted);">${{b.notice_kind}}</span>` : ''}}</td>
       <td data-label="상태">${{statusBadge}}</td>
       <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href)">${{b.title || ''}}</a>` : (b.title || '')}}</td>
       <td data-label="발주기관">${{b.org || ''}}</td>
