@@ -35,7 +35,9 @@ def parse_deadline(deadline_text: str):
     파싱 실패 시 None 반환."""
     if not deadline_text:
         return None
-    m = re.search(r"(\d{4})-?(\d{2})-?(\d{2})", str(deadline_text))
+    # 2026-09-28: LH는 "2026/09/03 10:00"처럼 슬래시를 써서 예전 패턴(-만 허용)으로는 파싱이
+    # 안 됐고, 그 결과 LH 공고가 마감일이 지나도 계속 "진행중"으로 남아 있었다.
+    m = re.search(r"(\d{4})[-./]?(\d{2})[-./]?(\d{2})", str(deadline_text))
     if not m:
         return None
     try:

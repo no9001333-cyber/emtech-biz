@@ -46,6 +46,17 @@ def _text(el, tag):
     return found.text.strip()
 
 
+def _kogas_kind(work_type):
+    work_type = work_type or ""
+    if "공사" in work_type:
+        return "공사"
+    if "용역" in work_type:
+        return "용역"
+    if work_type:
+        return "구매"
+    return None
+
+
 def fetch_kogas_bids():
     """한국가스공사 입찰정보 전체 리스트 반환.
     (전국 단위 발주기관이라 별도 지역 필터는 적용하지 않음)"""
@@ -113,6 +124,15 @@ def fetch_kogas_bids():
             "url": "http://bid.kogas.or.kr/",
             "eligible": True,
             "region_scope": "전국",
+            # 2026-09-28: 업무구분(WORK_TYPE_NAME: 공사/용역/물품)으로 공사만 보기 필터에 걸리게 한다.
+            "notice_kind": _kogas_kind(_text(item, "WORK_TYPE_NAME")),
+            # 이 API에는 지역제한 정보가 없고 가스공사 입찰시스템(bid.kogas.or.kr)도 외부에서 접속이
+            # 안 돼 확인할 방법이 없다. 전국으로 보여주되 "미검증"임을 화면에 표시한다.
+            "region_check": {
+                "verified": False, "eligible_confirmed": None,
+                "note": "가스공사 API에 지역제한 정보가 없어 확인하지 못함 - 공고문 확인 필요",
+                "snippet": "",
+            },
         })
 
     print(f"[한국가스공사] 총 {len(results)}건 수집")

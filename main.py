@@ -43,6 +43,7 @@ from scrapers.d2b import fetch_d2b_bids
 from scrapers.kwater import fetch_kwater_bids
 from scrapers.kepco import fetch_kepco_bids
 from scrapers.kepco_regions import apply_kepco_regions
+from scrapers.kwater_regions import apply_kwater_regions
 from scrapers.kogas import fetch_kogas_bids
 from scrapers.g2b_awards import fetch_g2b_awards
 from scrapers.lh_awards import fetch_lh_awards
@@ -135,6 +136,12 @@ def main():
         apply_kepco_regions([b for b in deduped.values() if b.get("source") == "한국전력공사"])
     except Exception as e:
         print(f"[한전 지역] 예상치 못한 오류로 건너뜀(기존 판정 유지): {e}")
+    # 2026-09-28: K-water도 API에 지역이 없어 전부 "전국"이었다. 전자조달시스템 상세의 계약방법
+    # (수의시담이면 참가 불가)과 참가자격 문구·공고문에서 지역제한을 확인한다(scrapers/kwater_regions.py).
+    try:
+        apply_kwater_regions([b for b in deduped.values() if b.get("source") == "한국수자원공사"])
+    except Exception as e:
+        print(f"[수자원 지역] 예상치 못한 오류로 건너뜀(기존 판정 유지): {e}")
 
     # 1-1) 나라장터 공고 목록 API(getBidPblancListInfoCnstwk)는 "등록일시" 기준으로만
     # 조회가 가능한 구조라(개찰일시/마감일 기준 조회를 지원하지 않음), 최근

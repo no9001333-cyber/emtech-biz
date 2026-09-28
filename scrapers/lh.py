@@ -152,6 +152,8 @@ def fetch_lh_bids():
             "title": title,
             "org": "한국토지주택공사",
             "industry": _xml_text(item, "cstrtnJobGbNm"),  # 업무구분(시설공사 등)
+            # 2026-09-28: 업무구분(물품/시설공사/용역/지급자재)으로 공사만 보기 필터에 걸리게 한다.
+            "notice_kind": (lambda j: "공사" if "공사" in j else "용역" if "용역" in j else ("구매" if j else None))(_xml_text(item, "cstrtnJobGbNm")),
             "notice_no": bid_num,
             "region": region_text,
             "base_amount": _xml_text(item, "fdmtlAmt") or _xml_text(item, "presmtPrc"),
@@ -179,6 +181,13 @@ def fetch_lh_bids():
                                       has_region_restriction=True)
             )),
             "eligible": _scope is not None,
+            # 2026-09-28: LH 참가지역1~4는 LH가 공고에 직접 넣은 공식 참가가능지역이다.
+            "region_check": {
+                "verified": True, "eligible_confirmed": _scope if _scope is not None else False,
+                "note": ("LH 공고 참가지역 정보로 확인함" if region_text
+                         else "LH 공고에 참가지역 제한 없음(공식 데이터)"),
+                "snippet": region_text,
+            },
         })
 
     print(f"[LH] 총 {len(results)}건 수집")

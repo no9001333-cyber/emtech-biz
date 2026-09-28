@@ -197,7 +197,9 @@ def apply_kepco_regions(bids):
         regions = info.get("regions") or []
         b["participation_regions"] = regions
         if regions:
-            scope = get_region_scope(",".join(regions), b.get("org", ""), "", has_region_restriction=True)
+            # org는 넘기지 않는다: get_region_scope는 발주기관명에 "한국전력공사"(ALWAYS_INCLUDE_ORGS)가
+            # 있으면 지역과 무관하게 전국을 돌려주는데, 한전 공고는 org가 그 이름으로 채워진 경우가 있다.
+            scope = get_region_scope(",".join(regions), "", "", has_region_restriction=True)
             b["region"] = ",".join(regions)
             b["restrictions"] = f"지역제한({','.join(regions)})"
             b["region_scope"] = scope

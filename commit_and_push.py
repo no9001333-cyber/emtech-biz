@@ -65,9 +65,10 @@ def main():
     run(["git", "config", "user.name", "bid-monitor-bot"])
     run(["git", "config", "user.email", "bot@users.noreply.github.com"])
     run(["git", "add", "data/bids.json", "data/awards.json", "data/status.json", "docs/index.html", "docs/awards.html"])
-    # 한전 공고별 지역제한 조회 결과 캐시(scrapers/kepco_regions.py) - 매번 다시 조회하지 않도록 같이 보관
-    if os.path.exists("data/kepco_regions_cache.json"):
-        run(["git", "add", "data/kepco_regions_cache.json"])
+    # 한전·K-water 공고별 지역제한 조회 결과 캐시(scrapers/*_regions.py) - 매번 다시 조회하지 않도록 같이 보관
+    for cache in ("data/kepco_regions_cache.json", "data/kwater_regions_cache.json"):
+        if os.path.exists(cache):
+            run(["git", "add", cache])
 
     # 변경사항이 있는지 확인 (있으면 exit code 1)
     diff_code = run(["git", "diff", "--quiet", "--cached"])

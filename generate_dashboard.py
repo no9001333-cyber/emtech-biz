@@ -459,7 +459,7 @@ function regionCheckHtml(regionCheck) {{
   if (regionCheck.eligible_confirmed === null || regionCheck.eligible_confirmed === undefined) {{
     return `<span class="region-check ambiguous" title="${{esc(regionCheck.note + ': ' + (regionCheck.snippet || ''))}}">❔ 공고서 확인필요</span>`;
   }}
-  return `<span class="region-check confirmed" title="${{esc(regionCheck.note + ': ' + (regionCheck.snippet || ''))}}">✓ 공고서로 확인됨</span>`;
+  return `<span class="region-check confirmed" title="${{esc(regionCheck.note + ': ' + (regionCheck.snippet || ''))}}">✓ 지역 확인됨</span>`;
 }}
 
 function restrictionsHtml(restrictions) {{
