@@ -77,7 +77,10 @@ def bid_status(deadline_text: str) -> str:
     d = parse_deadline(deadline_text)
     if d is None:
         return "진행중"
-    days_left = (d - datetime.now()).days
+    # 2026-09-30: parse_deadline은 날짜만(00:00) 돌려주므로, 예전처럼 datetime.now()와 빼면
+    # 마감 당일 공고가 새벽부터 "마감"이 돼 목록에서 사라졌다(대박 맞춤입찰정보엔 당일 마감 건이
+    # 그대로 보임). 날짜끼리 비교해서 마감 당일은 진행중으로 둔다.
+    days_left = (d.date() - datetime.now().date()).days
     if days_left >= 0:
         return "진행중"
     return "마감"
@@ -236,7 +239,8 @@ def apply_joint_duty_rule(bid):
     if "지역의무공동도급" not in (bid.get("restrictions") or ""):
         return False
     if bid.get("region_scope") is None:
-        return False  # 이미 다른 이유(지역제한 등)로 참가불가
+        # 이미 다른 이유(지역제한 등)로 참가불가이거나, 이전 실행에서 이 규칙으로 빠진 이월 공고
+        return bool(bid.get("joint_duty_other"))
     duty = bid.get("joint_duty_regions") or []
     duty_text = ",".join(duty) if duty else (bid.get("region") or "")
     if not duty_text:
@@ -245,6 +249,9 @@ def apply_joint_duty_rule(bid):
         return False  # 의무지역에 경기(용인)가 있으면 그대로 참가 가능
     bid["region_scope"] = None
     bid["eligible"] = False
+    # 대시보드 "타지역 공동도급" 체크박스로 따로 켜서 볼 수 있게 표시해 둔다.
+    bid["joint_duty_other"] = True
+    bid["joint_duty_region"] = duty_text
     rc = dict(bid.get("region_check") or {})
     rc.update({
         "verified": True, "eligible_confirmed": False,

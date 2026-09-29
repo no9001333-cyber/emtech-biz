@@ -234,6 +234,10 @@ TEMPLATE = """<!DOCTYPE html>
     <input id="scopeNationwide" type="checkbox" checked style="width:16px; height:16px;">
     전국
   </label>
+  <label title="전국 업체가 투찰할 수 있지만 서울·대구 등 현장 지역 업체와 공동도급해야 하는 공고(대박 맞춤입찰정보에는 안 나옴)" style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
+    <input id="scopeJointOther" type="checkbox" style="width:16px; height:16px;">
+    타지역 공동도급
+  </label>
   <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; white-space:nowrap; cursor:pointer;">
     <input id="telecomOnly" type="checkbox" checked style="width:16px; height:16px;">
     통신 업종만 보기
@@ -530,6 +534,7 @@ function getFilteredBids(opts) {{
   const scopeYongin = document.getElementById('scopeYongin').checked;
   const scopeGyeonggi = document.getElementById('scopeGyeonggi').checked;
   const scopeNationwide = document.getElementById('scopeNationwide').checked;
+  const scopeJointOther = document.getElementById('scopeJointOther').checked;
   const telecomOnly = document.getElementById('telecomOnly').checked;
   const q = document.getElementById('search').value.trim().toLowerCase();
   const searchField = document.getElementById('searchField').value;
@@ -554,7 +559,7 @@ function getFilteredBids(opts) {{
   const colStatus = document.getElementById('colFilterStatus').value;
   const memos = loadMemos();
 
-  const anyScopeChecked = scopeYongin || scopeGyeonggi || scopeNationwide;
+  const anyScopeChecked = scopeYongin || scopeGyeonggi || scopeNationwide || scopeJointOther;
   const constructionOnly = document.getElementById('constructionOnly').checked;
 
   return BIDS.filter(b => {{
@@ -564,7 +569,8 @@ function getFilteredBids(opts) {{
     const matchEligible = !anyScopeChecked ||
       (scopeYongin && b.region_scope === '용인') ||
       (scopeGyeonggi && b.region_scope === '경기') ||
-      (scopeNationwide && b.region_scope === '전국');
+      (scopeNationwide && b.region_scope === '전국') ||
+      (scopeJointOther && b.joint_duty_other === true);
     const matchTelecom = !telecomOnly || TELECOM_KEYWORDS.some(k =>
       (b.title || '').includes(k) || (b.industry || '').includes(k));
     const matchQ = fieldMatches(b, q, searchField);
@@ -636,7 +642,7 @@ function render() {{
       <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href)">${{b.title || ''}}</a>` : (b.title || '')}}</td>
       <td data-label="발주기관">${{b.org || ''}}</td>
       <td data-label="업종">${{b.industry || '-'}}</td>
-      <td data-label="지역">${{b.region || ''}}${{b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : ''}}${{regionCheckHtml(b.region_check)}}</td>
+      <td data-label="지역">${{b.region || ''}}${{b.joint_duty_other ? ` <span style="color:var(--accent); font-size:0.72rem;">(공동도급 필요: ${{b.joint_duty_region || ''}})</span>` : (b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : '')}}${{regionCheckHtml(b.region_check)}}</td>
       <td data-label="입찰방식">${{b.bid_method || '-'}}</td>
       <td data-label="제한사항">${{restrictionsHtml(b.restrictions)}}</td>
       <td data-label="금액정보">${{amountInfoHtml(b)}}</td>
@@ -663,6 +669,7 @@ function clearColFilters() {{
 document.getElementById('scopeYongin').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('scopeGyeonggi').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('scopeNationwide').addEventListener('change', () => {{ render(); buildCalendar(); }});
+document.getElementById('scopeJointOther').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('constructionOnly').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('telecomOnly').addEventListener('change', () => {{ render(); buildCalendar(); }});
 document.getElementById('search').addEventListener('input', () => {{ render(); buildCalendar(); }});
