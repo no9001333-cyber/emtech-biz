@@ -2675,5 +2675,558 @@
   "rfx_type": "ProductBid",
   "department": "상생조달처 계약실",
   "checked_at": "2026-09-28 13:04"
+ },
+ "E012606469": {
+  "found": true,
+  "regions": [
+   "경기"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "경기북부본부 기획관리실 재무조달부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605413": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "강원본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606589": {
+  "found": true,
+  "regions": [
+   "부산"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "부산울산본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606570": {
+  "found": true,
+  "regions": [
+   "경기"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "경기본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605423": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605414": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606551": {
+  "found": true,
+  "regions": [
+   "서울"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "서울본부 기획관리실 재무관리부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605412": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606588": {
+  "found": true,
+  "regions": [
+   "부산"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "부산울산본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "KH2026PN0010-1": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실 구매국제계약 담당",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605407": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "경남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606569": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3002",
+  "rfx_type": "ServiceBid",
+  "department": "전북본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606581": {
+  "found": true,
+  "regions": [
+   "경기"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "경기본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606559": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ServiceBid",
+  "department": "대전세종충남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605416": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606563": {
+  "found": true,
+  "regions": [
+   "경남"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "경남본부 기획관리실 재무자재부 계약센터",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606479": {
+  "found": true,
+  "regions": [
+   "대구"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "대구본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605417": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606585": {
+  "found": true,
+  "regions": [
+   "부산"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "부산울산본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605420": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606562": {
+  "found": true,
+  "regions": [
+   "인천"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "인천본부 기획관리실 재무계약부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606593": {
+  "found": true,
+  "regions": [
+   "부산"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "부산울산본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606536": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3012",
+  "rfx_type": "ServiceBid",
+  "department": "대구본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606587": {
+  "found": true,
+  "regions": [
+   "전남광주"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "광주전남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605415": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "전력연구원 기획관리실 R&D행정부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605427": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "경북본부 기획관리실 경영지원부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606505": {
+  "found": true,
+  "regions": [
+   "경북",
+   "대구"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "대구본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606564": {
+  "found": true,
+  "regions": [
+   "전남광주"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "광주전남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "E012606579": {
+  "found": true,
+  "regions": [
+   "전북"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "전북본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:14"
+ },
+ "G012605418": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605425": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605422": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606576": {
+  "found": true,
+  "regions": [
+   "충남"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "대전세종충남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606583": {
+  "found": true,
+  "regions": [
+   "부산"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "부산울산본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606475": {
+  "found": true,
+  "regions": [
+   "대구"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "대구본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606595": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3011",
+  "rfx_type": "ServiceBid",
+  "department": "상생조달처 계약실 공사용역계약 담당",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606565": {
+  "found": true,
+  "regions": [
+   "강원"
+  ],
+  "limited_reason": "3012",
+  "rfx_type": "ServiceBid",
+  "department": "강원본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606578": {
+  "found": true,
+  "regions": [
+   "충남"
+  ],
+  "limited_reason": "3012",
+  "rfx_type": "ServiceBid",
+  "department": "대전세종충남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605410": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실 구매국제계약 담당",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606584": {
+  "found": true,
+  "regions": [
+   "부산"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "부산울산본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606571": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "광주전남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606575": {
+  "found": true,
+  "regions": [
+   "전북"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "전북본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605428": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606560": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3005",
+  "rfx_type": "ServiceBid",
+  "department": "전력연구원 기획관리실 R&D행정부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605430": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606556": {
+  "found": true,
+  "regions": [
+   "경북"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "경북본부 기획관리실 경영지원부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605409": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실 구매국제계약 담당",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605419": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606557": {
+  "found": true,
+  "regions": [
+   "경남"
+  ],
+  "limited_reason": "3012",
+  "rfx_type": "ServiceBid",
+  "department": "경남본부 기획관리실 재무자재부 계약센터",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606586": {
+  "found": true,
+  "regions": [
+   "전남광주"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "광주전남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605421": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "대전세종충남본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606561": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ServiceBid",
+  "department": "전북본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606567": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3002",
+  "rfx_type": "ServiceBid",
+  "department": "대구본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606537": {
+  "found": true,
+  "regions": [
+   "대구"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "대구본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606572": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3002",
+  "rfx_type": "ServiceBid",
+  "department": "전북본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606592": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3012",
+  "rfx_type": "ServiceBid",
+  "department": "강원본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606580": {
+  "found": true,
+  "regions": [
+   "경기"
+  ],
+  "limited_reason": "3012",
+  "rfx_type": "ServiceBid",
+  "department": "경기본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605424": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605429": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실 구매국제계약 담당",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606582": {
+  "found": true,
+  "regions": [],
+  "limited_reason": "3002",
+  "rfx_type": "ServiceBid",
+  "department": "강원본부 기획관리실 재무자재부",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "G012605406": {
+  "found": true,
+  "regions": [],
+  "limited_reason": null,
+  "rfx_type": "ProductBid",
+  "department": "상생조달처 계약실 구매국제계약 담당",
+  "checked_at": "2026-09-29 11:15"
+ },
+ "E012606552": {
+  "found": true,
+  "regions": [
+   "경북"
+  ],
+  "limited_reason": "3006",
+  "rfx_type": "ServiceBid",
+  "department": "경북본부 기획관리실 경영지원부 계약팀",
+  "checked_at": "2026-09-29 11:15"
  }
 }
