@@ -219,3 +219,37 @@ def is_eligible_region(region_text: str, org_text: str = "", title_text: str = "
                         has_region_restriction=None) -> bool:
     """(하위 호환용) get_region_scope()가 None이 아니면 참가가능."""
     return get_region_scope(region_text, org_text, title_text, has_region_restriction) is not None
+
+
+def apply_joint_duty_rule(bid):
+    """지역의무공동도급 공고를 대박낙찰정보 맞춤입찰정보와 같은 기준으로 판정한다(in-place).
+
+    2026-09-30: 나라장터 참가가능지역 API에 행이 없는 공고를 전부 "전국"으로 보여줬는데,
+    그중 지역의무공동도급 공고는 전국 업체가 참가하더라도 공사현장 시·도 업체와 반드시
+    공동도급을 해야 한다. 대박은 이런 공고를 "전국,경기"처럼 의무지역과 함께 표시하고,
+    의무지역이 경기인 것(동고양세무서·안양공고·평택경찰서·능동1초)만 맞춤입찰정보에 올리고
+    서울·경남·대구·전북인 것(신촌동 주민센터·극한소재·대구표지소·전라고)은 뺀다.
+    경기도 업체는 의무지역이 경기면 단독 참가가 가능하지만, 다른 시·도면 그 지역 업체를
+    구해야만 참가할 수 있어 기본 참가 대상이 아니다.
+
+    반환: 규칙이 적용됐으면 True."""
+    if "지역의무공동도급" not in (bid.get("restrictions") or ""):
+        return False
+    if bid.get("region_scope") is None:
+        return False  # 이미 다른 이유(지역제한 등)로 참가불가
+    duty = bid.get("joint_duty_regions") or []
+    duty_text = ",".join(duty) if duty else (bid.get("region") or "")
+    if not duty_text:
+        return False
+    if HOME_CITY in duty_text or HOME_PROVINCE in duty_text:
+        return False  # 의무지역에 경기(용인)가 있으면 그대로 참가 가능
+    bid["region_scope"] = None
+    bid["eligible"] = False
+    rc = dict(bid.get("region_check") or {})
+    rc.update({
+        "verified": True, "eligible_confirmed": False,
+        "note": f"지역의무공동도급({duty_text}) - 해당 지역 업체와 공동도급해야 참가 가능",
+    })
+    bid["region_check"] = rc
+    return True
+

@@ -209,6 +209,9 @@ def _parse_item(item: dict, notice_kind: str):
         "reg_deadline": item.get("bidQlfctRgstDt", ""),
         "bid_method": item.get("bidMethdNm", "") or item.get("cntrctCnclsMthdNm", ""),
         "restrictions": _build_restrictions(item),
+        # 2026-09-30: 지역의무공동도급 지역(1~3). 대박 맞춤입찰정보는 의무공동도급 지역이 경기가
+        # 아니면(예: 서울·대구) 우리 공고로 치지 않는다 - scrapers/_common.apply_joint_duty_rule 참고.
+        "joint_duty_regions": [r for r in (item.get(f"jntcontrctDutyRgnNm{i}", "") for i in (1, 2, 3)) if r],
         "deadline": deadline,
         # 개찰일시 - 투찰마감 아래에 함께 표시.
         "open_date": item.get("opengDt", ""),
