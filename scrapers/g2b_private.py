@@ -29,6 +29,23 @@ OP_LICENSE = "getPrvtBidPblancListInfoLicenseLimit"
 MAX_PAGES = 15
 
 
+def _flatten_text(value):
+    """cnstwkDtlList처럼 dict/list로 오는 값에서 문자열만 모아 한 줄로."""
+    out = []
+
+    def walk(v):
+        if isinstance(v, dict):
+            for x in v.values():
+                walk(x)
+        elif isinstance(v, list):
+            for x in v:
+                walk(x)
+        elif v not in (None, ""):
+            out.append(str(v))
+    walk(value)
+    return ",".join(dict.fromkeys(out))
+
+
 def fetch_g2b_private_bids():
     if not G2B_SERVICE_KEY:
         return []
@@ -36,6 +53,7 @@ def fetch_g2b_private_bids():
     begin = end - timedelta(days=LOOKBACK_DAYS)
     latest = {}
     logged = False
+    sample_logs = []
     for chunk_begin, chunk_end in _date_chunks(begin, end, CHUNK_DAYS):
         for page in range(1, MAX_PAGES + 1):
             params = {
@@ -60,10 +78,27 @@ def fetch_g2b_private_bids():
                 print(f"[누리장터 민간] 응답 필드명 예시: {list(items[0].keys())}")
                 logged = True
             for item in items:
+                # 민간 서비스는 필드명이 조금 다르다(첫 실행 로그로 확인, 2026-09-30):
+                # 공고명 ntceNm, 공고종류 ntceDivNm, 참고금액 refAmt, 배정예산 asignBdgtAmt.
+                item = {
+                    **item,
+                    "bidNtceNm": item.get("bidNtceNm") or item.get("ntceNm", ""),
+                    "ntceKindNm": item.get("ntceKindNm") or item.get("ntceDivNm", ""),
+                    "bdgtAmt": item.get("bdgtAmt") or item.get("asignBdgtAmt", ""),
+                    "presmptPrce": item.get("presmptPrce") or item.get("refAmt", ""),
+                }
                 bid = _parse_item(item, "공사")
                 if bid is None:
                     continue
                 bid["private_notice"] = True
+                # 면허제한 오퍼레이션에 행이 없는 민간 공고가 많아(2026-09-30 첫 실행: 153건 중 46건만),
+                # 입찰자격명(bidQlfctNm)과 공사 상세목록(cnstwkDtlList)의 업종 문구를 업종으로 쓴다.
+                extra = _flatten_text(item.get("cnstwkDtlList"))
+                qual = item.get("bidQlfctNm") or ""
+                bid["industry"] = " / ".join(x for x in (bid.get("industry"), qual, extra) if x)
+                bid["private_region_div"] = item.get("rgnLmtDivNm") or ""
+                if len(sample_logs) < 5:
+                    sample_logs.append(f"{bid['notice_no']} 자격={qual[:60]!r} 공사상세={extra[:80]!r} 지역제한구분={item.get('rgnLmtDivNm')!r}")
                 no = bid.get("notice_no")
                 cur = latest.get(no)
                 if cur is None or str(bid.get("notice_ord") or "") > str(cur.get("notice_ord") or ""):
@@ -72,6 +107,8 @@ def fetch_g2b_private_bids():
                 break
             time.sleep(0.5)
         time.sleep(0.5)
+    for line in sample_logs:
+        print(f"[누리장터 민간] 예시 {line}")
     results = list(latest.values())
     for bid in results:
         if "취소" in (bid.get("notice_type") or ""):
