@@ -160,7 +160,14 @@ def fetch_lh_bids():
             "notice_date": _xml_text(item, "tndrbidRegDt"),
             "reg_deadline": _xml_text(item, "tndrdocAcptBgninDtm"),  # 입찰서접수개시일시
             "bid_method": _xml_text(item, "tndrCtrctMedCd"),  # 입찰계약방법(제한경쟁 등)
-            "restrictions": f"지역제한({region_text})" if region_text else "",  # 참가지역1~4가 있으면 지역제한 공고
+            # 2026-09-30: LH 상세의 "지역의무공동업체제한 참가지역"(API vndrrstrctNm1~4)도 본다.
+            # 대박은 이걸로 청원오창 정보통신공사를 "전국,충북", 구미 공단동을 "전국,경북"으로 표시하고
+            # 맞춤입찰정보에서 뺀다 - 판정은 scrapers/_common.apply_joint_duty_rule.
+            "joint_duty_regions": (_jd := [v for v in (_xml_text(item, f"vndrrstrctNm{i}") for i in range(1, 5)) if v]),
+            "restrictions": ", ".join(x for x in (
+                f"지역제한({region_text})" if region_text else "",
+                "지역의무공동도급" if _jd else "",
+            ) if x),
             "deadline": deadline,
             "url": detail_url,
             # g2b.py와 마찬가지로 region_scope("용인"/"경기"/"전국"/None)를 직접
@@ -190,6 +197,8 @@ def fetch_lh_bids():
             },
         })
 
+    jd_values = sorted({v for b in results for v in b.get("joint_duty_regions") or []})
+    print(f"[LH] 지역의무공동업체제한 지역 값 종류(vndrrstrctNm): {jd_values[:30]} / 해당 공고 {sum(1 for b in results if b.get('joint_duty_regions'))}건")
     print(f"[LH] 총 {len(results)}건 수집")
     return results
 

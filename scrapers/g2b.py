@@ -159,7 +159,9 @@ def _parse_item(item: dict, notice_kind: str):
         or item.get("jntcontrctDutyRgnNm1", "")  # 지역의무공동도급 지역
         or item.get("incntvRgnNm1", "")          # 인센티브 지역
     )
-    deadline = item.get("bidClseDt", "")
+    # 2026-09-30: 수의견적 등 일부 공고는 입찰마감일시(bidClseDt)가 비어 있어서 마감이 지나도
+    # 계속 "진행중"으로 남았다(예: 예원 리모델링 수의견적). 비어 있으면 개찰일시로 대신한다.
+    deadline = item.get("bidClseDt", "") or item.get("opengDt", "")
     if not is_deadline_in_range(deadline):
         return None
 
@@ -196,6 +198,8 @@ def _parse_item(item: dict, notice_kind: str):
         "industry": item.get("mainCnsttyNm", ""),  # 용역엔 없음(빈값)
         "notice_no": item.get("bidNtceNo", ""),
         "notice_ord": item.get("bidNtceOrd", "000"),
+        # 2026-09-30: 공고종류(등록/정정/취소/재공고). 최신 차수가 취소공고면 참가 대상에서 뺀다.
+        "notice_type": item.get("ntceKindNm", ""),
         "region": region_text,
         "base_amount": amount_for_base_est,
         "est_amount": amount_for_base_est,
@@ -304,7 +308,25 @@ def fetch_g2b_bids():
                 results.append(bid)
             time.sleep(1)  # 구간 사이에도 한 템포 쉬어 API에 몰아치지 않게 함
 
-    print(f"[G2B] 총 {len(results)}건 수집 (공사+용역 합계)")
+    # 2026-09-30: 같은 공고번호의 여러 차수(정정·취소)가 함께 오는데, main.py는 공고번호로만
+    # 합치기 때문에 어느 차수가 남을지 순서에 따라 달랐다(예: 예원 정정공고가 마감일 없는 옛 차수로
+    # 남음, 능동1초 옛 공고번호가 취소됐는데도 진행중으로 남음). 최신 차수만 남기고, 그게
+    # 취소공고면 취소로 표시한다(대박 맞춤입찰정보도 취소공고는 "(취소)"로 따로 표시).
+    latest = {}
+    for bid in results:
+        no = bid.get("notice_no")
+        cur = latest.get(no)
+        if cur is None or str(bid.get("notice_ord") or "") > str(cur.get("notice_ord") or ""):
+            latest[no] = bid
+    results = list(latest.values())
+    cancelled = 0
+    for bid in results:
+        if "취소" in (bid.get("notice_type") or ""):
+            bid["cancelled"] = True
+            bid["eligible"] = False
+            bid["region_scope"] = None
+            cancelled += 1
+    print(f"[G2B] 총 {len(results)}건 수집 (공사+용역 합계, 공고번호별 최신 차수만, 그중 취소공고 {cancelled}건)")
     return results
 
 

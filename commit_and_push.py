@@ -66,7 +66,7 @@ def main():
     run(["git", "config", "user.email", "bot@users.noreply.github.com"])
     run(["git", "add", "data/bids.json", "data/awards.json", "data/status.json", "docs/index.html", "docs/awards.html"])
     # 한전·K-water 공고별 지역제한 조회 결과 캐시(scrapers/*_regions.py) - 매번 다시 조회하지 않도록 같이 보관
-    for cache in ("data/kepco_regions_cache.json", "data/kwater_regions_cache.json"):
+    for cache in ("data/kepco_srm_cache.json", "data/kepco_regions_cache.json", "data/kwater_regions_cache.json"):
         if os.path.exists(cache):
             run(["git", "add", cache])
 

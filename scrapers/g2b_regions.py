@@ -57,7 +57,7 @@ def _items_of(data):
     return items or [], int(body.get("totalCount", 0) or 0)
 
 
-def _fetch_op(operation, begin, end):
+def _fetch_op(operation, begin, end, endpoint=ENDPOINT):
     """한 오퍼레이션을 CHUNK_DAYS 단위로 쪼개 전부 가져온다.
     반환: (행 리스트, 잘림 여부, 성공 여부)"""
     rows = []
@@ -76,7 +76,7 @@ def _fetch_op(operation, begin, end):
                 "inqryDiv": 1, "inqryBgnDt": bgn, "inqryEndDt": fin,
             }
             try:
-                data = get_with_retry(f"{ENDPOINT}/{operation}", params=params, timeout=30).json()
+                data = get_with_retry(f"{endpoint}/{operation}", params=params, timeout=30).json()
             except Exception as e:
                 print(f"[G2B 지역/면허] {operation} 요청 실패({bgn}~{fin} p{page}): {e}")
                 ok = False
@@ -106,15 +106,15 @@ def _pick(item, *names):
     return ""
 
 
-def fetch_region_and_license_index():
+def fetch_region_and_license_index(endpoint=ENDPOINT, op_region=OP_REGION, op_license=OP_LICENSE):
     """{공고번호: {"regions": [...], "licenses": [...]}} 와 신뢰 가능 여부를 반환한다."""
     if not G2B_SERVICE_KEY:
         return {}, False
     end = datetime.now()
     begin = end - timedelta(days=LOOKBACK_DAYS)
 
-    region_rows, region_trunc, region_ok = _fetch_op(OP_REGION, begin, end)
-    license_rows, license_trunc, license_ok = _fetch_op(OP_LICENSE, begin, end)
+    region_rows, region_trunc, region_ok = _fetch_op(op_region, begin, end, endpoint)
+    license_rows, license_trunc, license_ok = _fetch_op(op_license, begin, end, endpoint)
     print(f"[G2B 지역/면허] 참가가능지역 {len(region_rows)}행, 면허제한 {len(license_rows)}행")
 
     index = {}
@@ -141,10 +141,10 @@ def fetch_region_and_license_index():
     return index, trustworthy_absence
 
 
-def apply_official_regions(bids):
+def apply_official_regions(bids, endpoint=ENDPOINT, op_region=OP_REGION, op_license=OP_LICENSE):
     """나라장터 공고(bids, in-place)에 공식 참가가능지역/면허제한을 반영한다."""
     try:
-        index, trust_absence = fetch_region_and_license_index()
+        index, trust_absence = fetch_region_and_license_index(endpoint, op_region, op_license)
     except Exception as e:
         print(f"[G2B 지역/면허] 예상치 못한 오류로 건너뜀(기존 판정 유지): {e}")
         return

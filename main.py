@@ -37,12 +37,12 @@ from config import (
 from scrapers.g2b import fetch_g2b_bids
 from scrapers.g2b_verify import verify_g2b_region_eligibility
 from scrapers.g2b_regions import apply_official_regions
+from scrapers.g2b_private import fetch_g2b_private_bids
 from scrapers.g2b_basis_amount import enrich_g2b_bids_with_basis_amount
 from scrapers.lh import fetch_lh_bids
 from scrapers.d2b import fetch_d2b_bids
 from scrapers.kwater import fetch_kwater_bids
-from scrapers.kepco import fetch_kepco_bids
-from scrapers.kepco_regions import apply_kepco_regions
+from scrapers.kepco_srm import fetch_kepco_srm_bids
 from scrapers.kwater_regions import apply_kwater_regions
 from scrapers.kogas import fetch_kogas_bids
 from scrapers.g2b_awards import fetch_g2b_awards
@@ -117,25 +117,27 @@ def main():
     # (자세한 배경은 scrapers/g2b_basis_amount.py 상단 주석 참고).
     enrich_g2b_bids_with_basis_amount(g2b_bids)
     new_bids += g2b_bids
+    # 2026-09-30: 재개발·재건축 조합 등 민간 발주 공고(누리장터 민간입찰공고서비스).
+    # 활용신청 전에는 0건이 정상이라 상태점검(_run_source) 대상에서는 뺀다.
+    try:
+        new_bids += fetch_g2b_private_bids()
+    except Exception as e:
+        print(f"[누리장터 민간] 예상치 못한 오류로 건너뜀: {e}")
     new_bids += _run_source("LH", bool(LH_SERVICE_KEY), fetch_lh_bids, status_list)
     new_bids += _run_source("국방전자조달(D2B)", bool(D2B_SERVICE_KEY), fetch_d2b_bids, status_list)
     new_bids += _run_source("한국수자원공사", bool(KWATER_SERVICE_KEY), fetch_kwater_bids, status_list)
-    new_bids += _run_source("한국전력공사", bool(KEPCO_API_KEY), fetch_kepco_bids, status_list)
+    # 2026-09-30: 한전 빅데이터 API(공고명 "통신"만) 대신 한전 전자조달시스템 통합공고를 직접 수집한다.
+    # 면허(정보통신공사업)·지역제한을 공식 값으로 받고, 같은 시스템의 발전사 공고도 포함된다
+    # (scrapers/kepco_srm.py). 서비스키가 필요 없다.
+    new_bids += _run_source("한국전력공사", True, fetch_kepco_srm_bids, status_list)
     new_bids += _run_source("한국가스공사", bool(KOGAS_SERVICE_KEY), fetch_kogas_bids, status_list)
 
     deduped = {}
     for bid in new_bids:
         bid["collected_at"] = now_str
-        bid["status"] = bid_status(bid.get("deadline", ""))
+        bid["status"] = "취소" if bid.get("cancelled") else bid_status(bid.get("deadline") or bid.get("open_date", ""))
         deduped[_dedupe_key(bid)] = bid
 
-    # 2026-09-28: 한전 빅데이터 API에는 지역 필드가 없어 한전 공고가 전부 "전국"이었다.
-    # 한전 전자조달시스템(srm.kepco.net)의 공고별 공식 지역제한을 반영한다
-    # (자세한 배경은 scrapers/kepco_regions.py 상단 주석 참고).
-    try:
-        apply_kepco_regions([b for b in deduped.values() if b.get("source") == "한국전력공사"])
-    except Exception as e:
-        print(f"[한전 지역] 예상치 못한 오류로 건너뜀(기존 판정 유지): {e}")
     # 2026-09-28: K-water도 API에 지역이 없어 전부 "전국"이었다. 전자조달시스템 상세의 계약방법
     # (수의시담이면 참가 불가)과 참가자격 문구·공고문에서 지역제한을 확인한다(scrapers/kwater_regions.py).
     try:
@@ -167,7 +169,7 @@ def main():
         key = _dedupe_key(old_bid)
         if key in deduped:
             continue  # 오늘 새로 받아온 최신 정보가 있으니 그걸 우선 사용
-        if bid_status(old_bid.get("deadline", "")) != "진행중":
+        if bid_status(old_bid.get("deadline") or old_bid.get("open_date", "")) != "진행중":
             continue  # 이미 마감된 건 이월 대상 아님 (등록일시 조회 창 문제와 무관)
         old_bid["status"] = "진행중"
         # 2026-08-28: 이월된 공고는 재조회를 안 하니 region/org/title/restrictions
