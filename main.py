@@ -136,6 +136,11 @@ def main():
     for bid in new_bids:
         bid["collected_at"] = now_str
         bid["status"] = "취소" if bid.get("cancelled") else bid_status(bid.get("deadline") or bid.get("open_date", ""))
+        if bid.get("cancelled"):
+            # 취소공고는 지역 판정 단계(apply_official_regions 등)가 다시 전국으로 되돌려 놓을 수 있어서
+            # 여기서 최종적으로 참가불가로 못박는다(2026-09-30 능동1초 옛 공고번호가 남아 있던 원인).
+            bid["region_scope"] = None
+            bid["eligible"] = False
         deduped[_dedupe_key(bid)] = bid
 
     # 2026-09-28: K-water도 API에 지역이 없어 전부 "전국"이었다. 전자조달시스템 상세의 계약방법

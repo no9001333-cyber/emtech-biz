@@ -21,6 +21,7 @@
 
 import json
 import os
+import re
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -83,21 +84,39 @@ def _lookup(session, notice_no):
         info["private"] = True
         return info
     regions = extract_restricted_regions(qual, GYEONGGI_OTHER_CITIES, whole_text_is_qualification=True)
+    licenses = _licenses(qual)
     if regions:
         info.update(regions=regions, basis="참가자격 문구")
-        return info
-    f = _pick_notice_file(data.get("atchflList"))
-    if f:
-        x = session.get(DOWNLOAD_URL, params={"xmlValue": json.dumps({"atchflId": f["atchflId"], "fileSeq": f.get("fileSeq", 1)})}, timeout=90)
-        text = document_text(x.content, f.get("docFileNm", ""))
-        regions = extract_restricted_regions(text, GYEONGGI_OTHER_CITIES)
-        if regions:
-            info.update(regions=regions, basis=f"공고문({f.get('docFileNm', '')})")
-        else:
-            info["basis"] = "공고문에서 지역 문구를 못 찾음" if text else "공고문을 읽지 못함"
-    else:
-        info["basis"] = "공고문 첨부 없음"
+    notice_text = None
+    if not regions or not licenses:
+        # 지역이나 면허가 요약 문구에 없으면 공고문 본문을 읽는다. 대박의 "업종"은 공고의 면허
+        # (예: 정보통신공사업)인데, K-water 상세 JSON에는 면허 필드가 없다(2026-09-30 확인).
+        f = _pick_notice_file(data.get("atchflList"))
+        if f:
+            x = session.get(DOWNLOAD_URL, params={"xmlValue": json.dumps({"atchflId": f["atchflId"], "fileSeq": f.get("fileSeq", 1)})}, timeout=90)
+            notice_text = document_text(x.content, f.get("docFileNm", ""))
+            if not regions:
+                regions = extract_restricted_regions(notice_text, GYEONGGI_OTHER_CITIES)
+                if regions:
+                    info.update(regions=regions, basis=f"공고문({f.get('docFileNm', '')})")
+                else:
+                    info["basis"] = "공고문에서 지역 문구를 못 찾음" if notice_text else "공고문을 읽지 못함"
+            if not licenses:
+                licenses = _licenses(notice_text)
+        elif not regions:
+            info["basis"] = "공고문 첨부 없음"
+    info["licenses"] = licenses
     return info
+
+
+def _licenses(text):
+    """문구에서 면허(업종) 이름을 뽑는다. 예: '정보통신공사업', '상·하수도설비공사업'."""
+    found = []
+    for m in re.finditer(r"([가-힣·ㆍ‧]{2,20}공사업)", text or ""):
+        name = m.group(1).lstrip("·ㆍ‧")
+        if name not in found and name not in ("공사업",):
+            found.append(name)
+    return found[:8]
 
 
 def _load_cache():
@@ -120,7 +139,9 @@ def apply_kwater_regions(bids):
         return
     cache = _load_cache()
     todo = list(dict.fromkeys(b["notice_no"] for b in bids
-                              if b.get("notice_no") and b.get("status") != "마감" and b["notice_no"] not in cache))
+                              if b.get("notice_no") and b.get("status") != "마감"
+                              and (b["notice_no"] not in cache
+                                   or ("licenses" not in cache[b["notice_no"]] and not cache[b["notice_no"]].get("private")))))
     failed = set()
     if todo:
         try:
@@ -174,6 +195,10 @@ def apply_kwater_regions(bids):
                 "snippet": info.get("qualification", "")[:150],
             }
             continue
+        if info.get("licenses"):
+            b["industry"] = ",".join(info["licenses"])
+            b["licenses"] = info["licenses"]
+        b["notice_kind"] = "공사"
         regions = info.get("regions") or []
         if regions:
             scope = get_region_scope(",".join(regions), "", "", has_region_restriction=True)

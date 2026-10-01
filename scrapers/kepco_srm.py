@@ -22,7 +22,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import LOOKBACK_DAYS
+from config import LOOKBACK_DAYS, OUR_LICENSES
 from scrapers._common import is_deadline_in_range, get_region_scope
 from scrapers.kepco_regions import _Client, LIST_ACTION, DETAIL_ACTION, REGION_LIMIT_CODE
 
@@ -67,7 +67,12 @@ def _detail(client, rec):
                 regions.append(name)
         if not regions and rec.get("areaCodeName"):
             regions = [rec["areaCodeName"]]
-    return {"licenses": licenses, "regions": regions, "checked_at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+    logic = None
+    if len(licenses) > 1:
+        # 면허가 여러 개면 "모두 필요(And)"인지 "그중 하나(Or)"인지 공고 기본정보에 있다.
+        logic = (client.rpc(DETAIL_ACTION, "findBidBasicInfo", rec["id"]) or {}).get("licenseAutoEvalType")
+    return {"licenses": licenses, "license_logic": logic, "regions": regions,
+            "checked_at": datetime.now().strftime("%Y-%m-%d %H:%M")}
 
 
 def _kind(title, licenses):
@@ -104,7 +109,8 @@ def fetch_kepco_srm_bids():
     cands = [r for r in recs if is_deadline_in_range(_local(r.get("endProposalDate")))
              and "용역" not in (r.get("announceName") or "")]
     cache = _load_cache()
-    todo = [r for r in cands if r.get("announceNo") not in cache]
+    todo = [r for r in cands if r.get("announceNo") not in cache
+            or (len(cache[r["announceNo"]].get("licenses") or []) > 1 and "license_logic" not in cache[r["announceNo"]])]
     if todo:
         started = time.time()
         print(f"[한전 전자조달] 면허·지역제한 새로 조회 {len(todo)}건 (캐시 {len(cache)}건)")
@@ -164,6 +170,18 @@ def fetch_kepco_srm_bids():
         bid["industry"] = ",".join(licenses)
         bid["licenses"] = licenses
         bid["participation_regions"] = regions
+        missing = [l for l in licenses if l not in OUR_LICENSES]
+        if len(licenses) > 1 and info.get("license_logic") == "And" and missing:
+            # 2026-10-01: 이엠테크는 정보통신공사업만 보유. 전기공사업+정보통신공사업처럼 모두 요구하는
+            # 공고는 단독으로 참가할 수 없다(대박 맞춤입찰정보도 뺌 - 신안성-동용인, 얼굴인식 출입관리).
+            bid.update({
+                "region": ",".join(regions), "region_scope": None, "eligible": False, "license_blocked": True,
+                "region_check": {"verified": True, "eligible_confirmed": False,
+                                 "note": f"면허 모두 필요({'+'.join(licenses)}) - 보유하지 않은 면허: {', '.join(missing)}",
+                                 "snippet": ""},
+            })
+            results.append(bid)
+            continue
         if regions:
             scope = get_region_scope(",".join(regions), "", "", has_region_restriction=True)
             bid.update({
