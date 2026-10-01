@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-10-01 11:30",
+  "checked_at": "2026-10-01 14:24",
   "sources": [
     {
       "source": "나라장터",
       "ok": true,
-      "count": 16553,
-      "note": "16553건 수집"
+      "count": 14963,
+      "note": "14963건 수집"
     },
     {
       "source": "LH",
@@ -21,27 +21,27 @@
     },
     {
       "source": "한국수자원공사",
-      "ok": false,
-      "count": 0,
-      "note": "실행 중 오류: 'str' object has no attribute 'get'"
+      "ok": true,
+      "count": 83,
+      "note": "83건 수집"
     },
     {
       "source": "한국전력공사",
       "ok": true,
-      "count": 360,
-      "note": "360건 수집"
+      "count": 369,
+      "note": "369건 수집"
     },
     {
       "source": "한국가스공사",
       "ok": true,
-      "count": 134,
-      "note": "134건 수집"
+      "count": 135,
+      "note": "135건 수집"
     },
     {
       "source": "나라장터 낙찰정보",
       "ok": true,
-      "count": 5911,
-      "note": "5911건 수집"
+      "count": 6075,
+      "note": "6075건 수집"
     },
     {
       "source": "LH 낙찰정보",
