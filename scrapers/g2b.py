@@ -245,6 +245,8 @@ def _fetch_operation(kind: str, operation: str, begin_dt: str, end_dt: str):
         items = body.get("items", [])
         if isinstance(items, dict):
             items = items.get("item", [])
+        if isinstance(items, dict):  # 결과가 1건이면 리스트가 아니라 dict 하나로 옴
+            items = [items]
         if not items:
             break
 

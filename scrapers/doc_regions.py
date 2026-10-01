@@ -78,6 +78,16 @@ def extract_restricted_regions(text, gyeonggi_other_cities=(), whole_text_is_qua
     return found
 
 
+def extract_licenses(text):
+    """문구에서 면허(업종) 이름을 뽑는다. 예: '정보통신공사업', '상·하수도설비공사업'."""
+    found = []
+    for m in re.finditer(r"([가-힣·ㆍ‧]{2,20}공사업)", text or ""):
+        name = m.group(1).lstrip("·ㆍ‧")
+        if name not in found and name != "공사업":
+            found.append(name)
+    return found[:8]
+
+
 def _hwp5_text(data):
     import olefile  # requirements.txt에 추가됨
     ole = olefile.OleFileIO(io.BytesIO(data))

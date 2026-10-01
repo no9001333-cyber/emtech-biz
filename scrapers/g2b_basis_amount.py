@@ -90,6 +90,8 @@ def _fetch_one(bid_ntce_no: str, bid_ntce_ord: str):
     items = body.get("items", [])
     if isinstance(items, dict):
         items = items.get("item", [])
+    if isinstance(items, dict):  # 결과가 1건이면 리스트가 아니라 dict 하나로 옴
+        items = [items]
     if not items:
         return None, f"no_items(resultCode={result_code})"
 

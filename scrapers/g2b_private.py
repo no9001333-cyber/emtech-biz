@@ -21,6 +21,11 @@ from config import G2B_SERVICE_KEY, LOOKBACK_DAYS
 from scrapers._common import get_with_retry
 from scrapers.g2b import _clean_key, _parse_item, _date_chunks, CHUNK_DAYS
 from scrapers.g2b_regions import apply_official_regions
+from scrapers._common import get_region_scope
+from scrapers.doc_regions import document_text, extract_restricted_regions, extract_licenses
+from config import GYEONGGI_OTHER_CITIES
+import json
+import requests
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ao/PrvtBidNtceService"
 OP_LIST = "getPrvtBidPblancListInfoCnstwk"
@@ -91,6 +96,10 @@ def fetch_g2b_private_bids():
                 if bid is None:
                     continue
                 bid["private_notice"] = True
+                docs = [(item.get(f"ntceSpecDocNm{i}") or f"규격서{i}", item.get(f"ntceSpecDocUrl{i}"))
+                        for i in range(1, 11) if item.get(f"ntceSpecDocUrl{i}")]
+                if docs:
+                    bid["attachments"] = [{"name": n, "url": u} for n, u in docs]
                 # 면허제한 오퍼레이션에 행이 없는 민간 공고가 많아(2026-09-30 첫 실행: 153건 중 46건만),
                 # 입찰자격명(bidQlfctNm)과 공사 상세목록(cnstwkDtlList)의 업종 문구를 업종으로 쓴다.
                 extra = _flatten_text(item.get("cnstwkDtlList"))
@@ -118,5 +127,73 @@ def fetch_g2b_private_bids():
     # 참가가능지역·면허제한도 민간 서비스의 오퍼레이션으로 공식 값 반영
     if results:
         apply_official_regions(results, ENDPOINT, OP_REGION, OP_LICENSE)
+        _apply_notice_docs(results)
     print(f"[누리장터 민간] 공사 {len(results)}건 수집")
     return results
+
+
+CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "private_docs_cache.json")
+
+
+def _apply_notice_docs(bids):
+    """2026-10-01: 민간 공고는 입찰자격·지역제한구분이 거의 다 "공고서 참조"이고 면허제한
+    오퍼레이션에도 행이 없다(첫 실행 153건 중 46건만). 대박이 보여주는 업종(예: 이문3구역
+    주차관제 = 통신)과 지역은 공고서 본문에서 나온다. 공고서를 한 번 읽어 면허(~공사업)와
+    지역제한 문구를 뽑고 data/private_docs_cache.json에 저장한다."""
+    try:
+        with open(CACHE_FILE, encoding="utf-8") as f:
+            cache = json.load(f)
+    except Exception:
+        cache = {}
+    session = requests.Session()
+    session.headers["User-Agent"] = "Mozilla/5.0"
+    fetched = failed = 0
+    for bid in bids:
+        no = bid.get("notice_no")
+        if bid.get("cancelled") or not no:
+            continue
+        if no not in cache:
+            docs = bid.get("attachments") or []
+            doc = next((d for d in docs if "공고" in d["name"]), docs[0] if docs else None)
+            if not doc:
+                cache[no] = {"read": False, "basis": "첨부 공고서 없음"}
+            else:
+                try:
+                    data = session.get(doc["url"], timeout=60).content
+                    text = document_text(data, doc["name"])
+                    cache[no] = {
+                        "read": bool(text), "doc": doc["name"],
+                        "licenses": extract_licenses(text),
+                        "regions": extract_restricted_regions(text, GYEONGGI_OTHER_CITIES),
+                    }
+                    fetched += 1
+                except Exception as e:
+                    failed += 1
+                    print(f"[누리장터 민간] {no} 공고서 읽기 실패: {type(e).__name__}")
+                    continue
+                time.sleep(0.3)
+        info = cache[no]
+        if info.get("licenses"):
+            bid["licenses"] = info["licenses"]
+            bid["industry"] = " / ".join(x for x in (",".join(info["licenses"]), bid.get("industry")) if x)
+        if bid.get("participation_regions"):
+            continue  # 공식 참가가능지역이 있으면 그것이 우선
+        regions = info.get("regions") or []
+        if regions:
+            scope = get_region_scope(",".join(regions), "", "", has_region_restriction=True)
+            bid.update({
+                "region_scope": scope, "eligible": scope is not None, "participation_regions": regions,
+                "restrictions": f"지역제한({','.join(regions)})",
+                "region_check": {"verified": True, "eligible_confirmed": scope if scope is not None else False,
+                                 "note": f"공고서({info.get('doc')})의 지역제한 문구로 확인함", "snippet": ",".join(regions)},
+            })
+        elif not info.get("read"):
+            bid.update({
+                "region_scope": None, "eligible": False,
+                "region_check": {"verified": False, "eligible_confirmed": None,
+                                 "note": f"민간 공고 - 공고서를 읽지 못해 지역 미확인({info.get('basis', '')})", "snippet": ""},
+            })
+        # 공고서를 읽었는데 지역제한 문구가 없으면 공식 데이터 판정(제한 없음=전국)을 그대로 둔다.
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=1)
+    print(f"[누리장터 민간] 공고서 새로 읽음 {fetched}건, 실패 {failed}건 (캐시 {len(cache)}건)")

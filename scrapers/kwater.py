@@ -101,7 +101,11 @@ def _fetch_month(search_dt):
     items = body.get("items", [])
     if isinstance(items, dict):
         items = items.get("item", [])
-    return items, None
+    # 2026-10-01: 그 달 공고가 딱 1건이면 item이 리스트가 아니라 dict 하나로 와서, extend()가
+    # dict의 키(문자열)를 공고로 넣어버려 수집 전체가 실패했다(10월 1일 첫 실행).
+    if isinstance(items, dict):
+        items = [items]
+    return items or [], None
 
 
 def fetch_kwater_bids():

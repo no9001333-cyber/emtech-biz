@@ -32,7 +32,7 @@ import requests
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import GYEONGGI_OTHER_CITIES
 from scrapers._common import get_region_scope
-from scrapers.doc_regions import extract_restricted_regions, document_text
+from scrapers.doc_regions import extract_restricted_regions, document_text, extract_licenses as _licenses
 
 BASE = "https://ebid.kwater.or.kr"
 DETAIL_URL = f"{BASE}/bidpblanc/bidpblancsttus/selectBidPblancDtl.do"
@@ -108,15 +108,6 @@ def _lookup(session, notice_no):
     info["licenses"] = licenses
     return info
 
-
-def _licenses(text):
-    """문구에서 면허(업종) 이름을 뽑는다. 예: '정보통신공사업', '상·하수도설비공사업'."""
-    found = []
-    for m in re.finditer(r"([가-힣·ㆍ‧]{2,20}공사업)", text or ""):
-        name = m.group(1).lstrip("·ㆍ‧")
-        if name not in found and name not in ("공사업",):
-            found.append(name)
-    return found[:8]
 
 
 def _load_cache():
