@@ -152,26 +152,39 @@ def _apply_notice_docs(bids):
         no = bid.get("notice_no")
         if bid.get("cancelled") or not no:
             continue
+        if no in cache and cache[no].get("read") and not cache[no].get("licenses") and not cache[no].get("regions")                 and "docs_v2" not in cache[no]:
+            del cache[no]  # 첫 버전은 공고문 1개만 읽었음 - 스캔본일 수 있어 다시 읽는다
         if no not in cache:
             docs = bid.get("attachments") or []
-            doc = next((d for d in docs if "공고" in d["name"]), docs[0] if docs else None)
-            if not doc:
+            # 공고문을 먼저 읽고, 글자가 거의 없으면(스캔 PDF - 예: 이문3구역 주차관제 공고문) 다른
+            # 첨부(입찰지침서 HWP 등)를 이어서 읽는다. 최대 3개.
+            ordered = sorted(docs, key=lambda d: 0 if "공고" in d["name"] else 1)[:3]
+            if not ordered:
                 cache[no] = {"read": False, "basis": "첨부 공고서 없음"}
             else:
+                texts, names = [], []
                 try:
-                    data = session.get(doc["url"], timeout=60).content
-                    text = document_text(data, doc["name"])
-                    cache[no] = {
-                        "read": bool(text), "doc": doc["name"],
-                        "licenses": extract_licenses(text),
-                        "regions": extract_restricted_regions(text, GYEONGGI_OTHER_CITIES),
-                    }
-                    fetched += 1
+                    for doc in ordered:
+                        t = document_text(session.get(doc["url"], timeout=60).content, doc["name"])
+                        if t.strip():
+                            texts.append(t)
+                            names.append(doc["name"])
+                        if sum(len(x) for x in texts) > 1500:
+                            break
+                        time.sleep(0.3)
                 except Exception as e:
                     failed += 1
                     print(f"[누리장터 민간] {no} 공고서 읽기 실패: {type(e).__name__}")
                     continue
-                time.sleep(0.3)
+                text = "\n".join(texts)
+                cache[no] = {
+                    "read": len(text.strip()) > 200, "doc": ", ".join(names),
+                    "licenses": extract_licenses(text),
+                    "regions": extract_restricted_regions(text, GYEONGGI_OTHER_CITIES),
+                    "basis": "" if text.strip() else "공고서 글자 추출 실패(스캔본)",
+                    "docs_v2": True,
+                }
+                fetched += 1
         info = cache[no]
         if info.get("licenses"):
             bid["licenses"] = info["licenses"]

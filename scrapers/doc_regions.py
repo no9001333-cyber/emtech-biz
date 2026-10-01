@@ -83,6 +83,9 @@ def extract_licenses(text):
     found = []
     for m in re.finditer(r"([가-힣·ㆍ‧]{2,20}공사업)", text or ""):
         name = m.group(1).lstrip("·ㆍ‧")
+        # "교체공사 업체"처럼 공사명 뒤에 '업'이 붙은 문장이 면허로 잡히지 않게 거른다.
+        if re.match(r"(교체|설치|개선|보수|정비|이설|신설|증설|구축|철거|본|해당|위)", name):
+            continue
         if name not in found and name != "공사업":
             found.append(name)
     return found[:8]

@@ -32,7 +32,7 @@ from datetime import datetime, timedelta
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import G2B_SERVICE_KEY, LOOKBACK_DAYS
-from scrapers._common import get_with_retry, get_region_scope
+from scrapers._common import get_with_retry, get_region_scope, parse_deadline
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService"
 OP_REGION = "getBidPblancListInfoPrtcptPsblRgn"
@@ -63,6 +63,7 @@ def _fetch_op(operation, begin, end, endpoint=ENDPOINT):
     rows = []
     truncated = False
     ok = True
+    failed_ranges = []
     cur = begin
     while cur < end:
         chunk_end = min(cur + timedelta(days=CHUNK_DAYS), end)
@@ -75,11 +76,20 @@ def _fetch_op(operation, begin, end, endpoint=ENDPOINT):
                 "pageNo": page, "numOfRows": NUM_OF_ROWS, "type": "json",
                 "inqryDiv": 1, "inqryBgnDt": bgn, "inqryEndDt": fin,
             }
-            try:
-                data = get_with_retry(f"{endpoint}/{operation}", params=params, timeout=30).json()
-            except Exception as e:
-                print(f"[G2B 지역/면허] {operation} 요청 실패({bgn}~{fin} p{page}): {e}")
+            data = None
+            # 2026-10-01: 연결이 한 번 끊긴 것(ConnectionReset)만으로 전체 "제한 없음=전국" 판정을
+            # 포기해서 4천여 건이 PDF 검증으로 넘어가고 일부가 숨겨졌다. 페이지 단위로 몇 번 더 시도한다.
+            for attempt in range(4):
+                try:
+                    data = get_with_retry(f"{endpoint}/{operation}", params=params, timeout=30).json()
+                    break
+                except Exception as e:
+                    last_err = e
+                    time.sleep(5 * (attempt + 1))
+            if data is None:
+                print(f"[G2B 지역/면허] {operation} 요청 실패({bgn}~{fin} p{page}): {last_err}")
                 ok = False
+                failed_ranges.append((cur, chunk_end))
                 break
             items, total = _items_of(data)
             if page == 1 and items and not rows:
@@ -90,12 +100,13 @@ def _fetch_op(operation, begin, end, endpoint=ENDPOINT):
             if page == MAX_PAGES:
                 print(f"[G2B 지역/면허] 경고: {operation} {bgn}~{fin} 총 {total}행이 상한에 걸려 잘림")
                 truncated = True
+                failed_ranges.append((cur, chunk_end))
                 break
             page += 1
             time.sleep(0.5)
         cur = chunk_end
         time.sleep(0.5)
-    return rows, truncated, ok
+    return rows, truncated, ok, failed_ranges
 
 
 def _pick(item, *names):
@@ -109,12 +120,12 @@ def _pick(item, *names):
 def fetch_region_and_license_index(endpoint=ENDPOINT, op_region=OP_REGION, op_license=OP_LICENSE):
     """{공고번호: {"regions": [...], "licenses": [...]}} 와 신뢰 가능 여부를 반환한다."""
     if not G2B_SERVICE_KEY:
-        return {}, False
+        return {}, (False, [])
     end = datetime.now()
     begin = end - timedelta(days=LOOKBACK_DAYS)
 
-    region_rows, region_trunc, region_ok = _fetch_op(op_region, begin, end, endpoint)
-    license_rows, license_trunc, license_ok = _fetch_op(op_license, begin, end, endpoint)
+    region_rows, region_trunc, region_ok, region_failed = _fetch_op(op_region, begin, end, endpoint)
+    license_rows, license_trunc, license_ok, _ = _fetch_op(op_license, begin, end, endpoint)
     print(f"[G2B 지역/면허] 참가가능지역 {len(region_rows)}행, 면허제한 {len(license_rows)}행")
 
     index = {}
@@ -137,8 +148,11 @@ def fetch_region_and_license_index(endpoint=ENDPOINT, op_region=OP_REGION, op_li
                     ent.append(part)
 
     # 지역 조회가 성공했고 잘리지 않았어야 "행 없음 = 지역제한 없음(전국)"으로 단정할 수 있다.
-    trustworthy_absence = region_ok and not region_trunc and len(region_rows) > 0
-    return index, trustworthy_absence
+    # 일부 구간만 실패했으면 그 구간에 게시된 공고만 못 믿고, 나머지는 "행 없음=전국"을 쓴다.
+    trustworthy_absence = len(region_rows) > 0
+    if region_failed:
+        print(f"[G2B 지역/면허] 참가가능지역 조회 실패 구간 {len(region_failed)}개 - 그 구간 게시 공고만 '제한 없음' 판정 보류")
+    return index, (trustworthy_absence, region_failed)
 
 
 def apply_official_regions(bids, endpoint=ENDPOINT, op_region=OP_REGION, op_license=OP_LICENSE):
@@ -148,9 +162,14 @@ def apply_official_regions(bids, endpoint=ENDPOINT, op_region=OP_REGION, op_lice
     except Exception as e:
         print(f"[G2B 지역/면허] 예상치 못한 오류로 건너뜀(기존 판정 유지): {e}")
         return
+    trust_absence, failed_ranges = trust_absence
     if not index and not trust_absence:
         print("[G2B 지역/면허] 데이터를 못 가져와 기존 판정을 그대로 둡니다.")
         return
+
+    def in_failed_range(bid):
+        nd = parse_deadline(bid.get("notice_date") or "")
+        return nd is not None and any(a.date() <= nd.date() <= b.date() for a, b in failed_ranges)
 
     # 안전 게이트: 참가가능지역이 지정된 공고 비율이 비정상적으로 낮으면(정상이면 공고의
     # 상당수가 지역제한을 가짐) 응답 해석이 틀렸을 수 있으므로 "행 없음=전국"을 쓰지 않는다.
@@ -190,7 +209,7 @@ def apply_official_regions(bids, endpoint=ENDPOINT, op_region=OP_REGION, op_lice
             by_region += 1
             if scope is None:
                 by_none += 1
-        elif trust_absence:
+        elif trust_absence and not in_failed_range(b):
             # 참가가능지역 행이 없음 = 지역제한 없음. 이미 다른 이유로 참가불가였던 것
             # (예: 참가자격제한)은 지역 문제가 아니므로 건드리지 않는다.
             b["participation_regions"] = []
