@@ -47,7 +47,7 @@ from scrapers.kwater_regions import apply_kwater_regions
 from scrapers.kogas import fetch_kogas_bids
 from scrapers.g2b_awards import fetch_g2b_awards
 from scrapers.lh_awards import fetch_lh_awards
-from scrapers._common import bid_status, deadline_sort_key, get_region_scope, needs_pdf_confirmation, apply_joint_duty_rule
+from scrapers._common import bid_status, deadline_sort_key, get_region_scope, needs_pdf_confirmation, apply_joint_duty_rule, apply_contractor_selection_rule
 from generate_dashboard import generate_dashboard, generate_awards_page
 
 
@@ -216,6 +216,8 @@ def main():
     # 이월된 공고까지 포함해 매 실행마다 다시 적용한다.
     joint_excluded = sum(1 for b in deduped.values() if apply_joint_duty_rule(b))
     print(f"[의무공동도급] 의무지역이 경기가 아니라 참가 대상에서 뺀 공고 {joint_excluded}건")
+    contractor_excluded = sum(1 for b in deduped.values() if apply_contractor_selection_rule(b))
+    print(f"[시공자 선정] 재개발·재건축 시공사 선정 공고라 참가 대상에서 뺀 공고 {contractor_excluded}건")
     kept = list(deduped.values())
 
     # 2) 낙찰정보(개찰결과) 수집 - 나라장터 + LH

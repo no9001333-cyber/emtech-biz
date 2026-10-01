@@ -260,3 +260,25 @@ def apply_joint_duty_rule(bid):
     bid["region_check"] = rc
     return True
 
+
+_CONTRACTOR_SELECTION = re.compile(r"시공(자|사)\s*(선정|재선정)|우선협상대상\s*시공")
+
+
+def apply_contractor_selection_rule(bid):
+    """재개발·재건축 "시공자 선정" 공고를 참가 대상에서 뺀다(in-place). 반환: 적용됐으면 True.
+
+    2026-10-01 사용자 결정: 이런 공고는 아파트·정비사업 전체를 맡을 시공사(종합건설)를 뽑는
+    입찰이라, 공고서의 면허 목록에 정보통신공사업이 "그중 하나"로 들어 있어도 이엠테크
+    (정보통신공사업만 보유)가 시공사로 참여할 대상이 아니다. 대박 맞춤입찰정보에는 일부가
+    올라오지만 기본 화면에서는 뺀다."""
+    if not _CONTRACTOR_SELECTION.search(bid.get("title") or ""):
+        return False
+    bid["region_scope"] = None
+    bid["eligible"] = False
+    bid["contractor_selection"] = True
+    rc = dict(bid.get("region_check") or {})
+    rc.update({"verified": True, "eligible_confirmed": False,
+               "note": "재개발·재건축 시공자(시공사) 선정 공고 - 종합건설 시공사 선정이라 참가 대상에서 제외"})
+    bid["region_check"] = rc
+    return True
+
