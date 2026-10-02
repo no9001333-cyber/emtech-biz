@@ -3250,5 +3250,152 @@
    "경기"
   ],
   "checked_at": "2026-10-01 16:22"
+ },
+ "E042600405": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E042600404": {
+  "licenses": [
+   "토목건축공사업",
+   "건축공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "경남 거제시",
+   "경남 거창군",
+   "경남 고성군",
+   "경남 김해시",
+   "경남 남해군",
+   "경남 창원시 마산회원구",
+   "경남 밀양시",
+   "경남 사천시",
+   "경남 산청군",
+   "경남 양산시",
+   "경남 의령군",
+   "경남 진주시",
+   "경남 창원시 진해구",
+   "경남 창녕군",
+   "경남 창원시 의창구",
+   "경남 통영시",
+   "경남 하동군",
+   "경남 함양군",
+   "경남 함안군",
+   "경남 합천군",
+   "경남 창원시 마산합포구",
+   "경남 창원시 성산구"
+  ],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E042600406": {
+  "licenses": [
+   "철강구조물공사업",
+   "기계가스설비공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606687": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E082600402": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E052600402": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606684": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606675": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606699": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606686": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606692": {
+  "licenses": [
+   "조경식재·시설물공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606688": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606694": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-10-02 10:44"
+ },
+ "E012606680": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-10-02 10:44"
  }
 }
