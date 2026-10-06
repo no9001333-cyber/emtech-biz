@@ -261,7 +261,7 @@ def apply_joint_duty_rule(bid):
     return True
 
 
-_CONTRACTOR_SELECTION = re.compile(r"시공(자|사)\s*(선정|재선정)|우선협상대상\s*시공")
+_CONTRACTOR_SELECTION = re.compile(r"시공(자|사)\s*(선정|재선정|재입찰|입찰|수의계약)|우선협상대상\s*시공")
 
 
 def apply_contractor_selection_rule(bid):
