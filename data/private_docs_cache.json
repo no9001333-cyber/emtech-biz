@@ -1571,5 +1571,104 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01754971": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01755194": {
+  "read": true,
+  "doc": "제목없음-1 (1) (1) (1) (1).pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01754938": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01755229": {
+  "read": true,
+  "doc": "20261002내부 공용부 벽체 균열보수 및 재도장 공사 입찰공고(안).hwp",
+  "licenses": [
+   "도장공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01756185": {
+  "read": true,
+  "doc": "공고서-진보농장 축산악취저감시범사업.pdf",
+  "licenses": [
+   "환경전문공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01754954": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01755342": {
+  "read": true,
+  "doc": "시공사 입찰 재공고 지침서-1.pdf",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업",
+   "조경공사업",
+   "소방시설공사업",
+   "전문소방시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01753716": {
+  "read": true,
+  "doc": "강성열입찰공고문.hwp",
+  "licenses": [
+   "금속창호·지붕건축물조립공사업",
+   "금속구조물·창호·온실공사업"
+  ],
+  "regions": [
+   "전라남도",
+   "광주광역시"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01754531": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01755416": {
+  "read": true,
+  "doc": "첨부2.입찰참가 신청 제반서류(관악난곡A2).hwpx",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }

@@ -3405,5 +3405,153 @@
   "license_logic": null,
   "regions": [],
   "checked_at": "2026-10-02 13:29"
+ },
+ "E012606600": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606711": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606716": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606733": {
+  "licenses": [
+   "감리업(전력종합감리)",
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606717": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606701": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606739": {
+  "licenses": [
+   "도장·습식·방수·석공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606702": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606712": {
+  "licenses": [
+   "측량업(측지측량업)",
+   "측량업(기타-공공측량업)",
+   "측량업(기타-수치지도제작업)",
+   "측량업(기타-지하시설물측량업)",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606666": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606735": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606710": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606718": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E082600403": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606685": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 10:49"
+ },
+ "E012606706": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-10-06 10:49"
  }
 }
