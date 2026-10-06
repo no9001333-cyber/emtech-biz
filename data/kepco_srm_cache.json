@@ -3553,5 +3553,65 @@
    "경북"
   ],
   "checked_at": "2026-10-06 10:49"
+ },
+ "E012606732": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-10-06 14:04"
+ },
+ "E012606738": {
+  "licenses": [
+   "전문소방시설공사업",
+   "일반소방시설공사업(기계)",
+   "일반소방시설공사업(전기)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "세종"
+  ],
+  "checked_at": "2026-10-06 14:04"
+ },
+ "E012606734": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-10-06 14:04"
+ },
+ "E012606737": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-10-06 14:04"
+ },
+ "E012606742": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-06 14:04"
+ },
+ "E012606707": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-10-06 14:04"
  }
 }
