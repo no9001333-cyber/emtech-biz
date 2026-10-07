@@ -1725,5 +1725,89 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01758327": {
+  "read": true,
+  "doc": "입찰공고문 최종본-장신뜰영농조합법인.pdf",
+  "licenses": [
+   "온실공사업",
+   "지붕건축물조립공사업",
+   "창호공사업"
+  ],
+  "regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01759624": {
+  "read": true,
+  "doc": "HRSG Tube 긴급복구공사(연간단가) 입찰공고.pdf",
+  "licenses": [
+   "기계설비공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01759169": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01759609": {
+  "read": true,
+  "doc": "입찰 공고문.pdf",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업",
+   "조경공사업",
+   "소방시설공사업",
+   "전문소방시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01758018": {
+  "read": true,
+  "doc": "홈스랑 2026년 가공제품 설비조성 지원사업 가공시설 증축(건축) 입찰 공고.pdf",
+  "licenses": [
+   "건축공사업",
+   "금속창호·지붕건축물조립공사업"
+  ],
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01758059": {
+  "read": true,
+  "doc": "1. 삼익2-시공자 선정 입찰공고문.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01758488": {
+  "read": true,
+  "doc": "제2026-25호 정비기반시설 협력업체 입찰공고.pdf",
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성·포장공사업",
+   "조경식재·시설물공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }

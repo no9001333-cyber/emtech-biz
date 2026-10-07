@@ -3613,5 +3613,250 @@
    "대구"
   ],
   "checked_at": "2026-10-06 14:04"
+ },
+ "E012606761": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E012606749": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E022600311": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남 계룡시",
+   "충남 공주시",
+   "충남 금산군",
+   "충남 논산시",
+   "충남 당진시",
+   "충남 보령시",
+   "충남 부여군",
+   "충남 서산시",
+   "충남 서천군",
+   "충남 아산시",
+   "충남 예산군",
+   "충남 천안시 동남구",
+   "충남 청양군",
+   "충남 태안군",
+   "충남 홍성군",
+   "충남 천안시 서북구"
+  ],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E012606690": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E012606750": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E012606763": {
+  "licenses": [
+   "도장·습식·방수·석공사업",
+   "전기공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E012606765": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E012606745": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E012606696": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-07 13:21"
+ },
+ "E012606759": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "전기공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "경기",
+   "인천"
+  ],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E012606678": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E012606744": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E082600406": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "철근·콘크리트공사업"
+  ],
+  "license_logic": "And",
+  "regions": [],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E102600463": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E012606724": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E112600108": {
+  "licenses": [
+   "소프트웨어사업자(컴퓨터관련서비스사업)"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E012606708": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E012606727": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E012606703": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E102600464": {
+  "licenses": [
+   "여객자동차운송사업(구역여객자동차운송사업-전세버스)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북 경산시",
+   "경북 경주시",
+   "경북 고령군",
+   "경북 구미시",
+   "경북 김천시",
+   "경북 문경시",
+   "경북 봉화군",
+   "경북 상주시",
+   "경북 성주군",
+   "경북 안동시",
+   "경북 영덕군",
+   "경북 영양군",
+   "경북 영주시",
+   "경북 영천시",
+   "경북 예천군",
+   "경북 울릉군",
+   "경북 울진군",
+   "경북 의성군",
+   "경북 청도군",
+   "경북 청송군",
+   "경북 칠곡군",
+   "경북 포항시 남구",
+   "경북 포항시 북구"
+  ],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E012606705": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-07 13:22"
+ },
+ "E052600403": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-07 13:22"
  }
 }
