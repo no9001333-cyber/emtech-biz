@@ -1809,5 +1809,65 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01759258": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01761666": {
+  "read": true,
+  "doc": "중앙1구역 시공자 선정 입찰공고문_수의계약.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01760347": {
+  "read": true,
+  "doc": "제2026-04호_정비기반시설설치용역업체 선정 입찰공고문_261002.pdf, 정비기반시설설치  입찰참여 안내서_261002.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01762249": {
+  "read": true,
+  "doc": "1.만월산터널  콘크리트 포장도로 보수․보강 공사 입찰공고서.hwp",
+  "licenses": [],
+  "regions": [
+   "경기도",
+   "서울특별시",
+   "인천광역시"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01762293": {
+  "read": true,
+  "doc": "재공고-공고문(진북면 인곡리 824번지 곤축사육사 신축공사).pdf",
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "경상남도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01760302": {
+  "read": true,
+  "doc": "1.2026년 문학경기장 소방시설 종합점검 지적사항 보수공사(하반기) 입찰공고문.hwp",
+  "licenses": [
+   "소방시설공사업",
+   "전문소방시설공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }
