@@ -1952,5 +1952,25 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01764851": {
+  "read": true,
+  "doc": "1. 입찰공고문(환경시설).hwpx",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01764672": {
+  "read": true,
+  "doc": "2026년 ICT융복합확산사업(이경순님).pdf",
+  "licenses": [
+   "창호공사업"
+  ],
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
  }
 }
