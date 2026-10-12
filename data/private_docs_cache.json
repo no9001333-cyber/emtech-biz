@@ -1869,5 +1869,88 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01763506": {
+  "read": true,
+  "doc": "공사입찰계약설명서(공통).hwp",
+  "licenses": [
+   "전기공사업",
+   "정보통신공사업",
+   "전문공사업",
+   "소방시설공사업",
+   "한국전기공사업",
+   "통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01763627": {
+  "read": true,
+  "doc": "공사입찰계약설명서(공통).hwp",
+  "licenses": [
+   "전기공사업",
+   "정보통신공사업",
+   "전문공사업",
+   "소방시설공사업",
+   "한국전기공사업",
+   "통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01764201": {
+  "read": true,
+  "doc": "1. 입찰공고문(고성 파티션).hwpx",
+  "licenses": [
+   "실내건축공사업",
+   "금속창호지붕건축물조립공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01763105": {
+  "read": true,
+  "doc": "CCTV 설치 렌탈업체선정 (재)입찰공고.pdf",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01763297": {
+  "read": true,
+  "doc": "2026.10.08 시공자선정 입찰공고(2차).hwp",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "경기도",
+   "서울특별시",
+   "인천광역시"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01763580": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01763331": {
+  "read": true,
+  "doc": "1. 시공자 선정을 위한 입찰공고(2차).pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }
