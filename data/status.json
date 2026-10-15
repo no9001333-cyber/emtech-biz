@@ -1,53 +1,53 @@
 {
-  "checked_at": "2026-10-12 11:41",
+  "checked_at": "2026-10-15 08:34",
   "sources": [
     {
       "source": "나라장터",
       "ok": true,
-      "count": 15188,
-      "note": "15188건 수집"
+      "count": 16536,
+      "note": "16536건 수집"
     },
     {
       "source": "LH",
       "ok": true,
-      "count": 267,
-      "note": "267건 수집"
+      "count": 287,
+      "note": "287건 수집"
     },
     {
       "source": "국방전자조달(D2B)",
       "ok": true,
-      "count": 9,
-      "note": "9건 수집"
+      "count": 17,
+      "note": "17건 수집"
     },
     {
       "source": "한국수자원공사",
       "ok": true,
-      "count": 98,
-      "note": "98건 수집"
+      "count": 117,
+      "note": "117건 수집"
     },
     {
       "source": "한국전력공사",
       "ok": true,
-      "count": 355,
-      "note": "355건 수집"
+      "count": 376,
+      "note": "376건 수집"
     },
     {
       "source": "한국가스공사",
       "ok": true,
-      "count": 123,
-      "note": "123건 수집"
+      "count": 139,
+      "note": "139건 수집"
     },
     {
       "source": "나라장터 낙찰정보",
       "ok": true,
-      "count": 4818,
-      "note": "4818건 수집"
+      "count": 5723,
+      "note": "5723건 수집"
     },
     {
       "source": "LH 낙찰정보",
       "ok": true,
-      "count": 40,
-      "note": "40건 수집"
+      "count": 44,
+      "note": "44건 수집"
     }
   ]
 }
