@@ -2168,5 +2168,43 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01773135": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01773149": {
+  "read": true,
+  "doc": "(삼익 5동)1. 시공자 선정 입찰공고문.hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01773100": {
+  "read": true,
+  "doc": "진해구 대야구역 주택재개발사업 상수관로 인입공사업체 선정 입찰공고_최종본.hwpx",
+  "licenses": [
+   "인입공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01773029": {
+  "read": true,
+  "doc": "입찰공고서.pdf",
+  "licenses": [
+   "창호공사업"
+  ],
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
  }
 }

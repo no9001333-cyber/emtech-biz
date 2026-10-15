@@ -4860,5 +4860,27 @@
   "license_logic": null,
   "regions": [],
   "checked_at": "2026-10-15 10:18"
+ },
+ "E012606929": {
+  "licenses": [
+   "도장·습식·방수·석공사업",
+   "건축공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-10-15 14:30"
+ },
+ "E012606913": {
+  "licenses": [
+   "전문소방시설공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북",
+   "대구"
+  ],
+  "checked_at": "2026-10-15 14:30"
  }
 }
