@@ -2206,5 +2206,70 @@
   ],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01774453": {
+  "read": true,
+  "doc": "건물외벽 드라이비트 철거, 준불연재 재시공 업체선정 입찰공고(수정, 관리단회의).pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01775277": {
+  "read": true,
+  "doc": "철산주공13단지 시공자 입찰공고.pdf",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업",
+   "조경공사업",
+   "소방시설공사업",
+   "시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01773430": {
+  "read": true,
+  "doc": "1. 삼익2-시공자 선정 입찰공고문.hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01773773": {
+  "read": true,
+  "doc": "1. 시공사 입찰공고문(2차).hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01774053": {
+  "read": true,
+  "doc": "1.시공자 선정 입찰 재공고문_은하아파트 가로주택정비사업조합.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01773949": {
+  "read": true,
+  "doc": "(261015)십정5구역 - 시공자 선정 재입찰공고.pdf",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "조경공사업",
+   "소방시설공사업",
+   "전문소방시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }
