@@ -15,8 +15,6 @@
     --card: #ffffff;
     --good: #2a6f97;
     --good-soft: #e4eef4;
-    --nogo: #a4312a;
-    --nogo-soft: #f3e1df;
   }
   * { box-sizing: border-box; }
   body {
@@ -42,40 +40,12 @@
   }
   .alert-today b { color: var(--accent); }
 
-  section.group { margin-bottom: 30px; }
-  section.group > h2 { font-size: 1.05rem; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
-
-  .card {
+  .empty-card {
     background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-    padding: 16px 18px; margin-bottom: 14px;
+    padding: 70px 20px; text-align:center;
   }
-  .card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap; }
-  .card-title { font-size: 0.98rem; font-weight: 700; margin: 0 0 4px; }
-  .card-title a { color: var(--ink); text-decoration:none; }
-  .card-title a:hover { color: var(--accent); text-decoration:underline; }
-  .card-org { font-size: 0.82rem; color: var(--muted); }
-
-  .pill { display:inline-block; font-size:0.74rem; font-weight:700; padding:3px 10px; border-radius:999px; white-space:nowrap; }
-  .pill-go { background: var(--good-soft); color: var(--good); border: 1px solid var(--good); }
-  .pill-nogo { background: var(--nogo-soft); color: var(--nogo); border: 1px solid var(--nogo); }
-  .pill-check { background: #f0eee6; color: var(--muted); border: 1px solid var(--line); }
-  .pill-consortium { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
-  .pill-urgent { background: var(--nogo); color: #fff; border: 1px solid var(--nogo); }
-
-  .meta-row { display:flex; gap:14px; flex-wrap:wrap; font-size:0.82rem; color:var(--muted); margin:10px 0 10px; padding:9px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .meta-row b { color: var(--ink); }
-
-  .analysis p { margin: 6px 0; font-size: 0.86rem; line-height:1.55; }
-  .analysis .label { font-weight:700; color: var(--ink); margin-right:4px; }
-  .analysis .concl { margin-top:10px; padding-top:8px; border-top:1px dashed var(--line); font-weight:600; }
-
-  .closed-table { width:100%; border-collapse: collapse; font-size: 0.82rem; background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow:hidden; }
-  .closed-table th { text-align:left; background:#f0eee6; padding:9px 10px; border-bottom:1px solid var(--line); color:var(--muted); font-weight:600; }
-  .closed-table td { padding:9px 10px; border-bottom:1px solid var(--line); vertical-align: top; }
-  .closed-table tr:last-child td { border-bottom:none; }
-  .closed-note { font-size:0.78rem; color: var(--muted); margin-top:8px; }
-
-  .empty-note { padding: 60px 20px; text-align:center; color: var(--muted); font-size: 1rem; }
+  .empty-card .big { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+  .empty-card .small { font-size: 0.86rem; color: var(--muted); line-height:1.6; }
 
   footer { padding: 20px 24px 40px; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--line); max-width:980px; margin:0 auto; }
 </style>
@@ -86,10 +56,10 @@
   <h1>오늘의 신규공고 전략브리핑</h1>
   <p>이엔테크(용인, 정보통신공사업, 시평액 약 54억원) 기준 — 어제 대비 오늘 새로 뜬 나라장터 통신 관련 공고만 선별하여 전략 분석</p>
   <div class="meta">
-    <span>브리핑 생성일: <b>2026-10-17</b></span>
+    <span>브리핑 생성일: <b>2026-10-18</b></span>
     <span>데이터 기준(최근 수집본): <b>2026-10-16 12:39</b></span>
-    <span>신규 공고: <b>12건</b> (진행중 9건 · 이미 마감 3건)</span>
-    <span>비교 기준: <b>직전 수집본(2026-10-15 14:33)</b> 대비 신규 notice_no</span>
+    <span>신규 공고: <b>0건</b></span>
+    <span>비교 기준: <b>직전 수집본(동일, 2026-10-16 12:39)</b> 대비 신규 notice_no</span>
   </div>
   <div class="back-link"><a href="index.html">← 입찰공고 목록으로</a></div>
 </header>
@@ -97,235 +67,13 @@
 <main>
 
   <div class="alert-today">
-    <b>⏱ 참고</b> — 이번 브리핑은 2026-10-16 12:39 수집본을 기준으로 합니다(클라우드 세션은 수집기를 직접 실행할 수 없어, 2026-10-17 신규 수집분은 포함되지 않았습니다). 신규 12건 중 3건은 수집 당시 이미 투찰마감(10-15)이 지나 있어 참고용으로만 별도 표기합니다.
+    <b>⏱ 참고</b> — 2026-10-18 기준 data/bids.json은 2026-10-16 12:39 수집본과 완전히 동일합니다(해시 일치). 즉 지난 수집 이후 새로 수집된 공고가 없어 비교할 신규분이 없습니다. 클라우드 세션은 수집기를 직접 실행할 수 없으므로, 다음 수집기 실행 이후 다시 확인해 주세요.
   </div>
 
-  <section class="group">
-    <h2>진행중 신규 공고 — 전략 분석 (9건, 마감 임박순)</h2>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774605&bidPbancOrd=000" target="_blank" rel="noopener">학교 유무선 네트워크 개선 3-2차 사업 정보통신공사(2권역)</a></p>
-          <div class="card-org">경기도교육청 경기도구리남양주교육지원청</div>
-        </div>
-        <span class="pill pill-go">Go</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>433,394,000원 (확정치)</b></span>
-        <span>투찰마감 <b>2026-10-22 10:00</b></span>
-        <span>지역 <b>경기도 (참가가능지역 경기)</b></span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 학교 유무선 네트워크 개선 공사. 경기도 소재 업체로 참가가능지역이 제한됨(region_check로 공식 확인).</p>
-        <p><span class="label">참가자격/PQ:</span> 요구업종 정보통신공사업(0036)으로 이엔테크 보유 업종과 일치. restrictions 필드는 공란이나, 시평액 기준 충족 여부는 공고문에서 직접 확인 필요.</p>
-        <p><span class="label">가격전략:</span> 낙찰하한율 89.745%, A값 27,108,066원 참고.</p>
-        <p class="concl">Go/No-Go: 업종·지역 모두 일치하고 금액(4.3억)이 시평액(54억) 이내라 단독 수행에 적합 — 적극 참여 권장.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774241&bidPbancOrd=000" target="_blank" rel="noopener">삼일공업고 공간재구조화 증개축 및 리모델링 통신,소방공사 설계 용역</a></p>
-          <div class="card-org">경기도교육청 삼일공업고등학교</div>
-        </div>
-        <span class="pill pill-check">확인 필요</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>94,441,818원 (잠정추정치)</b></span>
-        <span>투찰마감 <b>2026-10-22 10:00</b></span>
-        <span>지역 <b>수원·용인·화성시 (본사 또는 참여지사 소재지 제한)</b> — 용인 본사 소재지 포함</span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> "설계 용역"으로, 시공이 아닌 통신·소방 설계 업무. 참가가능지역에 본사 소재지 용인시가 포함됨.</p>
-        <p><span class="label">참가자격/PQ:</span> 요구 면허가 엔지니어링사업(정보통신), 기술사사무소(정보통신), 소방시설설계업 등 설계·엔지니어링 전문면허군 — 이엔테크의 정보통신공사업(시공업) 면허와는 별개입니다. 해당 설계 면허 보유 여부를 공고문에서 직접 확인 필요.</p>
-        <p><span class="label">가격전략:</span> 낙찰하한율 88% 참고.</p>
-        <p class="concl">Go/No-Go: 지역은 유리하나 설계 전문면허 미보유 시 참가자격 자체가 안 될 가능성이 높음(추정) — 면허 보유 여부 확인 후 판단.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774370&bidPbancOrd=000" target="_blank" rel="noopener">신갈오거리 도시재생 공유플랫폼 건립사업 통신공사</a></p>
-          <div class="card-org">용인도시공사</div>
-        </div>
-        <span class="pill pill-go">Go</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>470,019,000원 (확정치)</b></span>
-        <span>투찰마감 <b>2026-10-22 12:00</b></span>
-        <span>지역 <b>경기도 용인시</b></span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 발주기관이 용인도시공사로, 이엔테크 본사가 위치한 용인시 자체 발주 건.</p>
-        <p><span class="label">참가자격/PQ:</span> 요구업종 정보통신공사업(0036)으로 이엔테크 보유 업종과 일치. restrictions 필드는 공란이나 region_check상 경기도 소재 확인됨. 시평액 기준 충족 여부는 공고문에서 직접 확인 필요.</p>
-        <p><span class="label">가격전략:</span> 낙찰하한율 89.745%, A값 30,293,227원 참고.</p>
-        <p class="concl">Go/No-Go: 업종·금액·지역 연고(본사 소재지 발주처)가 모두 유리한 건 — 최우선 적극 참여 권장.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01772562&bidPbancOrd=000" target="_blank" rel="noopener">저궤도 위성통신망 양산형 시제기 개발 사업 기획연구</a></p>
-          <div class="card-org">조달청 경남지방조달청</div>
-        </div>
-        <span class="pill pill-nogo">No-Go (업종 불일치)</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>101,818,182원 (잠정추정치)</b></span>
-        <span>투찰마감 <b>2026-10-27 10:00</b></span>
-        <span>지역 <b>전국</b></span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 위성통신망 시제기 개발을 위한 "기획연구" — R&D 성격의 연구용역.</p>
-        <p><span class="label">참가자격/PQ:</span> 요구업종이 "학술.연구용역"으로 명시되어 있어 이엔테크의 정보통신공사업(시공업) 면허와 전혀 무관합니다.</p>
-        <p><span class="label">가격전략:</span> (데이터 없음 — 생략)</p>
-        <p class="concl">Go/No-Go: 제목의 "통신" 키워드로 걸러졌을 뿐 실제 연구용역 발주건 — No-Go.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774132&bidPbancOrd=000" target="_blank" rel="noopener">정보통신 사이버 보안 동향 자료 조사 및 분석</a></p>
-          <div class="card-org">사단법인 한국정보통신진흥협회</div>
-        </div>
-        <span class="pill pill-check">확인 필요</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>22,727,273원 (잠정추정치)</b></span>
-        <span>투찰마감 <b>2026-10-27 15:00</b></span>
-        <span>지역 <b>전국</b></span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 사이버 보안 동향 "조사 및 분석" — 연구조사 성격의 소액 용역, 발주기관명에 "정보통신"이 포함되어 있을 뿐 요구업종은 데이터상 공란입니다.</p>
-        <p><span class="label">참가자격/PQ:</span> 요구업종이 데이터에 명시되지 않아 공고문에서 직접 확인 필요. 제목상 조사·분석 연구용역으로, 시공업 면허로 참가 가능한지 불명확합니다.</p>
-        <p><span class="label">가격전략:</span> (데이터 없음 — 생략)</p>
-        <p class="concl">Go/No-Go: 정보통신공사업과 연관성이 낮아 보이나(추정) 데이터만으로 단정 불가 — 공고문 직접 확인 후 판단.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01773265&bidPbancOrd=000" target="_blank" rel="noopener">2027년 군포시 민원콜센터 정보통신시스템 유지관리 용역(협상에 의한 계약)</a></p>
-          <div class="card-org">경기도 군포시</div>
-        </div>
-        <span class="pill pill-check">확인 필요</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>78,974,545원 (잠정추정치)</b></span>
-        <span>투찰마감 <b>2026-10-27 17:00</b></span>
-        <span>지역 <b>전국</b></span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 민원콜센터 정보통신시스템 "유지관리", 계약방식이 "협상에 의한 계약"(가격경쟁이 아닌 기술능력 종합평가).</p>
-        <p><span class="label">참가자격/PQ:</span> 요구업종이 데이터상 공란 — 시스템 유지관리 성격상 정보통신공사업 외 소프트웨어사업자 등록 요건이 추가로 걸려있을 가능성이 있어 공고문에서 직접 확인 필요.</p>
-        <p><span class="label">가격전략:</span> 협상에 의한 계약이라 낙찰하한율/A값 개념이 적용되지 않음(데이터 없음).</p>
-        <p class="concl">Go/No-Go: 금액은 시평액 이내이나 자격요건과 기술평가 방식을 공고문에서 직접 확인 후 판단.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01772549&bidPbancOrd=000" target="_blank" rel="noopener">(가칭)배곧2고 신축 통신공사</a></p>
-          <div class="card-org">조달청 인천지방조달청</div>
-        </div>
-        <span class="pill pill-go">Go</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>706,268,000원 (잠정추정치)</b></span>
-        <span>투찰마감 <b>2026-10-28 10:00</b></span>
-        <span>지역 <b>경기도 시흥시 (참가가능지역 경기)</b></span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 학교 신축공사 내 통신설비 부분. 경기도 소재 업체로 참가가능지역 제한.</p>
-        <p><span class="label">참가자격/PQ:</span> 요구업종 정보통신공사업(0036)으로 이엔테크 보유 업종과 일치. 시평액 기준 충족 여부는 공고문에서 직접 확인 필요.</p>
-        <p><span class="label">가격전략:</span> 낙찰하한율 89.745% 참고.</p>
-        <p class="concl">Go/No-Go: 업종·지역 일치, 금액(7.1억) 역시 시평액(54억) 이내로 단독 수행 가능한 규모 — 참여 권장.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774431&bidPbancOrd=001" target="_blank" rel="noopener">동삭동 행정복지센터 및 동삭도서관 건립공사(정보통신)</a></p>
-          <div class="card-org">경기도 평택시</div>
-        </div>
-        <span class="pill pill-consortium">컨소시엄 검토</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>1,109,288,000원 (확정치)</b></span>
-        <span>투찰마감 <b>2026-11-02 12:00</b></span>
-        <span>지역 <b>전국(지역의무공동도급 — 의무지역 경기도)</b></span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 행정복지센터·도서관 건립공사 내 정보통신 부분. restrictions가 "지역의무공동도급"으로 명시, joint_duty_regions에 경기도가 지정됨.</p>
-        <p><span class="label">참가자격/PQ:</span> 요구업종 정보통신공사업(0036) 일치. 금액(11.1억)은 시평액(54억) 이내지만, 지역의무공동도급 조건상 경기도 소재 업체와 반드시 공동수급체를 구성해야 함 — 이엔테크는 용인 소재 경기도 업체이므로 의무지역 요건은 자체 충족. 세부 지분·구성사 요건은 공고문 직접 확인 필요.</p>
-        <p><span class="label">가격전략:</span> 낙찰하한율 88.745%, A값 70,179,200원 참고.</p>
-        <p class="concl">Go/No-Go: 단독 수행 규모는 충분하나 지역의무공동도급 구조이므로, 주관사 또는 경기도 의무지분사로 공동수급 구성을 검토하여 참여 — 공고문에서 지분 요건 확인 후 최종 판단.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <p class="card-title"><a href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774069&bidPbancOrd=000" target="_blank" rel="noopener">2027년도 통신시장 모니터링(이동통신분야)</a></p>
-          <div class="card-org">사단법인 한국정보통신진흥협회</div>
-        </div>
-        <span class="pill pill-nogo">No-Go (업종 불일치)</span>
-      </div>
-      <div class="meta-row">
-        <span>기초금액 <b>718,181,818원 (잠정추정치)</b></span>
-        <span>투찰마감 <b>2026-11-27 15:00</b></span>
-        <span>지역 <b>전국</b></span>
-      </div>
-      <div class="analysis">
-        <p><span class="label">핵심조건:</span> 이동통신 시장 동향을 조사·분석하는 "모니터링" 연구용역 — 금액은 커 보이나 시공·설치가 아닌 조사연구 업무.</p>
-        <p><span class="label">참가자격/PQ:</span> 요구업종이 데이터상 공란이나, 성격상 시장조사·연구 전문기관용 용역으로 보여 이엔테크의 정보통신공사업 면허와는 무관할 가능성이 높습니다(추정).</p>
-        <p><span class="label">가격전략:</span> (데이터 없음 — 생략)</p>
-        <p class="concl">Go/No-Go: 제목의 "통신시장" 키워드로 걸러졌을 뿐 시공업과 무관한 연구조사 용역으로 판단(추정) — No-Go.</p>
-      </div>
-    </div>
-
-  </section>
-
-  <section class="group">
-    <h2>이미 마감된 공고 (참고용, 3건)</h2>
-    <p class="closed-note">직전 수집본(10/15 14:33) 이후 공고되어 "신규"로 잡혔지만, 투찰이 매우 짧은 소액 전자시담 건이라 열람 시점(10/16 수집)에는 이미 마감된 경우입니다. 향후 유사 패턴 참고용으로만 기재하며, Go/No-Go 분석은 생략합니다.</p>
-    <table class="closed-table">
-      <thead>
-        <tr><th>공고명</th><th>발주기관</th><th>기초금액</th><th>마감</th><th>낙찰 결과</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>부용2지구 농촌공간정비사업 통신공사</td>
-          <td>한국농어촌공사 충북지역본부 옥천.영동지사</td>
-          <td>12,298,000원</td>
-          <td>10-15 14:00</td>
-          <td>주식회사대영음향정보통신 / 11,100,000원 (90.258%)</td>
-        </tr>
-        <tr>
-          <td>옥천면 기초생활거점조성사업 전기.통신공사 재해예방기술지도 용역</td>
-          <td>한국농어촌공사 전남지역본부 해남.완도지사</td>
-          <td>11,700,000원</td>
-          <td>10-15 15:30</td>
-          <td>결과 미기재 — 재해예방기술지도 용역은 산업안전보건법상 별도 지정기관 자격이 필요해 정보통신공사업과는 무관</td>
-        </tr>
-        <tr>
-          <td>토지면 기초생활거점조성사업(농촌협약) 통신공사 재해예방기술지도 용역</td>
-          <td>한국농어촌공사 전남지역본부 구례지사</td>
-          <td>3,436,364원</td>
-          <td>10-15 16:00</td>
-          <td>결과 미기재 — 재해예방기술지도 용역은 산업안전보건법상 별도 지정기관 자격이 필요해 정보통신공사업과는 무관</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+  <div class="empty-card">
+    <div class="big">오늘은 신규 없음</div>
+    <div class="small">최근 수집본(2026-10-16 12:39) 이후 추가로 수집된 나라장터 통신 관련 공고가 없습니다.</div>
+  </div>
 
 </main>
 
