@@ -55,6 +55,10 @@ from scrapers._common import is_deadline_in_range, get_with_retry
 ENDPOINT = "https://apis.data.go.kr/1690000/BidPblancInfoService"
 OPERATION_GOODS = "getDmstcCmpetBidPblancList"   # 국내 경쟁입찰공고 (물품/용역 중심)
 OPERATION_FCLTY = "getFcltyCmpetBidPblancList"   # 시설 경쟁입찰공고 (공사 중심)
+# 2026-10-19: 시설 공개수의협상계획(소액 시설공사 견적). 대박 맞춤입찰정보에 꾸준히 뜨는 군부대
+# 통신공사(예: LDA0151 "00부대 통신공사", UMM/LMH/SFG...)는 경쟁입찰 목록(30일에 공사 5건 안팎)이
+# 아니라 이쪽에 올라온다. 응답 필드는 문서에 안 나와 있어 첫 응답 태그를 로그로 남기고 후보명으로 읽는다.
+OPERATION_FCLTY_PRVT = "getFcltyOthbcVltrnNtatPlanList"
 
 
 def _clean_key(key: str) -> str:
@@ -165,6 +169,30 @@ def _parse_fclty_item(item) -> dict:
     }
 
 
+def _parse_fclty_prvt_item(item) -> dict:
+    """getFcltyOthbcVltrnNtatPlanList(시설 공개수의협상계획) 항목을 공통 필드로 매핑."""
+    title = _xml_text(item, "cntrwkNm", "othbcVltrnNtatNm", "vltrnNtatNm", "bidNm", "pblancNm", "ntatPlanNm")
+    deadline = _xml_text(item, "biddocPresentnClosDt", "estmtPresentnClosDt", "presentnClosDt",
+                         "ntatClosDt", "estmtClosDt", "opengDt")
+    return {
+        "source": "국방전자조달(D2B)",
+        "title": title,
+        "industry": _xml_text(item, "busiDivs"),
+        "org": _xml_text(item, "ornt") or "국방부",
+        "notice_no": _xml_text(item, "pblancNo", "othbcVltrnNtatNo", "ntatPlanNo", "cntrwkNo"),
+        "region": "",
+        "base_amount": _xml_text(item, "baseAmnt", "bsicExpt", "estmtAmnt", "budgetAmnt"),
+        "notice_date": _xml_text(item, "pblancDate", "ntatPlanDate", "rgstDate"),
+        "reg_deadline": _xml_text(item, "bidPartcptRegistClosDt", "estmtPresentnBgnDt"),
+        "bid_method": _xml_text(item, "cntrctMth") or "공개수의",
+        "restrictions": "",
+        "deadline": deadline,
+        "url": "https://www.d2b.go.kr",
+        "eligible": True,
+        "region_scope": "전국",
+    }
+
+
 def fetch_d2b_bids():
     """국방전자조달 입찰공고 목록 반환.
     시설/공사(getFcltyCmpetBidPblancList)만 조회합니다. 물품/용역
@@ -211,6 +239,23 @@ def fetch_d2b_bids():
 
     print(f"[D2B] 필터링 내역: API 원본 {len(items)}건 -> busiDivs!=공사로 제외 {dropped_industry}건, "
           f"마감일 범위 밖으로 제외 {dropped_deadline}건 -> 최종 {len(results)}건")
+
+    # 시설 공개수의협상계획(소액 시설공사) - 위와 같은 기준으로 공사만, 마감 범위 안만.
+    prvt_items = _fetch_items(OPERATION_FCLTY_PRVT, begin_dt, end_dt)
+    seen = {b["notice_no"] for b in results}
+    prvt_kept = 0
+    for item in prvt_items:
+        parsed = _parse_fclty_prvt_item(item)
+        if not parsed["title"] or parsed["notice_no"] in seen:
+            continue
+        if parsed["industry"] and parsed["industry"] != "공사":
+            continue
+        if not is_deadline_in_range(parsed["deadline"]):
+            continue
+        seen.add(parsed["notice_no"])
+        results.append(parsed)
+        prvt_kept += 1
+    print(f"[D2B] 시설 공개수의협상계획: API 원본 {len(prvt_items)}건 -> 공사·마감범위 {prvt_kept}건 추가")
     print(f"[D2B] 총 {len(results)}건 수집 (API 기준) - 공고문에서 면허/지역제한 확인 중...")
     from scrapers.d2b_restrictions import enrich_d2b_bids_with_restrictions
     results = enrich_d2b_bids_with_restrictions(results)
