@@ -47,6 +47,28 @@
   .empty-card .big { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
   .empty-card .small { font-size: 0.86rem; color: var(--muted); line-height:1.6; }
 
+  .cards { display: flex; flex-direction: column; gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .card .num { display:inline-block; background: var(--accent); color: #fff; font-size: 0.74rem;
+    font-weight: 700; border-radius: 999px; padding: 2px 9px; margin-right: 8px; }
+  .card h2 { margin: 0 0 4px; font-size: 1.05rem; line-height: 1.4; display:inline; }
+  .card .org { margin: 6px 0 12px; font-size: 0.82rem; color: var(--muted); }
+  .card .notice-no { font-family: monospace; font-size: 0.76rem; color: var(--muted); }
+  .card .facts { display:flex; flex-wrap:wrap; gap: 10px 20px; margin-bottom: 12px;
+    background: var(--good-soft); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; }
+  .card .facts div b { color: var(--good); }
+  .card .section { margin-top: 10px; font-size: 0.86rem; line-height: 1.6; }
+  .card .section .label { font-weight: 700; color: var(--accent); margin-right: 4px; }
+  .card .godecision { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 0.86rem; font-weight: 600; }
+  .card .godecision.go { background: #e4eef4; color: var(--good); }
+  .card .godecision.check { background: var(--accent-soft); color: var(--accent); }
+  .card .godecision.nogo { background: #f0f0ee; color: var(--muted); }
+  .card a.src-link { font-size: 0.78rem; color: var(--good); text-decoration:none; }
+  .card a.src-link:hover { text-decoration: underline; }
+
   footer { padding: 20px 24px 40px; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--line); max-width:980px; margin:0 auto; }
 </style>
 </head>
@@ -56,10 +78,10 @@
   <h1>오늘의 신규공고 전략브리핑</h1>
   <p>이엔테크(용인, 정보통신공사업, 시평액 약 54억원) 기준 — 어제 대비 오늘 새로 뜬 나라장터 통신 관련 공고만 선별하여 전략 분석</p>
   <div class="meta">
-    <span>브리핑 생성일: <b>2026-10-18</b></span>
-    <span>데이터 기준(최근 수집본): <b>2026-10-16 12:39</b></span>
-    <span>신규 공고: <b>0건</b></span>
-    <span>비교 기준: <b>직전 수집본(동일, 2026-10-16 12:39)</b> 대비 신규 notice_no</span>
+    <span>브리핑 생성일: <b>2026-10-19</b></span>
+    <span>오늘 수집본: <b>2026-10-19 08:56</b></span>
+    <span>비교 기준(직전 수집본): <b>2026-10-16 12:39</b></span>
+    <span>신규 공고: <b>8건</b></span>
   </div>
   <div class="back-link"><a href="index.html">← 입찰공고 목록으로</a></div>
 </header>
@@ -67,12 +89,123 @@
 <main>
 
   <div class="alert-today">
-    <b>⏱ 참고</b> — 2026-10-18 기준 data/bids.json은 2026-10-16 12:39 수집본과 완전히 동일합니다(해시 일치). 즉 지난 수집 이후 새로 수집된 공고가 없어 비교할 신규분이 없습니다. 클라우드 세션은 수집기를 직접 실행할 수 없으므로, 다음 수집기 실행 이후 다시 확인해 주세요.
+    <b>⚠ 안내</b> — 아래 분석은 data/bids.json에 수집된 필드만으로 작성한 참고 자료입니다. 추정가격은 공고 원문의 "확정" 표시가 없는 한 모두 <b>잠정추정치</b>이며, 시공능력평가액(PQ) 충족 여부·지역제한 상세 조건은 반드시 공고문 원문으로 최종 확인하세요.
   </div>
 
-  <div class="empty-card">
-    <div class="big">오늘은 신규 없음</div>
-    <div class="small">최근 수집본(2026-10-16 12:39) 이후 추가로 수집된 나라장터 통신 관련 공고가 없습니다.</div>
+  <div class="cards">
+
+    <div class="card">
+      <span class="num">1</span><h2>학교 유무선 네트워크 개선 3-2차 사업 정보통신공사(4권역)</h2>
+      <div class="org">경기도교육청 경기도구리남양주교육지원청 · <span class="notice-no">R26BK01774642</span> · <a class="src-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774642&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 원문 →</a></div>
+      <div class="facts">
+        <div>발주기관: <b>경기도구리남양주교육지원청</b></div>
+        <div>추정가격: <b>321,180,000원 (잠정추정치)</b></div>
+        <div>투찰마감: <b>2026-10-22 10:00</b></div>
+        <div>지역: <b>경기도</b></div>
+      </div>
+      <div class="section"><span class="label">참가자격/PQ</span>정보통신공사업 면허 필요(업종코드 0036). 참가가능지역이 "경기도"로 확인되어(나라장터 공식 데이터) 용인 소재 이엔테크는 지역 요건 충족. 시공능력평가액 기준 충족 여부는 공고문에서 직접 확인 필요.</div>
+      <div class="section"><span class="label">가격전략</span>낙찰하한율 89.745% — 일반적인 전자입찰 복수예비가격 구조. A값 정보 없음.</div>
+      <div class="godecision go">Go/No-Go: 금액(약 3.2억)이 시평액 54억 대비 작아 단독 수행 가능권, 경기도 지역제한도 충족 — 적극 검토 대상. 세부 규격서는 공고문 직접 확인 후 판단.</div>
+    </div>
+
+    <div class="card">
+      <span class="num">2</span><h2>학교 유무선 네트워크 개선 3-2차 사업 정보통신공사(5권역)</h2>
+      <div class="org">경기도교육청 경기도구리남양주교육지원청 · <span class="notice-no">R26BK01774656</span> · <a class="src-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774656&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 원문 →</a></div>
+      <div class="facts">
+        <div>발주기관: <b>경기도구리남양주교육지원청</b></div>
+        <div>추정가격: <b>203,680,000원 (잠정추정치)</b></div>
+        <div>투찰마감: <b>2026-10-22 10:00</b></div>
+        <div>지역: <b>경기도</b></div>
+      </div>
+      <div class="section"><span class="label">참가자격/PQ</span>1번(4권역)과 동일 사업의 분할 공고. 정보통신공사업 면허, 경기도 지역제한 충족 확인(나라장터 공식 데이터). 시평액 기준은 공고문에서 직접 확인 필요.</div>
+      <div class="section"><span class="label">가격전략</span>낙찰하한율 89.745%, A값 정보 없음.</div>
+      <div class="godecision go">Go/No-Go: 금액(약 2.0억)도 소규모로 단독 수행 적합권. 4·6권역과 중복 투찰 가능성 있으니 사내 투입 여력을 고려해 1~3건 중 선별 투찰 전략 권장.</div>
+    </div>
+
+    <div class="card">
+      <span class="num">3</span><h2>학교 유무선 네트워크 개선 3-2차 사업 정보통신공사(6권역)</h2>
+      <div class="org">경기도교육청 경기도구리남양주교육지원청 · <span class="notice-no">R26BK01774787</span> · <a class="src-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774787&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 원문 →</a></div>
+      <div class="facts">
+        <div>발주기관: <b>경기도구리남양주교육지원청</b></div>
+        <div>추정가격: <b>367,250,000원 (잠정추정치)</b></div>
+        <div>투찰마감: <b>2026-10-22 10:00</b></div>
+        <div>지역: <b>경기도</b></div>
+      </div>
+      <div class="section"><span class="label">참가자격/PQ</span>동일 사업의 세 번째 분할건. 정보통신공사업 면허, 경기도 지역제한 충족 확인. 시평액 기준은 공고문에서 직접 확인 필요.</div>
+      <div class="section"><span class="label">가격전략</span>낙찰하한율 89.745%, A값 정보 없음.</div>
+      <div class="godecision go">Go/No-Go: 3건 중 금액이 가장 큰 건(약 3.7억)으로 단독 수행에 적합. 투찰 마감이 동일(10/22 10:00)하므로 1~3번 중 투입 가능한 범위 내에서 우선순위를 정해 투찰 준비 권장.</div>
+    </div>
+
+    <div class="card">
+      <span class="num">4</span><h2>학생체육관 강서분관 수영장 노후배관 개선 통신공</h2>
+      <div class="org">서울특별시교육청 서울특별시교육청교육시설관리본부 · <span class="notice-no">R26BK01775982</span> · <a class="src-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01775982&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 원문 →</a></div>
+      <div class="facts">
+        <div>발주기관: <b>서울시교육청 교육시설관리본부</b></div>
+        <div>추정가격: <b>14,762,000원 (잠정추정치)</b></div>
+        <div>투찰마감: <b>2026-10-26 17:00</b></div>
+        <div>지역: <b>서울 양천구 / 전국</b></div>
+      </div>
+      <div class="section"><span class="label">참가자격/PQ</span>제목상 수영장 배관 개선공사 중 통신 관련 공사(통신공) 항목으로 추정되며 메인 공종이 아닐 가능성 있음. 업종(면허) 정보가 데이터에 없어 정보통신공사업 단독 발주 여부는 공고문에서 직접 확인 필요. 지역제한 없음(전국).</div>
+      <div class="section"><span class="label">가격전략</span>낙찰하한율·A값 정보 없음(전자시담 방식, 1,500만원 미만 소액).</div>
+      <div class="godecision check">Go/No-Go: 금액이 매우 소액(약 1,476만원)이라 수익성이 낮고, 통신공사가 전체 공사의 일부에 불과할 가능성 — 공고문 원문으로 공사 범위·발주 방식을 직접 확인 후 판단 (추측: 배관공사 겸업사가 통신 일부 포함해 수주할 가능성도 있음).</div>
+    </div>
+
+    <div class="card">
+      <span class="num">5</span><h2>양자컴퓨팅 및 양자통신 기본 교육 용역 (재공고)</h2>
+      <div class="org">재단법인 한국나노기술원 · <span class="notice-no">R26BK01775635</span> · <a class="src-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01775635&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 원문 →</a></div>
+      <div class="facts">
+        <div>발주기관: <b>재단법인 한국나노기술원</b></div>
+        <div>추정가격: <b>45,454,545원 (잠정추정치)</b></div>
+        <div>투찰마감: <b>2026-10-27 14:00</b></div>
+        <div>지역: <b>전국</b></div>
+      </div>
+      <div class="section"><span class="label">참가자격/PQ</span>교육 "용역"으로 정보통신공사업과는 업종 성격이 다름(강의·커리큘럼 운영 중심). 필요 면허·자격 정보가 데이터에 없어 공고문에서 직접 확인 필요. 재공고(1차 유찰)라는 점은 참가 수요가 낮았음을 시사(추측).</div>
+      <div class="section"><span class="label">가격전략</span>낙찰하한율·A값 정보 없음.</div>
+      <div class="godecision nogo">Go/No-Go: 정보통신공사가 아닌 교육 용역이라 이엔테크의 핵심 역량(시공)과 결이 다름 — 통신 관련 강사·교육 네트워크를 보유한 경우가 아니라면 역량 부적합으로 판단(추측 포함, 공고문 직접 확인 권장).</div>
+    </div>
+
+    <div class="card">
+      <span class="num">6</span><h2>2027년 정보통신 및 정보보안 통합유지관리 용역</h2>
+      <div class="org">서울특별시 · <span class="notice-no">R26BK01775212</span> · <a class="src-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01775212&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 원문 →</a></div>
+      <div class="facts">
+        <div>발주기관: <b>서울특별시</b></div>
+        <div>추정가격: <b>214,573,636원 (잠정추정치)</b></div>
+        <div>투찰마감: <b>2026-10-29 16:00</b></div>
+        <div>지역: <b>전국</b></div>
+      </div>
+      <div class="section"><span class="label">참가자격/PQ</span>정보통신공사업(0036) + 소프트웨어사업자(1468) 복수 면허 요구. 이엔테크는 정보통신공사업만 보유하므로 소프트웨어사업자 면허·요건(또는 공동수급 상대방) 확보가 필요한지 공고문에서 직접 확인 필요. 지역제한 없음(전국)이나 실질적으로 서울시 상주 대응 요구 가능성 있음(추측).</div>
+      <div class="section"><span class="label">가격전략</span>낙찰하한율·A값 정보 없음.</div>
+      <div class="godecision check">Go/No-Go: 유지관리 용역은 반복 매출 확보에 유리하나 소프트웨어사업자 면허 동반 요구가 변수 — 단독 참가 가능 여부를 공고문 직접 확인 후 판단, 불가 시 소프트웨어 업체와 컨소시엄 검토.</div>
+    </div>
+
+    <div class="card">
+      <span class="num">7</span><h2>2027년~2028년 소방청 비상위성통신망 유지관리 사업</h2>
+      <div class="org">조달청 대전지방조달청(소방청 수요기관) · <span class="notice-no">R26BK01775710</span> · <a class="src-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01775710&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 원문 →</a></div>
+      <div class="facts">
+        <div>발주기관: <b>조달청 대전지방조달청(소방청)</b></div>
+        <div>추정가격: <b>212,176,364원 (잠정추정치)</b></div>
+        <div>투찰마감: <b>2026-11-06 10:00</b></div>
+        <div>지역: <b>전국</b></div>
+      </div>
+      <div class="section"><span class="label">참가자격/PQ</span>소프트웨어사업자(1468) + 정보통신공사업(0036) 복수 면허 요구. 위성통신망이라는 특수 분야로 유사 수행실적·기술인력 요건이 있을 가능성이 높음(추측) — 실적 조건은 공고문 직접 확인 필요. 지역제한 없음.</div>
+      <div class="section"><span class="label">가격전략</span>낙찰하한율·A값 정보 없음.</div>
+      <div class="godecision check">Go/No-Go: 2년 장기 유지관리로 안정적 매출원이 될 수 있으나, 위성통신 특수성상 유사실적 PQ가 걸림돌일 가능성 — 과거 위성/국방통신 유지보수 실적 보유 여부를 먼저 자체 점검 후 참가 여부 판단.</div>
+    </div>
+
+    <div class="card">
+      <span class="num">8</span><h2>2026년 산불대응센터 신축공사(통신)</h2>
+      <div class="org">산림청 북부지방산림청 서울국유림관리소 · <span class="notice-no">R26BK01775177</span> · <a class="src-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01775177&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 원문 →</a></div>
+      <div class="facts">
+        <div>발주기관: <b>북부지방산림청 서울국유림관리소</b></div>
+        <div>추정가격: <b>12,153,030원 (잠정추정치)</b></div>
+        <div>투찰마감: <b>2026-10-16 14:00 (이미 마감)</b></div>
+        <div>지역: <b>경기도 양주시</b></div>
+      </div>
+      <div class="section"><span class="label">참가자격/PQ</span>데이터상 이미 상태 "마감"이며 낙찰자가 "주식회사 대경통신"(낙찰금액 10,937,730원, 사정률 90%)으로 확정되어 수집되었습니다. 전자시담 소액 공사로 참가자격 검토 자체가 더 이상 의미 없는 건입니다.</div>
+      <div class="section"><span class="label">가격전략</span>해당 없음(이미 낙찰 완료).</div>
+      <div class="godecision nogo">Go/No-Go: No-Go — 이미 2026-10-16에 낙찰까지 완료된 과거 건이 수집 지연으로 오늘 "신규"로 잡힌 것뿐이며, 참여 기회가 소멸되어 액션 불필요.</div>
+    </div>
+
   </div>
 
 </main>
