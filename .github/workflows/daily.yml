@@ -66,6 +66,8 @@ jobs:
         env:
           PYTHONUTF8: "1"
           PYTHONIOENCODING: "utf-8"
+          # 2026-10-20: 출력이 버퍼에 쌓여 실행 중에는 진행 로그가 안 보였다 - 즉시 출력
+          PYTHONUNBUFFERED: "1"
           G2B_SERVICE_KEY: ${{ secrets.G2B_SERVICE_KEY }}
           LH_SERVICE_KEY: ${{ secrets.LH_SERVICE_KEY }}
           D2B_SERVICE_KEY: ${{ secrets.D2B_SERVICE_KEY }}
