@@ -2317,5 +2317,24 @@
   ],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01777881": {
+  "read": true,
+  "doc": "1. 정비기반(시공) 입찰 공고문-동아.pdf",
+  "licenses": [
+   "토목·건축공사업",
+   "토목공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01777546": {
+  "read": true,
+  "doc": "음식물쓰레기 이송설비공사 업체 선정을 위한 입찰공고.pdf, 홍은동322-1일원 가로주택정비사업음식물 쓰레기 업체 입찰지침서.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }
