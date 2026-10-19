@@ -198,6 +198,7 @@ TEMPLATE = """<!DOCTYPE html>
   <div class="ext-links">
     <span class="ext-label">낙찰 결과(과거 공고)는 별도 페이지:</span>
     <a href="awards.html">낙찰결과 보기 →</a>
+    <a href="insights.html">분석: 투찰가 추천 · 경쟁사 · 발주예정 →</a>
   </div>
   <div class="ext-links">
     <span class="ext-label">수집 상태:</span>

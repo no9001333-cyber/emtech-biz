@@ -34,8 +34,8 @@ import sys
 import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import G2B_SERVICE_KEY
-from scrapers._common import get_with_retry
+from config import KEYWORDS, G2B_SERVICE_KEY
+from scrapers._common import is_deadline_in_range, get_with_retry
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService/getBidPblancListInfoCnstwkBsisAmount"
 REQUEST_TIMEOUT = 20
@@ -81,7 +81,9 @@ def _fetch_one(bid_ntce_no: str, bid_ntce_ord: str):
         resp = get_with_retry(ENDPOINT, params=params, timeout=REQUEST_TIMEOUT)
         data = resp.json()
     except Exception as e:
-        return None, f"request_error:{type(e).__name__}:{str(e)[:120]}"
+        # 2026-10-19: 요약에 예외 종류만 남아(HTTPError 7,245건) 원인을 알 수 없었다. 상태코드를 같이 남긴다.
+        status = getattr(getattr(e, "response", None), "status_code", "")
+        return None, f"request_error:{type(e).__name__}{status}:{str(e)[:120]}"
 
     header = data.get("response", {}).get("header", {}) if isinstance(data, dict) else {}
     result_code = header.get("resultCode", "")
@@ -136,7 +138,15 @@ def enrich_g2b_bids_with_basis_amount(bids: list) -> None:
     if not bids or not G2B_SERVICE_KEY:
         return
 
-    candidates = [b for b in bids if b.get("eligible") is True]
+    # 2026-10-19: 참가가능 전체(7천여 건)를 매번 조회하면서 전부 HTTPError로 실패했다(하루 호출 한도
+    # 초과로 보임). 실제로 투찰금액을 계산할 대상 - 참가가능·공사·통신·마감 전 - 만 조회한다.
+    candidates = [
+        b for b in bids
+        if b.get("eligible") is True
+        and (b.get("notice_kind") in (None, "공사"))
+        and any(k in (b.get("title", "") + " " + (b.get("industry") or "")) for k in KEYWORDS)
+        and is_deadline_in_range(b.get("deadline", ""))
+    ]
     if not candidates:
         return
 

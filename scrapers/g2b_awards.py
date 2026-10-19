@@ -57,7 +57,7 @@ def _fetch_page(begin_dt: str, end_dt: str, page_no: int, num_of_rows: int = 500
     return resp.json()
 
 
-def fetch_g2b_awards():
+def fetch_g2b_awards(begin=None, end=None):
     """나라장터 공사 낙찰(개찰결과) 정보를 최근 LOOKBACK_DAYS일 이내 기준으로 가져온다.
 
     예전 코드는 1페이지(최대 500건)만 조회하고 끝냈는데, 실제로 매번 정확히
@@ -70,8 +70,9 @@ def fetch_g2b_awards():
         print("[낙찰정보] 서비스키(G2B_AWARDS_SERVICE_KEY)가 설정되지 않아 건너뜁니다.")
         return []
 
-    end = datetime.now()
-    begin = end - timedelta(days=LOOKBACK_DAYS)
+    # 2026-10-19: 낙찰 아카이브(scrapers/award_archive.py)가 과거 구간을 채울 수 있게 기간을 받는다.
+    end = end or datetime.now()
+    begin = begin or (end - timedelta(days=LOOKBACK_DAYS))
     begin_dt = begin.strftime("%Y%m%d0000")
     end_dt = end.strftime("%Y%m%d2359")
 
@@ -112,6 +113,8 @@ def fetch_g2b_awards():
                 # 예전엔 prcbdrNm/opengCorpNm으로 추정해서 항상 빈 값이었음.
                 # 위 필드명 로그로 확인한 실제 필드는 bidwinnrNm(낙찰자명).
                 "winner": item.get("bidwinnrNm", ""),
+                # 2026-10-19: 참여업체 수 - 경쟁 규모(용인 한정 ~100곳 vs 경기 ~1,900곳) 분석에 쓴다.
+                "participants": item.get("prtcptCnum", ""),
                 # 협상 완료 후 최종낙찰업체 연락처. 공식 API 문서에 따르면 휴대폰번호는
                 # "*"로 마스킹되어 내려온다(공공데이터포털 정책) - 그런 경우는 버그가 아님.
                 "winner_tel": item.get("bidwinnrTelNo", ""),

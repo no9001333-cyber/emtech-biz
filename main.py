@@ -38,6 +38,10 @@ from scrapers.g2b import fetch_g2b_bids
 from scrapers.g2b_verify import verify_g2b_region_eligibility
 from scrapers.g2b_regions import apply_official_regions
 from scrapers.g2b_private import fetch_g2b_private_bids
+from scrapers.g2b_order_plan import fetch_order_plans
+from scrapers.g2b_rate_history import update_rate_history
+from scrapers.award_archive import update_award_archive
+from insights import generate_insights_page
 from scrapers.g2b_basis_amount import enrich_g2b_bids_with_basis_amount
 from scrapers.lh import fetch_lh_bids
 from scrapers.d2b import fetch_d2b_bids
@@ -279,6 +283,22 @@ def main():
         json.dump(list(awards_by_notice.values()), f, ensure_ascii=False, indent=2)
     print(f"총 {len(awards_by_notice)}건 낙찰정보 저장 ({AWARDS_JSON_PATH})")
 
+    # 2026-10-19: 투찰가 추천용 사정율 이력(개찰 예비가격상세)과 발주계획(발주예정)을 갱신한다.
+    # 둘 다 활용신청/호출한도 문제로 실패해도 수집 전체에는 영향이 없게 감싼다.
+    archive_awards = []
+    try:
+        archive_awards = update_award_archive(list(awards_by_notice.values()), bids_by_key)
+    except Exception as e:
+        print(f"[낙찰 아카이브] 예상치 못한 오류로 건너뜀: {e}")
+    try:
+        update_rate_history(archive_awards or list(awards_by_notice.values()), bids_by_key)
+    except Exception as e:
+        print(f"[사정율 이력] 예상치 못한 오류로 건너뜀: {e}")
+    try:
+        fetch_order_plans()
+    except Exception as e:
+        print(f"[발주계획] 예상치 못한 오류로 건너뜀: {e}")
+
     # 3) 마감이 지난 공고에(나라장터·LH 모두), 같은 소스·공고번호의 낙찰정보가 있으면 결과를 붙여줌
     matched = 0
     for bid in kept:
@@ -320,6 +340,10 @@ def main():
 
     generate_dashboard(kept, status_list)
     generate_awards_page(list(awards_by_notice.values()), status_list)
+    try:
+        generate_insights_page(kept, archive_awards or list(awards_by_notice.values()))
+    except Exception as e:
+        print(f"[분석 페이지] 생성 실패: {e}")
 
 
 if __name__ == "__main__":
