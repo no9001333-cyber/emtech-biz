@@ -30,6 +30,7 @@ getBidPblancListInfoCnstwkBsisAmount(공사기초금액조회)에서만 얻을 �
 """
 
 import concurrent.futures
+import time
 import sys
 import os
 
@@ -39,7 +40,7 @@ from scrapers._common import is_deadline_in_range, get_with_retry
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService/getBidPblancListInfoCnstwkBsisAmount"
 REQUEST_TIMEOUT = 20
-MAX_WORKERS = 8
+MAX_WORKERS = 2  # 2026-10-20: 8개 병렬이면 HTTP 429(초당 요청 한도 초과)가 59/89건 - 천천히
 
 
 def _clean_key(key: str) -> str:
@@ -78,7 +79,16 @@ def _fetch_one(bid_ntce_no: str, bid_ntce_ord: str):
         # 보니 타임아웃/연결 오류 같은 일시적 문제가 흔했던 것으로 보인다. g2b.py
         # 등 다른 수집기가 이미 쓰는 get_with_retry(재시도 2회+backoff)로 바꿔서
         # 일시적 실패는 자동으로 다시 시도하게 했다.
-        resp = get_with_retry(ENDPOINT, params=params, timeout=REQUEST_TIMEOUT)
+        # 429(요청 한도 초과)는 잠시 기다렸다 다시 시도한다.
+        for attempt in range(4):
+            try:
+                resp = get_with_retry(ENDPOINT, params=params, timeout=REQUEST_TIMEOUT)
+                break
+            except Exception as e:
+                if getattr(getattr(e, "response", None), "status_code", None) == 429 and attempt < 3:
+                    time.sleep(3 * (attempt + 1))
+                    continue
+                raise
         data = resp.json()
     except Exception as e:
         # 2026-10-19: 요약에 예외 종류만 남아(HTTPError 7,245건) 원인을 알 수 없었다. 상태코드를 같이 남긴다.
