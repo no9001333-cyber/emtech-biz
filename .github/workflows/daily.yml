@@ -22,7 +22,7 @@ jobs:
     runs-on: self-hosted  # 사용자 PC에서 실행 (data.go.kr이 GitHub 공용 서버 IP를 막아서 변경)
     steps:
       - name: 저장소 체크아웃
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 이전 실행 잔여 상태 정리 (PC가 실행 도중 꺼지는 경우 대비)
         # 이 PC는 매일 저녁 사용자가 끄고 다음 날 아침 다시 켠다. 그 사이에
