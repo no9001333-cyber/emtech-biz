@@ -2271,5 +2271,51 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01775377": {
+  "read": true,
+  "doc": "NUF 양액 재활용 처리시설 입찰공고.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01776206": {
+  "read": true,
+  "doc": "하가구역재개발정비사업 견본주택 소방공사업체 선정 입찰공고.pdf",
+  "licenses": [
+   "소방공사업",
+   "전문소방시설공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01775216": {
+  "read": true,
+  "doc": "설창성님 입찰공고_261012.hwp",
+  "licenses": [
+   "금속창호·지붕건축물조립공사업",
+   "금속·구조물·창호온실공사업"
+  ],
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01776051": {
+  "read": true,
+  "doc": "입찰공문(배명오).hwp",
+  "licenses": [
+   "물조립공사업",
+   "금속창호·지붕건축물조립공사업",
+   "금속구조물·창호·온실공사업"
+  ],
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
  }
 }

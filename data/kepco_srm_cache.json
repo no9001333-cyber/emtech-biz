@@ -5040,5 +5040,117 @@
    "충북"
   ],
   "checked_at": "2026-10-16 12:36"
+ },
+ "E052600413": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남 서천군"
+  ],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606959": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606984": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "전기공사업"
+  ],
+  "license_logic": "And",
+  "regions": [],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606980": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606981": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606986": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E042600428": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606972": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "전기공사업"
+  ],
+  "license_logic": "And",
+  "regions": [],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E042600425": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606969": {
+  "licenses": [
+   "도장·습식·방수·석공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606961": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606963": {
+  "licenses": [
+   "전문소방시설공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-10-19 10:43"
+ },
+ "E012606955": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-19 10:43"
  }
 }
