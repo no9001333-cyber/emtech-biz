@@ -65,6 +65,9 @@ UNVERIFIED_NOTE = "지역/면허제한 자동확인 실패-공고문 직접확�
 # 않도록 전체 소요시간 상한을 둡니다. 이 시간을 넘기면 남은 공고는 더 시도하지 않고
 # 바로 "자동확인 실패"로 표시합니다.
 MAX_TOTAL_SECONDS = 2700
+import os as _os
+D2B_CACHE_PATH = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "data", "d2b_restrictions_cache.json")
+_TELECOM_HINTS = ("통신", "CCTV", "케이블", "TICN", "방송", "네트워크", "광", "전산", "정보", "보안", "감시", "무선")
 
 
 def enrich_d2b_bids_with_restrictions(bids):
@@ -83,6 +86,25 @@ def enrich_d2b_bids_with_restrictions(bids):
         return bids
 
     import time
+    import json as _json
+
+    # 2026-10-20: 시설 공개수의협상계획을 추가하면서 D2B 공고가 30일에 200건을 넘어, 매 실행마다 전부
+    # 공고문을 다시 열면 45분 상한에 걸렸다. 확인 결과를 캐시해 새 공고만 열고, 통신으로 보이는
+    # 공고부터 확인한다.
+    try:
+        with open(D2B_CACHE_PATH, encoding="utf-8") as f:
+            cache = _json.load(f)
+    except Exception:
+        cache = {}
+    todo = []
+    for bid in bids:
+        hit = cache.get(bid.get("notice_no", ""))
+        if hit:
+            _apply_restriction_result(bid, hit.get("licenses") or [], hit.get("regions") or [], hit.get("basis_info"))
+        else:
+            todo.append(bid)
+    cached_count = len(bids) - len(todo)
+    todo.sort(key=lambda b: not any(k in (b.get("title") or "") for k in _TELECOM_HINTS))
 
     ok_count = 0
     fail_count = 0
@@ -104,7 +126,7 @@ def enrich_d2b_bids_with_restrictions(bids):
                 page.set_default_timeout(ACTION_TIMEOUT_MS)
                 page.set_default_navigation_timeout(NAV_TIMEOUT_MS)
 
-                for bid in bids:
+                for bid in todo:
                     if time.time() - start > MAX_TOTAL_SECONDS:
                         skipped_count += 1
                         _mark_unverified(bid)
@@ -122,6 +144,7 @@ def enrich_d2b_bids_with_restrictions(bids):
                     else:
                         licenses, regions, basis_info = result
                         _apply_restriction_result(bid, licenses, regions, basis_info)
+                        cache[bid.get("notice_no", "")] = {"licenses": licenses, "regions": regions, "basis_info": basis_info}
                         ok_count += 1
             finally:
                 browser.close()
@@ -132,8 +155,13 @@ def enrich_d2b_bids_with_restrictions(bids):
                 _mark_unverified(bid)
         return bids
 
+    try:
+        with open(D2B_CACHE_PATH, "w", encoding="utf-8") as f:
+            _json.dump(cache, f, ensure_ascii=False, indent=1)
+    except Exception as e:
+        print(f"[D2B 공고문 확인] 캐시 저장 실패: {e}")
     print(
-        f"[D2B 공고문 확인] {ok_count}건 확인 성공, {fail_count}건 실패, "
+        f"[D2B 공고문 확인] 캐시 {cached_count}건, {ok_count}건 확인 성공, {fail_count}건 실패, "
         f"{skipped_count}건 시간초과로 건너뜀 (실패/건너뜀 건은 공고문 직접확인 필요로 표시)"
     )
     return bids
@@ -362,6 +390,17 @@ def _apply_restriction_result(bid, licenses, regions, basis_info=None):
     )
     bid["region_scope"] = scope
     bid["eligible"] = scope is not None
+    # 2026-10-20: 면허를 업종에도 넣어 "동케이블 포설공사"처럼 공고명에 통신이 없는 정보통신공사업
+    # 공고도 통신 필터에 걸리게 한다(대박의 업종 = 면허).
+    if licenses:
+        lic = ",".join(dict.fromkeys(licenses))
+        if lic not in (bid.get("industry") or ""):
+            bid["industry"] = lic + (" / " + bid["industry"] if bid.get("industry") else "")
+    bid["region_check"] = {
+        "verified": True, "eligible_confirmed": scope if scope is not None else False,
+        "note": "국방전자조달 공고문의 지역제한으로 확인함" if has_restriction else "국방전자조달 공고문에 지역제한 없음",
+        "snippet": region_text,
+    }
 
     if basis_info:
         if basis_info.get("base_amount") is not None:
@@ -380,5 +419,10 @@ def _mark_unverified(bid):
     existing = (bid.get("restrictions") or "").strip()
     if UNVERIFIED_NOTE not in existing:
         bid["restrictions"] = (existing + ", " if existing else "") + UNVERIFIED_NOTE
-    # eligible은 건드리지 않는다 - d2b.py가 채워둔 기본값(True)을 그대로 둬서
-    # "확인 실패"가 "참가불가 확정"으로 둔갑해 목록에서 사라지지 않게 한다.
+    # 2026-10-20: 예전엔 eligible을 그대로(True, 전국) 둬서 확인 못 한 공고가 전국으로 보였다.
+    # 사용자 원칙("지역 미확인을 전국으로 보여주지 말 것")에 맞춰 미확인으로 두고 기본 화면에서 뺀다.
+    # 다음 실행에서 다시 확인을 시도한다(성공한 것만 캐시에 남으므로).
+    bid["region_scope"] = None
+    bid["eligible"] = False
+    bid["region_check"] = {"verified": False, "eligible_confirmed": None,
+                           "note": "국방전자조달 공고문에서 지역/면허를 아직 확인하지 못함 - 다음 실행에서 재시도", "snippet": ""}

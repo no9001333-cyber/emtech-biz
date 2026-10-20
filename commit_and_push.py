@@ -69,7 +69,7 @@ def main():
         if os.path.exists(extra):
             run(["git", "add", extra])
     # 한전·K-water 공고별 지역제한 조회 결과 캐시(scrapers/*_regions.py) - 매번 다시 조회하지 않도록 같이 보관
-    for cache in ("data/kepco_srm_cache.json", "data/kepco_regions_cache.json", "data/kwater_regions_cache.json", "data/private_docs_cache.json"):
+    for cache in ("data/kepco_srm_cache.json", "data/kepco_regions_cache.json", "data/kwater_regions_cache.json", "data/private_docs_cache.json", "data/d2b_restrictions_cache.json"):
         if os.path.exists(cache):
             run(["git", "add", cache])
 
