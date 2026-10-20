@@ -5152,5 +5152,197 @@
   "license_logic": null,
   "regions": [],
   "checked_at": "2026-10-19 10:43"
+ },
+ "E012607007": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607005": {
+  "licenses": [
+   "감리업(전력종합감리)",
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607018": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607026": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012606966": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607034": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012606964": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012606968": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607015": {
+  "licenses": [
+   "도장·습식·방수·석공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607003": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607035": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607002": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012606995": {
+  "licenses": [
+   "조경식재·시설물공사업",
+   "조경공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012606989": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607017": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607000": {
+  "licenses": [
+   "조경식재·시설물공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012606973": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012606931": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607008": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012606958": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
+ },
+ "E012607012": {
+  "licenses": [
+   "전문소방시설공사업",
+   "일반소방시설공사업(기계)",
+   "일반소방시설공사업(전기)"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 09:36"
  }
 }
