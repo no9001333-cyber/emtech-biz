@@ -445,11 +445,31 @@ function ddayLabel(deadlineText, status) {{
 // 옵션을 주면 브라우저가 이를 탭이 아닌 별도 창(팝업)으로 취급한다.
 // Ctrl/Cmd/Shift/휠클릭(새 탭으로 열기 등 사용자가 의도한 동작)은 그대로 두고
 // 브라우저 기본 동작을 살려둔다.
-function openBidWindow(e, url) {{
+function openBidWindow(e, url, noticeNo) {{
+  // 한전(srm)·가스공사처럼 공고별 주소가 없는 곳은 사이트 첫 화면만 열린다.
+  // 그 경우 공고번호를 클립보드에 복사해 두어 사이트 검색창에 바로 붙여넣게 한다.
+  if (noticeNo && url.indexOf('?') < 0) {{
+    try {{ navigator.clipboard.writeText(noticeNo); }} catch (err) {{}}
+    showCopyToast(`공고번호 ${{noticeNo}} 복사됨 - 사이트 검색창에 붙여넣으세요`);
+  }}
   if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return true;
   e.preventDefault();
   window.open(url, '_blank', 'noopener,noreferrer,width=1100,height=900');
   return false;
+}}
+
+function showCopyToast(msg) {{
+  let t = document.getElementById('copyToast');
+  if (!t) {{
+    t = document.createElement('div');
+    t.id = 'copyToast';
+    t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#14213d;color:#fff;padding:10px 16px;border-radius:8px;font-size:.9rem;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.25)';
+    document.body.appendChild(t);
+  }}
+  t.textContent = msg;
+  t.style.display = 'block';
+  clearTimeout(t._h);
+  t._h = setTimeout(() => {{ t.style.display = 'none'; }}, 4000);
 }}
 
 // 나라장터 공고서(PDF) 원문으로 재확인한 지역 참가자격 결과를 지역 컬럼에 작게 표시.
@@ -640,7 +660,7 @@ function render() {{
     tr.innerHTML = `
       <td data-label="출처"><span class="tag ${{cls}}">${{b.source || ''}}</span>${{b.notice_kind && b.notice_kind !== '공사' ? ` <span class="tag" style="border-color:var(--muted); color:var(--muted);">${{b.notice_kind}}</span>` : ''}}</td>
       <td data-label="상태">${{statusBadge}}</td>
-      <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href)">${{b.title || ''}}</a>` : (b.title || '')}}</td>
+      <td data-label="공고명" class="title">${{b.url ? `<a href="${{b.url}}" target="_blank" rel="noopener" onclick="return openBidWindow(event, this.href, '${{(b.notice_no || '').replace(/[^0-9A-Za-z-]/g, '')}}')">${{b.title || ''}}</a>` : (b.title || '')}}</td>
       <td data-label="발주기관">${{b.org || ''}}</td>
       <td data-label="업종">${{b.industry || '-'}}</td>
       <td data-label="지역">${{b.region || ''}}${{b.joint_duty_other ? ` <span style="color:var(--accent); font-size:0.72rem;">(공동도급 필요: ${{b.joint_duty_region || ''}})</span>` : (b.eligible === false ? ' <span style="color:var(--accent); font-size:0.72rem;">(참가불가)</span>' : '')}}${{regionCheckHtml(b.region_check)}}</td>

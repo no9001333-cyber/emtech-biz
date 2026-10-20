@@ -106,6 +106,13 @@ def _lookup(session, notice_no):
         elif not regions:
             info["basis"] = "공고문 첨부 없음"
     info["licenses"] = licenses
+    # 공고명을 누르면 K-water 홈 대신 실제 공고문 파일이 열리게 공고문 다운로드 주소를 남긴다(2026-10-20).
+    f = _pick_notice_file(data.get("atchflList"))
+    info["notice_url"] = ""  # 첨부가 없으면 빈 값(다음 실행에 다시 조회하지 않게)
+    if f:
+        from urllib.parse import urlencode
+        info["notice_url"] = DOWNLOAD_URL + "?" + urlencode(
+            {"xmlValue": json.dumps({"atchflId": f["atchflId"], "fileSeq": f.get("fileSeq", 1)})})
     return info
 
 
@@ -132,7 +139,8 @@ def apply_kwater_regions(bids):
     todo = list(dict.fromkeys(b["notice_no"] for b in bids
                               if b.get("notice_no") and b.get("status") != "마감"
                               and (b["notice_no"] not in cache
-                                   or ("licenses" not in cache[b["notice_no"]] and not cache[b["notice_no"]].get("private")))))
+                                   or ("licenses" not in cache[b["notice_no"]] and not cache[b["notice_no"]].get("private"))
+                                   or ("notice_url" not in cache[b["notice_no"]] and not cache[b["notice_no"]].get("private")))))
     failed = set()
     if todo:
         try:
@@ -186,6 +194,8 @@ def apply_kwater_regions(bids):
                 "snippet": info.get("qualification", "")[:150],
             }
             continue
+        if info.get("notice_url"):
+            b["url"] = info["notice_url"]
         if info.get("licenses"):
             b["industry"] = ",".join(info["licenses"])
             b["licenses"] = info["licenses"]

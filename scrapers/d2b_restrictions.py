@@ -99,8 +99,11 @@ def enrich_d2b_bids_with_restrictions(bids):
     todo = []
     for bid in bids:
         hit = cache.get(bid.get("notice_no", ""))
+        if hit and not hit.get("url"):
+            hit = None  # 상세 주소가 없는 옛 캐시는 HTTP로 한 번 다시 확인(0.2초)
         if hit:
             _apply_restriction_result(bid, hit.get("licenses") or [], hit.get("regions") or [], hit.get("basis_info"))
+            bid["url"] = hit["url"]
         else:
             todo.append(bid)
     cached_count = len(bids) - len(todo)
@@ -109,7 +112,7 @@ def enrich_d2b_bids_with_restrictions(bids):
     # 2026-10-20: 브라우저 없이 d2b.go.kr 공사 입찰공고 화면의 요청을 그대로 써서 확인한다(건당 0.2초,
     # 공개수의도 조회됨 - scrapers/d2b_http.py). 접속 자체가 안 될 때만 아래 Playwright 방식으로 넘어간다.
     try:
-        from scrapers.d2b_http import D2BClient, parse_detail
+        from scrapers.d2b_http import D2BClient, parse_detail, detail_url
         client = D2BClient()
         ok_http = fail_http = 0
         for bid in todo:
@@ -122,7 +125,10 @@ def enrich_d2b_bids_with_restrictions(bids):
                 groups, regions, basis_info = parse_detail(client.detail_text(row))
                 licenses = [l for g in groups for l in g]
                 _apply_restriction_result(bid, licenses, regions, basis_info)
-                cache[bid.get("notice_no", "")] = {"licenses": licenses, "regions": regions, "basis_info": basis_info}
+                # 공고명을 누르면 d2b.go.kr 홈이 아니라 그 공고 상세가 열리게(사용자 지적 2026-10-20)
+                bid["url"] = detail_url(row)
+                cache[bid.get("notice_no", "")] = {"licenses": licenses, "regions": regions,
+                                                   "basis_info": basis_info, "url": bid["url"]}
                 ok_http += 1
             except Exception as e:
                 fail_http += 1

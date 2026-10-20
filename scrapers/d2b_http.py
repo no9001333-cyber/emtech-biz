@@ -109,3 +109,18 @@ def parse_detail(text):
     if m:
         basis["variance_pct"] = f"{m.group(1)}~{m.group(2)}"
     return list(groups.values()), regions, basis
+
+
+def detail_url(row):
+    """공고 상세 화면을 바로 여는 GET 주소(2026-10-20 확인: 두 상세 화면 모두 쿼리 파라미터로 열림)."""
+    from urllib.parse import urlencode
+    if row.get("lv2Divs") == "2":
+        q = {"csrt_numb": row["dcsnNumb"], "negn_pldt": row.get("anmtDate", ""), "dprt_code": row["dprtCode"],
+             "ordr_year": row["rqstYear"], "negn_degr": row["rqstDegr"], "anmt_numb": row["anmtNumb"], "pageDivs": "E"}
+        return f"{_VIEW_NEGO}?{urlencode(q)}"
+    q = {"dprt_code": row["dprtCode"], "anmt_divs": row.get("anmtDivs") or "", "anmt_numb": row["anmtNumb"],
+         "rqst_degr": row["rqstDegr"], "dcsn_numb": row["dcsnNumb"], "rqst_year": row["rqstYear"],
+         "anmt_date": row.get("anmtDate", ""), "csrt_numb": row["dcsnNumb"], "lv2Divs": row.get("lv2Divs", "1"),
+         "cont_mthd": row.get("contMthd") or "", "pageDivs": "E1", "lv1_divs": row.get("lv1Divs") or "PEB"}
+    return f"{_VIEW_COMP}?{urlencode(q)}"
+
