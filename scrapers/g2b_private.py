@@ -100,6 +100,11 @@ def fetch_g2b_private_bids():
                         for i in range(1, 11) if item.get(f"ntceSpecDocUrl{i}")]
                 if docs:
                     bid["attachments"] = [{"name": n, "url": u} for n, u in docs]
+                    if not bid.get("url"):
+                        # 민간 공고는 나라장터·누리장터 상세 화면 주소로 열리지 않는다(2026-10-20 확인: 빈 화면).
+                        # 공고명을 누르면 공고서 파일(로그인 없이 받아짐)이 열리게 한다. "공고"가 든 파일 우선.
+                        main = next((u for n, u in docs if "공고" in n), docs[0][1])
+                        bid["url"] = main
                 # 면허제한 오퍼레이션에 행이 없는 민간 공고가 많아(2026-09-30 첫 실행: 153건 중 46건만),
                 # 입찰자격명(bidQlfctNm)과 공사 상세목록(cnstwkDtlList)의 업종 문구를 업종으로 쓴다.
                 extra = _flatten_text(item.get("cnstwkDtlList"))
