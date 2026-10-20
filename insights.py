@@ -190,7 +190,8 @@ def generate_insights_page(bids, awards):
     plan_rows = [
         f"<tr><td>{e(p.get('order_month') or '미정')}</td><td class='title'>{e(p.get('title') or '')}</td>"
         f"<td>{e(p.get('org') or '')}</td><td>{e(p.get('region') or '')} <span class='muted'>({e(str(p.get('region_scope')))})</span></td>"
-        f"<td>{_won(_num(p.get('amount')))}</td><td>{e(p.get('contract_method') or '')}</td></tr>"
+        f"<td>{_won(_num(p.get('amount')))}</td><td>{e(p.get('contract_method') or '')}</td>"
+        f"<td>{e(p.get('contact') or '')}{' <span class=muted>(공고됨)</span>' if p.get('announced') else ''}</td></tr>"
         for p in plans]
 
     size_rows = [f"<tr><td>{e(k)}</td><td>{n}</td><td><b>{m:,.0f}곳</b></td></tr>"
@@ -212,7 +213,7 @@ def generate_insights_page(bids, awards):
                               comp_rows, "조건에 맞는 낙찰 기록이 아직 없습니다."),
         "%SIZE_TABLE%": table(["범위", "낙찰 건수", "참여업체 중앙값"], size_rows,
                               "참여업체 수가 쌓이는 중입니다(다음 수집부터 기록)."),
-        "%PLAN_TABLE%": table(["발주시기", "사업명", "발주기관", "지역", "금액", "계약방법"], plan_rows,
+        "%PLAN_TABLE%": table(["발주시기", "사업명", "발주기관", "지역", "금액", "계약방법", "담당"], plan_rows,
                               "발주계획 데이터가 아직 없습니다 (공공데이터포털 '조달청_나라장터 발주계획현황서비스' 활용신청 필요)."),
         "%PASSWORD_HASH%": password_hash,
     }.items():

@@ -21,7 +21,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import G2B_SERVICE_KEY, KEYWORDS
 from scrapers._common import get_with_retry, get_region_scope
 
-ENDPOINT = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwk"
+# 2026-10-20 진단: 기본 오퍼레이션(getOrderPlanSttusListCnstwk)은 "필수값 입력 에러(08)"를 내고,
+# 나라장터 검색조건 오퍼레이션(PPSSrch)이 등록일 범위로 정상 조회된다.
+ENDPOINT = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwkPPSSrch"
 LOOKBACK_DAYS = 365   # 발주계획은 연초에 한꺼번에 올라오는 경우가 많아 1년치 등록분을 본다
 CHUNK_DAYS = 30
 MAX_PAGES = 20
@@ -42,11 +44,12 @@ def _all_text(item):
 
 def _order_month(item):
     """발주시기를 'YYYY-MM'으로. 필드명이 확실치 않아 후보를 차례로 본다."""
-    raw = _pick(item, "orderYm", "orderPlanYm", "orderMnth", "orderBgnYm", "bidNtceDt", "orderDt")
+    year, mnth = _pick(item, "orderYear"), _pick(item, "orderMnth")
+    if year and mnth:
+        return f"{year}-{int(mnth):02d}" if mnth.isdigit() else year
+    raw = _pick(item, "orderYm", "orderPlanYm", "orderBgnYm")
     digits = "".join(ch for ch in raw if ch.isdigit())
-    if len(digits) >= 6:
-        return f"{digits[:4]}-{digits[4:6]}"
-    return ""
+    return f"{digits[:4]}-{digits[4:6]}" if len(digits) >= 6 else ""
 
 
 def fetch_order_plans():
@@ -118,7 +121,9 @@ def fetch_order_plans():
             "amount": _pick(it, "sumOrderAmt", "orderAmt", "bdgtAmt", "asignBdgtAmt", "cnstwkAmt"),
             "contract_method": _pick(it, "cntrctMthdNm", "bidMethdNm"),
             "registered": _pick(it, "rgstDt", "nticeDt"),
-            "contact": _pick(it, "ofclNm", "chrgDeptNm"),
+            "contact": " ".join(x for x in (_pick(it, "deptNm"), _pick(it, "ofclNm"), _pick(it, "telNo")) if x),
+            "work_type": _pick(it, "cnsttyDivNm"),
+            "announced": _pick(it, "ntceNticeYn") == "Y",
         })
     plans.sort(key=lambda p: (p["order_month"] or "9999", p["title"]))
     with open(OUT_PATH, "w", encoding="utf-8") as f:

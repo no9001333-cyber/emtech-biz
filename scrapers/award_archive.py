@@ -36,6 +36,9 @@ def update_award_archive(new_awards, bids_by_key):
         archive = {"awards": {}, "backfilled_months": []}
     store = archive.setdefault("awards", {})
     done = set(archive.setdefault("backfilled_months", []))
+    if not archive.get("chunked_v2"):
+        done = set()  # 첫 백필은 월 단위 조회가 7,500건에서 잘렸다 - 5일 단위로 다시 채운다
+        archive["chunked_v2"] = True
 
     def add(a):
         if not (a.get("notice_no") and _is_telecom(a, bids_by_key)):
@@ -67,10 +70,20 @@ def update_award_archive(new_awards, bids_by_key):
         y, m = map(int, ym.split("-"))
         start = datetime(y, m, 1)
         end = (datetime(y + (m == 12), (m % 12) + 1, 1) - timedelta(seconds=1))
-        try:
-            rows = fetch_g2b_awards(start, end)
-        except Exception as e:
-            print(f"[낙찰 아카이브] {ym} 채우기 실패: {e}")
+        # 2026-10-20: 한 달을 한 번에 조회하면 7,500건 상한에 걸려 잘렸다(2026-06~09 모두 정확히 7,500건).
+        # 5일씩 나눠 조회한다.
+        rows, cur, failed = [], start, False
+        while cur <= end:
+            chunk_end = min(cur + timedelta(days=5) - timedelta(seconds=1), end)
+            try:
+                rows += fetch_g2b_awards(cur, chunk_end)
+            except Exception as e:
+                print(f"[낙찰 아카이브] {ym} {cur:%m-%d} 구간 실패: {e}")
+                failed = True
+                break
+            cur = chunk_end + timedelta(seconds=1)
+            time.sleep(1)
+        if failed:
             break
         before = len(store)
         for a in rows:
