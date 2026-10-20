@@ -29,6 +29,10 @@ def show(label, url, params, key):
                 items = [items]
             first = items[0] if items else {}
             print(f"[{label}] HTTP {r.status_code} code={h.get('resultCode')} msg={h.get('resultMsg')} total={b.get('totalCount')} n={len(items)}")
+            if items:
+                rg = sorted(str(x.get("rgstDt") or x.get("nticeDt") or "")[:10] for x in items)
+                om = sorted({f"{x.get('orderYear')}-{x.get('orderMnth')}" for x in items})
+                print(f"    rgstDt {rg[0]} ~ {rg[-1]}, 발주시기 {om[:12]}")
             if first:
                 print(f"    keys={list(first.keys())}")
                 print(f"    first={json.dumps(first, ensure_ascii=False)[:700]}")
@@ -43,17 +47,17 @@ def show(label, url, params, key):
 now = datetime.now()
 d = lambda days: (now - timedelta(days=days)).strftime("%Y%m%d")
 
-PLAN = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwk"
+# 2026-10-20: 발주계획 PPSSrch가 1년치를 요청해도 전날 등록분만 오는지(저장 3건이 모두 10-19 등록) 확인
+SRCH = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwkPPSSrch"
 for label, p in [
-    ("발주계획/등록일 30일 inqryDiv=1", {"inqryDiv": 1, "inqryBgnDt": d(30) + "0000", "inqryEndDt": d(0) + "2359"}),
-    ("발주계획/inqryDiv 없음", {"inqryBgnDt": d(30) + "0000", "inqryEndDt": d(0) + "2359"}),
-    ("발주계획/날짜 8자리", {"inqryDiv": 1, "inqryBgnDt": d(30), "inqryEndDt": d(0)}),
-    ("발주계획/발주년월", {"inqryDiv": 2, "orderBgnYm": now.strftime("%Y%m"), "orderEndYm": (now + timedelta(days=90)).strftime("%Y%m")}),
-    ("발주계획/파라미터 없음", {}),
+    ("등록일 1일", {"inqryDiv": 1, "inqryBgnDt": d(1) + "0000", "inqryEndDt": d(0) + "2359"}),
+    ("등록일 7일", {"inqryDiv": 1, "inqryBgnDt": d(7) + "0000", "inqryEndDt": d(0) + "2359"}),
+    ("등록일 30일", {"inqryDiv": 1, "inqryBgnDt": d(30) + "0000", "inqryEndDt": d(0) + "2359"}),
+    ("등록일 60~30일 전", {"inqryDiv": 1, "inqryBgnDt": d(60) + "0000", "inqryEndDt": d(30) + "2359"}),
+    ("등록일 2026-01", {"inqryDiv": 1, "inqryBgnDt": "202601010000", "inqryEndDt": "202601312359"}),
+    ("inqryDiv=2 발주년월", {"inqryDiv": 2, "inqryBgnDt": now.strftime("%Y%m"), "inqryEndDt": (now + timedelta(days=90)).strftime("%Y%m")}),
+    ("inqryDiv=2 일자", {"inqryDiv": 2, "inqryBgnDt": d(0) + "0000", "inqryEndDt": (now + timedelta(days=90)).strftime("%Y%m%d") + "2359"}),
+    ("통신 공사지역 경기", {"inqryDiv": 1, "inqryBgnDt": d(90) + "0000", "inqryEndDt": d(0) + "2359", "cnstwkRgnNm": "경기"}),
+    ("사업명 통신", {"inqryDiv": 1, "inqryBgnDt": d(90) + "0000", "inqryEndDt": d(0) + "2359", "bizNm": "통신"}),
 ]:
-    show(label, PLAN, {"pageNo": 1, "numOfRows": 10, "type": "json", **p}, G2B)
-
-# 발주계획 서비스의 다른 오퍼레이션(물품/용역)도 같은 키로 되는지 비교
-for op in ("getOrderPlanSttusListServc", "getOrderPlanSttusListCnstwkPPSSrch"):
-    show("발주계획/" + op, PLAN.rsplit("/", 1)[0] + "/" + op,
-         {"pageNo": 1, "numOfRows": 5, "type": "json", "inqryDiv": 1, "inqryBgnDt": d(30) + "0000", "inqryEndDt": d(0) + "2359"}, G2B)
+    show("발주계획/" + label, SRCH, {"pageNo": 1, "numOfRows": 500, "type": "json", **p}, G2B)
