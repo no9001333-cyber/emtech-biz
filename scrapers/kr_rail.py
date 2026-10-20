@@ -89,6 +89,12 @@ def _joint_duty_regions(text):
     return regions
 
 
+def _pq_deadline(text):
+    """공고문의 "PQ신청서 제출기간 : 2026. 10. 8.(목) 09:00 ~ 2026. 10. 19.(월) 16:00"에서 마감일(YYYY-MM-DD)."""
+    m = re.search(r"PQ\s*신청서\s*제출\s*기간\s*:?[^~]{0,40}~\s*(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})", text)
+    return f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m else ""
+
+
 def _notice_doc(session, detail_html):
     """첨부 중 입찰공고문 (주소, 이름)."""
     files = re.findall(r"download\('([^']+)',\s*'([^']+)',\s*'TENDER_DIR_UPLOAD'\)", detail_html)
@@ -120,6 +126,8 @@ def fetch_kr_rail_bids():
         if not notice_no or "무효" in state or "취소" in state:
             continue
         info = cache.get(notice_no)
+        if info is not None and info.get("doc_read") and "pq_deadline" not in info:
+            info = None  # PQ 마감일을 안 읽은 옛 캐시는 공고문을 다시 읽는다
         if info is None:
             try:
                 dh = session.post(DETAIL_URL, data=dict(zip(_DETAIL_KEYS, args)), timeout=40).text
@@ -138,6 +146,7 @@ def fetch_kr_rail_bids():
                     "licenses": extract_licenses(doc) if doc else [],
                     "regions": extract_restricted_regions(doc, GYEONGGI_OTHER_CITIES) if doc else [],
                     "joint_duty_regions": _joint_duty_regions(doc) if doc else [],
+                    "pq_deadline": _pq_deadline(doc) if doc else "",
                     "doc_read": bool(doc),
                     "checked_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
                 }
@@ -150,6 +159,8 @@ def fetch_kr_rail_bids():
                 continue
         if not is_deadline_in_range(info.get("deadline", "")):
             continue
+        if info.get("pq_deadline") and info["pq_deadline"] < datetime.now().strftime("%Y-%m-%d"):
+            continue  # PQ(입찰참가자격 사전심사) 신청이 이미 끝나 새로 참가할 수 없다(2026-10-20)
         bid = {
             "source": "국가철도공단",
             "title": title,

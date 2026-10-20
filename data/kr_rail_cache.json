@@ -13,8 +13,9 @@
    "서울특별시",
    "경기도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000230-00": {
   "deadline": "2026-11-26 10:00",
@@ -29,8 +30,9 @@
   "joint_duty_regions": [
    "충청북도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000228-00": {
   "deadline": "2026-11-26 10:00",
@@ -45,8 +47,9 @@
   "joint_duty_regions": [
    "대구광역시"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000226-00": {
   "deadline": "2026-11-25 13:00",
@@ -62,8 +65,9 @@
    "대구광역시",
    "경상북도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000227-00": {
   "deadline": "2026-11-25 10:00",
@@ -78,8 +82,9 @@
   "joint_duty_regions": [
    "경상북도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000219-00": {
   "deadline": "2026-11-03 10:00",
@@ -94,8 +99,9 @@
   "joint_duty_regions": [
    "경상남도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000225-00": {
   "deadline": "2026-11-24 10:00",
@@ -110,8 +116,9 @@
   "joint_duty_regions": [
    "충청남도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000221-00": {
   "deadline": "2026-10-30 10:00",
@@ -126,8 +133,9 @@
   "joint_duty_regions": [
    "전북특별자치도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000220-00": {
   "deadline": "2026-12-01 10:00",
@@ -147,8 +155,9 @@
   ],
   "regions": [],
   "joint_duty_regions": [],
+  "pq_deadline": "2026-10-29",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000222-00": {
   "deadline": "2026-11-24 10:00",
@@ -166,8 +175,9 @@
   ],
   "regions": [],
   "joint_duty_regions": [],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000182-01": {
   "deadline": "2026-10-30 10:00",
@@ -182,8 +192,9 @@
   "joint_duty_regions": [
    "강원특별자치도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000181-01": {
   "deadline": "2026-10-30 10:00",
@@ -198,8 +209,9 @@
   "joint_duty_regions": [
    "강원특별자치도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000216-00": {
   "deadline": "2026-11-19 10:00",
@@ -217,8 +229,9 @@
   ],
   "regions": [],
   "joint_duty_regions": [],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000177-01": {
   "deadline": "2026-10-29 10:00",
@@ -234,8 +247,9 @@
    "강원특별자치도",
    "충청북도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000204-00": {
   "deadline": "2026-11-16 10:00",
@@ -258,8 +272,9 @@
    "경상북도"
   ],
   "joint_duty_regions": [],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000213-00": {
   "deadline": "2026-10-22 13:00",
@@ -275,8 +290,9 @@
   "joint_duty_regions": [
    "서울특별시"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000205-00": {
   "deadline": "2026-11-11 10:00",
@@ -294,8 +310,9 @@
   ],
   "regions": [],
   "joint_duty_regions": [],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000203-00": {
   "deadline": "2026-11-17 10:00",
@@ -317,8 +334,9 @@
    "충청남도",
    "전북특별자치도"
   ],
+  "pq_deadline": "2026-10-19",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000210-00": {
   "deadline": "2026-10-16 10:00",
@@ -335,8 +353,9 @@
   "joint_duty_regions": [
    "인천광역시"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000209-00": {
   "deadline": "2026-10-20 10:00",
@@ -354,8 +373,9 @@
    "충청남도",
    "경상북도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000206-00": {
   "deadline": "2026-11-10 10:00",
@@ -369,8 +389,9 @@
   ],
   "regions": [],
   "joint_duty_regions": [],
+  "pq_deadline": "2026-10-19",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000200-00": {
   "deadline": "2026-11-10 10:00",
@@ -386,8 +407,9 @@
    "광주광역시",
    "전라남도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  },
  "2026-01-000202-00": {
   "deadline": "2026-10-08 10:00",
@@ -402,7 +424,8 @@
   "joint_duty_regions": [
    "경상남도"
   ],
+  "pq_deadline": "",
   "doc_read": true,
-  "checked_at": "2026-10-20 13:31"
+  "checked_at": "2026-10-20 13:45"
  }
 }
