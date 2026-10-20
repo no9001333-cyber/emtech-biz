@@ -453,6 +453,10 @@ def _apply_restriction_result(bid, licenses, regions, basis_info=None):
         if basis_info.get("open_date"):
             bid["open_date"] = basis_info["open_date"]
 
+    # 2026-10-20: 면허제한에 정보통신공사업이 없으면 참가불가(나라장터·K-water·한전과 같은 규칙)
+    from scrapers._common import apply_license_rule
+    apply_license_rule(bid, licenses, "국방전자조달")
+
 
 def _mark_unverified(bid):
     existing = (bid.get("restrictions") or "").strip()

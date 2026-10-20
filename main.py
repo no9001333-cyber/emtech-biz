@@ -49,6 +49,7 @@ from scrapers.kwater import fetch_kwater_bids
 from scrapers.kepco_srm import fetch_kepco_srm_bids
 from scrapers.kwater_regions import apply_kwater_regions
 from scrapers.kogas import fetch_kogas_bids
+from scrapers.kr_rail import fetch_kr_rail_bids
 from scrapers.g2b_awards import fetch_g2b_awards
 from scrapers.lh_awards import fetch_lh_awards
 from scrapers._common import bid_status, deadline_sort_key, get_region_scope, needs_pdf_confirmation, apply_joint_duty_rule, apply_contractor_selection_rule
@@ -135,6 +136,9 @@ def main():
     # (scrapers/kepco_srm.py). 서비스키가 필요 없다.
     new_bids += _run_source("한국전력공사", True, fetch_kepco_srm_bids, status_list)
     new_bids += _run_source("한국가스공사", bool(KOGAS_SERVICE_KEY), fetch_kogas_bids, status_list)
+    # 2026-10-20: 국가철도공단은 나라장터가 아닌 자체 KR전자조달시스템에 공사를 공고한다(대박 맞춤 대조에서
+    # 운정역 통신설비 개량공사가 빠져 발견). 서비스키 없이 공개 화면과 공고문으로 수집(scrapers/kr_rail.py).
+    new_bids += _run_source("국가철도공단", True, fetch_kr_rail_bids, status_list)
 
     deduped = {}
     for bid in new_bids:
