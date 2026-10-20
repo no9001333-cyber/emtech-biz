@@ -2929,5 +2929,30 @@
    "variance_pct": "-2.0~2.0"
   },
   "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-00281&negn_pldt=20261030&dprt_code=LMR&ordr_year=2026&negn_degr=2&anmt_numb=LMR0009&pageDivs=E"
+ },
+ "LCJ0044": {
+  "licenses": [
+   "전문소방시설공사업",
+   "일반소방시설공사업(기계)"
+  ],
+  "regions": [
+   "세종특별자치시"
+  ],
+  "basis_info": {},
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16536&negn_pldt=20261026&dprt_code=LCJ&ordr_year=2026&negn_degr=1&anmt_numb=LCJ0044&pageDivs=E"
+ },
+ "LMP0187": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis_info": {
+   "base_amount": 30740530,
+   "a_value": 574999,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16552&negn_pldt=20261026&dprt_code=LMP&ordr_year=2026&negn_degr=1&anmt_numb=LMP0187&pageDivs=E"
  }
 }
