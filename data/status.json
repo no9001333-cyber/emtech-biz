@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-10-20 13:19",
+  "checked_at": "2026-10-20 13:32",
   "sources": [
     {
       "source": "나라장터",
       "ok": true,
-      "count": 18054,
-      "note": "18054건 수집"
+      "count": 18081,
+      "note": "18081건 수집"
     },
     {
       "source": "LH",
@@ -38,10 +38,16 @@
       "note": "125건 수집"
     },
     {
+      "source": "국가철도공단",
+      "ok": true,
+      "count": 23,
+      "note": "23건 수집"
+    },
+    {
       "source": "나라장터 낙찰정보",
       "ok": true,
-      "count": 5744,
-      "note": "5744건 수집"
+      "count": 5765,
+      "note": "5765건 수집"
     },
     {
       "source": "LH 낙찰정보",
