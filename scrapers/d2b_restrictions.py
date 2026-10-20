@@ -106,6 +106,35 @@ def enrich_d2b_bids_with_restrictions(bids):
     cached_count = len(bids) - len(todo)
     todo.sort(key=lambda b: not any(k in (b.get("title") or "") for k in _TELECOM_HINTS))
 
+    # 2026-10-20: 브라우저 없이 d2b.go.kr 공사 입찰공고 화면의 요청을 그대로 써서 확인한다(건당 0.2초,
+    # 공개수의도 조회됨 - scrapers/d2b_http.py). 접속 자체가 안 될 때만 아래 Playwright 방식으로 넘어간다.
+    try:
+        from scrapers.d2b_http import D2BClient, parse_detail
+        client = D2BClient()
+        ok_http = fail_http = 0
+        for bid in todo:
+            try:
+                row = client.find(bid.get("notice_no", ""))
+                if not row:
+                    fail_http += 1
+                    _mark_unverified(bid)
+                    continue
+                groups, regions, basis_info = parse_detail(client.detail_text(row))
+                licenses = [l for g in groups for l in g]
+                _apply_restriction_result(bid, licenses, regions, basis_info)
+                cache[bid.get("notice_no", "")] = {"licenses": licenses, "regions": regions, "basis_info": basis_info}
+                ok_http += 1
+            except Exception as e:
+                fail_http += 1
+                _mark_unverified(bid)
+                print(f"[D2B 공고문 확인] HTTP 실패: {bid.get('notice_no')} {type(e).__name__}")
+        with open(D2B_CACHE_PATH, "w", encoding="utf-8") as f:
+            _json.dump(cache, f, ensure_ascii=False, indent=1)
+        print(f"[D2B 공고문 확인] (HTTP) 캐시 {cached_count}건, {ok_http}건 확인 성공, {fail_http}건 실패")
+        return bids
+    except Exception as e:
+        print(f"[D2B 공고문 확인] HTTP 방식 사용 불가 - Playwright로 진행: {e}")
+
     ok_count = 0
     fail_count = 0
     skipped_count = 0
@@ -182,7 +211,11 @@ def _lookup_one(page, title, pblanc_no):
     page.fill("#anmt_name", title)
     page.click("#btn_search")
     try:
-        page.wait_for_selector("a.fgirdB", timeout=ACTION_TIMEOUT_MS)
+        # 2026-10-20: 검색결과가 0건이면 결과 링크가 영영 안 떠서 매번 45초를 기다렸다(실행당 29건).
+        # "데이터 없음" 표시가 뜨면 바로 끝낸다.
+        page.wait_for_selector('a.fgirdB, :text("표시할 데이터가 없습니다")', timeout=ACTION_TIMEOUT_MS)
+        if not page.query_selector("a.fgirdB"):
+            return None
     except Exception:
         # 결과 링크가 끝내 안 나타난 경우: "검색결과 0건"인지(정상 - 그냥 못 찾은 것)
         # 아니면 그리드 자체가 안 뜬 것인지(비정상 - 사이트 구조 변경/차단 의심) 구분해서
