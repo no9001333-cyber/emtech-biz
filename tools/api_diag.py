@@ -47,21 +47,15 @@ def show(label, url, params, key):
 now = datetime.now()
 d = lambda days: (now - timedelta(days=days)).strftime("%Y%m%d")
 
-# 2026-10-20: 발주계획 PPSSrch는 inqryBgnDt/inqryEndDt를 무시하고 최근 하루치(387건)만 준다.
-# 문서상 "발주년월범위"로 검색 - 발주년월 파라미터 이름 후보를 시험한다.
+# 2026-10-20: PPSSrch는 발주년월(orderBgnYm/orderEndYm)과 게시일시(inqryBgnDt/inqryEndDt)를 함께 주고
+# inqryDiv는 빼야 한다(NomaDamas/k-skill 프록시 구현 참고). 함께 줘서 기간이 먹는지 확인.
 SRCH = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwkPPSSrch"
-BASE_OP = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwk"
-ym0, ym1 = now.strftime("%Y%m"), (now + timedelta(days=75)).strftime("%Y%m")
-cands = [
-    ("1 orderBgnYm", {"inqryDiv": 1, "orderBgnYm": ym0, "orderEndYm": ym1}),
-    ("2 orderBgnYm", {"inqryDiv": 2, "orderBgnYm": ym0, "orderEndYm": ym1}),
-    ("2 inqryBgnDt YYYYMM 00", {"inqryDiv": 2, "inqryBgnDt": ym0 + "010000", "inqryEndDt": ym1 + "282359"}),
-    ("2 inqryBgnDt YYYYMMDD", {"inqryDiv": 2, "inqryBgnDt": ym0 + "01", "inqryEndDt": ym1 + "28"}),
-    ("orderYear+orderMnth", {"inqryDiv": 1, "orderYear": now.strftime("%Y"), "orderMnth": now.strftime("%m")}),
-    ("1 inqryBgnDt 1년 numOfRows 10", {"inqryDiv": 1, "inqryBgnDt": d(365) + "0000", "inqryEndDt": d(300) + "2359"}),
-    ("3 inqryBgnDt", {"inqryDiv": 3, "inqryBgnDt": d(60) + "0000", "inqryEndDt": d(30) + "2359"}),
-]
-for label, p in cands:
+ym0, ym1 = now.strftime("%Y%m"), (now + timedelta(days=180)).strftime("%Y%m")
+both = {"orderBgnYm": ym0, "orderEndYm": ym1, "inqryBgnDt": d(365) + "0000", "inqryEndDt": d(0) + "2359"}
+for label, p in [
+    ("발주년월+게시일시", both),
+    ("발주년월+게시일시 공종 통신", {**both, "cnsttyDivNm": "통신"}),
+    ("발주년월+게시일시 사업명 통신", {**both, "bizNm": "통신"}),
+    ("발주년월+게시일시 2페이지", {**both, "pageNo": 2}),
+]:
     show("발주계획PPS/" + label, SRCH, {"pageNo": 1, "numOfRows": 500, "type": "json", **p}, G2B)
-for label, p in cands[:4]:
-    show("발주계획기본/" + label, BASE_OP, {"pageNo": 1, "numOfRows": 500, "type": "json", **p}, G2B)
