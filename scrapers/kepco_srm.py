@@ -23,6 +23,7 @@ from datetime import datetime, timedelta
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import LOOKBACK_DAYS, OUR_LICENSES
+from scrapers._common import apply_license_rule
 from scrapers._common import is_deadline_in_range, get_region_scope
 from scrapers.kepco_regions import _Client, LIST_ACTION, DETAIL_ACTION, REGION_LIMIT_CODE
 
@@ -196,6 +197,7 @@ def fetch_kepco_srm_bids():
                 "region_check": {"verified": True, "eligible_confirmed": "전국",
                                  "note": "한전 전자조달시스템에 지역제한 없음(공식 데이터)", "snippet": ""},
             })
+        apply_license_rule(bid, licenses, "한전")
         results.append(bid)
     tel = sum(1 for b in results if "정보통신" in (b.get("industry") or ""))
     print(f"[한전 전자조달] 수집 {len(results)}건 (정보통신 면허 {tel}건, 면허·지역 미조회 {unknown}건)")

@@ -592,8 +592,9 @@ function getFilteredBids(opts) {{
       (scopeGyeonggi && b.region_scope === '경기') ||
       (scopeNationwide && b.region_scope === '전국') ||
       (scopeJointOther && b.joint_duty_other === true);
-    const matchTelecom = !telecomOnly || TELECOM_KEYWORDS.some(k =>
-      (b.title || '').includes(k) || (b.industry || '').includes(k));
+    // "교통신호(기·등)"는 글자상 '통신'이 들어가지만 통신공사가 아니다(2026-10-20 대박 대조).
+    const telText = ((b.title || '') + ' ' + (b.industry || '')).split('교통신호').join('');
+    const matchTelecom = !telecomOnly || TELECOM_KEYWORDS.some(k => telText.includes(k));
     const matchQ = fieldMatches(b, q, searchField);
     // 우리는 공사만 투찰한다(사용자 지시) - 용역으로 분류된 공고는 기본으로 숨긴다.
     if (constructionOnly && b.notice_kind && b.notice_kind !== '공사') return false;

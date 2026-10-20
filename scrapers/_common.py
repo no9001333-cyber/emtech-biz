@@ -282,3 +282,23 @@ def apply_contractor_selection_rule(bid):
     bid["region_check"] = rc
     return True
 
+
+def apply_license_rule(bid, licenses, source_label):
+    """공식 면허제한에 우리 면허(config.OUR_LICENSES)가 하나도 없으면 참가불가로 바꾼다.
+
+    2026-10-20: 대박 맞춤 대조 중 금속창호(반월터널 통신분야 안전설비)·전기공사업(분당구 교통신호등)
+    공고가 제목의 "통신" 때문에 기본 화면에 떠 있었다. 이엠테크는 정보통신공사업 하나뿐이라
+    면허제한 목록에 그게 없으면 참가할 수 없다. 대시보드는 region_scope로 거르므로 None으로 둔다.
+    반환: 막았으면 True.
+    """
+    from config import OUR_LICENSES
+    names = [l.strip(" []") for l in (licenses or []) if "업" in (l or "")]
+    if not names or any(o in n for n in names for o in OUR_LICENSES):
+        return False
+    bid.update({
+        "region_scope": None, "eligible": False, "license_blocked": True,
+        "region_check": {"verified": True, "eligible_confirmed": False,
+                         "note": f"{source_label} 면허제한에 정보통신공사업 없음({', '.join(dict.fromkeys(names))})",
+                         "snippet": ""},
+    })
+    return True

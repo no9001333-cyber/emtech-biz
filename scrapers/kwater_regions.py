@@ -31,7 +31,7 @@ import requests
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import GYEONGGI_OTHER_CITIES
-from scrapers._common import get_region_scope
+from scrapers._common import apply_license_rule, get_region_scope
 from scrapers.doc_regions import extract_restricted_regions, document_text, extract_licenses as _licenses
 
 BASE = "https://ebid.kwater.or.kr"
@@ -225,6 +225,10 @@ def apply_kwater_regions(bids):
                 "note": f"K-water 참가자격에서 지역을 확인하지 못함({info.get('basis')}) - 공고문 확인 필요",
                 "snippet": info.get("qualification", "")[:150],
             }
+        if apply_license_rule(b, info.get("licenses"), "K-water"):
+            counts["면허불일치"] = counts.get("면허불일치", 0) + 1
+    print(
+        f"[수자원 지역] 면허제한에 정보통신공사업 없음 {counts.get('면허불일치', 0)}건")
     print(
         f"[수자원 지역] 수의시담(참가불가) {counts['수의시담']}건, 지역제한 {counts['지역제한']}건"
         f"(그중 참가불가 {counts['참가불가지역']}건), 미확인 {counts['미확인']}건, 조회 실패 {len(failed)}건"

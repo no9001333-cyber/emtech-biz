@@ -32,7 +32,7 @@ from datetime import datetime, timedelta
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import G2B_SERVICE_KEY, LOOKBACK_DAYS
-from scrapers._common import get_with_retry, get_region_scope, parse_deadline
+from scrapers._common import get_with_retry, get_region_scope, parse_deadline, apply_license_rule
 
 ENDPOINT = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService"
 OP_REGION = "getBidPblancListInfoPrtcptPsblRgn"
@@ -178,7 +178,7 @@ def apply_official_regions(bids, endpoint=ENDPOINT, op_region=OP_REGION, op_lice
         print(f"[G2B 지역/면허] 참가가능지역이 지정된 공고가 {with_regions}/{len(bids)}건뿐이라 응답 해석이 의심스러워 '행 없음=전국'은 적용하지 않습니다.")
         trust_absence = False
 
-    by_region = by_none = by_absent = lic_added = 0
+    by_region = by_none = by_absent = lic_added = lic_blocked = 0
     for b in bids:
         no = b.get("notice_no", "")
         ent = index.get(no)
@@ -197,7 +197,10 @@ def apply_official_regions(bids, endpoint=ENDPOINT, op_region=OP_REGION, op_lice
             lic_added += 1
 
         if regions:
-            scope = get_region_scope(",".join(regions), b.get("org", ""), "", has_region_restriction=True)
+            # org는 넘기지 않는다(2026-10-20): 발주기관이 한국철도공사(ALWAYS_INCLUDE_ORGS)면
+            # get_region_scope가 공식 참가가능지역을 보기 전에 "전국"을 돌려줘서, 대전·부산 한정
+            # 철도공사 공고까지 전국으로 떴다(대박 맞춤 대조 중 "가자울 건널목 CCTV" 경기 한정 건에서 발견).
+            scope = get_region_scope(",".join(regions), "", "", has_region_restriction=True)
             b["participation_regions"] = regions
             b["region_scope"] = scope
             b["eligible"] = scope is not None
@@ -224,6 +227,9 @@ def apply_official_regions(bids, endpoint=ENDPOINT, op_region=OP_REGION, op_lice
                 "note": "나라장터 참가가능지역 정보에 제한 없음(공식 데이터)", "snippet": "",
             }
             by_absent += 1
+        if licenses and apply_license_rule(b, licenses, "나라장터"):
+            lic_blocked += 1
+    print(f"[G2B 지역/면허] 면허제한에 정보통신공사업이 없어 참가불가 처리 {lic_blocked}건")
     print(
         f"[G2B 지역/면허] 참가가능지역 지정 {by_region}건(그중 참가불가 {by_none}건), "
         f"제한 없음(전국) {by_absent}건, 면허제한 목록 반영 {lic_added}건"

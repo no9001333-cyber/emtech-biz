@@ -198,8 +198,13 @@ def main():
             old_bid.get("region", ""), old_bid.get("org", ""), old_bid.get("title", ""),
             has_region_restriction=has_restr,
         )
-        if rc.get("downgraded"):
+        if rc.get("downgraded") or old_bid.get("license_blocked"):
             new_scope = None
+        elif rc.get("verified") and old_bid.get("participation_regions"):
+            # 공식 참가가능지역이 저장돼 있으면 그것만으로 다시 판정(발주기관명은 보지 않음 -
+            # 2026-10-20 철도공사 지역한정 공고가 전국으로 남아 있던 문제)
+            new_scope = get_region_scope(",".join(old_bid["participation_regions"]), "", "",
+                                         has_region_restriction=True)
         elif rc.get("verified") and rc.get("eligible_confirmed") is not None:
             new_scope = old_bid.get("region_scope")
         elif needs_pdf_confirmation(old_bid.get("region", ""), new_scope, has_restr):
