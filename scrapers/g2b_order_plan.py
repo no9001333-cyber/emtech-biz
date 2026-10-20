@@ -25,8 +25,8 @@ from scrapers._common import get_with_retry, get_region_scope
 # 나라장터 검색조건 오퍼레이션(PPSSrch)이 등록일 범위로 정상 조회된다.
 ENDPOINT = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwkPPSSrch"
 LOOKBACK_DAYS = 365   # 발주계획은 연초에 한꺼번에 올라오는 경우가 많아 1년치 등록분을 본다
-CHUNK_DAYS = 30
-MAX_PAGES = 20
+AHEAD_DAYS = 180      # 앞으로 6개월 안에 발주 예정인 것
+MAX_PAGES = 10
 OUT_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "order_plans.json")
 
 
@@ -56,26 +56,28 @@ def fetch_order_plans():
     if not G2B_SERVICE_KEY:
         return []
     key = __import__("urllib.parse").parse.unquote(G2B_SERVICE_KEY)
-    end = datetime.now()
-    begin = end - timedelta(days=LOOKBACK_DAYS)
+    now = datetime.now()
+    # 2026-10-20: PPSSrch는 발주년월(orderBgnYm/orderEndYm)과 게시일시(inqryBgnDt/inqryEndDt)를 함께 줘야
+    # 기간이 적용된다(inqryDiv는 넣지 않음). 날짜만 주면 무시되고 최근 하루 등록분(약 400건)만 와서
+    # 발주예정이 3건뿐이었다. 공종 "통신"과 사업명 키워드로 나눠 받아 합친다.
+    base = {
+        "serviceKey": key, "numOfRows": 500, "type": "json",
+        "orderBgnYm": now.strftime("%Y%m"), "orderEndYm": (now + timedelta(days=AHEAD_DAYS)).strftime("%Y%m"),
+        "inqryBgnDt": (now - timedelta(days=LOOKBACK_DAYS)).strftime("%Y%m%d0000"), "inqryEndDt": now.strftime("%Y%m%d2359"),
+    }
+    filters = [{"cnsttyDivNm": "통신"}] + [{"bizNm": k} for k in KEYWORDS if k != "정보통신"]
     rows, logged = [], False
-    cur = begin
-    while cur < end:
-        chunk_end = min(cur + timedelta(days=CHUNK_DAYS), end)
+    for flt in filters:
         for page in range(1, MAX_PAGES + 1):
-            params = {
-                "serviceKey": key, "pageNo": page, "numOfRows": 500, "type": "json",
-                "inqryDiv": 1, "inqryBgnDt": cur.strftime("%Y%m%d0000"), "inqryEndDt": chunk_end.strftime("%Y%m%d2359"),
-            }
             try:
-                data = get_with_retry(ENDPOINT, params=params, timeout=30).json()
+                data = get_with_retry(ENDPOINT, params={**base, **flt, "pageNo": page}, timeout=30).json()
             except Exception as e:
-                print(f"[발주계획] 요청 실패 - 공공데이터포털에서 '조달청_나라장터 발주계획현황서비스' 활용신청이 필요할 수 있음: {e}")
-                return []
+                print(f"[발주계획] 요청 실패 {flt}: {e}")
+                break
             header = data.get("response", {}).get("header", {})
             if str(header.get("resultCode", "00")) not in ("00", "0"):
-                print(f"[발주계획] resultCode={header.get('resultCode')} {header.get('resultMsg')}")
-                return []
+                print(f"[발주계획] {flt} resultCode={header.get('resultCode')} {header.get('resultMsg')}")
+                break
             body = data.get("response", {}).get("body", {})
             items = body.get("items", [])
             if isinstance(items, dict):
@@ -91,7 +93,6 @@ def fetch_order_plans():
             if page * 500 >= int(body.get("totalCount", 0) or 0):
                 break
             time.sleep(0.5)
-        cur = chunk_end
         time.sleep(0.5)
 
     this_month = datetime.now().strftime("%Y-%m")
