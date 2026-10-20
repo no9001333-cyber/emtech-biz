@@ -1,0 +1,677 @@
+{
+ "SCQ0080": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "HDR0076": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LHM0232": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [
+   "강원특별자치도 화천군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "UMM0937": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [
+   "인천광역시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMP0186": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도 철원군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-23 11:00"
+  }
+ },
+ "LQP0112": {
+  "licenses": [
+   "토양정화업"
+  ],
+  "regions": [],
+  "basis_info": {
+   "base_amount": 782021764,
+   "a_value": 34385069,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "UMM0927": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {
+   "base_amount": 2910008820,
+   "a_value": 89816269,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "DSS0028": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 360036000,
+   "a_value": 8638487,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "SFC0068": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업",
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 474589020,
+   "a_value": 27704042,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "SEE0022": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "제주특별자치도"
+  ],
+  "basis_info": {
+   "base_amount": 246347000,
+   "a_value": 10725341,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LMR0230": {
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 828551000,
+   "a_value": 42048709,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "HDR0075": {
+  "licenses": [
+   "전문소방시설공사업",
+   "일반소방시설공사업(기계)"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 282713725,
+   "a_value": 14324458,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LCK0187": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "서울특별시"
+  ],
+  "basis_info": {
+   "base_amount": 340333686,
+   "a_value": 19765225,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LNS0072": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 289074950,
+   "a_value": 7764579,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-21 11:00"
+  }
+ },
+ "UMM0938": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업",
+   "구조물해체ㆍ비계공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 11:00"
+  }
+ },
+ "UMM0932": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경상남도"
+  ],
+  "basis_info": {
+   "base_amount": 445653920,
+   "a_value": 18689171,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-21 11:00"
+  }
+ },
+ "UDA0012": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 228441000,
+   "a_value": 11049788,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-21 11:00"
+  }
+ },
+ "LNR0096": {
+  "licenses": [
+   "토목건축공사업",
+   "토목공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 490573000,
+   "a_value": 37138063,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LKG0110": {
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "부산광역시"
+  ],
+  "basis_info": {
+   "base_amount": 738284000,
+   "a_value": 34482516,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LFC0143": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {
+   "base_amount": 448900000,
+   "a_value": 5187895,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-22 11:00"
+  }
+ },
+ "UDA0013": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 228441000,
+   "a_value": 11049788,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-22 11:00"
+  }
+ },
+ "LNS0073": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 289074950,
+   "a_value": 7764579,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-22 11:00"
+  }
+ },
+ "LFC0144": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "충청남도"
+  ],
+  "basis_info": {
+   "base_amount": 448900000,
+   "a_value": 5187895,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-22 11:00"
+  }
+ },
+ "LKH0136": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경상남도"
+  ],
+  "basis_info": {
+   "base_amount": 224619000,
+   "a_value": 12117371,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-22 10:30"
+  }
+ },
+ "LKH0137": {
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경상남도"
+  ],
+  "basis_info": {
+   "base_amount": 482258000,
+   "a_value": 16456358,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-22 10:30"
+  }
+ },
+ "LKH0135": {
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경상남도"
+  ],
+  "basis_info": {
+   "base_amount": 482258000,
+   "a_value": 16456358,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-22 10:30"
+  }
+ },
+ "UMM0940": {
+  "licenses": [
+   "구조물해체ㆍ비계공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 439080390,
+   "a_value": 24192358,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-23 11:00"
+  }
+ },
+ "MDG0136": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [],
+  "basis_info": {
+   "base_amount": 315438000,
+   "a_value": 8144546,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-23 10:30"
+  }
+ },
+ "SCR0072": {
+  "licenses": [
+   "건축공사업",
+   "토목공사업",
+   "실내건축공사업"
+  ],
+  "regions": [
+   "전남광주통합특별시"
+  ],
+  "basis_info": {
+   "base_amount": 507000000,
+   "a_value": 30692942,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-23 10:30"
+  }
+ },
+ "UMM0944": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경상남도"
+  ],
+  "basis_info": {
+   "base_amount": 433826140,
+   "a_value": 25707546,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 11:00"
+  }
+ },
+ "LNR0097": {
+  "licenses": [
+   "토목건축공사업",
+   "토목공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 779182000,
+   "a_value": 51559659,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 10:30"
+  }
+ },
+ "SCR0073": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업",
+   "실내건축공사업"
+  ],
+  "regions": [
+   "전남광주통합특별시"
+  ],
+  "basis_info": {
+   "base_amount": 507000000,
+   "a_value": 30692942,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 10:30"
+  }
+ },
+ "MDN0009": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "서울특별시",
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 264372000,
+   "a_value": 6776338,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 10:30"
+  }
+ },
+ "MDN0008": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "서울특별시",
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 499121000,
+   "a_value": 23204276,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 10:30"
+  }
+ },
+ "MDN0004": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "서울특별시",
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 76705000,
+   "a_value": 3439673,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 10:30"
+  }
+ },
+ "MDN0003": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "서울특별시",
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 264372000,
+   "a_value": 6776338,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 10:30"
+  }
+ },
+ "MDN0002": {
+  "licenses": [
+   "토목건축공사업",
+   "건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "서울특별시",
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 499121000,
+   "a_value": 23204276,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 10:30"
+  }
+ },
+ "LNR0099": {
+  "licenses": [
+   "토목건축공사업",
+   "토목공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 683408000,
+   "a_value": 42361277,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-27 10:30"
+  }
+ },
+ "MDG0141": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 226501000,
+   "a_value": 10724423,
+   "variance_pct": 2.0,
+   "open_date": "2026-10-29 10:30"
+  }
+ },
+ "LCH0182": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "충청북도 증평군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "SCK0014": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경상남도 창원시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "MDP0008": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LBA0025": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "경기도 포천시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "HDP0055": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "SCU0033": {
+  "licenses": [
+   "도장ㆍ습식ㆍ방수ㆍ석공사업"
+  ],
+  "regions": [
+   "제주특별자치도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "SCU0034": {
+  "licenses": [
+   "도장ㆍ습식ㆍ방수ㆍ석공사업"
+  ],
+  "regions": [
+   "제주특별자치도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "SCP0063": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도 동해시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "SCP0061": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "강원특별자치도 동해시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "SCP0062": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도 동해시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LKG0107": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "부산광역시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ }
+}

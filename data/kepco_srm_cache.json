@@ -5344,5 +5344,25 @@
   "license_logic": null,
   "regions": [],
   "checked_at": "2026-10-20 09:36"
+ },
+ "E052600416": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-20 10:47"
+ },
+ "E042600429": {
+  "licenses": [
+   "구조물해체·비계공사업",
+   "기계가스설비공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "강원 삼척시",
+   "경북 울진군"
+  ],
+  "checked_at": "2026-10-20 10:47"
  }
 }

@@ -1,1 +1,41 @@
-[]
+[
+ {
+  "title": "경기도의료원 안성병원 경기도360° 통합돌봄도시 리모델링(통신)공사",
+  "org": "경기도의료원 안성병원",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "51482000",
+  "contract_method": "수의계약",
+  "registered": "2026-10-19 15:42:52",
+  "contact": "행정과 이건희 031-8046-5362",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "민백초 교사동 교실 출입문 교체 통신공사",
+  "org": "경기도교육청 경기도안양과천교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "9365000",
+  "contract_method": "수의계약",
+  "registered": "2026-10-19 18:18:22",
+  "contact": "교육시설과 김동근 031-380-5192",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
+  "title": "조안면 공공도서관 건립사업 통신공사",
+  "org": "남양주도시공사",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "462371000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-10-19 11:42:44",
+  "contact": "개발사업3부 김준형 031-560-1168",
+  "work_type": "통신",
+  "announced": true
+ }
+]

@@ -1,752 +1,3942 @@
 {
  "R26BK01767800": {
-  "empty": true
+  "title": "방어진차고지 식당동 증축공사(통신)",
+  "org": "울산광역시버스운송사업조합",
+  "open_date": "2026-10-19 12:27:02",
+  "region_scope": "전국",
+  "telecom": true,
+  "base": 12089000.0,
+  "planned": 12118375.0,
+  "sajung": 100.243,
+  "award_amount": 11001610.0,
+  "award_rate": 90.784,
+  "winner": "주식회사 동강네트웍스",
+  "lower_rate": 89.745
  },
  "R26BK01775177": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01772177": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01769958": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01755940": {
-  "empty": true
+  "title": "대학로지점 이전 레이아웃 통신공사",
+  "org": "중소기업은행",
+  "open_date": "2026-10-14 11:28:12",
+  "region_scope": "전국",
+  "telecom": true,
+  "base": 43296000.0,
+  "planned": 43226450.0,
+  "sajung": 99.8394,
+  "award_amount": 39623400.0,
+  "award_rate": 91.664,
+  "winner": "주식회사 한스콤정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01757387": {
-  "empty": true
+  "title": "강동어린이집 신설 통신공사",
+  "org": "중소기업은행",
+  "open_date": "2026-10-14 11:09:14",
+  "region_scope": "전국",
+  "telecom": true,
+  "base": 91850000.0,
+  "planned": 91139350.0,
+  "sajung": 99.2263,
+  "award_amount": 83833021.0,
+  "award_rate": 91.983,
+  "winner": "(주)한국데이타통신",
+  "lower_rate": 89.745
  },
  "R26BK01765315": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01767493": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01767488": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01767108": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01755740": {
-  "empty": true
+  "title": "서하리(시도4호선) 자가망 및 CCTV 이설공사",
+  "org": "경기도 광주시",
+  "open_date": "2026-10-12 14:18:32",
+  "region_scope": "경기",
+  "telecom": true,
+  "base": 90892000.0,
+  "planned": 91094725.0,
+  "sajung": 100.223,
+  "award_amount": 82282521.0,
+  "award_rate": 90.326,
+  "winner": "(주)토탈음향",
+  "lower_rate": 89.745
  },
  "R26BK01753344": {
-  "empty": true
+  "title": "당진지점 전체 레이아웃 통신공사",
+  "org": "중소기업은행",
+  "open_date": "2026-10-12 11:09:05",
+  "region_scope": "전국",
+  "telecom": true,
+  "base": 36080000.0,
+  "planned": 36180075.0,
+  "sajung": 100.2774,
+  "award_amount": 33177850.0,
+  "award_rate": 91.701,
+  "winner": "하이눈정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01762023": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01759552": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01743404": {
-  "empty": true
+  "title": "1전시장 전관방송 설비 교체 공사",
+  "org": "주식회사킨텍스",
+  "open_date": "2026-10-07 15:08:36",
+  "region_scope": "경기",
+  "telecom": true,
+  "base": 1095030000.0,
+  "planned": 1102522800.0,
+  "sajung": 100.6843,
+  "award_amount": 1066032134.0,
+  "award_rate": 96.69,
+  "winner": "주식회사 서율",
+  "lower_rate": 89.745
  },
  "R26BK01758013": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01758319": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01755354": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01758368": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01756393": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01756425": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01753072": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01753196": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01748927": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01752718": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01746461": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01749005": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01739597": {
-  "empty": true
+  "title": "광명지점 전체 레이아웃 통신공사",
+  "org": "중소기업은행",
+  "open_date": "2026-09-30 11:07:48",
+  "region_scope": "전국",
+  "telecom": true,
+  "base": 52855000.0,
+  "planned": 52946100.0,
+  "sajung": 100.1724,
+  "award_amount": 48332750.0,
+  "award_rate": 91.286,
+  "winner": "하이눈정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01733179": {
-  "empty": true
+  "title": "파주지점 전체 레이아웃 통신공사",
+  "org": "중소기업은행",
+  "open_date": "2026-09-28 11:31:02",
+  "region_scope": "전국",
+  "telecom": true,
+  "base": 53636000.0,
+  "planned": 53680300.0,
+  "sajung": 100.0826,
+  "award_amount": 49383581.0,
+  "award_rate": 91.995,
+  "winner": "(주)한국데이타통신",
+  "lower_rate": null
  },
  "R26BK01723484": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01740408": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01740689": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01725425": {
-  "empty": true
+  "title": "용문고등학교 공간재구조화사업 개축 및 리모델링 통신공사",
+  "org": "경기도교육청 용문고등학교",
+  "open_date": "2026-09-21 19:25:57",
+  "region_scope": "경기",
+  "telecom": true,
+  "base": 338580000.0,
+  "planned": 336717850.0,
+  "sajung": 99.45,
+  "award_amount": 304446720.0,
+  "award_rate": 90.415,
+  "winner": "주식회사 프라임테크넷",
+  "lower_rate": null
  },
  "R26BK01730364": {
-  "empty": true
+  "title": "설성면 행정공간 확대사업 통신공사",
+  "org": "한국농어촌공사 경기지역본부 여주.이천지사",
+  "open_date": "2026-09-21 13:40:25",
+  "region_scope": "경기",
+  "telecom": true,
+  "base": 77682000.0,
+  "planned": 77929850.0,
+  "sajung": 100.3191,
+  "award_amount": 70382315.0,
+  "award_rate": 90.314,
+  "winner": "(주)동양시스컴",
+  "lower_rate": null
  },
  "R26BK01768743": {
-  "empty": true
+  "title": "영가대교~웅부공원 연결도로 통신관로 공사",
+  "org": "경상북도 안동시",
+  "open_date": "2026-10-19 14:23:00",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 120890000.0,
+  "planned": 120102750.0,
+  "sajung": 99.3488,
+  "award_amount": 108438064.0,
+  "award_rate": 90.287,
+  "winner": "이한전력 주식회사",
+  "lower_rate": 89.745
  },
  "R26BK01767888": {
-  "empty": true
+  "title": "충북형 귀농귀촌 보금자리 조성사업(통신)",
+  "org": "충청북도 단양군",
+  "open_date": "2026-10-19 13:58:31",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 94270000.0,
+  "planned": 94089300.0,
+  "sajung": 99.8083,
+  "award_amount": 84966132.0,
+  "award_rate": 90.303,
+  "winner": "주식회사 일등정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01764143": {
-  "empty": true
+  "title": "봉평 공공형 어린이실내놀이터 리모델링 공사(통신)",
+  "org": "강원특별자치도 평창군",
+  "open_date": "2026-10-19 13:25:29",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 36261000.0,
+  "planned": 35801150.0,
+  "sajung": 98.7318,
+  "award_amount": 32445330.0,
+  "award_rate": 90.626,
+  "winner": "브라보정보통신(주)",
+  "lower_rate": 89.745
  },
  "R26BK01766574": {
-  "empty": true
+  "title": "청소년수련시설(청소년수련관) 영화관 리모델링 통신공사",
+  "org": "전남광주통합특별시 순천시",
+  "open_date": "2026-10-16 13:10:19",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 24024000.0,
+  "planned": 24102800.0,
+  "sajung": 100.328,
+  "award_amount": 21774000.0,
+  "award_rate": 90.338,
+  "winner": "(주)케이이엔티",
+  "lower_rate": 89.745
  },
  "R26BK01762903": {
-  "empty": true
+  "title": "낙동강 하굿둑 상류 대저수문 등 개선 정보통신공사",
+  "org": "부산광역시 건설본부",
+  "open_date": "2026-10-16 11:03:18",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 62460000.0,
+  "planned": 62128525.0,
+  "sajung": 99.4693,
+  "award_amount": 56114482.0,
+  "award_rate": 90.319,
+  "winner": "에스코통신 주식회사",
+  "lower_rate": 89.745
  },
  "R26BK01724919": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01756072": {
-  "empty": true
+  "title": "2026년 산불예방 숲가꾸기사업(청통신덕지구)",
+  "org": "영천시산림조합",
+  "open_date": "2026-10-15 17:18:52",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 129734000.0,
+  "planned": 130311375.0,
+  "sajung": 100.445,
+  "award_amount": 118598360.0,
+  "award_rate": 91.011,
+  "winner": "주식회사 서림",
+  "lower_rate": 89.745
  },
  "R26BK01763109": {
-  "empty": true
+  "title": "성제 공공하수처리시설 증설사업(정보통신설비) 공사",
+  "org": "세종특별자치시 상하수도사업소",
+  "open_date": "2026-10-15 17:17:30",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 29237000.0,
+  "planned": 29452250.0,
+  "sajung": 100.7362,
+  "award_amount": 26590825.0,
+  "award_rate": 90.284,
+  "winner": "주식회사 삼영기업",
+  "lower_rate": 89.745
  },
  "R26BK01763686": {
-  "empty": true
+  "title": "서남센터 2처리장 조목스크린 및 제진기(4,5,6호) 감시제어공사",
+  "org": "서울물재생시설공단",
+  "open_date": "2026-10-15 16:49:04",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 40000000.0,
+  "planned": 39607800.0,
+  "sajung": 99.0195,
+  "award_amount": 35699810.0,
+  "award_rate": 90.133,
+  "winner": "에이브이에스텍(주)",
+  "lower_rate": 89.745
  },
  "R26BK01761572": {
-  "empty": true
+  "title": "스마트양식 클러스터 테스트베드 조성사업 통신공사",
+  "org": "전남광주통합특별시 신안군",
+  "open_date": "2026-10-15 13:07:58",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 158730000.0,
+  "planned": 158350675.0,
+  "sajung": 99.761,
+  "award_amount": 143189779.0,
+  "award_rate": 90.425,
+  "winner": "주식회사 서해전설",
+  "lower_rate": 89.745
  },
  "R26BK01761979": {
-  "empty": true
+  "title": "진남초 다목적강당 보수 및 환경개선  통신공사",
+  "org": "경상남도교육청 경상남도통영교육지원청",
+  "open_date": "2026-10-15 11:45:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 26510000.0,
+  "planned": 26231550.0,
+  "sajung": 98.9496,
+  "award_amount": 23747600.0,
+  "award_rate": 90.53,
+  "winner": "주식회사 케이케이정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01762592": {
-  "empty": true
+  "title": "점동면 덕평리 위험도로 개선사업 통신주 이설공사",
+  "org": "경기도 여주시",
+  "open_date": "2026-10-15 11:24:00",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 47700000.0,
+  "planned": 47778400.0,
+  "sajung": 100.1644,
+  "award_amount": 43118692.0,
+  "award_rate": 90.247,
+  "winner": "주식회사 국민이엠씨",
+  "lower_rate": 89.745
  },
  "R26BK01761656": {
-  "empty": true
+  "title": "성건동 640-3(소디스커피) 앞 교통신호기 설치 ",
+  "org": "경상북도 경주시",
+  "open_date": "2026-10-15 11:14:38",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 46000000.0,
+  "planned": 45944025.0,
+  "sajung": 99.8783,
+  "award_amount": 41305920.0,
+  "award_rate": 89.904,
+  "winner": "이에스전력주식회사",
+  "lower_rate": 89.745
  },
  "R26BK01759148": {
-  "empty": true
+  "title": " 상족암 디지털놀이터 명소화사업[오감체험 공룡놀이터(통신)]",
+  "org": "경상남도 고성군 상족암군립공원사업소",
+  "open_date": "2026-10-15 11:09:21",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 32690000.0,
+  "planned": 32425325.0,
+  "sajung": 99.1903,
+  "award_amount": 29319423.0,
+  "award_rate": 90.421,
+  "winner": "주식회사 비앤엠",
+  "lower_rate": 89.745
  },
  "R26BK01760552": {
-  "empty": true
+  "title": "한국세무금융고 급식소 및 부대시설 신축 통신 공사 수의견적 제출 안내 공고",
+  "org": "강원특별자치도교육청",
+  "open_date": "2026-10-14 12:47:23",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 151960000.0,
+  "planned": 152850525.0,
+  "sajung": 100.586,
+  "award_amount": 138220000.0,
+  "award_rate": 90.428,
+  "winner": "주식회사 케이엠콘트롤",
+  "lower_rate": 89.745
  },
  "R26BK01760053": {
-  "empty": true
+  "title": "갑각류양식시험장 갑각류동 개축공사(통신)",
+  "org": "해양수산부 국립수산과학원 서해수산연구소",
+  "open_date": "2026-10-14 11:42:23",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 68596110.0,
+  "planned": 68575250.0,
+  "sajung": 99.9696,
+  "award_amount": 61944970.0,
+  "award_rate": 90.331,
+  "winner": "주식회사 아톰정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01760564": {
-  "empty": true
+  "title": "한국관광고 체육관 및 급식소 증축 통신공사 소액수의 견적서 제출",
+  "org": "경기도교육청 한국관광고등학교",
+  "open_date": "2026-10-14 11:38:57",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 118190000.0,
+  "planned": 118019550.0,
+  "sajung": 99.8558,
+  "award_amount": 106707840.0,
+  "award_rate": 90.415,
+  "winner": "(주)유민에쓰티",
+  "lower_rate": 89.745
  },
  "R26BK01759963": {
-  "empty": true
+  "title": "전기차용 배터리 ·팩 시스템 시험평가센터 CCTV 설치공사",
+  "org": "(재)광주테크노파크",
+  "open_date": "2026-10-14 11:19:27",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 25820000.0,
+  "planned": 25866925.0,
+  "sajung": 100.1817,
+  "award_amount": 23257930.0,
+  "award_rate": 89.913,
+  "winner": "(주)다원이엔씨",
+  "lower_rate": 89.745
  },
  "R26BK01760306": {
-  "empty": true
+  "title": "[긴급]육민관중학교 체육관 신축 통신공사",
+  "org": "강원특별자치도교육청 강원특별자치도원주교육지원청 육민관중학교",
+  "open_date": "2026-10-14 11:05:25",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 54977000.0,
+  "planned": 54629450.0,
+  "sajung": 99.3678,
+  "award_amount": 49336850.0,
+  "award_rate": 90.311,
+  "winner": "(주)세명엔지니어링",
+  "lower_rate": 89.745
  },
  "R26BK01759531": {
-  "empty": true
+  "title": "애월중 본관동 필로티 교실확충 통신공사 수의계약 안내공고",
+  "org": "제주특별자치도교육청 제주시교육지원청",
+  "open_date": "2026-10-14 11:03:08",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 39776000.0,
+  "planned": 39820475.0,
+  "sajung": 100.1118,
+  "award_amount": 35982867.0,
+  "award_rate": 90.362,
+  "winner": "주식회사건영",
+  "lower_rate": 89.745
  },
  "R26BK01749955": {
-  "empty": true
+  "title": "김좌진장군 생가지 성역화 조성사업(통신)",
+  "org": "충청남도 홍성군",
+  "open_date": "2026-10-13 16:13:48",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 63525000.0,
+  "planned": 64099000.0,
+  "sajung": 100.9036,
+  "award_amount": 57903660.0,
+  "award_rate": 90.334,
+  "winner": "(주)내포정보통신공사",
+  "lower_rate": 89.745
  },
  "R26BK01753207": {
-  "empty": true
+  "title": "2026년 하반기 학교 무선인프라 구축사업 정보통신공사",
+  "org": "경기도교육청 경기도광주하남교육지원청",
+  "open_date": "2026-10-13 15:10:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 99803000.0,
+  "planned": 99440775.0,
+  "sajung": 99.6371,
+  "award_amount": 89801900.0,
+  "award_rate": 90.306,
+  "winner": "주식회사 한국관리",
+  "lower_rate": 89.745
  },
  "R26BK01758845": {
-  "empty": true
+  "title": "2026년 학교 유무선 네트워크 개선 사업 정보통신공사(3차, 배곧초) 2인이상 견적제출 안내공고",
+  "org": "경기도교육청 경기도시흥교육지원청",
+  "open_date": "2026-10-13 13:10:10",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 165770000.0,
+  "planned": 167881080.96,
+  "sajung": 101.2735,
+  "award_amount": 151905421.0,
+  "award_rate": 90.483,
+  "winner": "주식회사 에스엠네트웍스",
+  "lower_rate": 89.745
  },
  "R26BK01757982": {
-  "empty": true
+  "title": "2026년 학교 유무선 네트워크 개선 사업 정보통신공사(3차, 은계중) 2인이상 견적제출 안내공고",
+  "org": "경기도교육청 경기도시흥교육지원청",
+  "open_date": "2026-10-13 13:06:11",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 154990000.0,
+  "planned": 155735175.0,
+  "sajung": 100.4808,
+  "award_amount": 140802350.0,
+  "award_rate": 90.411,
+  "winner": "(주)금강전기",
+  "lower_rate": 89.745
  },
  "R26BK01756216": {
-  "empty": true
+  "title": "2026년 영상정보처리기기(CCTV) 설치",
+  "org": "충청북도 음성군",
+  "open_date": "2026-10-13 11:50:57",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 69620000.0,
+  "planned": 69068800.0,
+  "sajung": 99.2083,
+  "award_amount": 62458990.0,
+  "award_rate": 90.43,
+  "winner": "주식회사 홍우",
+  "lower_rate": 89.745
  },
  "R26BK01755329": {
-  "empty": true
+  "title": "2026년 서귀포시 공영주차장(안덕,동홍,서홍) 유료화 조성공사(통신)",
+  "org": "제주특별자치도 서귀포시",
+  "open_date": "2026-10-13 11:28:01",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 88672000.0,
+  "planned": 88251075.0,
+  "sajung": 99.5253,
+  "award_amount": 79693960.0,
+  "award_rate": 90.303,
+  "winner": "경도전력(주)",
+  "lower_rate": 89.745
  },
  "R26BK01756136": {
-  "empty": true
+  "title": "남원의료원 6층 병동 리모델링 스마트 너스콜, ID카드(전자명패) 시스템 설치공사 소액수의 견적공고",
+  "org": "전북특별자치도 남원의료원",
+  "open_date": "2026-10-13 11:27:59",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 162800000.0,
+  "planned": 164260350.0,
+  "sajung": 100.897,
+  "award_amount": 147790430.0,
+  "award_rate": 89.973,
+  "winner": "(유)황우엔지니어링",
+  "lower_rate": 89.745
  },
  "R26BK01757934": {
-  "empty": true
+  "title": "황간고 본관 석면교체 및 기타통신공사",
+  "org": "충청북도교육청 충청북도영동교육지원청",
+  "open_date": "2026-10-13 11:14:43",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 30250000.0,
+  "planned": 30075950.0,
+  "sajung": 99.4246,
+  "award_amount": 27186055.0,
+  "award_rate": 90.391,
+  "winner": "주식회사 대산정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01753688": {
-  "empty": true
+  "title": "2026년 CCTV 자가통신망 설치 공사",
+  "org": "경상북도 문경시",
+  "open_date": "2026-10-13 11:11:51",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 87307000.0,
+  "planned": 87309875.0,
+  "sajung": 100.0033,
+  "award_amount": 78975860.0,
+  "award_rate": 90.454,
+  "winner": "만능이앤씨",
+  "lower_rate": 89.745
  },
  "R26BK01756497": {
-  "empty": true
+  "title": "전주 중앙동 구 박다옥 보수정비공사(통신)",
+  "org": "전북특별자치도 전주시",
+  "open_date": "2026-10-13 11:09:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 65189000.0,
+  "planned": 65861800.0,
+  "sajung": 101.0321,
+  "award_amount": 59541304.0,
+  "award_rate": 90.403,
+  "winner": "(주)포유엔터스",
+  "lower_rate": 89.745
  },
  "R26BK01753873": {
-  "empty": true
+  "title": "교통신호등 설치사업(송절동 833 등 4개소)",
+  "org": "충청북도 청주시",
+  "open_date": "2026-10-12 18:05:56",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 75507000.0,
+  "planned": 74547900.0,
+  "sajung": 98.7298,
+  "award_amount": 67408220.0,
+  "award_rate": 90.422,
+  "winner": "(주)진성엔지니어링",
+  "lower_rate": 89.745
  },
  "R26BK01758791": {
-  "empty": true
+  "title": "강원특별자치도교육청 본청 방송실 이전 통신공사",
+  "org": "강원특별자치도교육청",
+  "open_date": "2026-10-12 13:54:00",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 298743000.0,
+  "planned": 297703425.0,
+  "sajung": 99.652,
+  "award_amount": 268942922.0,
+  "award_rate": 90.339,
+  "winner": "주식회사 성신이앤씨",
+  "lower_rate": 89.745
  },
  "R26BK01754580": {
-  "empty": true
+  "title": "송라초등학교 전기시설개선 정보통신공사 소액수의 견적제출 공고",
+  "org": "경상북도교육청 경상북도포항교육지원청",
+  "open_date": "2026-10-12 13:21:51",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 24728000.0,
+  "planned": 24847875.0,
+  "sajung": 100.4848,
+  "award_amount": 22432066.0,
+  "award_rate": 90.277,
+  "winner": "광명전기",
+  "lower_rate": 89.745
  },
  "R26BK01747430": {
-  "empty": true
+  "title": "대경 정보보호 클러스터 앵커시설 구축 통신공사",
+  "org": "재단법인 대구디지털혁신진흥원",
+  "open_date": "2026-10-12 13:17:50",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 71009000.0,
+  "planned": 70629675.0,
+  "sajung": 99.4658,
+  "award_amount": 63807631.0,
+  "award_rate": 90.341,
+  "winner": "(주)성보전기통신",
+  "lower_rate": 89.745
  },
  "R26BK01757676": {
-  "empty": true
+  "title": "(긴급)서울수색초 급식실 및 학생식당 증축 통신공사 전자입찰 공고",
+  "org": "서울특별시교육청 서울특별시서부교육지원청",
+  "open_date": "2026-10-12 11:47:36",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 88549000.0,
+  "planned": 88714425.0,
+  "sajung": 100.1868,
+  "award_amount": 80077090.0,
+  "award_rate": 90.263,
+  "winner": "주식회사 현대네트웍기술",
+  "lower_rate": 89.745
  },
  "R26BK01755399": {
-  "empty": true
+  "title": "연천군 조직개편에 따른 정보통신망 공사(통신)",
+  "org": "경기도 연천군",
+  "open_date": "2026-10-12 11:13:38",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 55600000.0,
+  "planned": 55623825.0,
+  "sajung": 100.0429,
+  "award_amount": 50027650.0,
+  "award_rate": 89.939,
+  "winner": "주식회사 아이씨티 코리아",
+  "lower_rate": 89.745
  },
  "R26BK01753816": {
-  "empty": true
+  "title": "2026년 교통신호기 신설 및 보수공사(연간단가 2차)",
+  "org": "전남광주통합특별시 광주청사",
+  "open_date": "2026-10-08 13:49:53",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 67837000.0,
+  "planned": 68055475.0,
+  "sajung": 100.3221,
+  "award_amount": 61466700.0,
+  "award_rate": 90.318,
+  "winner": "주식회사등화기전",
+  "lower_rate": 89.745
  },
  "R26BK01761948": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01753761": {
-  "empty": true
+  "title": "대전동신과학고 (구)실험동 수선 및 기타 정보통신공사 수의계약 견적제출 안내공고",
+  "org": "대전광역시교육청",
+  "open_date": "2026-10-08 13:11:18",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 65970000.0,
+  "planned": 65216325.0,
+  "sajung": 98.8575,
+  "award_amount": 58936710.0,
+  "award_rate": 90.371,
+  "winner": "태웅미디어(주)",
+  "lower_rate": 89.745
  },
  "R26BK01747685": {
-  "empty": true
+  "title": "송도동 208-4번지 공영주차장 건설 통신공사",
+  "org": "인천광역시 경제자유구역청",
+  "open_date": "2026-10-08 11:28:31",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 65670000.0,
+  "planned": 66953550.0,
+  "sajung": 101.9545,
+  "award_amount": 66597190.0,
+  "award_rate": 99.467,
+  "winner": "주식회사 대제종합건설",
+  "lower_rate": 89.745
  },
  "R26BK01753340": {
-  "empty": true
+  "title": "창동역 2번출구 환경개선 정보통신공사",
+  "org": "서울교통공사",
+  "open_date": "2026-10-08 11:24:33",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 30157300.0,
+  "planned": 29933350.0,
+  "sajung": 99.2574,
+  "award_amount": 27087339.0,
+  "award_rate": 90.492,
+  "winner": "(주)에스에스통신",
+  "lower_rate": 89.745
  },
  "R26BK01696717": {
-  "empty": true
+  "title": "해양공학연구동 위험유해환경 개선사업(통신공사)",
+  "org": "한국해양과학기술원 부설 선박해양플랜트연구소",
+  "open_date": "2026-10-08 11:22:26",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 311746000.0,
+  "planned": 311732800.0,
+  "sajung": 99.9958,
+  "award_amount": 281908500.0,
+  "award_rate": 90.432,
+  "winner": "(주)유아이",
+  "lower_rate": 89.745
  },
  "R26BK01752386": {
-  "empty": true
+  "title": "녹명초등학교 임시교사설치 정보통신공사",
+  "org": "부산광역시교육청 부산광역시북부교육지원청",
+  "open_date": "2026-10-08 11:20:33",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 98582000.0,
+  "planned": 99129650.0,
+  "sajung": 100.5555,
+  "award_amount": 89501497.0,
+  "award_rate": 90.287,
+  "winner": "주식회사임택전기통신",
+  "lower_rate": 89.745
  },
  "R26BK01753249": {
-  "empty": true
+  "title": "2026년 하반기 마산합포구 교통신호기 유지보수공사",
+  "org": "경상남도 창원시 마산합포구",
+  "open_date": "2026-10-08 11:12:27",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 46579000.0,
+  "planned": 46519775.0,
+  "sajung": 99.8729,
+  "award_amount": 42024090.0,
+  "award_rate": 90.335,
+  "winner": "주식회사 에디슨",
+  "lower_rate": 89.745
  },
  "R26BK01751634": {
-  "empty": true
+  "title": "안성천 생태수변공간 진입도로 자가통신망 이설공사",
+  "org": "충청남도 아산시",
+  "open_date": "2026-10-07 15:36:08",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 94144000.0,
+  "planned": 93989200.0,
+  "sajung": 99.8356,
+  "award_amount": 84592043.0,
+  "award_rate": 90.001,
+  "winner": "대명시스템솔루션 주식회사",
+  "lower_rate": 89.745
  },
  "R26BK01751826": {
-  "empty": true
+  "title": "메이플랜드상가존통신공사",
+  "org": "전북특별자치도 정읍시",
+  "open_date": "2026-10-07 15:27:07",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 49172230.0,
+  "planned": 49006300.0,
+  "sajung": 99.6626,
+  "award_amount": 44256458.0,
+  "award_rate": 90.307,
+  "winner": "(유)세일",
+  "lower_rate": 89.745
  },
  "R26BK01746260": {
-  "empty": true
+  "title": "정보통신실 노후 무정전전원장치(UPS) 교체 전기공사",
+  "org": "전북특별자치도",
+  "open_date": "2026-10-07 14:02:55",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 54420000.0,
+  "planned": 54627525.0,
+  "sajung": 100.3813,
+  "award_amount": 49269010.0,
+  "award_rate": 90.19,
+  "winner": "유한회사 구이앤금우통신",
+  "lower_rate": 89.745
  },
  "R26BK01749229": {
-  "empty": true
+  "title": "서울어린이대공원 식물원 리모델링 통신공사(장기계속)",
+  "org": "서울특별시 동부공원여가센터",
+  "open_date": "2026-10-07 13:55:15",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 356700000.0,
+  "planned": 356514575.0,
+  "sajung": 99.948,
+  "award_amount": 321786600.0,
+  "award_rate": 90.259,
+  "winner": "정일씨엔아이(주)",
+  "lower_rate": 89.745
  },
  "R26BK01750475": {
-  "empty": true
+  "title": "2026년 광나루 한강공사 CCTV 설치 공사",
+  "org": "서울특별시 미래한강본부",
+  "open_date": "2026-10-07 13:34:55",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 524920000.0,
+  "planned": 527908175.0,
+  "sajung": 100.5693,
+  "award_amount": 476895900.0,
+  "award_rate": 90.336,
+  "winner": "주식회사 데이타렉스",
+  "lower_rate": 89.745
  },
  "R26BK01747089": {
-  "empty": true
+  "title": "강원특별자치도 노인회관 신축사업(통신)",
+  "org": "강원특별자치도",
+  "open_date": "2026-10-07 13:22:07",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 120504000.0,
+  "planned": 119825325.0,
+  "sajung": 99.4368,
+  "award_amount": 108331710.0,
+  "award_rate": 90.408,
+  "winner": "주식회사 엠에스파워",
+  "lower_rate": 89.745
  },
  "R26BK01751980": {
-  "empty": true
+  "title": "이창 자연재해위험개선지구 정비사업 통신공사",
+  "org": "전남광주통합특별시 나주시",
+  "open_date": "2026-10-07 12:13:28",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 46255000.0,
+  "planned": 45718250.0,
+  "sajung": 98.8396,
+  "award_amount": 41337247.0,
+  "award_rate": 90.417,
+  "winner": "(주)그린테크",
+  "lower_rate": 89.745
  },
  "R26BK01744856": {
-  "empty": true
+  "title": "부산진여자상업고등학교 급식실현대화 및 기타 정보통신공사(계속비)",
+  "org": "부산광역시교육청 부산광역시남부교육지원청",
+  "open_date": "2026-10-07 11:36:39",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 19507000.0,
+  "planned": 19516800.0,
+  "sajung": 100.0502,
+  "award_amount": 17597770.0,
+  "award_rate": 90.167,
+  "winner": "주식회사 세정테크",
+  "lower_rate": 89.745
  },
  "R26BK01752061": {
-  "empty": true
+  "title": "부자의령 상생협약 프로젝트 통신공사",
+  "org": "경상남도 의령군",
+  "open_date": "2026-10-07 11:30:54",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 223432000.0,
+  "planned": 224346425.0,
+  "sajung": 100.4093,
+  "award_amount": 202810600.0,
+  "award_rate": 90.4,
+  "winner": "주식회사 대경무선통신",
+  "lower_rate": 89.745
  },
  "R26BK01747893": {
-  "empty": true
+  "title": "프라임홀 환경개선공사 통신공사",
+  "org": "전남대학교",
+  "open_date": "2026-10-07 11:27:04",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 21802000.0,
+  "planned": 21681925.0,
+  "sajung": 99.4492,
+  "award_amount": 19504832.0,
+  "award_rate": 89.958,
+  "winner": "주식회사씨엠쓰리네트워크",
+  "lower_rate": 89.745
  },
  "R26BK01747682": {
-  "empty": true
+  "title": "북삼읍 농촌중심지 활성화사업 사람in복합센터(통신)",
+  "org": "경상북도 칠곡군",
+  "open_date": "2026-10-07 11:09:35",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 261228000.0,
+  "planned": 261636850.0,
+  "sajung": 100.1565,
+  "award_amount": 236696850.0,
+  "award_rate": 90.467,
+  "winner": "주식회사 한보테크",
+  "lower_rate": 89.745
  },
  "R26BK01751581": {
-  "empty": true
+  "title": "토지면 기초생활거점조성사업(농촌협약) 통신공사",
+  "org": "한국농어촌공사 전남지역본부 구례지사",
+  "open_date": "2026-10-07 11:07:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 71500000.0,
+  "planned": 71945650.0,
+  "sajung": 100.6233,
+  "award_amount": 65148920.0,
+  "award_rate": 90.552,
+  "winner": "구례케이블티비시스템(주)",
+  "lower_rate": 89.745
  },
  "R26BK01748936": {
-  "empty": true
+  "title": "현내면 사랑해 어촌활력 생활SOC 복합화사업 신축공사(통신공사)",
+  "org": "강원특별자치도 고성군",
+  "open_date": "2026-10-07 10:59:46",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 133635000.0,
+  "planned": 134543125.0,
+  "sajung": 100.6796,
+  "award_amount": 121921220.0,
+  "award_rate": 90.618,
+  "winner": "주식회사 신일전력",
+  "lower_rate": 89.745
  },
  "R26BK01747829": {
-  "empty": true
+  "title": "남해해성고등학교 기숙사 증축 통신공사 수의계약 안내 공고",
+  "org": "경상남도교육청 남해해성고등학교",
+  "open_date": "2026-10-06 14:44:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 24948000.0,
+  "planned": 24807925.0,
+  "sajung": 99.4385,
+  "award_amount": 22424147.0,
+  "award_rate": 90.391,
+  "winner": "남해조명전기",
+  "lower_rate": 89.745
  },
  "R26BK01747973": {
-  "empty": true
+  "title": "설천중고 연립관사 개축 통신공사 수의견적 안내 공고",
+  "org": "전북특별자치도교육청 전북특별자치도무주교육지원청",
+  "open_date": "2026-10-06 13:19:42",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 125577000.0,
+  "planned": 125041475.0,
+  "sajung": 99.5735,
+  "award_amount": 113164170.0,
+  "award_rate": 90.501,
+  "winner": "주식회사 해밀",
+  "lower_rate": 89.745
  },
  "R26BK01751684": {
-  "empty": true
+  "title": "격포공공하수처리시설 지능화시스템 구축사업",
+  "org": "전북특별자치도 부안군",
+  "open_date": "2026-10-06 13:14:49",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 237338000.0,
+  "planned": 237881550.0,
+  "sajung": 100.229,
+  "award_amount": 214164500.0,
+  "award_rate": 90.029,
+  "winner": "유한회사 세움이엔지",
+  "lower_rate": 89.745
  },
  "R26BK01746635": {
-  "empty": true
+  "title": "벌교 농공단지 청년문화센터 건립사업 통신공사",
+  "org": "전남광주통합특별시 보성군",
+  "open_date": "2026-10-06 11:24:01",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 183810000.0,
+  "planned": 183440600.0,
+  "sajung": 99.799,
+  "award_amount": 165915512.0,
+  "award_rate": 90.446,
+  "winner": "(주)에스제이이엔지",
+  "lower_rate": 89.745
  },
  "R26BK01746923": {
-  "empty": true
+  "title": "우체국보험 대구회관 노후시설 개선공사(정보통신)",
+  "org": "과학기술정보통신부 우정사업본부 경북지방우정청",
+  "open_date": "2026-10-06 11:20:34",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 256388000.0,
+  "planned": 257037325.0,
+  "sajung": 100.2533,
+  "award_amount": 231626390.0,
+  "award_rate": 90.113,
+  "winner": "주식회사 이노스벤",
+  "lower_rate": 89.745
  },
  "R26BK01749751": {
-  "empty": true
+  "title": "봉양농공단지청년문화센터건립사업 통신공사",
+  "org": "경상북도 의성군",
+  "open_date": "2026-10-06 11:20:00",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 133915000.0,
+  "planned": 133551450.0,
+  "sajung": 99.7285,
+  "award_amount": 121121120.0,
+  "award_rate": 90.692,
+  "winner": "주식회사 지에스정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01749336": {
-  "empty": true
+  "title": "신내차량사업소 검사고 환경개선 정보통신공사",
+  "org": "서울교통공사",
+  "open_date": "2026-10-06 11:18:34",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 22765900.0,
+  "planned": 22995025.0,
+  "sajung": 101.0064,
+  "award_amount": 20780483.0,
+  "award_rate": 90.369,
+  "winner": "주식회사 아이티앤에스",
+  "lower_rate": 89.745
  },
  "R26BK01744102": {
-  "empty": true
+  "title": "부론면 법천3리 좀재마을 경로당 신축 공사(통신)",
+  "org": "강원특별자치도 원주시",
+  "open_date": "2026-10-06 11:12:05",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 7596000.0,
+  "planned": 7634350.0,
+  "sajung": 100.5049,
+  "award_amount": 6879530.0,
+  "award_rate": 90.112,
+  "winner": "세광정보통신주식회사",
+  "lower_rate": 89.745
  },
  "R26BK01744650": {
-  "empty": true
+  "title": "서부장애인복지관 본관 리모델링공사 계약의뢰(통신)",
+  "org": "울산광역시 울주군",
+  "open_date": "2026-10-06 11:07:00",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 33088000.0,
+  "planned": 32885075.0,
+  "sajung": 99.3867,
+  "award_amount": 29692470.0,
+  "award_rate": 90.291,
+  "winner": "코어네트웍스",
+  "lower_rate": 89.745
  },
  "R26BK01747661": {
-  "empty": true
+  "title": "2026년 일산동구 교통신호시설 유지보수 연간단가공사 2차",
+  "org": "경기도 고양시",
+  "open_date": "2026-10-06 11:06:25",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 80000000.0,
+  "planned": 78579600.0,
+  "sajung": 98.2245,
+  "award_amount": 71136600.0,
+  "award_rate": 90.528,
+  "winner": "주식회사 제이케이일렉트릭",
+  "lower_rate": 89.745
  },
  "R26BK01743890": {
-  "empty": true
+  "title": "포천시 생활자원회수센터 현대화사업 정보통신공사",
+  "org": "경기도 포천시",
+  "open_date": "2026-10-02 17:15:03",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 142947000.0,
+  "planned": 140880050.0,
+  "sajung": 98.554,
+  "award_amount": 127602120.0,
+  "award_rate": 90.575,
+  "winner": "주식회사다다정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01743970": {
-  "empty": true
+  "title": "상주 어린이정원 조성공사(2차) 통신공사",
+  "org": "경상북도 상주시",
+  "open_date": "2026-10-02 15:10:58",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 23998000.0,
+  "planned": 24244325.0,
+  "sajung": 101.0264,
+  "award_amount": 21912540.0,
+  "award_rate": 90.382,
+  "winner": "명성정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01744592": {
-  "empty": true
+  "title": "나주경찰서 노안파출소 내진보강공사(통신)",
+  "org": "경찰청 전남경찰청",
+  "open_date": "2026-10-02 14:05:22",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 7920000.0,
+  "planned": 7895475.0,
+  "sajung": 99.6903,
+  "award_amount": 7126219.0,
+  "award_rate": 90.257,
+  "winner": "(주)그린테크",
+  "lower_rate": 89.745
  },
  "R26BK01747139": {
-  "empty": true
+  "title": "무안면 농촌중심지활성화사업 동부복지회관 리모델링 정보통신공사",
+  "org": "경상남도 밀양시",
+  "open_date": "2026-10-02 13:20:11",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 60753000.0,
+  "planned": 60077950.0,
+  "sajung": 98.8889,
+  "award_amount": 54314590.0,
+  "award_rate": 90.406,
+  "winner": "(주)위넥",
+  "lower_rate": 89.745
  },
  "R26BK01746030": {
-  "empty": true
+  "title": "부여군 재난안전상황실 정비사업",
+  "org": "충청남도 부여군",
+  "open_date": "2026-10-02 11:46:32",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 129328000.0,
+  "planned": 129383675.0,
+  "sajung": 100.043,
+  "award_amount": 116422370.0,
+  "award_rate": 89.982,
+  "winner": "주식회사 지성이앤씨",
+  "lower_rate": 89.745
  },
  "R26BK01745326": {
-  "empty": true
+  "title": "2026년 하반기 교통신호기 유지보수공사 연간단가(2구역)",
+  "org": "경기도 김포시",
+  "open_date": "2026-10-02 11:21:20",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 125000000.0,
+  "planned": 124945025.0,
+  "sajung": 99.956,
+  "award_amount": 112775310.0,
+  "award_rate": 90.259,
+  "winner": "주식회사 제이엠이엔씨",
+  "lower_rate": 89.745
  },
  "R26BK01741332": {
-  "empty": true
+  "title": "나라키움 창원통합청사 신축사업 정보통신공사",
+  "org": "한국자산관리공사 국유재산관리기금",
+  "open_date": "2026-10-02 11:17:38",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 535139000.0,
+  "planned": 541128575.0,
+  "sajung": 101.1193,
+  "award_amount": 489455727.0,
+  "award_rate": 90.45,
+  "winner": "아라정보통신 주식회사",
+  "lower_rate": 89.745
  },
  "R26BK01745178": {
-  "empty": true
+  "title": "2026년 하반기 교통신호기 유지보수공사 연간단가(1구역)",
+  "org": "경기도 김포시",
+  "open_date": "2026-10-02 11:15:22",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 125000000.0,
+  "planned": 124458475.0,
+  "sajung": 99.5668,
+  "award_amount": 112362373.0,
+  "award_rate": 90.281,
+  "winner": "(주)에스엠테크",
+  "lower_rate": 89.745
  },
  "R26BK01744349": {
-  "empty": true
+  "title": "2026년도 하반기 교통신호기 유지보수 공사(단가계약)",
+  "org": "경상북도 영천시",
+  "open_date": "2026-10-02 11:13:26",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 70000000.0,
+  "planned": 68851475.0,
+  "sajung": 98.3593,
+  "award_amount": 62403966.0,
+  "award_rate": 90.635,
+  "winner": "주식회사 이산",
+  "lower_rate": 89.745
  },
  "R26BK01736350": {
-  "empty": true
+  "title": "국립무형유산원 분원 건립(통신공사)",
+  "org": "국가유산청",
+  "open_date": "2026-10-02 11:04:34",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 743305000.0,
+  "planned": 742680700.0,
+  "sajung": 99.916,
+  "award_amount": 671397680.0,
+  "award_rate": 90.401,
+  "winner": "주식회사팔팔이엔씨",
+  "lower_rate": null
  },
  "R26BK01745889": {
-  "empty": true
+  "title": "용현생활체육시설 조성사업 통신공사",
+  "org": "경상남도 사천시",
+  "open_date": "2026-10-02 11:03:01",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 121308000.0,
+  "planned": 120792500.0,
+  "sajung": 99.575,
+  "award_amount": 109341359.0,
+  "award_rate": 90.519,
+  "winner": "주식회사 한길정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01737212": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01743342": {
-  "empty": true
+  "title": "의왕일자리교육센터 인테리어공사(통신)",
+  "org": "경기도 의왕시",
+  "open_date": "2026-10-01 13:40:16",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 26175000.0,
+  "planned": 26274975.0,
+  "sajung": 100.3819,
+  "award_amount": 23715369.0,
+  "award_rate": 90.258,
+  "winner": "주식회사 채울",
+  "lower_rate": 89.745
  },
  "R26BK01743193": {
-  "empty": true
+  "title": "[입찰공고] 제주고 본관 및 양지관 교실 수리 통신공사",
+  "org": "제주특별자치도교육청",
+  "open_date": "2026-10-01 11:46:53",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 186929000.0,
+  "planned": 184085400.0,
+  "sajung": 98.4788,
+  "award_amount": 166297526.0,
+  "award_rate": 90.337,
+  "winner": "(주)인포마인드",
+  "lower_rate": 89.745
  },
  "R26BK01744050": {
-  "empty": true
+  "title": "장성군 귀농귀촌 체류형지원센터 조성사업 통신공사",
+  "org": "한국농어촌공사 전남지역본부 장성지사",
+  "open_date": "2026-10-01 11:38:59",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 68156000.0,
+  "planned": 68332225.0,
+  "sajung": 100.2586,
+  "award_amount": 61714784.0,
+  "award_rate": 90.315,
+  "winner": "주식회사 미래이엔지",
+  "lower_rate": 89.745
  },
  "R26BK01726403": {
-  "empty": true
+  "title": "청도학생수련원 본관동 보수 정보통신공사",
+  "org": "경상북도교육청",
+  "open_date": "2026-10-01 11:14:16",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 42251000.0,
+  "planned": 41732200.0,
+  "sajung": 98.7721,
+  "award_amount": 37707059.0,
+  "award_rate": 90.354,
+  "winner": "주식회사진승",
+  "lower_rate": 89.745
  },
  "R26BK01742747": {
-  "empty": true
+  "title": "문산산업단지~부영아파트(2구간) 도시계획도로 교통신호기 설치",
+  "org": "경상북도 경주시",
+  "open_date": "2026-10-01 11:09:31",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 67990000.0,
+  "planned": 67222925.0,
+  "sajung": 98.8718,
+  "award_amount": 60472662.0,
+  "award_rate": 89.958,
+  "winner": "주식회사 진흥전력",
+  "lower_rate": 89.745
  },
  "R26BK01739657": {
-  "empty": true
+  "title": "2026년 정신요양시설 성지드림빌 생활관 통신 공사",
+  "org": "사회복지법인 함께하는 복지재단",
+  "open_date": "2026-09-30 17:01:38",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 29521000.0,
+  "planned": 29359075.0,
+  "sajung": 99.4515,
+  "award_amount": 26523550.0,
+  "award_rate": 90.341,
+  "winner": "(주)건영정보통신",
+  "lower_rate": 89.745
  },
  "R26BK01742539": {
-  "empty": true
+  "title": "2026년 하반기 방범용 CCTV 구매설치공사",
+  "org": "경상북도 안동시",
+  "open_date": "2026-09-30 15:02:59",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 54196000.0,
+  "planned": 53867875.0,
+  "sajung": 99.3946,
+  "award_amount": 48609598.0,
+  "award_rate": 90.238,
+  "winner": "주식회사 한빛전기통신",
+  "lower_rate": 89.745
  },
  "R26BK01742032": {
-  "empty": true
+  "title": "회천 공공하수처리시설 증설사업 정보통신공사",
+  "org": "전남광주통합특별시 보성군",
+  "open_date": "2026-09-30 14:30:10",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 76670000.0,
+  "planned": 76152125.0,
+  "sajung": 99.3245,
+  "award_amount": 69005000.0,
+  "award_rate": 90.614,
+  "winner": "씨엠파워(주)",
+  "lower_rate": 89.745
  },
  "R26BK01716097": {
-  "empty": true
+  "title": "(가칭)장안1초등학교 교사신축 정보통신공사(계속비)",
+  "org": "부산광역시교육청",
+  "open_date": "2026-09-30 14:22:49",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 908812000.0,
+  "planned": 915814450.0,
+  "sajung": 100.7705,
+  "award_amount": 827781160.0,
+  "award_rate": 90.387,
+  "winner": "(주)에이원파워텍",
+  "lower_rate": null
  },
  "R26BK01729558": {
-  "empty": true
+  "title": "지속가능 엘라스토머 기술센터 건립공사(통신)",
+  "org": "한국소재융합연구원",
+  "open_date": "2026-09-30 14:00:48",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 154594000.0,
+  "planned": 155089500.0,
+  "sajung": 100.3205,
+  "award_amount": 140088375.0,
+  "award_rate": 90.327,
+  "winner": "주식회사 씨씨에스충북방송",
+  "lower_rate": null
  },
  "R26BK01740418": {
-  "empty": true
+  "title": "봉수지하차도 광케이블 포설공사",
+  "org": "인천광역시 종합건설본부",
+  "open_date": "2026-09-30 13:00:36",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 90000000.0,
+  "planned": 89388675.0,
+  "sajung": 99.3208,
+  "award_amount": 80336990.0,
+  "award_rate": 89.873,
+  "winner": "주식회사승아이엔티",
+  "lower_rate": 89.745
  },
  "R26BK01737818": {
-  "empty": true
+  "title": "경비함정 전자해도(ECDIS) 교체 공사",
+  "org": "해양경찰청 중부지방해양경찰청 서해5도특별경비단",
+  "open_date": "2026-09-30 12:10:58",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 25000000.0,
+  "planned": 24961725.0,
+  "sajung": 99.8469,
+  "award_amount": 22416340.0,
+  "award_rate": 89.802,
+  "winner": "금성전기공사",
+  "lower_rate": 89.745
  },
  "R26BK01738465": {
-  "empty": true
+  "title": "사창외 4지구 재해예방계측기 설치공사",
+  "org": "한국농어촌공사 충남지역본부",
+  "open_date": "2026-09-30 11:26:30",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 99060000.0,
+  "planned": 98743550.0,
+  "sajung": 99.6805,
+  "award_amount": 89165213.0,
+  "award_rate": 90.299,
+  "winner": "주식회사 신한전기통신",
+  "lower_rate": 89.745
  },
  "R26BK01740980": {
-  "empty": true
+  "title": "국회 경내 보안장비(CCTV) 설치공사",
+  "org": "국회 국회사무처",
+  "open_date": "2026-09-30 11:22:52",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 326370000.0,
+  "planned": 326824525.0,
+  "sajung": 100.1393,
+  "award_amount": 295247818.0,
+  "award_rate": 90.338,
+  "winner": "(주)성산정보시스템",
+  "lower_rate": 89.745
  },
  "R26BK01680459": {
-  "empty": true
+  "title": "합강1유치원 신축 정보통신공사",
+  "org": "세종특별자치시교육청",
+  "open_date": "2026-09-30 11:22:28",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 493106000.0,
+  "planned": 487906225.0,
+  "sajung": 98.9455,
+  "award_amount": 441291394.0,
+  "award_rate": 90.445,
+  "winner": "주식회사 영진전기",
+  "lower_rate": null
  },
  "R26BK01741915": {
-  "empty": true
+  "title": "봉명고 학점제형 공간조성 및 기타공사 중 통신공사 수의계약 안내 공고",
+  "org": "충청북도교육청 충청북도청주교육지원청",
+  "open_date": "2026-09-30 11:13:35",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 72292000.0,
+  "planned": 72300375.0,
+  "sajung": 100.0116,
+  "award_amount": 65314224.0,
+  "award_rate": 90.337,
+  "winner": "스카이라이프 주식회사",
+  "lower_rate": 89.745
  },
  "R26BK01736926": {
-  "empty": true
+  "title": "서부동 별빛마을게스트하우스 신축공사(통신)",
+  "org": "경상북도 영천시",
+  "open_date": "2026-09-29 17:13:10",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 88847610.0,
+  "planned": 89516475.0,
+  "sajung": 100.7528,
+  "award_amount": 81004780.0,
+  "award_rate": 90.491,
+  "winner": "(HL)전자통신",
+  "lower_rate": null
  },
  "R26BK01738174": {
-  "empty": true
+  "title": "에스엠지 연세병원 공동직장어린이집 대수선 및 리모델링 공사 (통신)",
+  "org": "의료법인합포의료재단",
+  "open_date": "2026-09-29 15:56:43",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 107899000.0,
+  "planned": 108243250.0,
+  "sajung": 100.319,
+  "award_amount": 97649380.0,
+  "award_rate": 90.212,
+  "winner": "주식회사  부흥전기소방공사",
+  "lower_rate": null
  },
  "R26BK01737841": {
-  "empty": true
+  "title": "연제구 청소년문화의 집 건립 정보통신공사",
+  "org": "부산광역시 연제구",
+  "open_date": "2026-09-29 15:15:25",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 345796000.0,
+  "planned": 347251000.0,
+  "sajung": 100.4208,
+  "award_amount": 313871000.0,
+  "award_rate": 90.387,
+  "winner": "주식회사 지와이코맥스",
+  "lower_rate": null
  },
  "R26BK01737740": {
-  "empty": true
+  "title": "강북지사 내부 관람공간 개선 통신공사",
+  "org": "한국마사회",
+  "open_date": "2026-09-29 12:09:45",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 82885000.0,
+  "planned": 82601800.0,
+  "sajung": 99.6583,
+  "award_amount": 74575030.0,
+  "award_rate": 90.282,
+  "winner": "주식회사 넥시스정보",
+  "lower_rate": null
  },
  "R26BK01737948": {
-  "empty": true
+  "title": "경주여고 삼거리 노후 교통신호기 교체",
+  "org": "경상북도 경주시",
+  "open_date": "2026-09-29 11:19:47",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 59900000.0,
+  "planned": 60104600.0,
+  "sajung": 100.3416,
+  "award_amount": 54029210.0,
+  "award_rate": 89.891,
+  "winner": "주식회사 가선전기",
+  "lower_rate": null
  },
  "R26BK01739150": {
-  "empty": true
+  "title": "2026년 하반기 교통신호등 및 시설물 유지보수공사(단가)",
+  "org": "전북특별자치도 전주시",
+  "open_date": "2026-09-29 11:16:31",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 28000000.0,
+  "planned": 27849675.0,
+  "sajung": 99.4631,
+  "award_amount": 25176392.0,
+  "award_rate": 90.401,
+  "winner": "주식회사 해솔테크닉스",
+  "lower_rate": null
  },
  "R26BK01738140": {
-  "empty": true
+  "title": "청라의료복합타운 북측 생활폐기물 자동집하시설 이송관로  설치공사(정보통신)",
+  "org": "인천광역시 서해구",
+  "open_date": "2026-09-29 11:16:27",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 13135100.0,
+  "planned": 13213675.0,
+  "sajung": 100.5982,
+  "award_amount": 11908076.0,
+  "award_rate": 90.119,
+  "winner": "주식회사 부송",
+  "lower_rate": null
  },
  "R26BK01736472": {
-  "empty": true
+  "title": "학동권역 행복한삶터조성사업(1단계) 통신공사",
+  "org": "한국농어촌공사 경남지역본부 고성.통영.거제지사",
+  "open_date": "2026-09-29 11:15:05",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 74872000.0,
+  "planned": 74137550.0,
+  "sajung": 99.0191,
+  "award_amount": 67081000.0,
+  "award_rate": 90.481,
+  "winner": "일성정보통신",
+  "lower_rate": null
  },
  "R26BK01737901": {
-  "empty": true
+  "title": "2026년 교통신호시설 설치공사(2차)",
+  "org": "대전광역시",
+  "open_date": "2026-09-29 11:07:44",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 242400000.0,
+  "planned": 238987075.0,
+  "sajung": 98.592,
+  "award_amount": 215817622.0,
+  "award_rate": 90.305,
+  "winner": "주식회사 에스지앤씨",
+  "lower_rate": null
  },
  "R26BK01737162": {
-  "empty": true
+  "title": "대전추모공원 제3자연장지 조성사업 통신공사",
+  "org": "대전광역시 건설관리본부",
+  "open_date": "2026-09-29 11:05:47",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 163679000.0,
+  "planned": 165985700.0,
+  "sajung": 101.4093,
+  "award_amount": 150040000.0,
+  "award_rate": 90.393,
+  "winner": "주식회사위진전기통신",
+  "lower_rate": null
  },
  "R26BK01737617": {
-  "empty": true
+  "title": "상동경로당 대체시설 증축공사(통신)",
+  "org": "경기도 안산시",
+  "open_date": "2026-09-29 11:04:29",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 44847000.0,
+  "planned": 45058300.0,
+  "sajung": 100.4712,
+  "award_amount": 40661180.0,
+  "award_rate": 90.241,
+  "winner": "주식회사 티에이티",
+  "lower_rate": null
  },
  "R26BK01723746": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01734913": {
-  "empty": true
+  "title": "정읍시 반려동물 놀이터 및 동물보호센터 신축 통신공사 공고",
+  "org": "전북특별자치도 정읍시 농업기술센터",
+  "open_date": "2026-09-28 13:28:17",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 62840000.0,
+  "planned": 62240725.0,
+  "sajung": 99.0463,
+  "award_amount": 56185666.0,
+  "award_rate": 90.271,
+  "winner": "주식회사 미르엘텍",
+  "lower_rate": null
  },
  "R26BK01731850": {
-  "empty": true
+  "title": "노암1농공단지 아름다운거리 조성 통신공사",
+  "org": "전북특별자치도 남원시",
+  "open_date": "2026-09-28 13:05:28",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 91973000.0,
+  "planned": 92352900.0,
+  "sajung": 100.4131,
+  "award_amount": 83409000.0,
+  "award_rate": 90.315,
+  "winner": "주식회사 디제이파워",
+  "lower_rate": null
  },
  "R26BK01736098": {
-  "empty": true
+  "title": "경주 석굴암 석굴 공조기 보수공사(통신)",
+  "org": "경상북도 경주시",
+  "open_date": "2026-09-28 11:56:43",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 29133000.0,
+  "planned": 29028925.0,
+  "sajung": 99.6428,
+  "award_amount": 26183552.0,
+  "award_rate": 90.198,
+  "winner": "주식회사 토브네트웍스",
+  "lower_rate": null
  },
  "R26BK01732114": {
-  "empty": true
+  "title": "구미중학교 특별교실 증축 정보통신공사 수의견적 제출 안내",
+  "org": "경상북도교육청 경상북도구미교육지원청",
+  "open_date": "2026-09-28 11:18:53",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 66363000.0,
+  "planned": 65769275.0,
+  "sajung": 99.1053,
+  "award_amount": 59447300.0,
+  "award_rate": 90.387,
+  "winner": "주식회사모스전자",
+  "lower_rate": null
  },
  "R26BK01727149": {
-  "empty": true
+  "title": "2026년 하반기 학교 무선인프라 구축사업 정보통신공사",
+  "org": "경기도교육청 경기도구리남양주교육지원청",
+  "open_date": "2026-09-28 11:01:44",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 71760000.0,
+  "planned": 71154050.0,
+  "sajung": 99.1556,
+  "award_amount": 63966430.0,
+  "award_rate": 89.898,
+  "winner": "주식회사 성진에이앤씨",
+  "lower_rate": null
  },
  "R26BK01734817": {
-  "empty": true
+  "title": "북원도서관 건립공사(통신)",
+  "org": "강원특별자치도 원주시 평생교육원",
+  "open_date": "2026-09-23 15:54:21",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 273002000.0,
+  "planned": 276221450.0,
+  "sajung": 101.1793,
+  "award_amount": 249788770.0,
+  "award_rate": 90.43,
+  "winner": "주식회사 지에이",
+  "lower_rate": null
  },
  "R26BK01729578": {
-  "empty": true
+  "title": "군산의료원 본관 2~3층 리모델링 통신공사",
+  "org": "전북특별자치도 군산의료원",
+  "open_date": "2026-09-23 15:18:06",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 442390000.0,
+  "planned": 438644100.0,
+  "sajung": 99.1533,
+  "award_amount": 396803030.0,
+  "award_rate": 90.461,
+  "winner": "주식회사 우석엔지니어링",
+  "lower_rate": null
  },
  "R26BK01735544": {
-  "empty": true
+  "title": "밀양시립영어도서관 리모델링 및 증축사업(통신공사)",
+  "org": "경상남도 밀양시",
+  "open_date": "2026-09-23 13:31:11",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 144012000.0,
+  "planned": 142342250.0,
+  "sajung": 98.8405,
+  "award_amount": 128844327.0,
+  "award_rate": 90.517,
+  "winner": "주식회사 태민전력",
+  "lower_rate": null
  },
  "R26BK01735217": {
-  "empty": true
+  "title": "본관1층 소아청소년과 외래 리모델링(통신설비)",
+  "org": "충북대학교병원",
+  "open_date": "2026-09-23 13:16:51",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 21538000.0,
+  "planned": 21672300.0,
+  "sajung": 100.6235,
+  "award_amount": 19591755.0,
+  "award_rate": 90.399,
+  "winner": "두원스마트앤그린 주식회사",
+  "lower_rate": null
  },
  "R26BK01733807": {
-  "empty": true
+  "title": "이리동북초 강당 리모델링 통신공사",
+  "org": "전북특별자치도교육청 전북특별자치도익산교육지원청",
+  "open_date": "2026-09-23 13:14:54",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 58190000.0,
+  "planned": 58493350.0,
+  "sajung": 100.5213,
+  "award_amount": 52801920.0,
+  "award_rate": 90.269,
+  "winner": "(유)신명전기설비공사",
+  "lower_rate": null
  },
  "R26BK01733939": {
-  "empty": true
+  "title": "후진항 어촌신활력증진사업 문화돌봄스테이션 신축공사(통신)",
+  "org": "강원특별자치도 양양군",
+  "open_date": "2026-09-23 11:33:50",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 14533000.0,
+  "planned": 14470550.0,
+  "sajung": 99.5703,
+  "award_amount": 13050193.0,
+  "award_rate": 90.184,
+  "winner": "(주)동양기전",
+  "lower_rate": null
  },
  "R26BK01730091": {
-  "empty": true
+  "title": "해보면 농촌중심지활성화사업 통신공사 ",
+  "org": "한국농어촌공사 전남지역본부 함평지사",
+  "open_date": "2026-09-23 11:29:56",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 289066000.0,
+  "planned": 289827025.0,
+  "sajung": 100.2633,
+  "award_amount": 261985820.0,
+  "award_rate": 90.393,
+  "winner": "(주)전통",
+  "lower_rate": null
  },
  "R26BK01735821": {
-  "empty": true
+  "title": "부산해군과학기술고등학교 콘크리트모듈러설치 기반시설 정보통신공사",
+  "org": "부산광역시교육청 부산광역시해운대교육지원청",
+  "open_date": "2026-09-23 11:20:44",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 15545000.0,
+  "planned": 15520200.0,
+  "sajung": 99.8405,
+  "award_amount": 13991861.0,
+  "award_rate": 90.152,
+  "winner": "삼성g2b주식회사",
+  "lower_rate": null
  },
  "R26BK01730756": {
-  "empty": true
+  "title": "안성면 농촌중심지활성화사업(어울림센터 기능개선 및 안전망 구축) 통신공사",
+  "org": "한국농어촌공사 전북지역본부 무진장지사",
+  "open_date": "2026-09-23 11:19:14",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 158030000.0,
+  "planned": 158605300.0,
+  "sajung": 100.364,
+  "award_amount": 142940690.0,
+  "award_rate": 90.123,
+  "winner": "유한회사 제이씨기술정보통신",
+  "lower_rate": null
  },
  "R26BK01732886": {
-  "empty": true
+  "title": "2026년 교통신호시설 연간단가공사(2차)",
+  "org": "대전광역시",
+  "open_date": "2026-09-23 11:09:28",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 151897540.0,
+  "planned": 153438225.0,
+  "sajung": 101.0143,
+  "award_amount": 138396920.0,
+  "award_rate": 90.197,
+  "winner": "(주)존전기",
+  "lower_rate": null
  },
  "R26BK01733810": {
-  "empty": true
+  "title": "맹동 종합스포츠타운 조성사업(통신공사)",
+  "org": "충청북도 음성군",
+  "open_date": "2026-09-23 11:08:19",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 221288000.0,
+  "planned": 221193975.0,
+  "sajung": 99.9575,
+  "award_amount": 199855596.0,
+  "award_rate": 90.353,
+  "winner": "양산전설(주)",
+  "lower_rate": null
  },
  "R26BK01731009": {
-  "empty": true
+  "title": "11-1연구동 신축 통신공사",
+  "org": "국방과학연구소",
+  "open_date": "2026-09-23 11:03:49",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 410200000.0,
+  "planned": 407602450.0,
+  "sajung": 99.3668,
+  "award_amount": 368798574.0,
+  "award_rate": 90.479,
+  "winner": "주식회사 유씨아이",
+  "lower_rate": null
  },
  "R26BK01732929": {
-  "empty": true
+  "title": "2026년 동부 어린이 보호구역 교통신호기 설치공사",
+  "org": "서울특별시 도로사업소 동부도로사업소",
+  "open_date": "2026-09-22 16:34:41",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 215729690.0,
+  "planned": 214599850.0,
+  "sajung": 99.4763,
+  "award_amount": 193840102.0,
+  "award_rate": 90.326,
+  "winner": "주식회사 호선이엔씨",
+  "lower_rate": null
  },
  "R26BK01733746": {
-  "empty": true
+  "title": "광산구 장애인복지관 건립사업(통신)",
+  "org": "전남광주통합특별시 광산구",
+  "open_date": "2026-09-22 15:19:32",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 282920000.0,
+  "planned": 282309625.0,
+  "sajung": 99.7843,
+  "award_amount": 255288014.0,
+  "award_rate": 90.428,
+  "winner": "주식회사 한솔엔지니어링",
+  "lower_rate": null
  },
  "R26BK01733231": {
-  "empty": true
+  "title": "청주공항 수속시설 개선 정보통신공사",
+  "org": "한국공항공사 김포공항",
+  "open_date": "2026-09-22 14:38:45",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 165239509.0,
+  "planned": 164739300.0,
+  "sajung": 99.6973,
+  "award_amount": 148694940.0,
+  "award_rate": 90.26,
+  "winner": "우신정보통신(주)",
+  "lower_rate": null
  },
  "R26BK01728017": {
-  "empty": true
+  "title": "송도컨벤시아 CCTV 증설 및 케이블 통신공사",
+  "org": "인천관광공사",
+  "open_date": "2026-09-22 14:13:18",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 48295000.0,
+  "planned": 48594850.0,
+  "sajung": 100.6209,
+  "award_amount": 43715808.0,
+  "award_rate": 89.959,
+  "winner": "이지노브 주식회사",
+  "lower_rate": null
  },
  "R26BK01712408": {
-  "empty": true
+  "title": "Ai-Edutech 융합교육센터 신축 통신설비공사",
+  "org": "한국교원대학교",
+  "open_date": "2026-09-22 13:47:38",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 543422000.0,
+  "planned": 540605775.0,
+  "sajung": 99.4818,
+  "award_amount": 488735114.0,
+  "award_rate": 90.405,
+  "winner": "(주)두원전기소방",
+  "lower_rate": null
  },
  "R26BK01731702": {
-  "empty": true
+  "title": "방송통신대학교 일원 도로정비공사",
+  "org": "충청북도 청주시 서원구",
+  "open_date": "2026-09-22 13:30:50",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 47010000.0,
+  "planned": 46864800.0,
+  "sajung": 99.6911,
+  "award_amount": 42480000.0,
+  "award_rate": 90.643,
+  "winner": "부경건설 합자회사",
+  "lower_rate": null
  },
  "R26BK01720480": {
-  "empty": true
+  "title": "이리공고 기숙사 증축 통신공사",
+  "org": "전북특별자치도교육청 전북특별자치도익산교육지원청",
+  "open_date": "2026-09-22 12:52:30",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 607354000.0,
+  "planned": 607108050.0,
+  "sajung": 99.9595,
+  "award_amount": 548848828.0,
+  "award_rate": 90.403,
+  "winner": "유한회사 시영",
+  "lower_rate": null
  },
  "R26BK01733747": {
-  "empty": true
+  "title": "천북 동산교~면소재지간 도로확포장 교통신호기 설치공사( D)구역",
+  "org": "경상북도 경주시",
+  "open_date": "2026-09-22 11:20:44",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 64060500.0,
+  "planned": 63360700.0,
+  "sajung": 98.9076,
+  "award_amount": 56985939.0,
+  "award_rate": 89.938,
+  "winner": "(주)동호이엔지",
+  "lower_rate": null
  },
  "R26BK01729528": {
-  "empty": true
+  "title": "충청북도도로관리사업소 비상근무자 대기실 증축공사(통신)",
+  "org": "충청북도 도로관리사업소",
+  "open_date": "2026-09-22 11:15:47",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 70851000.0,
+  "planned": 71604550.0,
+  "sajung": 101.0636,
+  "award_amount": 64676000.0,
+  "award_rate": 90.323,
+  "winner": "합자회사 일진정보",
+  "lower_rate": null
  },
  "R26BK01733283": {
-  "empty": true
+  "title": "장성군 농업과학기술커뮤니티 센터 건립공사(통신)",
+  "org": "전남광주통합특별시 장성군",
+  "open_date": "2026-09-22 11:13:23",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 70213000.0,
+  "planned": 70201825.0,
+  "sajung": 99.9841,
+  "award_amount": 63517530.0,
+  "award_rate": 90.478,
+  "winner": "주식회사 무강기업",
+  "lower_rate": null
  },
  "R26BK01715052": {
-  "empty": true
+  "title": "부산중학교 공간재구조화 교사개축 정보통신공사(계속비)",
+  "org": "부산광역시교육청 부산광역시남부교육지원청",
+  "open_date": "2026-09-22 11:05:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 1063920000.0,
+  "planned": 1078038300.0,
+  "sajung": 101.327,
+  "award_amount": 974803355.0,
+  "award_rate": 90.423,
+  "winner": "(주)일신기전",
+  "lower_rate": null
  },
  "R26BK01709231": {
-  "empty": true
+  "title": "광주보훈병원 중증․응급 의료인프라 구축 증축공사(통신)",
+  "org": "한국보훈복지의료공단 광주보훈병원",
+  "open_date": "2026-09-22 11:03:27",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 447723000.0,
+  "planned": 445628825.0,
+  "sajung": 99.5323,
+  "award_amount": 402694800.0,
+  "award_rate": 90.365,
+  "winner": "아이비젼(주)",
+  "lower_rate": null
  },
  "R26BK01731419": {
-  "empty": true
+  "title": "2026년 노후공공임대주택 리모델링(단일세대) 통신공사",
+  "org": "대전도시공사",
+  "open_date": "2026-09-22 11:03:25",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 89847000.0,
+  "planned": 89079325.0,
+  "sajung": 99.1456,
+  "award_amount": 80421341.0,
+  "award_rate": 90.28,
+  "winner": "주식회사 세종통신",
+  "lower_rate": null
  },
  "R26BK01731238": {
-  "empty": true
+  "title": "한국방송통신대학교 생활밀착형숲(실내정원) 조성사업",
+  "org": "서울특별시 종로구",
+  "open_date": "2026-09-21 15:27:07",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 235774000.0,
+  "planned": 235649675.0,
+  "sajung": 99.9473,
+  "award_amount": 212292500.0,
+  "award_rate": 90.088,
+  "winner": "주식회사 건일조경",
+  "lower_rate": null
  },
  "R26BK01723412": {
-  "empty": true
+  "title": "국립목포대학교 담양캠퍼스 통신광케이블 구축 공사",
+  "org": "목포대학교",
+  "open_date": "2026-09-21 15:10:06",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 312840000.0,
+  "planned": 309344825.0,
+  "sajung": 98.8828,
+  "award_amount": 279353679.0,
+  "award_rate": 90.304,
+  "winner": "케이에스원 주식회사",
+  "lower_rate": null
  },
  "R26BK01729971": {
-  "empty": true
+  "title": "부산실내빙상장 노후 통신시설 보수공사",
+  "org": "부산광역시 체육시설관리사업소",
+  "open_date": "2026-09-21 11:10:32",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 122611000.0,
+  "planned": 122372575.0,
+  "sajung": 99.8055,
+  "award_amount": 110601460.0,
+  "award_rate": 90.38,
+  "winner": "주식회사 이레정보통신기술",
+  "lower_rate": null
  },
  "R26BK01728542": {
-  "empty": true
+  "title": "의성고등학교 생활관 증축 정보통신공사 소액수의 견적 제출 공고 ",
+  "org": "경상북도교육청 의성고등학교",
+  "open_date": "2026-09-21 11:08:59",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 73468000.0,
+  "planned": 73159300.0,
+  "sajung": 99.5798,
+  "award_amount": 66092900.0,
+  "award_rate": 90.341,
+  "winner": "주식회사 보명전설",
+  "lower_rate": null
  },
  "R26BK01723524": {
-  "empty": true
+  "title": "언양 반천 유수지 체육시설 및 자주식 철골주차장 조성공사(통신)",
+  "org": "울산광역시 울주군",
+  "open_date": "2026-09-21 11:00:56",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 175000000.0,
+  "planned": 173414975.0,
+  "sajung": 99.0943,
+  "award_amount": 156859100.0,
+  "award_rate": 90.453,
+  "winner": "석우정보기술 주식회사",
+  "lower_rate": null
  },
  "R26BK01727168": {
-  "empty": true
+  "title": "청소년 문화의집 복합문화센터 기능보강 통신공사",
+  "org": "전북특별자치도 군산시",
+  "open_date": "2026-09-18 15:48:49",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 76615000.0,
+  "planned": 76220100.0,
+  "sajung": 99.4846,
+  "award_amount": 68891586.0,
+  "award_rate": 90.385,
+  "winner": "유한책임회사 엔에이치네트웍스",
+  "lower_rate": null
  },
  "R26BK01726451": {
-  "empty": true
+  "title": "고창 신재효판소리 박물관 LED전광판 설치 공사(통신공사)",
+  "org": "전북특별자치도 고창군",
+  "open_date": "2026-09-18 15:36:42",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 49988500.0,
+  "planned": 50197625.0,
+  "sajung": 100.4183,
+  "award_amount": 45143550.0,
+  "award_rate": 89.931,
+  "winner": "유한회사 신도정보통신",
+  "lower_rate": null
+ },
+ "R26BK01694348": {
+  "title": "서울도시철도7호선 청라국제도시 연장 006정거장 정보통신공사",
+  "org": "인천광역시 도시철도건설본부",
+  "open_date": "2026-09-18 13:38:50",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 2222220000.0,
+  "planned": 2187692275.0,
+  "sajung": 98.4463,
+  "award_amount": 1958857521.0,
+  "award_rate": 89.539,
+  "winner": "진우에이티에스 주식회사",
+  "lower_rate": null
  },
  "R26BK01727700": {
-  "empty": true
+  "title": "군자역사거리 동측 남북간 횡단보도 교통신호기 공사",
+  "org": "서울특별시 광진구",
+  "open_date": "2026-09-18 13:16:05",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 94784000.0,
+  "planned": 94572200.0,
+  "sajung": 99.7765,
+  "award_amount": 85237360.0,
+  "award_rate": 90.129,
+  "winner": "한국신호산전 주식회사",
+  "lower_rate": null
  },
  "R26BK01727386": {
-  "empty": true
+  "title": "2026년 하반기 학교 무선인프라 구축 정보통신공사",
+  "org": "경기도교육청 경기도수원교육지원청",
+  "open_date": "2026-09-18 13:15:20",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 129040000.0,
+  "planned": 129585225.0,
+  "sajung": 100.4225,
+  "award_amount": 117170820.0,
+  "award_rate": 90.419,
+  "winner": "우주미디어정보통신(주)",
+  "lower_rate": null
  },
  "R26BK01724295": {
-  "empty": true
+  "title": "중구 시니어클럽 건립공사(통신)",
+  "org": "대구광역시 중구",
+  "open_date": "2026-09-18 11:39:57",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 222284000.0,
+  "planned": 220732500.0,
+  "sajung": 99.302,
+  "award_amount": 199631038.0,
+  "award_rate": 90.44,
+  "winner": "주식회사 대명이엔씨",
+  "lower_rate": null
  },
  "R26BK01726931": {
-  "empty": true
+  "title": "남일마레 워케이션 거점센터 조성사업(통신)",
+  "org": "경상남도 사천시",
+  "open_date": "2026-09-18 11:12:59",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 31966000.0,
+  "planned": 32493900.0,
+  "sajung": 101.6514,
+  "award_amount": 29397150.0,
+  "award_rate": 90.469,
+  "winner": "주식회사 명천전기통신",
+  "lower_rate": null
  },
  "R26BK01726731": {
-  "empty": true
+  "title": "대전판암초 강당수선 및 기타 정보통신공사",
+  "org": "대전광역시교육청 대전광역시동부교육지원청",
+  "open_date": "2026-09-18 11:04:48",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 28907000.0,
+  "planned": 28572525.0,
+  "sajung": 98.8429,
+  "award_amount": 25807136.0,
+  "award_rate": 90.321,
+  "winner": "주식회사지오정보통신",
+  "lower_rate": null
  },
  "R26BK01694416": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01724456": {
-  "empty": true
+  "title": "[긴급]울산중앙중 공간재구조화 증축 및 리모델링 통신공사(계속비)",
+  "org": "울산광역시교육청 울산광역시강남교육지원청",
+  "open_date": "2026-09-17 14:53:37",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 513788000.0,
+  "planned": 519767275.0,
+  "sajung": 101.1638,
+  "award_amount": 470299100.0,
+  "award_rate": 90.482,
+  "winner": "(주)엘씨유니택",
+  "lower_rate": null
  },
  "R26BK01723883": {
-  "empty": true
+  "title": "섬진강 레인보우워크(전망대) 통신공사",
+  "org": "전남광주통합특별시 구례군",
+  "open_date": "2026-09-17 14:15:57",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 67287000.0,
+  "planned": 66712425.0,
+  "sajung": 99.1461,
+  "award_amount": 60372220.0,
+  "award_rate": 90.496,
+  "winner": "구례케이블티비시스템(주)",
+  "lower_rate": null
  },
  "R26BK01704079": {
-  "empty": true
+  "title": "금산 아이조아센터 조성사업 통신공사 입찰 공고",
+  "org": "충청남도개발공사",
+  "open_date": "2026-09-17 13:21:49",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 295744000.0,
+  "planned": 294175850.0,
+  "sajung": 99.4698,
+  "award_amount": 266079550.0,
+  "award_rate": 90.449,
+  "winner": "주식회사 서광전기통신",
+  "lower_rate": null
  },
  "R26BK01726215": {
-  "empty": true
+  "title": "속초 음식문화복합공간 조성사업(통신)",
+  "org": "강원특별자치도 속초시",
+  "open_date": "2026-09-17 11:21:01",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 73051000.0,
+  "planned": 72888175.0,
+  "sajung": 99.7771,
+  "award_amount": 65968610.0,
+  "award_rate": 90.506,
+  "winner": "(주)화창기업",
+  "lower_rate": null
+ },
+ "R26BK01723527": {
+  "title": "2026년 수원국토 관내 과적검문소 보수보강공사(전기·통신)",
+  "org": "국토교통부 서울지방국토관리청 수원국토관리사무소",
+  "open_date": "2026-09-17 11:15:57",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 169925000.0,
+  "planned": 171281050.0,
+  "sajung": 100.798,
+  "award_amount": 154562930.0,
+  "award_rate": 90.239,
+  "winner": "이에스아이 주식회사",
+  "lower_rate": null
  },
  "R26BK01725654": {
-  "empty": true
+  "title": "섬진강 에코뮤지엄 조성(에코누리캠퍼스)사업 통신공사 수의(소액) 견적 제출 안내",
+  "org": "전북특별자치도 임실군",
+  "open_date": "2026-09-17 11:08:23",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 101105000.0,
+  "planned": 100826775.0,
+  "sajung": 99.7248,
+  "award_amount": 91229140.0,
+  "award_rate": 90.481,
+  "winner": "주식회사 천하정보통신",
+  "lower_rate": null
  },
  "R26BK01726318": {
-  "empty": true
+  "title": "고운마을 임대주택 및 캠핑장복구 통신공사",
+  "org": "경상북도 의성군",
+  "open_date": "2026-09-17 11:07:47",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 135201000.0,
+  "planned": 133079750.0,
+  "sajung": 98.431,
+  "award_amount": 120934398.0,
+  "award_rate": 90.873,
+  "winner": "주식회사 삼조",
+  "lower_rate": null
  },
  "R26BK01724493": {
-  "empty": true
+  "title": "2026년 덕양구 교통신호시설 유지보수 연간단가공사(2차)",
+  "org": "경기도 고양시",
+  "open_date": "2026-09-17 11:03:21",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 80000000.0,
+  "planned": 79815000.0,
+  "sajung": 99.7687,
+  "award_amount": 72054227.0,
+  "award_rate": 90.276,
+  "winner": "동일전기",
+  "lower_rate": null
  },
  "R26BK01733072": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01732997": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01729310": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01732255": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01723198": {
-  "empty": true
+  "title": "밀양시 종합사회복지관 이전 건립공사(통신)",
+  "org": "경상남도 밀양시",
+  "open_date": "2026-09-16 13:23:26",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 307662000.0,
+  "planned": 307844325.0,
+  "sajung": 100.0593,
+  "award_amount": 278354290.0,
+  "award_rate": 90.42,
+  "winner": "주식회사 이콘",
+  "lower_rate": null
  },
  "R26BK01723167": {
-  "empty": true
+  "title": "밀양연극교육체험관 건립사업 통신공사",
+  "org": "경상남도 밀양시",
+  "open_date": "2026-09-16 13:12:24",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 415338000.0,
+  "planned": 419532975.0,
+  "sajung": 101.01,
+  "award_amount": 379333134.0,
+  "award_rate": 90.417,
+  "winner": "(주)엠에스티",
+  "lower_rate": null
  },
  "R26BK01721153": {
-  "empty": true
+  "title": "교통관리시스템 노후 무인통신중계소 교체 공사",
+  "org": "서울시설공단",
+  "open_date": "2026-09-16 13:07:29",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 43120000.0,
+  "planned": 43349750.0,
+  "sajung": 100.5328,
+  "award_amount": 39206100.0,
+  "award_rate": 90.441,
+  "winner": "신용통신 주식회사",
+  "lower_rate": null
  },
  "R26BK01721486": {
-  "empty": true
+  "title": "방사선종양학과 리모델링 공사(통신)(긴급)",
+  "org": "경북대학교병원",
+  "open_date": "2026-09-16 12:23:27",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 126427451.0,
+  "planned": 127003050.0,
+  "sajung": 100.4553,
+  "award_amount": 115093542.0,
+  "award_rate": 90.622,
+  "winner": "주식회사 길호",
+  "lower_rate": null
+ },
+ "R26BK01724370": {
+  "title": "석교동 돌다리마을 활력센터 신축 공사(통신)",
+  "org": "대전광역시 중구",
+  "open_date": "2026-09-16 12:15:00",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 160301000.0,
+  "planned": 159079175.0,
+  "sajung": 99.2378,
+  "award_amount": 143858850.0,
+  "award_rate": 90.432,
+  "winner": "(주)태원시스템",
+  "lower_rate": null
  },
  "R26BK01723877": {
-  "empty": true
+  "title": "대소읍 오류리 650-6 교통신호등 설치 공사",
+  "org": "충청북도 음성군",
+  "open_date": "2026-09-16 11:46:58",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 72683000.0,
+  "planned": 72355800.0,
+  "sajung": 99.5498,
+  "award_amount": 65939230.0,
+  "award_rate": 91.131,
+  "winner": "주식회사 한일전기이엔지",
+  "lower_rate": null
  },
  "R26BK01699132": {
-  "empty": true
+  "title": "(가칭)아산탕정2고등학교 교사 신축 정보통신공사",
+  "org": "충청남도교육청 충청남도아산교육지원청",
+  "open_date": "2026-09-16 11:16:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 1900934000.0,
+  "planned": 1879168350.0,
+  "sajung": 98.855,
+  "award_amount": 1680621700.0,
+  "award_rate": 89.434,
+  "winner": "주식회사 서해전력",
+  "lower_rate": null
  },
  "R26BK01722865": {
-  "empty": true
+  "title": "속리초 방송장비 교체 및 기타 통신공사",
+  "org": "충청북도교육청 충청북도보은교육지원청",
+  "open_date": "2026-09-16 11:16:24",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 72853000.0,
+  "planned": 72407200.0,
+  "sajung": 99.3881,
+  "award_amount": 65371736.0,
+  "award_rate": 90.283,
+  "winner": "주식회사 씨앤아이",
+  "lower_rate": null
  },
  "R26BK01718937": {
-  "empty": true
+  "title": "국지도98호선(도계~마전) 도로개설 지장물 이설 정보통신공사",
+  "org": "인천광역시 종합건설본부",
+  "open_date": "2026-09-16 11:14:08",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 395800900.0,
+  "planned": 401223400.0,
+  "sajung": 101.37,
+  "award_amount": 362241000.0,
+  "award_rate": 90.284,
+  "winner": "(주)아이시에스솔루션스",
+  "lower_rate": null
  },
  "R26BK01714942": {
-  "empty": true
+  "title": "인제우체국 건립 정보통신공사",
+  "org": "과학기술정보통신부 우정사업본부 우정사업조달센터",
+  "open_date": "2026-09-16 11:13:44",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 413097000.0,
+  "planned": 414448900.0,
+  "sajung": 100.3273,
+  "award_amount": 374757350.0,
+  "award_rate": 90.423,
+  "winner": "주식회사 현대기전",
+  "lower_rate": null
  },
  "R26BK01712748": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01705740": {
-  "empty": true
+  "title": "갈매역세권지구 학교 신축 통신공사",
+  "org": "경기도교육청",
+  "open_date": "2026-09-16 11:05:07",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 1799100000.0,
+  "planned": 1809579800.0,
+  "sajung": 100.5825,
+  "award_amount": 1618942638.0,
+  "award_rate": 89.465,
+  "winner": "(주)신한종합정보통신",
+  "lower_rate": null
  },
  "R26BK01724310": {
-  "empty": true
+  "title": "용문면 금당누리센터 조성사업 정보통신공사",
+  "org": "경상북도 예천군",
+  "open_date": "2026-09-16 11:04:52",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 43876000.0,
+  "planned": 44097400.0,
+  "sajung": 100.5046,
+  "award_amount": 39893680.0,
+  "award_rate": 90.467,
+  "winner": "주식회사 지선통신",
+  "lower_rate": null
  },
  "R26BK01716807": {
-  "empty": true
+  "title": "서울고등법원 (구)서울회생법원 공간 재배치 공사(통신)",
+  "org": "대법원 서울고등법원",
+  "open_date": "2026-09-15 16:07:36",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 299772000.0,
+  "planned": 300459275.0,
+  "sajung": 100.2293,
+  "award_amount": 271608630.0,
+  "award_rate": 90.397,
+  "winner": "(주)네오티엔씨",
+  "lower_rate": null
  },
  "R26BK01712886": {
-  "empty": true
+  "title": "경남 소형모듈원전(SMR) 로봇활용제작지원센터 신축공사(통신)",
+  "org": "재단법인 경남테크노파크",
+  "open_date": "2026-09-15 15:41:11",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 43557030.0,
+  "planned": 43306650.0,
+  "sajung": 99.4252,
+  "award_amount": 39139750.0,
+  "award_rate": 90.378,
+  "winner": "주식회사투위즈넷",
+  "lower_rate": null
  },
  "R26BK01727999": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
+ },
+ "R26BK01705846": {
+  "title": "한국식품연구원 경북본부 건립사업(통신공사)",
+  "org": "한국식품연구원",
+  "open_date": "2026-09-15 14:20:57",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 785121000.0,
+  "planned": 791455000.0,
+  "sajung": 100.8068,
+  "award_amount": 715488752.0,
+  "award_rate": 90.401,
+  "winner": "주식회사 모든정보통신",
+  "lower_rate": null
  },
  "R26BK01718301": {
-  "empty": true
+  "title": "백운산 농촌테마공원 조성사업 복합관리센터 신축공사(통신)",
+  "org": "강원특별자치도 원주시 농업기술센터",
+  "open_date": "2026-09-15 13:50:15",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 112387000.0,
+  "planned": 111420525.0,
+  "sajung": 99.14,
+  "award_amount": 100750488.0,
+  "award_rate": 90.423,
+  "winner": "명화아이티(주)",
+  "lower_rate": null
+ },
+ "R26BK01722017": {
+  "title": "화성 함백산추모공원 장례식장 증축 공사(통신)",
+  "org": "경기도 화성시",
+  "open_date": "2026-09-15 11:32:34",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 144037000.0,
+  "planned": 142756550.0,
+  "sajung": 99.111,
+  "award_amount": 129115840.0,
+  "award_rate": 90.444,
+  "winner": "주식회사 주애기술",
+  "lower_rate": null
  },
  "R26BK01719889": {
-  "empty": true
+  "title": "음성군 스마트복합쉼터 조성사업 통신공사",
+  "org": "충청북도 음성군",
+  "open_date": "2026-09-15 11:32:22",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 53690000.0,
+  "planned": 53647250.0,
+  "sajung": 99.9204,
+  "award_amount": 48477617.0,
+  "award_rate": 90.363,
+  "winner": "(주) 한얼누리",
+  "lower_rate": null
  },
  "R26BK01719581": {
-  "empty": true
+  "title": "[입찰대행]수원시 재난안전상황실 이전 구축공사(통신)",
+  "org": "경기도 수원시",
+  "open_date": "2026-09-15 11:15:54",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 258874000.0,
+  "planned": 259884325.0,
+  "sajung": 100.3903,
+  "award_amount": 234707500.0,
+  "award_rate": 90.312,
+  "winner": "주식회사 채울",
+  "lower_rate": null
  },
  "R26BK01708487": {
-  "empty": true
+  "title": "강릉시 하수찌꺼기(슬러지) 처리시설 설치사업 통신공사",
+  "org": "강원특별자치도 강릉시 상하수도사업소",
+  "open_date": "2026-09-15 11:14:29",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 60451000.0,
+  "planned": 61112675.0,
+  "sajung": 101.0946,
+  "award_amount": 55213531.0,
+  "award_rate": 90.347,
+  "winner": "동화정보통신주식회사",
+  "lower_rate": null
  },
  "R26BK01715265": {
-  "empty": true
+  "title": "국가종합비행성능시험장 비행안전 모니터링 연구동 정보통신공사",
+  "org": "한국항공우주연구원",
+  "open_date": "2026-09-15 11:10:34",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 274131000.0,
+  "planned": 274591575.0,
+  "sajung": 100.168,
+  "award_amount": 248347930.0,
+  "award_rate": 90.442,
+  "winner": "(주)기성산업",
+  "lower_rate": null
  },
  "R26BK01721307": {
-  "empty": true
+  "title": "함양소방서 안의119안전센터 이전 신축공사(통신)",
+  "org": "경상남도",
+  "open_date": "2026-09-15 11:08:02",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 78496000.0,
+  "planned": 78041550.0,
+  "sajung": 99.4211,
+  "award_amount": 70579410.0,
+  "award_rate": 90.438,
+  "winner": "주식회사 엔씨에스(NCS)",
+  "lower_rate": null
  },
  "R26BK01713728": {
-  "empty": true
+  "title": "회화면 농촌중심지활성화사업 통신공사",
+  "org": "한국농어촌공사 경남지역본부 고성.통영.거제지사",
+  "open_date": "2026-09-15 11:03:04",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 177837000.0,
+  "planned": 177685450.0,
+  "sajung": 99.9148,
+  "award_amount": 160624840.0,
+  "award_rate": 90.398,
+  "winner": "株式會社 錦湖이.티.시",
+  "lower_rate": null
  },
  "R26BK01716219": {
-  "empty": true
+  "title": "항공기술훈련원 기반시설 영상감시장치 정보통신공사",
+  "org": "한국공항공사 항공기술훈련원",
+  "open_date": "2026-09-15 11:02:37",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 128643000.0,
+  "planned": 128352000.0,
+  "sajung": 99.7738,
+  "award_amount": 115714430.0,
+  "award_rate": 90.153,
+  "winner": "주식회사 태영",
+  "lower_rate": null
  },
  "R26BK01718750": {
-  "empty": true
+  "title": "금진항 어촌활력증진지원 증진사업 통신공사",
+  "org": "한국농어촌공사 전남지역본부 고흥지사",
+  "open_date": "2026-09-14 15:52:28",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 66616000.0,
+  "planned": 67065050.0,
+  "sajung": 100.6741,
+  "award_amount": 60670000.0,
+  "award_rate": 90.464,
+  "winner": "아이티협동조합",
+  "lower_rate": null
  },
  "R26BK01714716": {
-  "empty": true
+  "title": "중앙도서관 환경개선공사(통신)",
+  "org": "강원대학교",
+  "open_date": "2026-09-14 13:06:59",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 111629000.0,
+  "planned": 111234725.0,
+  "sajung": 99.6468,
+  "award_amount": 100758300.0,
+  "award_rate": 90.581,
+  "winner": "주식회사케이탑시스템",
+  "lower_rate": null
  },
  "R26BK01714094": {
-  "empty": true
+  "title": "서울소년분류심사원 생활관 개보수 통신공사",
+  "org": "법무부 서울소년분류심사원",
+  "open_date": "2026-09-14 11:27:49",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 259490000.0,
+  "planned": 258971725.0,
+  "sajung": 99.8003,
+  "award_amount": 233772843.0,
+  "award_rate": 90.269,
+  "winner": "주식회사 세이콘",
+  "lower_rate": null
  },
  "R26BK01713661": {
-  "empty": true
+  "title": "인천지점 전체 레이아웃 통신공사",
+  "org": "중소기업은행",
+  "open_date": "2026-09-14 11:19:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 50600000.0,
+  "planned": 51070525.0,
+  "sajung": 100.9299,
+  "award_amount": 46798975.0,
+  "award_rate": 91.635,
+  "winner": "대신네트웍스(주)",
+  "lower_rate": null
  },
  "R26BK01714604": {
-  "empty": true
+  "title": "권역책임의료기관 외상중환자실 리모델링 공사(통신)",
+  "org": "(의료）길의료재단",
+  "open_date": "2026-09-11 16:50:59",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 175000000.0,
+  "planned": 174557700.0,
+  "sajung": 99.7473,
+  "award_amount": 157838970.0,
+  "award_rate": 90.422,
+  "winner": "(주)세웅정보통신",
+  "lower_rate": null
  },
  "R26BK01717165": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01722627": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
+ },
+ "R26BK01716019": {
+  "title": "함열 순환경제활력센터 조성 통신공사",
+  "org": "전북특별자치도 익산시",
+  "open_date": "2026-09-11 14:20:31",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 112076000.0,
+  "planned": 111773725.0,
+  "sajung": 99.7303,
+  "award_amount": 101070000.0,
+  "award_rate": 90.423,
+  "winner": "주식회사파이렌",
+  "lower_rate": null
  },
  "R26BK01700285": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01708445": {
-  "empty": true
+  "title": "충주남산초 외 1교(칠금중) 공간재구조화 리모델링 및 증축 통신공사 입찰 공고",
+  "org": "충청북도교육청 충청북도충주교육지원청",
+  "open_date": "2026-09-11 11:10:36",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 509146000.0,
+  "planned": 506825600.0,
+  "sajung": 99.5443,
+  "award_amount": 458124500.0,
+  "award_rate": 90.39,
+  "winner": "주식회사두성정보통신",
+  "lower_rate": null
+ },
+ "R26BK01716476": {
+  "title": "교통신호기 유지보수 단가계약(2차)",
+  "org": "충청남도 보령시",
+  "open_date": "2026-09-11 11:10:15",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 50000000.0,
+  "planned": 50003750.0,
+  "sajung": 100.0075,
+  "award_amount": 45078700.0,
+  "award_rate": 90.15,
+  "winner": "(주)서진전업사",
+  "lower_rate": null
+ },
+ "R26BK01710634": {
+  "title": "2026년도 전북대학교 2차 소규모 보수공사(연간단가, 통신)",
+  "org": "전북대학교",
+  "open_date": "2026-09-11 11:06:12",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 50000000.0,
+  "planned": 49528625.0,
+  "sajung": 99.0572,
+  "award_amount": 44746815.0,
+  "award_rate": 90.345,
+  "winner": "(유)세일",
+  "lower_rate": null
  },
  "R26BK01719947": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01722372": {
-  "empty": true
+  "empty": true,
+  "v2": true,
+  "fields": [
+   "bidNtceNo",
+   "bidNtceOrd",
+   "bidClsfcNo",
+   "rbidNo",
+   "bidNtceNm",
+   "plnprc",
+   "bssamt",
+   "totRsrvtnPrceNum",
+   "compnoRsrvtnPrceSno",
+   "bsisPlnprc",
+   "drwtYn",
+   "drwtNum",
+   "bidwinrSlctnAplBssCntnts",
+   "rlOpengDt",
+   "bssamtBssUpNum",
+   "compnoRsrvtnPrceMkngDt",
+   "inptDt",
+   "PrearngPrcePurcnstcst",
+   "bssAmtPurcnstcst"
+  ]
  },
  "R26BK01709878": {
-  "empty": true
+  "title": "[청강입찰2026-07호] 청강문화산업대학교 나비센터 통신공사",
+  "org": "청강문화산업대학",
+  "open_date": "2026-09-10 16:47:21",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 431727236.0,
+  "planned": 428607000.0,
+  "sajung": 99.2773,
+  "award_amount": 387504797.0,
+  "award_rate": 90.41,
+  "winner": "주식회사 제이에스 이엔지",
+  "lower_rate": null
  },
  "R26BK01713195": {
-  "empty": true
+  "title": "충남소방본부 아산소방서 음봉119안전센터 정보통신공사",
+  "org": "충청남도 소방본부",
+  "open_date": "2026-09-10 14:52:40",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 53791000.0,
+  "planned": 53916925.0,
+  "sajung": 100.2341,
+  "award_amount": 48488040.0,
+  "award_rate": 89.931,
+  "winner": "주식회사 디와이",
+  "lower_rate": null
  },
  "R26BK01714850": {
-  "empty": true
+  "title": "CCTV 자가정보통신망 구축 공사(긴급)",
+  "org": "서울특별시 동작구",
+  "open_date": "2026-09-10 14:07:47",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 174966000.0,
+  "planned": 173155150.0,
+  "sajung": 98.965,
+  "award_amount": 156467018.0,
+  "award_rate": 90.362,
+  "winner": "주식회사 디지컴아이엔씨",
+  "lower_rate": null
  },
  "R26BK01714825": {
-  "empty": true
+  "title": "중앙선1942 안동역 기후대응 도시숲 조성사업 통신공사",
+  "org": "경상북도 안동시",
+  "open_date": "2026-09-10 14:02:48",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 67870000.0,
+  "planned": 67338950.0,
+  "sajung": 99.2175,
+  "award_amount": 60849860.0,
+  "award_rate": 90.363,
+  "winner": "주식회사 파인테크",
+  "lower_rate": null
  },
  "R26BK01714059": {
-  "empty": true
+  "title": "2026년 파주시 방범 CCTV 설치사업 2차(12개소) 통신공사",
+  "org": "경기도 파주시",
+  "open_date": "2026-09-10 11:10:54",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 81895000.0,
+  "planned": 81631150.0,
+  "sajung": 99.6778,
+  "award_amount": 73840312.0,
+  "award_rate": 90.456,
+  "winner": "주식회사 에이치투테크",
+  "lower_rate": null
  },
  "R26BK01714037": {
-  "empty": true
+  "title": "인왕산근린공원 생활밀착형 공원 조성사업(통신)",
+  "org": "서울특별시 종로구",
+  "open_date": "2026-09-10 11:04:12",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 59477000.0,
+  "planned": 58869625.0,
+  "sajung": 98.9788,
+  "award_amount": 53031961.0,
+  "award_rate": 90.083,
+  "winner": "새결정보통신(주)",
+  "lower_rate": null
  },
  "R26BK01711317": {
-  "empty": true
+  "title": "새만금 인근 수전해 기술 국산화 실증부지 조성 통신공사",
+  "org": "재단법인 전북테크노파크",
+  "open_date": "2026-09-09 17:06:55",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 63220000.0,
+  "planned": 63088700.0,
+  "sajung": 99.7923,
+  "award_amount": 56960810.0,
+  "award_rate": 90.286,
+  "winner": "유한회사오투",
+  "lower_rate": null
  },
  "R26BK01707049": {
-  "empty": true
+  "title": "서비스로봇 공통플랫폼 제작·실증 사업 시범운영환경(험지) 통신공사",
+  "org": "(재)경남로봇랜드재단",
+  "open_date": "2026-09-09 15:09:41",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 9132000.0,
+  "planned": 9081775.0,
+  "sajung": 99.45,
+  "award_amount": 8189337.0,
+  "award_rate": 90.173,
+  "winner": "주식회사 다컴",
+  "lower_rate": null
  },
  "R26BK01711734": {
-  "empty": true
+  "title": "2026년 창녕군 교통신호기 및 경보등 유지보수[단가계약-2차분]",
+  "org": "경상남도 창녕군",
+  "open_date": "2026-09-09 13:02:42",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 72975580.0,
+  "planned": 73381689.12,
+  "sajung": 100.5565,
+  "award_amount": 66004800.0,
+  "award_rate": 89.947,
+  "winner": "주식회사 동성전기",
+  "lower_rate": null
  },
  "R26BK01707795": {
-  "empty": true
+  "title": "동성고 교실 증축 통신공사",
+  "org": "충청북도교육청 충청북도음성교육지원청",
+  "open_date": "2026-09-09 11:22:42",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 235070000.0,
+  "planned": 232735800.0,
+  "sajung": 99.007,
+  "award_amount": 210394940.0,
+  "award_rate": 90.4,
+  "winner": "하나통신",
+  "lower_rate": null
  },
  "R26BK01712031": {
-  "empty": true
+  "title": "백양중학교 급식실현대화 및 기타 정보통신공사",
+  "org": "부산광역시교육청 부산광역시북부교육지원청",
+  "open_date": "2026-09-09 11:16:27",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 28479000.0,
+  "planned": 28892775.0,
+  "sajung": 101.4529,
+  "award_amount": 26091696.0,
+  "award_rate": 90.305,
+  "winner": "(주)미주정보통신",
+  "lower_rate": null
  },
  "R26BK01712030": {
-  "empty": true
+  "title": "계양아라온 주차환경 개선사업(통신)",
+  "org": "인천광역시 계양구",
+  "open_date": "2026-09-09 11:11:44",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 123530000.0,
+  "planned": 122368250.0,
+  "sajung": 99.0595,
+  "award_amount": 110680581.0,
+  "award_rate": 90.448,
+  "winner": "주식회사 동진전력",
+  "lower_rate": null
  },
  "R26BK01704851": {
-  "empty": true
- },
- "R26BK01701524": {
-  "empty": true
- },
- "R26BK01708675": {
-  "empty": true
- },
- "R26BK01710963": {
-  "empty": true
- },
- "R26BK01704239": {
-  "empty": true
- },
- "R26BK01710026": {
-  "empty": true
- },
- "R26BK01621097": {
-  "empty": true
- },
- "R26BK01709544": {
-  "empty": true
- },
- "R26BK01702734": {
-  "empty": true
+  "title": "(가칭)왕숙1유 신축 통신공사",
+  "org": "경기도교육청",
+  "open_date": "2026-09-09 11:08:39",
+  "region_scope": "기타",
+  "telecom": true,
+  "base": 429000000.0,
+  "planned": 430467225.0,
+  "sajung": 100.342,
+  "award_amount": 389189754.0,
+  "award_rate": 90.411,
+  "winner": "주식회사 올댓이엔티",
+  "lower_rate": null
  }
 }
