@@ -2413,5 +2413,17 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01780942": {
+  "read": true,
+  "doc": "고추비가림 김일곤.pdf",
+  "licenses": [
+   "창호공사업"
+  ],
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
  }
 }

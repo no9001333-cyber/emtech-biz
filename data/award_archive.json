@@ -58757,6 +58757,48 @@
    "notice_kind": "공사",
    "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01755850&bidPbancOrd=000",
    "participants": "1923"
+  },
+  "나라장터::R26BK01755710": {
+   "source": "나라장터",
+   "title": "2026년 3-2차 학교유무선 네트워크 개선사업 정보통신공사[1권역]",
+   "org": "경기도교육청 경기도안양과천교육지원청",
+   "notice_no": "R26BK01755710",
+   "winner": "두승전력 주식회사",
+   "award_amount": "373422450",
+   "assessed_rate": "90.385",
+   "open_date": "2026-10-12 15:16:29",
+   "region_scope": "경기",
+   "notice_kind": "공사",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01755710&bidPbancOrd=000",
+   "participants": "1965"
+  },
+  "나라장터::R26BK01765981": {
+   "source": "나라장터",
+   "title": "대구동신초등학교 급식시설개선 정보통신공사",
+   "org": "대구광역시교육청 대구광역시동부교육지원청",
+   "notice_no": "R26BK01765981",
+   "winner": "주식회사 우경전기통신",
+   "award_amount": "5913606",
+   "assessed_rate": "90.201",
+   "open_date": "2026-10-20 11:13:05",
+   "region_scope": "기타",
+   "notice_kind": "공사",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01765981&bidPbancOrd=000",
+   "participants": "195"
+  },
+  "나라장터::R26BK01741899": {
+   "source": "나라장터",
+   "title": "GH 창업특화주택 인테리어공사(통신)",
+   "org": "경기주택도시공사",
+   "notice_no": "R26BK01741899",
+   "winner": "승민전자통신",
+   "award_amount": "196094158",
+   "assessed_rate": "90.416",
+   "open_date": "2026-10-02 11:05:40",
+   "region_scope": "경기",
+   "notice_kind": "공사",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01741899&bidPbancOrd=000",
+   "participants": "1417"
   }
  },
  "backfilled_months": [

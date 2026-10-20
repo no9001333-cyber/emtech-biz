@@ -2954,5 +2954,98 @@
    "variance_pct": "-2.0~2.0"
   },
   "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16552&negn_pldt=20261026&dprt_code=LMP&ordr_year=2026&negn_degr=1&anmt_numb=LMP0187&pageDivs=E"
+ },
+ "SCU0035": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "제주특별자치도"
+  ],
+  "basis_info": {
+   "base_amount": 254693000,
+   "a_value": 11679658,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16554&negn_pldt=20261026&dprt_code=SCU&ordr_year=2026&negn_degr=1&anmt_numb=SCU0035&pageDivs=E"
+ },
+ "UMM0945": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {},
+  "url": "https://www.d2b.go.kr/peb/bid/announceView.do?dprt_code=UMM&anmt_divs=B&anmt_numb=UMM0945&rqst_degr=1&dcsn_numb=2026-16561&rqst_year=2026&anmt_date=20261020&csrt_numb=2026-16561&lv2Divs=1&cont_mthd=C&pageDivs=E1&lv1_divs=PEB"
+ },
+ "UMM0946": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {},
+  "url": "https://www.d2b.go.kr/peb/bid/announceView.do?dprt_code=UMM&anmt_divs=B&anmt_numb=UMM0946&rqst_degr=1&dcsn_numb=2026-16550&rqst_year=2026&anmt_date=20261020&csrt_numb=2026-16550&lv2Divs=1&cont_mthd=C&pageDivs=E1&lv1_divs=PEB"
+ },
+ "HDR0078": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경상남도"
+  ],
+  "basis_info": {
+   "base_amount": 133606863,
+   "a_value": 6486818,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16464&negn_pldt=20261026&dprt_code=HDR&ordr_year=2026&negn_degr=1&anmt_numb=HDR0078&pageDivs=E"
+ },
+ "SEE0024": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "제주특별자치도"
+  ],
+  "basis_info": {
+   "base_amount": 32278000,
+   "a_value": 1547872,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16553&negn_pldt=20261026&dprt_code=SEE&ordr_year=2026&negn_degr=1&anmt_numb=SEE0024&pageDivs=E"
+ },
+ "SEE0025": {
+  "licenses": [
+   "도장ㆍ습식ㆍ방수ㆍ석공사업"
+  ],
+  "regions": [
+   "제주특별자치도"
+  ],
+  "basis_info": {
+   "base_amount": 48991000,
+   "a_value": 2428441,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16555&negn_pldt=20261026&dprt_code=SEE&ordr_year=2026&negn_degr=1&anmt_numb=SEE0025&pageDivs=E"
+ },
+ "LHN0125": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "강원특별자치도 화천군"
+  ],
+  "basis_info": {
+   "base_amount": 12970450,
+   "a_value": 313462,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16563&negn_pldt=20261026&dprt_code=LHN&ordr_year=2026&negn_degr=1&anmt_numb=LHN0125&pageDivs=E"
  }
 }
