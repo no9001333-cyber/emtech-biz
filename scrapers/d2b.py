@@ -172,8 +172,8 @@ def _parse_fclty_item(item) -> dict:
 def _parse_fclty_prvt_item(item) -> dict:
     """getFcltyOthbcVltrnNtatPlanList(시설 공개수의협상계획) 항목을 공통 필드로 매핑."""
     title = _xml_text(item, "cntrwkNm", "othbcVltrnNtatNm", "vltrnNtatNm", "bidNm", "pblancNm", "ntatPlanNm")
-    deadline = _xml_text(item, "biddocPresentnClosDt", "estmtPresentnClosDt", "presentnClosDt",
-                         "ntatClosDt", "estmtClosDt", "opengDt")
+    # 실제 응답(2026-10-20 확인): prqudoPresentnClosDt = 가격(견적)서 제출마감 = 투찰마감
+    deadline = _xml_text(item, "prqudoPresentnClosDt", "biddocPresentnClosDt", "estmtPresentnClosDt", "opengDt")
     return {
         "source": "국방전자조달(D2B)",
         "title": title,
@@ -181,10 +181,10 @@ def _parse_fclty_prvt_item(item) -> dict:
         "org": _xml_text(item, "ornt") or "국방부",
         "notice_no": _xml_text(item, "pblancNo", "othbcVltrnNtatNo", "ntatPlanNo", "cntrwkNo"),
         "region": "",
-        "base_amount": _xml_text(item, "baseAmnt", "bsicExpt", "estmtAmnt", "budgetAmnt"),
+        "base_amount": _xml_text(item, "baseAmnt", "budgetAmount", "bsicExpt"),
         "notice_date": _xml_text(item, "pblancDate", "ntatPlanDate", "rgstDate"),
         "reg_deadline": _xml_text(item, "bidPartcptRegistClosDt", "estmtPresentnBgnDt"),
-        "bid_method": _xml_text(item, "cntrctMth") or "공개수의",
+        "bid_method": _xml_text(item, "bidMth", "cntrctMth") or "공개수의",
         "restrictions": "",
         "deadline": deadline,
         "url": "https://www.d2b.go.kr",
