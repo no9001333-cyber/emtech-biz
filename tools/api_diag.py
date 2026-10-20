@@ -47,17 +47,21 @@ def show(label, url, params, key):
 now = datetime.now()
 d = lambda days: (now - timedelta(days=days)).strftime("%Y%m%d")
 
-# 2026-10-20: 발주계획 PPSSrch가 1년치를 요청해도 전날 등록분만 오는지(저장 3건이 모두 10-19 등록) 확인
+# 2026-10-20: 발주계획 PPSSrch는 inqryBgnDt/inqryEndDt를 무시하고 최근 하루치(387건)만 준다.
+# 문서상 "발주년월범위"로 검색 - 발주년월 파라미터 이름 후보를 시험한다.
 SRCH = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwkPPSSrch"
-for label, p in [
-    ("등록일 1일", {"inqryDiv": 1, "inqryBgnDt": d(1) + "0000", "inqryEndDt": d(0) + "2359"}),
-    ("등록일 7일", {"inqryDiv": 1, "inqryBgnDt": d(7) + "0000", "inqryEndDt": d(0) + "2359"}),
-    ("등록일 30일", {"inqryDiv": 1, "inqryBgnDt": d(30) + "0000", "inqryEndDt": d(0) + "2359"}),
-    ("등록일 60~30일 전", {"inqryDiv": 1, "inqryBgnDt": d(60) + "0000", "inqryEndDt": d(30) + "2359"}),
-    ("등록일 2026-01", {"inqryDiv": 1, "inqryBgnDt": "202601010000", "inqryEndDt": "202601312359"}),
-    ("inqryDiv=2 발주년월", {"inqryDiv": 2, "inqryBgnDt": now.strftime("%Y%m"), "inqryEndDt": (now + timedelta(days=90)).strftime("%Y%m")}),
-    ("inqryDiv=2 일자", {"inqryDiv": 2, "inqryBgnDt": d(0) + "0000", "inqryEndDt": (now + timedelta(days=90)).strftime("%Y%m%d") + "2359"}),
-    ("통신 공사지역 경기", {"inqryDiv": 1, "inqryBgnDt": d(90) + "0000", "inqryEndDt": d(0) + "2359", "cnstwkRgnNm": "경기"}),
-    ("사업명 통신", {"inqryDiv": 1, "inqryBgnDt": d(90) + "0000", "inqryEndDt": d(0) + "2359", "bizNm": "통신"}),
-]:
-    show("발주계획/" + label, SRCH, {"pageNo": 1, "numOfRows": 500, "type": "json", **p}, G2B)
+BASE_OP = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwk"
+ym0, ym1 = now.strftime("%Y%m"), (now + timedelta(days=75)).strftime("%Y%m")
+cands = [
+    ("1 orderBgnYm", {"inqryDiv": 1, "orderBgnYm": ym0, "orderEndYm": ym1}),
+    ("2 orderBgnYm", {"inqryDiv": 2, "orderBgnYm": ym0, "orderEndYm": ym1}),
+    ("2 inqryBgnDt YYYYMM 00", {"inqryDiv": 2, "inqryBgnDt": ym0 + "010000", "inqryEndDt": ym1 + "282359"}),
+    ("2 inqryBgnDt YYYYMMDD", {"inqryDiv": 2, "inqryBgnDt": ym0 + "01", "inqryEndDt": ym1 + "28"}),
+    ("orderYear+orderMnth", {"inqryDiv": 1, "orderYear": now.strftime("%Y"), "orderMnth": now.strftime("%m")}),
+    ("1 inqryBgnDt 1년 numOfRows 10", {"inqryDiv": 1, "inqryBgnDt": d(365) + "0000", "inqryEndDt": d(300) + "2359"}),
+    ("3 inqryBgnDt", {"inqryDiv": 3, "inqryBgnDt": d(60) + "0000", "inqryEndDt": d(30) + "2359"}),
+]
+for label, p in cands:
+    show("발주계획PPS/" + label, SRCH, {"pageNo": 1, "numOfRows": 500, "type": "json", **p}, G2B)
+for label, p in cands[:4]:
+    show("발주계획기본/" + label, BASE_OP, {"pageNo": 1, "numOfRows": 500, "type": "json", **p}, G2B)
