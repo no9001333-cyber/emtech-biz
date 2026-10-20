@@ -1,0 +1,19 @@
+name: API 진단 (수동)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  diag:
+    runs-on: self-hosted
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: 진단 실행
+        env:
+          PYTHONUTF8: "1"
+          PYTHONIOENCODING: "utf-8"
+          PYTHONUNBUFFERED: "1"
+          G2B_SERVICE_KEY: ${{ secrets.G2B_SERVICE_KEY }}
+          G2B_AWARDS_SERVICE_KEY: ${{ secrets.G2B_AWARDS_SERVICE_KEY }}
+        run: python tools/api_diag.py
