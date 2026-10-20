@@ -32,26 +32,16 @@ def show(label, url, params, key):
             if first:
                 print(f"    keys={list(first.keys())}")
                 print(f"    first={json.dumps(first, ensure_ascii=False)[:700]}")
+            if not first:
+                print(f"    raw={txt[:600]!r}")
         except Exception:
-            print(f"[{label}] HTTP {r.status_code} (not json) {txt[:300]!r}")
+            print(f"[{label}] HTTP {r.status_code} (not json) {txt[:600]!r}")
     except Exception as e:
         print(f"[{label}] 요청 실패 {type(e).__name__}: {e}")
 
 
 now = datetime.now()
 d = lambda days: (now - timedelta(days=days)).strftime("%Y%m%d")
-
-PREP = "https://apis.data.go.kr/1230000/as/ScsbidInfoService/getOpengResultListInfoCnstwkPreparPcDetail"
-NO = "R26BK01754526"  # 2026-10-12 개찰된 통신공사
-for label, p in [
-    ("예비가격/공고번호 inqryDiv=4", {"inqryDiv": 4, "bidNtceNo": NO}),
-    ("예비가격/공고번호 inqryDiv=2", {"inqryDiv": 2, "bidNtceNo": NO}),
-    ("예비가격/공고번호+차수", {"inqryDiv": 4, "bidNtceNo": NO, "bidNtceOrd": "000"}),
-    ("예비가격/개찰일 범위", {"inqryDiv": 3, "inqryBgnDt": d(9) + "0000", "inqryEndDt": d(7) + "2359"}),
-    ("예비가격/등록일 범위", {"inqryDiv": 1, "inqryBgnDt": d(9) + "0000", "inqryEndDt": d(7) + "2359"}),
-]:
-    show(label, PREP, {"pageNo": 1, "numOfRows": 20, "type": "json", **p}, AWD)
-    show(label + " (입찰공고키)", PREP, {"pageNo": 1, "numOfRows": 20, "type": "json", **p}, G2B) if AWD != G2B else None
 
 PLAN = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwk"
 for label, p in [
@@ -62,3 +52,8 @@ for label, p in [
     ("발주계획/파라미터 없음", {}),
 ]:
     show(label, PLAN, {"pageNo": 1, "numOfRows": 10, "type": "json", **p}, G2B)
+
+# 발주계획 서비스의 다른 오퍼레이션(물품/용역)도 같은 키로 되는지 비교
+for op in ("getOrderPlanSttusListServc", "getOrderPlanSttusListCnstwkPPSSrch"):
+    show("발주계획/" + op, PLAN.rsplit("/", 1)[0] + "/" + op,
+         {"pageNo": 1, "numOfRows": 5, "type": "json", "inqryDiv": 1, "inqryBgnDt": d(30) + "0000", "inqryEndDt": d(0) + "2359"}, G2B)

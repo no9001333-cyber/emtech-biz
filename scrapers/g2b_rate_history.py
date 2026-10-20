@@ -50,7 +50,7 @@ def _load():
 
 def _fetch(notice_no, key, logged):
     params = {"serviceKey": key, "pageNo": 1, "numOfRows": 50, "type": "json",
-              "inqryDiv": 4, "bidNtceNo": notice_no}
+              "inqryDiv": 2, "bidNtceNo": notice_no}  # 2026-10-20 진단: 공고번호 조회는 inqryDiv=2 (4는 빈 응답)
     data = get_with_retry(ENDPOINT, params=params, timeout=30).json()
     body = data.get("response", {}).get("body", {})
     items = body.get("items", [])
@@ -68,6 +68,8 @@ def update_rate_history(awards, bids_by_key):
     """awards(낙찰정보)로 사정율 이력을 갱신하고 이력 dict를 돌려준다."""
     key_raw = G2B_AWARDS_SERVICE_KEY or G2B_SERVICE_KEY
     history = _load()
+    # 첫 실행은 잘못된 조회구분(inqryDiv=4)으로 전부 빈 결과가 "empty"로 저장됐다 - 다시 조회하게 지운다.
+    history = {k: v for k, v in history.items() if not (v.get("empty") and "v2" not in v)}
     if not key_raw:
         return history
     key = __import__("urllib.parse").parse.unquote(key_raw)
@@ -94,13 +96,13 @@ def update_rate_history(awards, bids_by_key):
             continue
         time.sleep(0.3)
         if not items:
-            history[a["notice_no"]] = {"empty": True}
+            history[a["notice_no"]] = {"empty": True, "v2": True}
             continue
         first = items[0]
         base = _num(_pick(first, "bssamt", "bsisAmt", "bssAmt"))
         planned = _num(_pick(first, "plnprc", "plnPrc", "prearngPrcePurcsAmt", "presmptPrce"))
         if not (base and planned):
-            history[a["notice_no"]] = {"empty": True, "fields": list(first.keys())[:30]}
+            history[a["notice_no"]] = {"empty": True, "v2": True, "fields": list(first.keys())[:30]}
             continue
         b = bids_by_key.get(f"나라장터::{a['notice_no']}") or {}
         history[a["notice_no"]] = {
