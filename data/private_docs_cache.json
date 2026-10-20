@@ -2386,5 +2386,24 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01780276": {
+  "read": true,
+  "doc": "매각입찰유의서.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01780168": {
+  "read": true,
+  "doc": "공덕현대아파트 소규모재건축사업 소방시설공사 협력업체 선정 입찰지침서.hwp",
+  "licenses": [
+   "전문소방시설공사업",
+   "소방공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }

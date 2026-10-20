@@ -673,5 +673,512 @@
   "basis_info": {
    "open_date": "2026-10-20 10:30"
   }
+ },
+ "LKG0108": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "부산광역시",
+   "경상남도 양산시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LCK0186": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "서울특별시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LNS0074": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도 용인시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LNS0075": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도 용인시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "LMR0231": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도 포천시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 10:30"
+  }
+ },
+ "UAC0017": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "충청남도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "UAC0018": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "충청남도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "UAC0016": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "충청남도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LQP0116": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LQP0118": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LQP0117": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LHK0212": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도 춘천시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LHM0230": {
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "강원특별자치도 화천군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LHM0231": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "강원특별자치도 화천군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LHK0213": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "강원특별자치도 춘천시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LHK0214": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "강원특별자치도 춘천시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LHK0216": {
+  "licenses": [
+   "상ㆍ하수도설비공사업"
+  ],
+  "regions": [
+   "강원특별자치도 홍천군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMP0181": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "강원특별자치도 철원군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMP0182": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "강원특별자치도 철원군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMP0184": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "강원특별자치도 철원군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LHK0215": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도 춘천시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LQH0075": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도 고양시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LHK0217": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "강원특별자치도 홍천군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMP0180": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도 철원군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMP0183": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "강원특별자치도 철원군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LNF0171": {
+  "licenses": [
+   "상ㆍ하수도설비공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMF0005": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMF0006": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMF0007": {
+  "licenses": [
+   "도장ㆍ습식ㆍ방수ㆍ석공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMF0008": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LMF0009": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LCM0080": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "전남광주통합특별시 장성군"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "UHD0036": {
+  "licenses": [
+   "철근ㆍ콘크리트공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-20 11:00"
+  }
+ },
+ "LKG0104": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "부산광역시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LNR0095": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "경기도 가평군",
+   "경기도 포천시",
+   "경기도 남양주시",
+   "경기도 양주시",
+   "경기도 의정부시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LNQ0081": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "인천광역시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LMH0216": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LCP0067": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "충청남도 논산시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LMH0217": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LCK0188": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "서울특별시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LCK0189": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "서울특별시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LNR0094": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도 가평군",
+   "경기도 의정부시",
+   "경기도 남양주시",
+   "경기도 양주시",
+   "경기도 포천시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LPM0186": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도 고양시"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "LCK0190": {
+  "licenses": [
+   "철근ㆍ콘크리트공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
+ },
+ "UAB0131": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "충청남도"
+  ],
+  "basis_info": {
+   "open_date": "2026-10-21 10:30"
+  }
  }
 }
