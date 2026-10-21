@@ -2284,5 +2284,60 @@
    "기계설비·가스공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26101611060510443%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603717": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "ㅇ 자세한 사항은 입찰공고문 등을 반드시 확인하시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "공고문(1.입찰공고문(시화90호정보통신).hwp)",
+  "checked_at": "2026-10-21 11:15",
+  "licenses": [
+   "정보통신공사업",
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102013573535917%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603711": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "□ 소액전자로 진행되는 건입니다.\n * 자세한 사항은 시방서 및 공고문을 참고하여 주시기 바랍니다.",
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "공고문(표준입찰공고문(공사소액수의)_옥상방수공사.hwp)",
+  "checked_at": "2026-10-21 11:15",
+  "licenses": [
+   "도장·습식·방수·석공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102013123533981%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603709": {
+  "found": true,
+  "method": "수의견적(전자)",
+  "qualification": "□ 수의견적(전자)로 진행되는 건입니다.\n * 참가대상업체 : 수자원기술(주)(212-81-50572), 에코엔(주)(314-86-61685), 베타(주)(457-87-00380)\n * 해당 업체 외 입찰 또는 투찰 시 가격개찰 및 낙찰 대상에서 제외됩니다.\n * 수의계약 안내문 및 첨부서류 숙지 후 입찰에 참가하여 주시기 바랍니다.",
+  "regions": [],
+  "basis": "공고문에서 지역 문구를 못 찾음",
+  "checked_at": "2026-10-21 11:15",
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102012535033770%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603716": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "ㅇ 자세한 사항은 입찰공고문 등을 반드시 확인하시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "공고문(1.입찰공고문(송산용수전기방식).hwp)",
+  "checked_at": "2026-10-21 11:15",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102013514435600%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

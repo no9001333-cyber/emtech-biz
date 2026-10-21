@@ -5364,5 +5364,209 @@
    "경북 울진군"
   ],
   "checked_at": "2026-10-20 10:47"
+ },
+ "E062600495": {
+  "licenses": [
+   "구조물해체·비계공사업",
+   "기계가스설비공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E022600324": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607047": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012606991": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607061": {
+  "licenses": [
+   "토목건축공사업",
+   "건축공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607044": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607063": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607045": {
+  "licenses": [
+   "감리업(전력종합감리)",
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607038": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607058": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012606891": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607056": {
+  "licenses": [
+   "토목건축공사업",
+   "건축공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607059": {
+  "licenses": [
+   "일반소방시설공사업(기계)",
+   "일반소방시설공사업(전기)"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607055": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607040": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E082600416": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산 남구",
+   "울산 동구",
+   "울산 북구",
+   "울산 울주군",
+   "울산 중구"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607011": {
+  "licenses": [
+   "전문소방시설공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607033": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607027": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607043": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전",
+   "충남"
+  ],
+  "checked_at": "2026-10-21 11:15"
+ },
+ "E012607050": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-10-21 11:15"
  }
 }
