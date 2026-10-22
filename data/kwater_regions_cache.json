@@ -2339,5 +2339,57 @@
    "전기공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102013514435600%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603728": {
+  "found": true,
+  "method": "일반경쟁",
+  "qualification": "- 일반경쟁(지역의무공동도급) 건입니다.\n- 낙찰하한율 : 88.745%\n* 입찰참가자격 등 자세한 내용은 반드시 입찰공고문을 확인하시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "공고문(입찰공고문(2026년_성남정수장_4단계_응집침전지_방수방수공사).hwp)",
+  "checked_at": "2026-10-22 11:12",
+  "licenses": [
+   "도장·습식·방수·석공사업",
+   "토목공사업",
+   "토목건축공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102111103544911%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603737": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "입찰공고문과 공사시방서 등 관련 서류를 사전에 양지하시고 입찰에 참가하여 주시기 바랍니다.",
+  "regions": [],
+  "basis": "공고문에서 지역 문구를 못 찾음",
+  "checked_at": "2026-10-22 11:12",
+  "licenses": [
+   "전문공사업",
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102116453849220%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603731": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "□ 본 계약은 (유)삼성방재(402-81-63248)과 수의시담으로 진행하는 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-22 11:12",
+  "private": true
+ },
+ "B3202603735": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "□ 소액전자(본점소재지-하남시, 여성기업 또는 장애인기업 또는 사회적기업 대상) 입니다.\n□ 세부 자격 및 유의사항은 견적서 제출 안내 공고문, 시방서 등을 확인하시기 바랍니다.",
+  "regions": [
+   "경기도 하남"
+  ],
+  "basis": "공고문(견적서_제출공고문(안전시설개선공사).hwp)",
+  "checked_at": "2026-10-22 11:12",
+  "licenses": [
+   "지붕건축물조립공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102115263547941%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

@@ -5568,5 +5568,246 @@
    "경북"
   ],
   "checked_at": "2026-10-21 11:15"
+ },
+ "E092600136": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607113": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607114": {
+  "licenses": [
+   "전문소방시설공사업",
+   "일반소방시설공사업(기계)",
+   "일반소방시설공사업(전기)"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607110": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E082600419": {
+  "licenses": [
+   "구조물해체·비계공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607086": {
+  "licenses": [
+   "승강기·삭도공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607107": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607095": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607097": {
+  "licenses": [
+   "토목공사업",
+   "전기공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E042600433": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607083": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607085": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607076": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607089": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607101": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607067": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E062600496": {
+  "licenses": [
+   "금속창호·지붕건축물조립공사업",
+   "철근·콘크리트공사업",
+   "철강구조물공사업",
+   "기계가스설비공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607103": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607079": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607100": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607096": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607072": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607074": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607073": {
+  "licenses": [
+   "조경식재·시설물공사업",
+   "조경공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E012607088": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E112600113": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
+ },
+ "E112600112": {
+  "licenses": [
+   "소프트웨어사업자(컴퓨터관련서비스사업)"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-22 11:12"
  }
 }

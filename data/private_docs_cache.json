@@ -2515,5 +2515,71 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01781498": {
+  "read": true,
+  "doc": "입찰공고서(한우물참우렁이 대표 정국진).hwp",
+  "licenses": [
+   "금속구조물·창호·온실공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01780797": {
+  "read": true,
+  "doc": "1. JB금융그룹 아우름캠퍼스 외벽보수(코킹) 공사 입찰공고.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01784037": {
+  "read": true,
+  "doc": "1. 공고서-신축이음장치 교체공사(엄남천교 부산방향 P2).hwp",
+  "licenses": [
+   "지붕건축물조립공사업"
+  ],
+  "regions": [
+   "부산광역시",
+   "대구광역시",
+   "경상북도",
+   "경상남도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01783763": {
+  "read": true,
+  "doc": "황해아파트 - 시공자 재입찰공고문_20261021.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01783811": {
+  "read": true,
+  "doc": "입찰공문-안진완.hwp",
+  "licenses": [
+   "전문공사업",
+   "물조립공사업",
+   "금속창호·지붕건축물조립공사업",
+   "금속구조물·창호·온실공사업"
+  ],
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01785468": {
+  "read": true,
+  "doc": "동신천지점 환경개선공사 공고.pdf",
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }

@@ -39,6 +39,19 @@
   "announced": true
  },
  {
+  "title": "2026년 노후 교통신호제어기 통합형 교체 공사",
+  "org": "경기도 의정부시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "62894000",
+  "contract_method": "수의계약",
+  "registered": "2026-10-22 10:11:51",
+  "contact": "철도교통과 홍성욱 031-828-4844",
+  "work_type": "전기",
+  "announced": true
+ },
+ {
   "title": "2026년 분당구 교통신호등 유지보수공사(하반기)",
   "org": "경기도 성남시",
   "region": "경기도",
@@ -273,6 +286,19 @@
   "announced": true
  },
  {
+  "title": "부곡커뮤니티센터 및 의왕도시공사 자가통신망 구축 공사",
+  "org": "경기도 의왕시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "57720000",
+  "contract_method": "수의계약",
+  "registered": "2026-10-22 09:39:10",
+  "contact": "정보통신과 박영진 031-345-2300",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "삼송테크노지점 전체 레이아웃 통신공사",
   "org": "중소기업은행",
   "region": "경기도",
@@ -377,6 +403,19 @@
   "announced": false
  },
  {
+  "title": "양주 은남일반산업단지 부지조성 통신공사",
+  "org": "경기주택도시공사",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "1135384000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-10-21 14:08:54",
+  "contact": "계약총괄부 박주혁 15880466",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "양주 회천지구(3단계) 배전계통 자가 광통신망 구축공사",
   "org": "한국전력공사",
   "region": "경기도",
@@ -388,6 +427,19 @@
   "contact": "경기북부본부 ICT운영부 김나영 031-849-1493",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "여주경찰서 직원관사 신축공사 [통신]",
+  "org": "경찰청 경기도남부경찰청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "61238100",
+  "contract_method": "제한경쟁",
+  "registered": "2026-10-22 10:25:22",
+  "contact": "경무기획과 경리계 이우재 031-888-3023",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "원격감시제어 통신망 성능개선 공사",
