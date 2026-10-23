@@ -446,5 +446,76 @@
   "pq_deadline": "",
   "doc_read": true,
   "checked_at": "2026-10-21 11:15"
+ },
+ "2026-01-000238-00": {
+  "deadline": "2026-12-02 10:00",
+  "open_date": "2026-12-02 11:00",
+  "reg_deadline": "2026-12-01 18:00",
+  "lower_rate": "",
+  "url": "https://ebid.kr.or.kr/common/FileDown.do?atchFileId=2026%2F10%2F2026-01-000238-00-1.hwpx&orignlFileNm=1.%20%EC%9E%85%EC%B0%B0%EA%B3%B5%EA%B3%A0%EB%AC%B8%28%EA%B2%BD%EB%B6%80%EA%B3%A0%EC%86%8D%EC%84%A0%20%EB%8C%80%EC%A0%84%EB%B6%81%EC%97%B0%EA%B2%B0%EC%84%A0%28TK%29%EC%A2%85%EC%A0%90~%EC%8B%9D%EC%9E%A5%ED%84%B0%EB%84%90%EC%8B%9C%EC%A0%90%EB%B0%B0%EC%A0%84%EC%86%8C%EA%B0%84%20%EB%B0%B0%EC%A0%84%EC%84%A0%EB%A1%9C%20%EA%B0%9C%EB%9F%89%EA%B3%B5%EC%82%AC%29.hwpx&atchDirId=TENDER_DIR_UPLOAD",
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [],
+  "joint_duty_regions": [
+   "대전광역시"
+  ],
+  "pq_deadline": "",
+  "doc_read": true,
+  "checked_at": "2026-10-23 11:15"
+ },
+ "2026-01-000239-00": {
+  "deadline": "2026-12-02 13:00",
+  "open_date": "2026-12-02 14:00",
+  "reg_deadline": "2026-12-01 18:00",
+  "lower_rate": "",
+  "url": "https://ebid.kr.or.kr/common/FileDown.do?atchFileId=2026%2F10%2F2026-01-000239-00-1.hwpx&orignlFileNm=1.%20%EC%9E%85%EC%B0%B0%EA%B3%B5%EA%B3%A0%EB%AC%B8%28%EA%B2%BD%EB%B6%80%EA%B3%A0%EC%86%8D%EC%84%A0%20%EC%8B%9D%EC%9E%A5%ED%84%B0%EB%84%90%EC%8B%9C%EC%A0%90%EB%B0%B0%EC%A0%84%EC%86%8C~%20%EB%A7%88%EC%84%B1%ED%84%B0%EB%84%90%EC%A2%85%EC%A0%90%EB%B0%B0%EC%A0%84%EC%86%8C%EA%B0%84%20%EB%B0%B0%EC%A0%84%EC%84%A0%EB%A1%9C%20%EA%B0%9C%EB%9F%89%EA%B3%B5%EC%82%AC%29.hwpx&atchDirId=TENDER_DIR_UPLOAD",
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [],
+  "joint_duty_regions": [
+   "대전광역시",
+   "충청북도"
+  ],
+  "pq_deadline": "",
+  "doc_read": true,
+  "checked_at": "2026-10-23 11:15"
+ },
+ "2026-01-000237-00": {
+  "deadline": "2026-12-02 10:00",
+  "open_date": "2026-12-02 11:00",
+  "reg_deadline": "2026-12-01 18:00",
+  "lower_rate": "",
+  "url": "https://ebid.kr.or.kr/common/FileDown.do?atchFileId=2026%2F10%2F2026-01-000237-00-1.hwpx&orignlFileNm=1.%EC%9E%85%EC%B0%B0%EA%B3%B5%EA%B3%A0%EB%AC%B8%28%ED%98%B8%EB%82%A8%EC%84%A0%20%EC%9E%A5%EC%84%B1SSP~%EA%B4%91%EC%A3%BC%EC%86%A1%EC%A0%95%EA%B0%84%20%EB%B0%B0%EC%A0%84%EC%84%A0%EB%A1%9C%20%EA%B0%9C%EB%9F%89%EA%B3%B5%EC%82%AC%29.hwpx&atchDirId=TENDER_DIR_UPLOAD",
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [],
+  "joint_duty_regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "pq_deadline": "",
+  "doc_read": true,
+  "checked_at": "2026-10-23 11:15"
+ },
+ "2026-01-000235-00": {
+  "deadline": "2026-12-02 10:00",
+  "open_date": "2026-12-02 11:00",
+  "reg_deadline": "2026-12-01 18:00",
+  "lower_rate": "",
+  "url": "https://ebid.kr.or.kr/common/FileDown.do?atchFileId=2026%2F10%2F2026-01-000235-00-1.hwpx&orignlFileNm=1.%EC%9E%85%EC%B0%B0%EA%B3%B5%EA%B3%A0%EB%AC%B8%28%ED%98%B8%EB%82%A8%EC%84%A0%20%EB%B0%B1%EC%96%91%EC%82%AC~%EC%9E%A5%EC%84%B1SSP%EA%B0%84%20%EB%B0%B0%EC%A0%84%EC%84%A0%EB%A1%9C%20%EA%B0%9C%EB%9F%89%EA%B3%B5%EC%82%AC%29.hwpx&atchDirId=TENDER_DIR_UPLOAD",
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [],
+  "joint_duty_regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "pq_deadline": "",
+  "doc_read": true,
+  "checked_at": "2026-10-23 11:15"
  }
 }
