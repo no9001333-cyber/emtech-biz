@@ -23,82 +23,236 @@
     background: var(--paper);
     color: var(--ink);
   }
-  header { padding: 28px 24px 18px; border-bottom: 1px solid var(--line); }
+  header { padding: 28px 24px 16px; border-bottom: 1px solid var(--line); }
   header h1 { margin: 0 0 6px; font-size: 1.4rem; letter-spacing: -0.02em; }
   header p { margin: 0; color: var(--muted); font-size: 0.88rem; }
-  .meta { display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; font-size:0.84rem; color:var(--muted); }
+  .meta { display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; font-size:0.85rem; color:var(--muted); }
   .meta b { color: var(--ink); }
-  .back-link { margin-top:14px; display:block; font-size:0.84rem; }
-  .back-link a { color: var(--good); text-decoration:none; font-weight:600; }
-  .back-link a:hover { text-decoration:underline; }
+  .back-link { margin-top:14px; display:inline-block; font-size:0.85rem; color:var(--good); text-decoration:none; }
+  .back-link:hover { text-decoration:underline; }
 
-  main { padding: 20px 24px 60px; max-width: 980px; margin: 0 auto; }
+  main { max-width: 880px; margin: 0 auto; padding: 24px 24px 60px; }
 
-  .alert-today {
-    background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 10px;
-    padding: 14px 18px; margin-bottom: 22px; font-size: 0.88rem;
-  }
-  .alert-today b { color: var(--accent); }
+  .empty { padding:80px 0; text-align:center; color:var(--muted); font-size:1rem; }
 
-  .empty-card {
-    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-    padding: 70px 20px; text-align:center;
-  }
-  .empty-card .big { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
-  .empty-card .small { font-size: 0.86rem; color: var(--muted); line-height:1.6; }
-
-  .cards { display: flex; flex-direction: column; gap: 16px; }
   .card {
-    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-    padding: 18px 20px;
+    background: var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:20px 22px; margin-bottom:20px;
   }
-  .card .num { display:inline-block; background: var(--accent); color: #fff; font-size: 0.74rem;
-    font-weight: 700; border-radius: 999px; padding: 2px 9px; margin-right: 8px; }
-  .card h2 { margin: 0 0 4px; font-size: 1.05rem; line-height: 1.4; display:inline; }
-  .card .org { margin: 6px 0 12px; font-size: 0.82rem; color: var(--muted); }
-  .card .notice-no { font-family: monospace; font-size: 0.76rem; color: var(--muted); }
-  .card .facts { display:flex; flex-wrap:wrap; gap: 10px 20px; margin-bottom: 12px;
-    background: var(--good-soft); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; }
-  .card .facts div b { color: var(--good); }
-  .card .section { margin-top: 10px; font-size: 0.86rem; line-height: 1.6; }
-  .card .section .label { font-weight: 700; color: var(--accent); margin-right: 4px; }
-  .card .godecision { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 0.86rem; font-weight: 600; }
-  .card .godecision.go { background: #e4eef4; color: var(--good); }
-  .card .godecision.check { background: var(--accent-soft); color: var(--accent); }
-  .card .godecision.nogo { background: #f0f0ee; color: var(--muted); }
-  .card a.src-link { font-size: 0.78rem; color: var(--good); text-decoration:none; }
-  .card a.src-link:hover { text-decoration: underline; }
+  .card h2 { margin:0 0 4px; font-size:1.05rem; letter-spacing:-0.01em; }
+  .card .org { color:var(--muted); font-size:0.82rem; margin-bottom:14px; }
+  .card .org b { color: var(--ink); }
 
-  footer { padding: 20px 24px 40px; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--line); max-width:980px; margin:0 auto; }
+  .section { margin-bottom:12px; }
+  .section:last-child { margin-bottom:0; }
+  .section .label {
+    display:inline-block; font-size:0.72rem; font-weight:700; color:var(--accent);
+    background:var(--accent-soft); border-radius:999px; padding:2px 9px; margin-bottom:6px;
+  }
+  .section .label.good { color:var(--good); background:var(--good-soft); }
+  .section p { margin:0; font-size:0.88rem; line-height:1.55; }
+
+  .kv { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:0.84rem; margin-bottom:2px; }
+  .kv span { white-space: nowrap; }
+  .kv b { color: var(--ink); }
+
+  .godecision {
+    margin-top:14px; padding:10px 14px; border-left:3px solid var(--accent);
+    background:var(--accent-soft); border-radius:0 8px 8px 0; font-size:0.88rem; font-weight:600;
+  }
+
+  a.notice-link { color:var(--good); text-decoration:none; font-size:0.8rem; }
+  a.notice-link:hover { text-decoration:underline; }
+
+  footer { max-width:880px; margin:0 auto; padding:20px 24px 40px; font-size:0.78rem; color:var(--muted); border-top:1px solid var(--line); }
 </style>
 </head>
 <body>
 
 <header>
   <h1>오늘의 신규공고 전략브리핑</h1>
-  <p>이엔테크(용인, 정보통신공사업, 시평액 약 54억원) 기준 — 어제 대비 오늘 새로 뜬 나라장터 통신 관련 공고만 선별하여 전략 분석</p>
+  <p>전일 대비 신규 등록된 나라장터 통신 관련 공고(이엔테크 적격 건)만 골라 수주전략 관점에서 분석합니다.</p>
   <div class="meta">
-    <span>브리핑 생성일: <b>2026-10-23</b></span>
-    <span>비교 대상 수집본: <b>2026-10-22 11:18</b></span>
-    <span>신규 공고: <b>0건</b></span>
+    <span>기준일: <b>2026-10-26</b></span>
+    <span>신규 공고: <b>6건</b></span>
   </div>
-  <div class="back-link"><a href="index.html">← 입찰공고 목록으로</a></div>
+  <a class="back-link" href="index.html">← 입찰공고 목록으로</a>
 </header>
 
 <main>
 
-  <div class="empty-card">
-    <div class="big">오늘은 신규 없음</div>
-    <div class="small">
-      data/bids.json 최신 수집본(2026-10-22 11:18)과 그 직전 수집본을 비교한 결과, 나라장터 통신 관련 신규 공고(notice_no 기준)가 없습니다.<br>
-      (2026-10-23 오늘 날짜로 새로 수집된 데이터가 아직 없어, 2026-10-22 11:18 수집본이 비교 양쪽 기준점으로 동일하게 사용되었습니다.)
+<div class="card">
+  <h2>산업안전보건본부 사무공간 통신공사</h2>
+  <div class="org">발주처: <b>고용노동부</b> · 공고번호 R26BK01789190</div>
+
+  <div class="section">
+    <span class="label">핵심조건</span>
+    <div class="kv">
+      <span>추정가격: <b>90,000,000원</b> (잠정추정치)</span>
+      <span>투찰마감: <b>2026-10-29 10:00</b></span>
+      <span>지역: <b>세종특별자치시</b> (region_check상 참가지역 전국, 제한 없음)</span>
     </div>
   </div>
+
+  <div class="section">
+    <span class="label">참가자격/PQ</span>
+    <p>restrictions 없음, region_check상 전국 참가 가능으로 확인됨(현장소재지는 세종시이나 참가지역 제한은 아님). notice_kind가 '공사'로 실제 정보통신공사업 시공 건에 해당해 업종 적합성이 높음. 시공능력평가액 기준은 공고문에 직접 명시되어 있지 않아 확인 필요하나, 추정가격(9천만원)은 이엔테크 시평액(약 54억원) 대비 매우 작아 단독 수행에 전혀 문제 없는 규모.</p>
+  </div>
+
+  <div class="section">
+    <span class="label good">가격전략 힌트</span>
+    <p>a_value·낙찰하한율 데이터 없음 (해당 없음).</p>
+  </div>
+
+  <div class="godecision">Go/No-Go: 전형적인 소규모 정보통신공사로 이엔테크 체급에 정확히 부합 — 적극 투찰 권장(투찰마감이 2026-10-29로 임박하니 서둘러 공고문 확인 필요).</div>
+
+  <p style="margin-top:12px;"><a class="notice-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01789190&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 공고 원문 →</a></p>
+</div>
+
+<div class="card">
+  <h2>수신기 통신 AID 3.0 PCL 기판 및 유도등, 중계기 등의 수신반 구성(소방지적사항) 등</h2>
+  <div class="org">발주처: <b>지에스건설주식회사</b> · 공고번호 R26BK01788483</div>
+
+  <div class="section">
+    <span class="label">핵심조건</span>
+    <div class="kv">
+      <span>추정가격: <b>4,990,909원</b> (잠정추정치)</span>
+      <span>투찰마감: <b>2026-10-28 15:00</b></span>
+      <span>지역: <b>전국</b> (제한 없음)</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="label">참가자격/PQ</span>
+    <p>restrictions 없음, 전국 참가 가능으로 확인됨. 다만 발주처가 공공기관이 아닌 민간 건설사(지에스건설)로, 공공조달 PQ와는 성격이 다른 사급·하도급성 소액 구매 건일 가능성이 있음 — 공고문에서 발주 성격(사급/도급)과 면허 요건을 직접 확인 필요. 시공능력평가액 기준 언급 없음 — 공고문에서 직접 확인 필요.</p>
+  </div>
+
+  <div class="section">
+    <span class="label good">가격전략 힌트</span>
+    <p>a_value·낙찰하한율 데이터 없음 (해당 없음).</p>
+  </div>
+
+  <div class="godecision">Go/No-Go: 금액이 500만원 내외로 영세하고 발주처 성격도 불분명함 — 공고문 직접 확인 후 판단 (추측: 소방점검 부속자재 소액구매일 가능성이 높아 전략적 우선도는 낮음).</div>
+
+  <p style="margin-top:12px;"><a class="notice-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01788483&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 공고 원문 →</a></p>
+</div>
+
+<div class="card">
+  <h2>이기종 양자암호통신망 시험환경 구축·운영 및 양자암호 서비스화 검증 지원</h2>
+  <div class="org">발주처: <b>한국과학기술정보연구원(KISTI)</b> · 공고번호 R26BK01789303</div>
+
+  <div class="section">
+    <span class="label">핵심조건</span>
+    <div class="kv">
+      <span>추정가격: <b>72,727,273원</b> (잠정추정치)</span>
+      <span>투찰마감: <b>2026-11-03 10:00</b></span>
+      <span>지역: <b>전국</b> (제한 없음)</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="label">참가자격/PQ</span>
+    <p>restrictions 없음, 전국 참가 가능으로 확인됨. 다만 '양자암호통신망 시험환경 구축·검증 지원'이라는 연구개발성 용역으로, 정보통신공사업 면허만으로 요구 기술역량(양자암호 R&D 실적·인력)을 충족하는지는 불확실 — 공고문에서 참가자격(실적·인력 요건) 직접 확인 필요. 시공능력평가액 기준 언급 없음 — 직접 확인 필요.</p>
+  </div>
+
+  <div class="section">
+    <span class="label good">가격전략 힌트</span>
+    <p>a_value·낙찰하한율 데이터 없음 (해당 없음).</p>
+  </div>
+
+  <div class="godecision">Go/No-Go: 통상적인 통신공사가 아닌 양자암호 연구개발성 용역으로 이엔테크의 핵심 역량(정보통신공사 시공)과는 거리가 있어 보임(추측) — 공고문 직접 확인 후 판단.</div>
+
+  <p style="margin-top:12px;"><a class="notice-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01789303&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 공고 원문 →</a></p>
+</div>
+
+<div class="card">
+  <h2>2027년 남양주시 교통신호제어시스템 운영관리 용역</h2>
+  <div class="org">발주처: <b>조달청 서울지방조달청</b> · 공고번호 R26BK01769669</div>
+
+  <div class="section">
+    <span class="label">핵심조건</span>
+    <div class="kv">
+      <span>추정가격: <b>307,193,636원</b> (잠정추정치)</span>
+      <span>투찰마감: <b>2026-11-06 10:00</b></span>
+      <span>지역: <b>전국</b> (제한 없음)</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="label">참가자격/PQ</span>
+    <p>restrictions 없음, 전국 참가 가능으로 확인됨. 업종 요건에 정보통신공사업이 명시되어 면허는 적합. 시공능력평가액 기준은 공고문에 직접 명시되어 있지 않아 확인 필요하나, 추정가격(약 3.07억원)이 이엔테크 시평액(약 54억원) 대비 작아 단독 수행 체급에 부합하는 편.</p>
+  </div>
+
+  <div class="section">
+    <span class="label good">가격전략 힌트</span>
+    <p>a_value·낙찰하한율 데이터 없음 (해당 없음).</p>
+  </div>
+
+  <div class="godecision">Go/No-Go: 면허 적합, 금액대도 단독 수행에 적정(교통신호제어 O&M 용역) — 적극 검토 권장(세부 인력·실적 요건은 공고문 직접 확인 후 최종 판단).</div>
+
+  <p style="margin-top:12px;"><a class="notice-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01769669&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 공고 원문 →</a></p>
+</div>
+
+<div class="card">
+  <h2>2027년 정보통신시스템 통합유지관리 용역</h2>
+  <div class="org">발주처: <b>조달청 인천지방조달청</b> · 공고번호 R26BK01781924</div>
+
+  <div class="section">
+    <span class="label">핵심조건</span>
+    <div class="kv">
+      <span>추정가격: <b>571,681,818원</b> (잠정추정치)</span>
+      <span>투찰마감: <b>2026-11-13 10:00</b></span>
+      <span>지역: <b>전국</b> (제한 없음)</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="label">참가자격/PQ</span>
+    <p>restrictions 없음, 전국 참가 가능으로 확인됨. 업종 요건에 정보통신공사업이 명시되어 면허는 적합. 시공능력평가액 기준은 공고문에 직접 명시되어 있지 않아 확인 필요하나, 추정가격(약 5.72억원)이 이엔테크 시평액(약 54억원) 범위 내로 단독 수행 가능한 규모.</p>
+  </div>
+
+  <div class="section">
+    <span class="label good">가격전략 힌트</span>
+    <p>a_value·낙찰하한율 데이터 없음 (해당 없음).</p>
+  </div>
+
+  <div class="godecision">Go/No-Go: 면허 적합, 금액도 단독 수행 가능 범위 — 적극 검토 권장(통합유지관리 인력 투입 규모는 공고문 직접 확인 필요).</div>
+
+  <p style="margin-top:12px;"><a class="notice-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01781924&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 공고 원문 →</a></p>
+</div>
+
+<div class="card">
+  <h2>2027년 소방정보통신시스템 통합 유지보수 용역</h2>
+  <div class="org">발주처: <b>조달청</b> · 공고번호 R26BK01787357</div>
+
+  <div class="section">
+    <span class="label">핵심조건</span>
+    <div class="kv">
+      <span>추정가격: <b>1,484,145,455원</b> (잠정추정치)</span>
+      <span>투찰마감: <b>2026-11-25 10:00</b></span>
+      <span>지역: <b>전국</b> (제한 없음)</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="label">참가자격/PQ</span>
+    <p>restrictions 없음, 전국 참가 가능으로 확인됨. 업종 요건에 정보통신공사업이 명시되어 면허는 적합. 시공능력평가액 기준은 공고문에 직접 명시되어 있지 않아 확인 필요하나, 추정가격(약 14.8억원)은 이엔테크 시평액(약 54억원) 이내로 단독 수행 가능한 범위(수백억 이상 대형건은 아님). 다만 소방+정보통신 복합 유지보수인 만큼 실적 요건은 공고문에서 반드시 확인 필요.</p>
+  </div>
+
+  <div class="section">
+    <span class="label good">가격전략 힌트</span>
+    <p>a_value·낙찰하한율 데이터 없음 (해당 없음).</p>
+  </div>
+
+  <div class="godecision">Go/No-Go: 면허 적합, 금액도 단독 수행 가능 범위 — 적극 검토 권장(소방정보통신 복합 실적요건은 공고문 직접 확인 후 최종 판단).</div>
+
+  <p style="margin-top:12px;"><a class="notice-link" href="https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01787357&bidPbancOrd=000" target="_blank" rel="noopener">나라장터 공고 원문 →</a></p>
+</div>
 
 </main>
 
 <footer>
-  본 브리핑은 공개된 공고 데이터(data/bids.json, data/awards.json)만을 기준으로 자동 선별·분석한 참고 자료입니다. 참가자격·PQ·면허 요건·계약조건은 반드시 공고문 원문으로 최종 확인 후 투찰 여부를 결정하세요.
+  본 브리핑은 수집 데이터(data/bids.json) 기준 기계적 신규 판별 + 주어진 필드 범위 내 전략 분석이며, 추측으로 표시된 부분과 "직접 확인 필요"로 명시된 항목은 반드시 공고문 원문을 확인한 뒤 투찰 여부를 최종 결정하세요.
 </footer>
 
 </body>
