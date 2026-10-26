@@ -5893,5 +5893,61 @@
    "variance_pct": "-2.0~2.0"
   },
   "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16891&negn_pldt=20261103&dprt_code=LDH&ordr_year=2026&negn_degr=1&anmt_numb=LDH0040&pageDivs=E"
+ },
+ "LFA0051": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [
+   "세종특별자치시"
+  ],
+  "basis_info": {
+   "base_amount": 20290000,
+   "a_value": 249052,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16909&negn_pldt=20261030&dprt_code=LFA&ordr_year=2026&negn_degr=1&anmt_numb=LFA0051&pageDivs=E"
+ },
+ "LQH0076": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도 고양시"
+  ],
+  "basis_info": {
+   "base_amount": 37772010,
+   "a_value": 1498867,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16894&negn_pldt=20261030&dprt_code=LQH&ordr_year=2026&negn_degr=2&anmt_numb=LQH0076&pageDivs=E"
+ },
+ "LQH0077": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도 고양시"
+  ],
+  "basis_info": {
+   "base_amount": 12212030,
+   "a_value": 504383,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16895&negn_pldt=20261030&dprt_code=LQH&ordr_year=2026&negn_degr=1&anmt_numb=LQH0077&pageDivs=E"
+ },
+ "LQH0078": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도 고양시"
+  ],
+  "basis_info": {
+   "base_amount": 37772010,
+   "a_value": 1952942,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16898&negn_pldt=20261030&dprt_code=LQH&ordr_year=2026&negn_degr=1&anmt_numb=LQH0078&pageDivs=E"
  }
 }

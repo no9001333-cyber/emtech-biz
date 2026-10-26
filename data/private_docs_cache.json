@@ -2767,5 +2767,13 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01790287": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
  }
 }
