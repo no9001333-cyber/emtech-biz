@@ -6081,5 +6081,80 @@
    "인천"
   ],
   "checked_at": "2026-10-23 11:15"
+ },
+ "E012607155": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-26 08:58"
+ },
+ "E012607150": {
+  "licenses": [
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(정보통신)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-10-26 08:58"
+ },
+ "E012607144": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-26 08:58"
+ },
+ "E012607146": {
+  "licenses": [
+   "엔지니어링사업(일반산업기계)"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-26 08:58"
+ },
+ "E012607139": {
+  "licenses": [
+   "철근·콘크리트공사업",
+   "전기공사업"
+  ],
+  "license_logic": "And",
+  "regions": [],
+  "checked_at": "2026-10-26 08:58"
+ },
+ "E012607141": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-10-26 08:58"
+ },
+ "E012607145": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-10-26 08:58"
+ },
+ "E082600421": {
+  "licenses": [
+   "전문소방시설관리업",
+   "일반소방시설공사업(기계)",
+   "일반소방시설공사업(전기)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-10-26 08:58"
+ },
+ "E012607136": {
+  "licenses": [
+   "토목공사업",
+   "전기공사업"
+  ],
+  "license_logic": "And",
+  "regions": [],
+  "checked_at": "2026-10-26 08:58"
  }
 }

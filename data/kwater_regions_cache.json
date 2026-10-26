@@ -2419,5 +2419,35 @@
    "기계설비·가스공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102211334055848%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603770": {
+  "found": true,
+  "method": "일반경쟁",
+  "qualification": "- 일반경쟁 건입니다. (지역의무공동도급 대상)\n* 입찰참가자격 등 자세한 내용은 반드시 입찰공고문을 확인하시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "공고문(1.입찰공고문.hwp)",
+  "checked_at": "2026-10-26 08:58",
+  "licenses": [
+   "도장·습식·방수·석공사업",
+   "토목공사업",
+   "토목건축공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102315054069641%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603764": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "□ 본 건은 지역제한(충청북도) 및 여성기업/장애인기업/사회적기업 제한으로 진행하는 건입니다.\n□ 견적서제출안내문 및 시방서 등을 반드시 숙지하신 후 입찰에 참가하여 주시기 바랍니다.",
+  "regions": [
+   "충청북도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-10-26 08:58",
+  "licenses": [
+   "소방시설공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102310483266069%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

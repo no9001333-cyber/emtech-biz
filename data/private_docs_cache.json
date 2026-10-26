@@ -2696,5 +2696,76 @@
   "regions": [],
   "basis": "공고서 글자 추출 실패(스캔본)",
   "docs_v2": true
+ },
+ "R26BK01789444": {
+  "read": true,
+  "doc": "[입찰공고문]_희망찬농장_261023.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01789130": {
+  "read": true,
+  "doc": "1-1. 2026.10.23. [소사78-1] 시공자 선정 입찰공고_v2.0.hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01788850": {
+  "read": true,
+  "doc": "(삼익 5동)1. 시공자 선정 입찰공고문(안).hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01789248": {
+  "read": true,
+  "doc": "[제안요청서] (재공고)2026 K리그 미디어센터 이전 및 SI공사 용역.pdf",
+  "licenses": [
+   "정보통신공사업",
+   "소방시설공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01789058": {
+  "read": true,
+  "doc": "2026년 청년자립형 스마트팜 지원사업 다이쌈 김수민.hwp",
+  "licenses": [
+   "금속창호·지붕건축물조립공사업",
+   "금속구조물·창호·온실공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01789096": {
+  "read": true,
+  "doc": "하안주공10,11단지 재건축사업 시공자 선정 입찰공고문.pdf",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업",
+   "조경공사업",
+   "소방시설공사업",
+   "전문소방시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01789698": {
+  "read": true,
+  "doc": "공고서-못골안농장(2026년 양돈인공지능 번식관리시스템 구축사업.hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }
