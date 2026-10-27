@@ -364,6 +364,19 @@
   "announced": true
  },
  {
+  "title": "석수초 1, 2호동 내진보강 및 안전개선 통신공사(계속비)",
+  "org": "경기도교육청 경기도안양과천교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "8160000",
+  "contract_method": "수의계약",
+  "registered": "2026-10-27 09:36:09",
+  "contact": "교육시설과 김동근 031-380-5192",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "선부2동 공공복합청사 건립공사(통신)",
   "org": "경기도 안산시",
   "region": "경기도",
@@ -440,6 +453,19 @@
   "contact": "경기북부본부 ICT운영부 김나영 031-849-1493",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "여(주)행(복) 스테이션 건립공사(통신)",
+  "org": "여주도시공사",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "127910000",
+  "contract_method": "수의계약",
+  "registered": "2026-10-26 13:54:07",
+  "contact": "경영지원팀 신경신 031-880-4012",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "여주경찰서 직원관사 신축공사 [통신]",

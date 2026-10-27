@@ -2449,5 +2449,41 @@
    "소방시설공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102310483266069%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603791": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "□ 이 건은 「국가를 당사자로 하는 계약에 관한 법률 시행령」 제26조제1항제5호가목 및 제30조제1항제2호에 해당하여, 수의계약(시담)으로 진행하는 건입니다.\n - 수의시담 대상자 : 주식회사 인플럭스(845-81-01717)",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-27 11:42",
+  "private": true
+ },
+ "B3202603788": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "수의시담건 입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-27 11:42",
+  "private": true
+ },
+ "B3202603790": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "□ 주식회사 제이엠이엔씨(317-87-01742)와 진행하는 수의시담건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-27 11:42",
+  "private": true
+ },
+ "B3202603777": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "- 본 계약은 (주)원파워전력과의 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-27 11:42",
+  "private": true
  }
 }
