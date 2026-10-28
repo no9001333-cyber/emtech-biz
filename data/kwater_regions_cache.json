@@ -2485,5 +2485,36 @@
   "basis": "",
   "checked_at": "2026-10-27 11:42",
   "private": true
+ },
+ "B3202603806": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "(주) 대일 조경개발(126-81-99798)과 하는 수의시담계약건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-28 11:51",
+  "private": true
+ },
+ "B3202603810": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "□ 실적제한 경쟁입찰 대상입니다.\n(입찰참가신청 마감일 기준 최근 5년간 1MW 이상 풍력발전설비의 메인베어링 혹은 기어박스를 교체한 실적’이 있는 업체로 제한)\n\n□ 자세한 사항은 공고문, 시방서 등을 반드시 확인하시기 바랍니다.",
+  "regions": [],
+  "basis": "공고문에서 지역 문구를 못 찾음",
+  "checked_at": "2026-10-28 11:51",
+  "licenses": [
+   "철강구조물공사업",
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102809254696092%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603811": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "* 본 건은 주식회사 정안건설 주식회사(515-81-10090)와 진행하는 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-28 11:51",
+  "private": true
  }
 }

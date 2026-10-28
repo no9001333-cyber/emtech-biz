@@ -6466,5 +6466,564 @@
    "variance_pct": "-2.0~2.0"
   },
   "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16977&negn_pldt=20261103&dprt_code=LNF&ordr_year=2026&negn_degr=1&anmt_numb=LNF0183&pageDivs=E"
+ },
+ "MDF0038": {
+  "licenses": [
+   "철근ㆍ콘크리트공사업"
+  ],
+  "regions": [
+   "대구광역시"
+  ],
+  "basis_info": {
+   "base_amount": 22095364,
+   "a_value": 1037736,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17024&negn_pldt=20261102&dprt_code=MDF&ordr_year=2026&negn_degr=1&anmt_numb=MDF0038&pageDivs=E"
+ },
+ "LNG0344": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [
+   "경기도 고양시"
+  ],
+  "basis_info": {},
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17098&negn_pldt=20261103&dprt_code=LNG&ordr_year=2026&negn_degr=1&anmt_numb=LNG0344&pageDivs=E"
+ },
+ "LNF0184": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 646051000,
+   "a_value": 35551708,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/bid/announceView.do?dprt_code=LNF&anmt_divs=B&anmt_numb=LNF0184&rqst_degr=1&dcsn_numb=2026-16976&rqst_year=2026&anmt_date=20261027&csrt_numb=2026-16976&lv2Divs=1&cont_mthd=C&pageDivs=E1&lv1_divs=PEB"
+ },
+ "SDL0036": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "서울특별시"
+  ],
+  "basis_info": {
+   "base_amount": 286000000,
+   "a_value": 13642329,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/bid/announceView.do?dprt_code=SDL&anmt_divs=A&anmt_numb=SDL0036&rqst_degr=1&dcsn_numb=2026-17035&rqst_year=2026&anmt_date=20261027&csrt_numb=2026-17035&lv2Divs=1&cont_mthd=C&pageDivs=E1&lv1_divs=PEB"
+ },
+ "LMQ0015": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 318352000,
+   "a_value": 15902330,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/bid/announceView.do?dprt_code=LMQ&anmt_divs=A&anmt_numb=LMQ0015&rqst_degr=1&dcsn_numb=2026-17090&rqst_year=2026&anmt_date=20261027&csrt_numb=2026-17090&lv2Divs=1&cont_mthd=C&pageDivs=E1&lv1_divs=PEB"
+ },
+ "SCF0131": {
+  "licenses": [
+   "도장ㆍ습식ㆍ방수ㆍ석공사업"
+  ],
+  "regions": [
+   "경상남도 창원시"
+  ],
+  "basis_info": {
+   "base_amount": 153000000,
+   "a_value": 9262678,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16986&negn_pldt=20261102&dprt_code=SCF&ordr_year=2026&negn_degr=1&anmt_numb=SCF0131&pageDivs=E"
+ },
+ "MDK0062": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 69449010,
+   "a_value": 2536528,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16995&negn_pldt=20261102&dprt_code=MDK&ordr_year=2026&negn_degr=1&anmt_numb=MDK0062&pageDivs=E"
+ },
+ "LKD0117": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업",
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "충청남도"
+  ],
+  "basis_info": {
+   "base_amount": 237860784,
+   "a_value": 7262624,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-16999&negn_pldt=20261102&dprt_code=LKD&ordr_year=2026&negn_degr=1&anmt_numb=LKD0117&pageDivs=E"
+ },
+ "LCN0089": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "서울특별시",
+   "인천광역시",
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 2173500,
+   "a_value": 0,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17004&negn_pldt=20261102&dprt_code=LCN&ordr_year=2026&negn_degr=1&anmt_numb=LCN0089&pageDivs=E"
+ },
+ "LCN0090": {
+  "licenses": [
+   "도장ㆍ습식ㆍ방수ㆍ석공사업"
+  ],
+  "regions": [
+   "서울특별시"
+  ],
+  "basis_info": {
+   "base_amount": 14906230,
+   "a_value": 0,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17005&negn_pldt=20261102&dprt_code=LCN&ordr_year=2026&negn_degr=1&anmt_numb=LCN0090&pageDivs=E"
+ },
+ "LKS0021": {
+  "licenses": [
+   "지하수개발이용시공업"
+  ],
+  "regions": [
+   "충청남도 논산시"
+  ],
+  "basis_info": {
+   "base_amount": 26770058,
+   "a_value": 517719,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17006&negn_pldt=20261102&dprt_code=LKS&ordr_year=2026&negn_degr=1&anmt_numb=LKS0021&pageDivs=E"
+ },
+ "SCR0081": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "전남광주통합특별시"
+  ],
+  "basis_info": {
+   "base_amount": 98000000,
+   "a_value": 3992919,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17026&negn_pldt=20261102&dprt_code=SCR&ordr_year=2026&negn_degr=2&anmt_numb=SCR0081&pageDivs=E"
+ },
+ "LGP0152": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도 남양주시"
+  ],
+  "basis_info": {
+   "base_amount": 5958420,
+   "a_value": 208166,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17027&negn_pldt=20261102&dprt_code=LGP&ordr_year=2026&negn_degr=1&anmt_numb=LGP0152&pageDivs=E"
+ },
+ "LQG0080": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 8789550,
+   "a_value": 0,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17028&negn_pldt=20261102&dprt_code=LQG&ordr_year=2026&negn_degr=1&anmt_numb=LQG0080&pageDivs=E"
+ },
+ "SCR0082": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "전남광주통합특별시"
+  ],
+  "basis_info": {
+   "base_amount": 98000000,
+   "a_value": 3992919,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17038&negn_pldt=20261102&dprt_code=SCR&ordr_year=2026&negn_degr=1&anmt_numb=SCR0082&pageDivs=E"
+ },
+ "SDG0021": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "인천광역시"
+  ],
+  "basis_info": {
+   "base_amount": 215000000,
+   "a_value": 13334330,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17040&negn_pldt=20261102&dprt_code=SDG&ordr_year=2026&negn_degr=1&anmt_numb=SDG0021&pageDivs=E"
+ },
+ "LGM0125": {
+  "licenses": [
+   "도장ㆍ습식ㆍ방수ㆍ석공사업"
+  ],
+  "regions": [
+   "강원특별자치도 홍천군"
+  ],
+  "basis_info": {
+   "base_amount": 26226030,
+   "a_value": 1241942,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17042&negn_pldt=20261102&dprt_code=LGM&ordr_year=2026&negn_degr=1&anmt_numb=LGM0125&pageDivs=E"
+ },
+ "LGP0151": {
+  "licenses": [
+   "상ㆍ하수도설비공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 14500140,
+   "a_value": 219287,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17048&negn_pldt=20261102&dprt_code=LGP&ordr_year=2026&negn_degr=1&anmt_numb=LGP0151&pageDivs=E"
+ },
+ "SCP0073": {
+  "licenses": [
+   "상ㆍ하수도설비공사업"
+  ],
+  "regions": [
+   "강원특별자치도 고성군"
+  ],
+  "basis_info": {
+   "base_amount": 79000000,
+   "a_value": 3375610,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17050&negn_pldt=20261102&dprt_code=SCP&ordr_year=2026&negn_degr=1&anmt_numb=SCP0073&pageDivs=E"
+ },
+ "MCS0153": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "충청남도"
+  ],
+  "basis_info": {
+   "base_amount": 68608000,
+   "a_value": 3170802,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17055&negn_pldt=20261102&dprt_code=MCS&ordr_year=2026&negn_degr=1&anmt_numb=MCS0153&pageDivs=E"
+ },
+ "MCS0154": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "충청남도 계룡시"
+  ],
+  "basis_info": {
+   "base_amount": 27023000,
+   "a_value": 1495989,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17057&negn_pldt=20261102&dprt_code=MCS&ordr_year=2026&negn_degr=1&anmt_numb=MCS0154&pageDivs=E"
+ },
+ "SCR0084": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "전남광주통합특별시"
+  ],
+  "basis_info": {
+   "base_amount": 150000000,
+   "a_value": 7132375,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17059&negn_pldt=20261102&dprt_code=SCR&ordr_year=2026&negn_degr=1&anmt_numb=SCR0084&pageDivs=E"
+ },
+ "MBC0018": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "경기도 파주시"
+  ],
+  "basis_info": {
+   "base_amount": 68000000,
+   "a_value": 3421526,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17063&negn_pldt=20261102&dprt_code=MBC&ordr_year=2026&negn_degr=1&anmt_numb=MBC0018&pageDivs=E"
+ },
+ "LHR0111": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "충청북도"
+  ],
+  "basis_info": {
+   "base_amount": 13117000,
+   "a_value": 0,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17064&negn_pldt=20261102&dprt_code=LHR&ordr_year=2026&negn_degr=1&anmt_numb=LHR0111&pageDivs=E"
+ },
+ "LHZ0038": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "강원특별자치도 화천군"
+  ],
+  "basis_info": {
+   "base_amount": 131833000,
+   "a_value": 2341314,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17030&negn_pldt=20261102&dprt_code=LHZ&ordr_year=2026&negn_degr=1&anmt_numb=LHZ0038&pageDivs=E"
+ },
+ "LPN0184": {
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "인천광역시"
+  ],
+  "basis_info": {},
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17069&negn_pldt=20261103&dprt_code=LPN&ordr_year=2026&negn_degr=1&anmt_numb=LPN0184&pageDivs=E"
+ },
+ "LKF0165": {
+  "licenses": [
+   "지반조성,포장공사업"
+  ],
+  "regions": [
+   "경상북도"
+  ],
+  "basis_info": {
+   "base_amount": 4819750,
+   "a_value": 0,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17091&negn_pldt=20261103&dprt_code=LKF&ordr_year=2026&negn_degr=1&anmt_numb=LKF0165&pageDivs=E"
+ },
+ "LKF0166": {
+  "licenses": [
+   "도장ㆍ습식ㆍ방수ㆍ석공사업"
+  ],
+  "regions": [
+   "경상북도"
+  ],
+  "basis_info": {
+   "base_amount": 4602840,
+   "a_value": 0,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17092&negn_pldt=20261103&dprt_code=LKF&ordr_year=2026&negn_degr=2&anmt_numb=LKF0166&pageDivs=E"
+ },
+ "LGM0126": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도 홍천군"
+  ],
+  "basis_info": {
+   "base_amount": 38471860,
+   "a_value": 1503786,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17094&negn_pldt=20261103&dprt_code=LGM&ordr_year=2026&negn_degr=1&anmt_numb=LGM0126&pageDivs=E"
+ },
+ "UAC0019": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "충청남도"
+  ],
+  "basis_info": {},
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17003&negn_pldt=20261103&dprt_code=UAC&ordr_year=2026&negn_degr=1&anmt_numb=UAC0019&pageDivs=E"
+ },
+ "MCX0195": {
+  "licenses": [
+   "조경식재ㆍ시설물공사업"
+  ],
+  "regions": [
+   "대전광역시"
+  ],
+  "basis_info": {
+   "base_amount": 51806840,
+   "a_value": 2213758,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17041&negn_pldt=20261103&dprt_code=MCX&ordr_year=2026&negn_degr=1&anmt_numb=MCX0195&pageDivs=E"
+ },
+ "LKD0118": {
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "세종특별자치시",
+   "충청남도"
+  ],
+  "basis_info": {
+   "base_amount": 130588559,
+   "a_value": 3533680,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17087&negn_pldt=20261103&dprt_code=LKD&ordr_year=2026&negn_degr=1&anmt_numb=LKD0118&pageDivs=E"
+ },
+ "LKD0119": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "세종특별자치시",
+   "충청남도"
+  ],
+  "basis_info": {
+   "base_amount": 27182441,
+   "a_value": 495080,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17088&negn_pldt=20261103&dprt_code=LKD&ordr_year=2026&negn_degr=1&anmt_numb=LKD0119&pageDivs=E"
+ },
+ "LKD0120": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "세종특별자치시",
+   "충청남도"
+  ],
+  "basis_info": {
+   "base_amount": 28854490,
+   "a_value": 607700,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17089&negn_pldt=20261103&dprt_code=LKD&ordr_year=2026&negn_degr=1&anmt_numb=LKD0120&pageDivs=E"
+ },
+ "LMQ0013": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 162509120,
+   "a_value": 6864541,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17000&negn_pldt=20261104&dprt_code=LMQ&ordr_year=2026&negn_degr=1&anmt_numb=LMQ0013&pageDivs=E"
+ },
+ "LMQ0010": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도 가평군"
+  ],
+  "basis_info": {
+   "base_amount": 101990000,
+   "a_value": 4723013,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17013&negn_pldt=20261104&dprt_code=LMQ&ordr_year=2026&negn_degr=1&anmt_numb=LMQ0010&pageDivs=E"
+ },
+ "LMQ0011": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "경기도 가평군"
+  ],
+  "basis_info": {
+   "base_amount": 79425000,
+   "a_value": 1819905,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17015&negn_pldt=20261104&dprt_code=LMQ&ordr_year=2026&negn_degr=1&anmt_numb=LMQ0011&pageDivs=E"
+ },
+ "LMQ0012": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도 가평군"
+  ],
+  "basis_info": {
+   "base_amount": 38527010,
+   "a_value": 2134008,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17017&negn_pldt=20261104&dprt_code=LMQ&ordr_year=2026&negn_degr=1&anmt_numb=LMQ0012&pageDivs=E"
+ },
+ "LMQ0014": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "경기도"
+  ],
+  "basis_info": {
+   "base_amount": 127063710,
+   "a_value": 7427205,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17021&negn_pldt=20261104&dprt_code=LMQ&ordr_year=2026&negn_degr=1&anmt_numb=LMQ0014&pageDivs=E"
+ },
+ "LMQ0009": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경기도 가평군"
+  ],
+  "basis_info": {
+   "base_amount": 27340000,
+   "a_value": 1142034,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17025&negn_pldt=20261104&dprt_code=LMQ&ordr_year=2026&negn_degr=1&anmt_numb=LMQ0009&pageDivs=E"
  }
 }

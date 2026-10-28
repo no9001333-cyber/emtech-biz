@@ -156,6 +156,19 @@
   "announced": true
  },
  {
+  "title": "가평군 노인회관 건립사업(통신)",
+  "org": "경기도 가평군",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "423694000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-10-27 14:21:58",
+  "contact": "사회복지과 조영운 031-580-2253",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "경기도의료원 안성병원 경기도360° 통합돌봄도시 리모델링(통신)공사",
   "org": "경기도의료원 안성병원",
   "region": "경기도",
@@ -208,6 +221,19 @@
   "announced": true
  },
  {
+  "title": "국도48호선 김포 월곶 군하 김포CC삼거리 교차로 개선공사(통신)",
+  "org": "국토교통부 서울지방국토관리청 의정부국토관리사무소",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "35057000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-10-27 16:20:48",
+  "contact": "강화출장소 지현택 031-981-2353",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "기숙사 신축 통신공사",
   "org": "경민대학교",
   "region": "경기도",
@@ -230,6 +256,32 @@
   "contract_method": "수의계약",
   "registered": "2026-10-23 14:46:13",
   "contact": "노인복지과 오익재 031-8075-3301",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "도봉산~옥정 광역철도 시스템분야 정보통신공사(1공구)",
+  "org": "경기도청 북부청사",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "9296913000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-10-27 13:26:49",
+  "contact": "철도건설과 이상일 031-8030-4983",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "도봉산~옥정 광역철도 시스템분야 정보통신공사(2공구)",
+  "org": "경기도청 북부청사",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-10",
+  "amount": "11039778000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-10-27 13:24:08",
+  "contact": "철도건설과 이상일 031-8030-4983",
   "work_type": "통신",
   "announced": true
  },
