@@ -2516,5 +2516,81 @@
   "basis": "",
   "checked_at": "2026-10-28 11:51",
   "private": true
+ },
+ "B3202603830": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "□ 이 건은 「국가를 당사자로 하는 계약에 관한 법률 시행령」 제26조제1항제2호가목 및 제30조제1항제1호에 해당하여, 수의계약(시담)으로 진행하는 건입니다.\n - 수의시담 대상자 : 주식회사 이노스 (416-88-00412)",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-29 12:15",
+  "private": true
+ },
+ "B3202603819": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "- 본 건은 소액전자로 진행되는 건입니다. \n * 정보통신공사업 / 울산광역시 / 여성기업 또는 장애인기업 또는 사회적기업\n\n- 공고문 및 시방서 등을 숙지하고 참여해주시기 바랍니다.",
+  "regions": [
+   "울산광역시"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-10-29 12:15",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102813435599484%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603827": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "자세한 사항은 입찰공고문, 시방서 등을 확인하시기 바랍니다.",
+  "regions": [
+   "대전광역시"
+  ],
+  "basis": "공고문(입찰공고문(연구원_방수).hwp)",
+  "checked_at": "2026-10-29 12:15",
+  "licenses": [
+   "도장·습식·방수·석공사업",
+   "습식·방수공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102816590302228%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603820": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "□ 자세한 사항은 공고문 등을 반드시 확인하신 후 참가하시기 바랍니다.",
+  "regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "basis": "공고문(★공고문(완도_농공단지_개대체_공사).hwp)",
+  "checked_at": "2026-10-29 12:15",
+  "licenses": [
+   "상·하수도설비공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102814213500021%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603817": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "* 본 건의 낙찰하한율은 89.745% 입니다.\n* 자세한 사항은 견적서제출안내문 등을 필히 숙지해주시기 바랍니다.",
+  "regions": [
+   "충청남도"
+  ],
+  "basis": "공고문(견적서제출공고문_인버터F.hwp)",
+  "checked_at": "2026-10-29 12:15",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102813244599193%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603822": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "고구려산업개발(주)와의 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-10-29 12:15",
+  "private": true
  }
 }
