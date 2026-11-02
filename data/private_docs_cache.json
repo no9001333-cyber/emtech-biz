@@ -3002,5 +3002,145 @@
   ],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01799412": {
+  "read": true,
+  "doc": "2026년 축산악취개선사업 공고문.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01799720": {
+  "read": true,
+  "doc": "덕진공원 일원 가로주택정비사업조합 시공자 선정 재입찰공고.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01799811": {
+  "read": true,
+  "doc": "쉬브로프 입찰공고문.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01798775": {
+  "read": true,
+  "doc": "1.(2026년)광주 제2순환도로 3구간 가드레일 개량공사 입찰안내서.hwp",
+  "licenses": [
+   "금속창호·지붕건축물조립공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01798595": {
+  "read": true,
+  "doc": "1. 입찰공고문.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01802415": {
+  "read": true,
+  "doc": "1. 입찰공고문(건설공사).hwpx",
+  "licenses": [
+   "토목건축공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01797781": {
+  "read": true,
+  "doc": "1. [삼양사거리역세권 장기전세주택 재개발사업] 시공자 입찰공고.pdf",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업",
+   "조경공사업",
+   "소방시설공사업",
+   "전문소방시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01802418": {
+  "read": true,
+  "doc": "2. 입찰공고문(소방공사).hwpx",
+  "licenses": [
+   "소방시설공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01799095": {
+  "read": true,
+  "doc": "붙임1. 입찰공고문(공사 제2026-13호).hwpx",
+  "licenses": [
+   "지반조성·포장공사업"
+  ],
+  "regions": [
+   "경기도",
+   "서울특별시",
+   "인천광역시"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01798925": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01799050": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01800029": {
+  "read": true,
+  "doc": "1-1. 2026.10.28. [석수빌라] 시공자 선정 입찰공고_v2.2.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01800713": {
+  "read": true,
+  "doc": "1.(2026년)소태고가교 방호벽 중성화방지 도장보수공사 입찰안내서.hwp",
+  "licenses": [
+   "도장·습식·방수·석공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01800714": {
+  "read": true,
+  "doc": "2025년 혁신농업타운조성사업 건축공사.hwp",
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "regions": [
+   "경상북도"
+  ],
+  "basis": "",
+  "docs_v2": true
  }
 }
