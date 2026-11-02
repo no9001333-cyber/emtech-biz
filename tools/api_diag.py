@@ -35,7 +35,7 @@ def show(label, url, params, key):
                 print(f"    rgstDt {rg[0]} ~ {rg[-1]}, 발주시기 {om[:12]}")
             if first:
                 print(f"    keys={list(first.keys())}")
-                print(f"    first={json.dumps(first, ensure_ascii=False)[:700]}")
+                print(f"    first={json.dumps(first, ensure_ascii=False)[:2500]}")
             if not first:
                 print(f"    raw={txt[:600]!r}")
         except Exception:
@@ -47,15 +47,18 @@ def show(label, url, params, key):
 now = datetime.now()
 d = lambda days: (now - timedelta(days=days)).strftime("%Y%m%d")
 
-# 2026-10-20: PPSSrch는 발주년월(orderBgnYm/orderEndYm)과 게시일시(inqryBgnDt/inqryEndDt)를 함께 주고
-# inqryDiv는 빼야 한다(NomaDamas/k-skill 프록시 구현 참고). 함께 줘서 기간이 먹는지 확인.
-SRCH = "https://apis.data.go.kr/1230000/ao/OrderPlanSttusService/getOrderPlanSttusListCnstwkPPSSrch"
-ym0, ym1 = now.strftime("%Y%m"), (now + timedelta(days=180)).strftime("%Y%m")
-both = {"orderBgnYm": ym0, "orderEndYm": ym1, "inqryBgnDt": d(365) + "0000", "inqryEndDt": d(0) + "2359"}
-for label, p in [
-    ("발주년월+게시일시", both),
-    ("발주년월+게시일시 공종 통신", {**both, "cnsttyDivNm": "통신"}),
-    ("발주년월+게시일시 사업명 통신", {**both, "bizNm": "통신"}),
-    ("발주년월+게시일시 2페이지", {**both, "pageNo": 2}),
-]:
-    show("발주계획PPS/" + label, SRCH, {"pageNo": 1, "numOfRows": 500, "type": "json", **p}, G2B)
+# 2026-11-02: PlayMCP "나라장터 조달정보"가 쓰는 공공데이터개방표준서비스(15058815)를 우리 키로 직접 쓸 수 있는지 확인.
+# 계약정보는 아직 수집하지 않는 데이터(수의계약 포함)다.
+STD = "https://apis.data.go.kr/1230000/ao/PubDataOpnStdService"
+base = {"pageNo": 1, "numOfRows": 20, "type": "json"}
+show("표준/입찰공고", STD + "/getDataSetOpnStdBidPblancInfo",
+     {**base, "bidNtceBgnDt": d(3) + "0000", "bidNtceEndDt": d(0) + "2359"}, G2B)
+show("표준/낙찰", STD + "/getDataSetOpnStdScsbidInfo",
+     {**base, "bsnsDivCd": "3", "opengBgnDt": d(3) + "0000", "opengEndDt": d(3) + "2359"}, G2B)
+show("표준/계약 7일", STD + "/getDataSetOpnStdCntrctInfo",
+     {**base, "cntrctCnclsBgnDate": d(7), "cntrctCnclsEndDate": d(1)}, G2B)
+show("표준/계약 공사 3일", STD + "/getDataSetOpnStdCntrctInfo",
+     {**base, "bsnsDivCd": "3", "cntrctCnclsBgnDate": d(3), "cntrctCnclsEndDate": d(1)}, G2B)
+# 비교: 계약정보서비스(별도 데이터셋)
+CN = "https://apis.data.go.kr/1230000/ao/CntrctInfoService/getCntrctInfoListCnstwk"
+show("계약정보서비스/공사", CN, {**base, "inqryDiv": 1, "inqryBgnDt": d(3) + "0000", "inqryEndDt": d(1) + "2359"}, G2B)
