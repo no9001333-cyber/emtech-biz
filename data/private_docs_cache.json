@@ -3142,5 +3142,64 @@
   ],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01802509": {
+  "read": true,
+  "doc": "견적공고문 1부.pdf",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01802675": {
+  "read": true,
+  "doc": "입찰공고문  정화자.hwp",
+  "licenses": [
+   "금속·창호·지붕·건축물조립공사업"
+  ],
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01802731": {
+  "read": true,
+  "doc": "[태평2가]시공자 선정 우선협상 대상자 선정공고(11차).hwp",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업",
+   "소방시설공사업",
+   "전문소방시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01802944": {
+  "read": true,
+  "doc": "(서초신동아) 입찰공고문.pdf",
+  "licenses": [
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01802099": {
+  "read": true,
+  "doc": "8.입찰공고문_승강기 교체공사 업체선정(월드메르디앙벤처센터1차).hwp",
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }

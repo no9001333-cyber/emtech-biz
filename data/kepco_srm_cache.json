@@ -7208,5 +7208,13 @@
   "license_logic": null,
   "regions": [],
   "checked_at": "2026-11-02 09:07"
+ },
+ "E052600429": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-02 12:00"
  }
 }

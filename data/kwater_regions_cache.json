@@ -2764,5 +2764,28 @@
    "금속구조물ㆍ창호ㆍ온실공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26102910245206291%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603867": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "- 제한경쟁(실적 및 본점소재지-전북특별자치도) 대상 입니다.\n- 입찰참가신청시 실적제한 증빙서류를 제출하여야 하며, 실적인정 세부 관련사항은 063-281-1423으로 문의하시기 바랍니다.\n- 세부 자격 및 유의사항은 공고문 등을 확인하시기 바랍니다.",
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-02 12:00",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110208315922869%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603869": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "* 본 건은 주식회사 엔아이디(713-86-01676)와의 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-02 12:00",
+  "private": true
  }
 }

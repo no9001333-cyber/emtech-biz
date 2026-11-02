@@ -468,6 +468,19 @@
   "announced": false
  },
  {
+  "title": "현장자동제어PCS재정비공사",
+  "org": "서울특별시 서울아리수본부 광암아리수정수센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "130882650",
+  "contract_method": "지명경쟁",
+  "registered": "2026-11-02 10:16:33",
+  "contact": "정수시설과 김현철 02-3146-5384",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "화랑초 석면제거 천장설치 통신공사",
   "org": "경기도교육청 경기도안산교육지원청",
   "region": "경기도",

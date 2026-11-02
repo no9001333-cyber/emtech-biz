@@ -9111,5 +9111,80 @@
    "variance_pct": "-2.0~2.0"
   },
   "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17355&negn_pldt=20261109&dprt_code=MCX&ordr_year=2026&negn_degr=1&anmt_numb=MCX0199&pageDivs=E"
+ },
+ "SFD0081": {
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "regions": [
+   "경상북도"
+  ],
+  "basis_info": {
+   "base_amount": 233325000,
+   "a_value": 11271658,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/bid/announceView.do?dprt_code=SFD&anmt_divs=B&anmt_numb=SFD0081&rqst_degr=1&dcsn_numb=2026-17390&rqst_year=2026&anmt_date=20261102&csrt_numb=2026-17390&lv2Divs=1&cont_mthd=C&pageDivs=E1&lv1_divs=PEB"
+ },
+ "LQG0082": {
+  "licenses": [
+   "금속창호ㆍ지붕건축물조립공사업"
+  ],
+  "regions": [
+   "서울특별시"
+  ],
+  "basis_info": {
+   "base_amount": 9989460,
+   "a_value": 0,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17375&negn_pldt=20261106&dprt_code=LQG&ordr_year=2026&negn_degr=1&anmt_numb=LQG0082&pageDivs=E"
+ },
+ "SFC0072": {
+  "licenses": [
+   "전문소방시설공사업",
+   "일반소방시설공사업(기계)"
+  ],
+  "regions": [
+   "경기도 화성시"
+  ],
+  "basis_info": {
+   "base_amount": 90410930,
+   "a_value": 3178907,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17383&negn_pldt=20261106&dprt_code=SFC&ordr_year=2026&negn_degr=1&anmt_numb=SFC0072&pageDivs=E"
+ },
+ "LKT0210": {
+  "licenses": [
+   "기계설비,가스공사업"
+  ],
+  "regions": [
+   "전남광주통합특별시 동구",
+   "전남광주통합특별시 서구",
+   "전남광주통합특별시 남구",
+   "전남광주통합특별시 북구",
+   "전남광주통합특별시 광산구"
+  ],
+  "basis_info": {
+   "base_amount": 150054901,
+   "a_value": 1864768,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17402&negn_pldt=20261106&dprt_code=LKT&ordr_year=2026&negn_degr=1&anmt_numb=LKT0210&pageDivs=E"
+ },
+ "LHG0113": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "강원특별자치도 인제군"
+  ],
+  "basis_info": {
+   "base_amount": 32835000,
+   "a_value": 1769103,
+   "variance_pct": "-2.0~2.0"
+  },
+  "url": "https://www.d2b.go.kr/peb/openNego/openNegoPlanView.do?csrt_numb=2026-17379&negn_pldt=20261106&dprt_code=LHG&ordr_year=2026&negn_degr=1&anmt_numb=LHG0113&pageDivs=E"
  }
 }
