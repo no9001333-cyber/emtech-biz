@@ -2787,5 +2787,78 @@
   "basis": "",
   "checked_at": "2026-11-02 12:00",
   "private": true
+ },
+ "B3202603902": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "- 본 건은 소액전자로 진행되는 건입니다. \n * 전기공사업 / 울산광역시 / 여성기업 또는 장애인기업 \n\n- 공고문 및 시방서 등을 숙지하고 참여해주시기 바랍니다.",
+  "regions": [
+   "울산광역시"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-04 08:52",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110313543438400%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603881": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "공고문 및 과업지시서 등을 반드시 숙지하신 후 견적서 제출해주시기 바랍니다.",
+  "regions": [
+   "경상북도"
+  ],
+  "basis": "공고문(견적서_제출_공고문(2026년_임하댐_생태계복원_유지관리공사)f.hwp)",
+  "checked_at": "2026-11-04 08:52",
+  "licenses": [
+   "조경식재·시설물공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110300410433518%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603882": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "□ 본 공고는 '산업·환경설비공사업' 또는 '철강구조물공사업'면허를 보유한 업체를 대상으로 하는 전문공사이며,\n\n□ 붙임의 공고문 및 시방서를 숙지하신 후 입찰에 참여하여 주시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "공고문(입찰공고문.hwp)",
+  "checked_at": "2026-11-04 08:52",
+  "licenses": [
+   "산업·환경설비공사업",
+   "철강구조물공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110308594734118%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603905": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "· 자세한 사항은 공고문 등을 확인하시기 바랍니다.",
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "공고문(1.입찰공고문(우심).hwp)",
+  "checked_at": "2026-11-04 08:52",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110315045239616%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603880": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "자세한 사항은 공고문 등을 반드시 확인하시기 바랍니다.",
+  "regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "basis": "공고문(공고문_액체약품_누출_방지시설_개선공사.hwp)",
+  "checked_at": "2026-11-04 08:52",
+  "licenses": [
+   "금속‧창호‧지붕‧건축물조립공사업",
+   "기계설비·가스공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110216045929985%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

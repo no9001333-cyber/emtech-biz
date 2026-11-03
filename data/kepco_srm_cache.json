@@ -7216,5 +7216,4809 @@
   "license_logic": null,
   "regions": [],
   "checked_at": "2026-11-02 12:00"
+ },
+ "E012607862": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607856": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607871": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607845": {
+  "licenses": [
+   "기술사사무소(발송배전)",
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(전기전자응용)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607840": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607854": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607847": {
+  "licenses": [
+   "기술사사무소(발송배전)",
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(전기전자응용)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607833": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607855": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607843": {
+  "licenses": [
+   "기술사사무소(발송배전)",
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(전기전자응용)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607876": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607837": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607841": {
+  "licenses": [
+   "기술사사무소(발송배전)",
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(전기전자응용)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607874": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607844": {
+  "licenses": [
+   "기술사사무소(발송배전)",
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(전기전자응용)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607839": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607877": {
+  "licenses": [
+   "산림사업법인(산림토목)",
+   "산림조합(지역조합)",
+   "산림조합중앙회"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607852": {
+  "licenses": [
+   "기술사사무소(발송배전)",
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(전기전자응용)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607853": {
+  "licenses": [
+   "기술사사무소(발송배전)",
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(전기전자응용)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E122600172": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607873": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607851": {
+  "licenses": [
+   "기술사사무소(발송배전)",
+   "엔지니어링사업(전기설비)",
+   "엔지니어링사업(전기전자응용)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607863": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607858": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607830": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607861": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E112600119": {
+  "licenses": [
+   "전문소방시설공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607864": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E082600433": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산 남구",
+   "울산 동구",
+   "울산 북구",
+   "울산 울주군",
+   "울산 중구"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607835": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E082600432": {
+  "licenses": [
+   "지반조성·포장공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남 계룡시",
+   "충남 공주시",
+   "충남 금산군",
+   "충남 논산시",
+   "충남 당진시",
+   "충남 보령시",
+   "충남 부여군",
+   "충남 서산시",
+   "충남 서천군",
+   "충남 아산시",
+   "충남 예산군",
+   "충남 천안시 동남구",
+   "충남 청양군",
+   "충남 태안군",
+   "충남 홍성군",
+   "충남 천안시 서북구"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607848": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E022600340": {
+  "licenses": [
+   "나무병원(1종)",
+   "조경식재·시설물공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607763": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607764": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607799": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607769": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607592": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "도장·습식·방수·석공사업",
+   "조경식재·시설물공사업",
+   "철근·콘크리트공사업",
+   "구조물해체·비계공사업",
+   "토목건축공사업",
+   "토목공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607761": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607718": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607802": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607600": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607634": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "도장·습식·방수·석공사업",
+   "조경식재·시설물공사업",
+   "철근·콘크리트공사업",
+   "구조물해체·비계공사업",
+   "토목건축공사업",
+   "토목공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607706": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607826": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607786": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607812": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607793": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607716": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607810": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607795": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607781": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607801": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607825": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607749": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E042600443": {
+  "licenses": [
+   "산업.환경설비공사업",
+   "기계가스설비공사업"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E102600479": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607637": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607772": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607794": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607735": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607751": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607806": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607755": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607580": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607820": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607787": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607775": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607790": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E112600118": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E112600120": {
+  "licenses": [
+   "손해보험업(책임보험)"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607486": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607510": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607712": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607505": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607743": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607748": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전",
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607678": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607699": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607687": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607614": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607676": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607530": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607537": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607702": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607527": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607441": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607514": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607487": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607437": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607508": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607590": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607784": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기",
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607464": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607456": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607474": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607493": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607457": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:49"
+ },
+ "E012607470": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607476": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607496": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607497": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607535": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607597": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607631": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607482": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607479": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607499": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607538": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607599": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607669": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607640": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607483": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607480": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607504": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607523": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607531": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "세종"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607623": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607518": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607494": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607593": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607478": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607552": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607490": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607498": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607696": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607447": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607500": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607720": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607466": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607477": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607557": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607453": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607589": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607454": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607575": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607587": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607544": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607821": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607639": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607450": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607465": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607472": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607604": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607641": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607467": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607728": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607664": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607540": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607673": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607627": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607547": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607647": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전",
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607461": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607635": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607471": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607534": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607451": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607455": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607489": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607495": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607691": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607701": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607742": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607645": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607744": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607818": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607448": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607670": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607488": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607819": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607517": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607462": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607503": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607481": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607475": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607491": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607492": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607502": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607468": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607484": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607433": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607506": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607525": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607507": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607583": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607438": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607460": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607501": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607449": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607485": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607440": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607509": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607529": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607605": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607463": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607512": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607452": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607550": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607571": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "세종"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607572": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607650": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607469": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607654": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607624": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607780": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607679": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607776": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607630": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대전"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607681": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607766": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607789": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기",
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607522": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607549": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "제주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607559": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607618": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607434": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607435": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607667": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607445": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607458": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607473": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607723": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607658": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607674": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607803": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기",
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E092600140": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607675": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607745": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607683": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607724": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607765": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607703": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607762": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607543": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607598": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607632": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607644": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607721": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607622": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607737": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607727": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607791": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607648": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607609": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607695": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607688": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607332": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607336": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607692": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607594": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607602": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607651": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607655": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기",
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607314": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607428": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607581": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607596": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607649": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607329": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607429": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607566": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607337": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607613": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607633": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607316": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607330": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607567": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607341": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607563": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607601": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607325": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607569": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607722": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607759": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607817": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607553": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607424": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607666": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607726": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607308": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607777": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607312": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607430": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607778": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607693": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607656": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607785": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607741": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607708": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607628": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607607": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607626": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607321": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607574": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607709": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607730": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607686": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607578": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607347": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:50"
+ },
+ "E012607662": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607636": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기",
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607689": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기",
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607310": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607322": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607638": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607750": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607326": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607715": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607717": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607560": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607746": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607814": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607317": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607520": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607344": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607707": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607319": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607796": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607585": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607719": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607579": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607562": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607711": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607754": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607747": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607629": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607335": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607617": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607805": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607768": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607783": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607736": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607725": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607665": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607705": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607756": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607773": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607753": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607813": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607713": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607811": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기",
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607536": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607733": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607770": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607758": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607606": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607643": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607320": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607533": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607551": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607740": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607315": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607516": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607427": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607619": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607346": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607779": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607680": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607663": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607682": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607729": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607774": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607800": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607771": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607690": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607788": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607809": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607642": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E102600477": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607697": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607694": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607338": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607407": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607603": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607333": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607732": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607677": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607625": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607577": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607612": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607443": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607582": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607615": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607436": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607511": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607660": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607515": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607671": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607519": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607652": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607439": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607561": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607657": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607558": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607442": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607532": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607524": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607513": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607570": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607521": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607526": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607548": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607659": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607610": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607564": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607556": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607371": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607340": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607357": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607401": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607379": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607355": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607421": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607359": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607384": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607390": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607296": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607294": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607372": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607395": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607393": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607377": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607405": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607354": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607282": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607306": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607375": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607397": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607297": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북",
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607422": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607367": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E082600430": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607378": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607299": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607348": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607331": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607349": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607386": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607350": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607419": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607383": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607362": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607368": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607373": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607380": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607304": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607353": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607307": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북",
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607295": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북",
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607305": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607388": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607387": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607343": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607364": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607396": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607351": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607381": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607298": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북",
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607420": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607356": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북",
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607392": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607285": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607303": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607402": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607301": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607394": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607418": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607370": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607400": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607404": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607403": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607389": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607391": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607345": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:51"
+ },
+ "E012607363": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:52"
+ },
+ "E012607374": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:52"
+ },
+ "E012607309": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:52"
+ },
+ "E012607385": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "대구"
+  ],
+  "checked_at": "2026-11-04 08:52"
+ },
+ "E012607406": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-04 08:52"
  }
 }

@@ -468,6 +468,19 @@
   "announced": false
  },
  {
+  "title": "항공우주박물관 기후체험관 조성공사 (정보통신)",
+  "org": "한국항공대학교",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "6770000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-03 09:18:43",
+  "contact": "사무처 총무팀 정지훈 02-300-0035",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "현장자동제어PCS재정비공사",
   "org": "서울특별시 서울아리수본부 광암아리수정수센터",
   "region": "경기도",
@@ -490,6 +503,19 @@
   "contract_method": "수의계약",
   "registered": "2026-01-20 09:24:04",
   "contact": "교육시설과 김영균 031-412-4687",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
+  "title": "화성시 백미리 어촌체험휴양마을고도화사업 시설공사(통신)",
+  "org": "한국어촌어항공단",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "10635000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-02 14:10:49",
+  "contact": "재무회계실 유두환 02-6098-0733",
   "work_type": "통신",
   "announced": false
  },
