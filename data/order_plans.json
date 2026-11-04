@@ -364,6 +364,19 @@
   "announced": false
  },
  {
+  "title": "시화나래초중 모듈러교실 설치 부대 통신공사",
+  "org": "경기도교육청 경기도시흥교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "31768000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-04 10:51:57",
+  "contact": "행정국 재무관리과 재무팀 이종호 031-488-2492",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "안산석수초 석면제거 천장설치 통신공사",
   "org": "경기도교육청 경기도안산교육지원청",
   "region": "경기도",
@@ -399,6 +412,19 @@
   "contract_method": "수의계약",
   "registered": "2026-01-20 09:24:04",
   "contact": "교육시설과 홍시원 031-412-4686",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
+  "title": "안양부안초 LED조명교체 통신공사",
+  "org": "경기도교육청 경기도안양과천교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "19869000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-04 10:13:28",
+  "contact": "교육시설과 유환서 031-380-7297",
   "work_type": "통신",
   "announced": false
  },

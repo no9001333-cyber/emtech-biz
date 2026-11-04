@@ -58393,6 +58393,48 @@
    "notice_kind": "공사",
    "url": "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidNum=2603792&bidDegree=00",
    "participants": null
+  },
+  "나라장터::R26BK01788712": {
+   "source": "나라장터",
+   "title": "덕양노인종합복지관 증축공사(통신)",
+   "org": "경기도 고양시",
+   "notice_no": "R26BK01788712",
+   "winner": "금양산업",
+   "award_amount": "99037190",
+   "assessed_rate": "90.466",
+   "open_date": "2026-10-29 11:06:19",
+   "region_scope": "기타",
+   "notice_kind": "공사",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01788712&bidPbancOrd=000",
+   "participants": "183"
+  },
+  "나라장터::R26BK01786220": {
+   "source": "나라장터",
+   "title": " AX혁신대학, 과학컴퓨팅학과 공간조성 통신공사",
+   "org": "부경대학교",
+   "notice_no": "R26BK01786220",
+   "winner": "주식회사 이레정보통신기술",
+   "award_amount": "146764850",
+   "assessed_rate": "90.335",
+   "open_date": "2026-11-03 14:18:08",
+   "region_scope": "기타",
+   "notice_kind": "공사",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01786220&bidPbancOrd=000",
+   "participants": "535"
+  },
+  "나라장터::R26BK01798010": {
+   "source": "나라장터",
+   "title": "인천광역시교육청교직원수련원(영종본원) 환경개선 정보통신공사 수의계약 견적제출 안내 공고",
+   "org": "인천광역시교육청",
+   "notice_no": "R26BK01798010",
+   "winner": "세이콘 주식회사",
+   "award_amount": "26679700",
+   "assessed_rate": "90.346",
+   "open_date": "2026-11-04 11:10:12",
+   "region_scope": "기타",
+   "notice_kind": "공사",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01798010&bidPbancOrd=000",
+   "participants": "447"
   }
  },
  "backfilled_months": [
