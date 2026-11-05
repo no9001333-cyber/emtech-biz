@@ -234,6 +234,45 @@
   "announced": false
  },
  {
+  "title": "검바위초 교실 및 급식소 증축 통신공사",
+  "org": "경기도교육청 경기도시흥교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "154242000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-05 11:31:20",
+  "contact": "행정국 재무관리과 재무팀 이종호 031-488-2492",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
+  "title": "경기도교육청학생교육원(양평학생야영장) 환경개선 통신공사",
+  "org": "경기도교육청 경기도교육청학생교육원",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "89714000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-04 13:52:00",
+  "contact": "운영지원부 김설희 031-774-2822",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
+  "title": "경민대학교 기숙사 신축 통신공사",
+  "org": "경민대학교",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "559358000",
+  "contract_method": "일반경쟁",
+  "registered": "2026-11-05 13:10:40",
+  "contact": "총무회계팀 조성준 031-828-7502",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "도서관 CCTV 추가설치 정보통신설비 공사",
   "org": "경기도 용인시 도서관사업소",
   "region": "경기도",
@@ -442,6 +481,19 @@
   "announced": false
  },
  {
+  "title": "중앙선 양정 등 19역 비상통화장치 개량공사",
+  "org": "한국철도공사 회계통합센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "285370000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-11-04 18:22:41",
+  "contact": "수도권동부본부 전기처 안중기 02-3299-7946",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "중앙중 석면제거 천장설치 통신공사",
   "org": "경기도교육청 경기도안산교육지원청",
   "region": "경기도",
@@ -543,7 +595,7 @@
   "registered": "2026-11-02 14:10:49",
   "contact": "재무회계실 유두환 02-6098-0733",
   "work_type": "통신",
-  "announced": false
+  "announced": true
  },
  {
   "title": "화중초 석면제거공사 전산장비 해체 및 원상복구 공사",

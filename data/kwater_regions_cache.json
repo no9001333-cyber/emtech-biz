@@ -2860,5 +2860,106 @@
    "기계설비·가스공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110216045929985%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603930": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "- 이 건은 소액수의계약(전자)(지역제한(경기도) 및 여성기업ㆍ장애인기업ㆍ사회적기업ㆍ사회적협동조합 대상) 건입니다.\n* 낙찰하한율 : 89.745%\n* 견적서 제출 참가자격 등 자세한 내용은 반드시 공고문을 확인하시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-05 13:08",
+  "licenses": [
+   "철근·콘크리트공사업",
+   "실내건축공사업",
+   "기계설비·가스공사업",
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110511290360085%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603933": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "* 입찰공고문 등 제공문서를 반드시 확인 후 참가하여 주시기 바랍니다.",
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "공고문(입찰공고문.hwp)",
+  "checked_at": "2026-11-05 13:08",
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110511170859824%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603919": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "ㅁ 본 공고는 지역(강원도) 및 실적 제한경쟁 건입니다.\n\nㅁ 붙임의 공고문 및 시방서 등을 숙지하신 후 입찰에 참여하여 주시기 바랍니다.",
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-05 13:08",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110415093351185%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603916": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "* 본건은 소액수의계약으로 집행합니다.\n\n* 공고문 및 시방서 등을 반드시 숙지하신 후 입찰에 참여해 주시기 바랍니다.",
+  "regions": [
+   "경상남도"
+  ],
+  "basis": "공고문(★공고문_조명공사.hwp)",
+  "checked_at": "2026-11-05 13:08",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110413193248927%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603913": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "공고문을 확인하시길 바랍니다.",
+  "regions": [
+   "충청북도"
+  ],
+  "basis": "공고문(견적서_제출_안내문.hwp)",
+  "checked_at": "2026-11-05 13:08",
+  "licenses": [
+   "도장·습식·방수·석공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110411410448222%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603889": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "자세한 사항은 공고문을 참고하여 주시기 바랍니다.",
+  "regions": [
+   "세종특별자치시"
+  ],
+  "basis": "공고문(입찰공고문_(세종,_우선공사).hwp)",
+  "checked_at": "2026-11-05 13:08",
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "상·하수도설비공사업",
+   "지반조성·포장공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110311004036475%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603906": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "본 건은 '사단법인 한국장애인농축산기술협회'와 수의시담으로 진행합니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-05 13:08",
+  "private": true
  }
 }
