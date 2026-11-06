@@ -26,6 +26,19 @@
   "announced": false
  },
  {
+  "title": "(가칭)포천특수학교 신축 통신공사",
+  "org": "경기도교육청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "1619630000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-11-05 13:46:09",
+  "contact": "학교설립과 이은혜 031-820-0737",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "2027년 교통신호기 유지관리(단가계약:권선1권역) 공사",
   "org": "경기도 수원시",
   "region": "경기도",
@@ -244,7 +257,7 @@
   "registered": "2026-11-05 11:31:20",
   "contact": "행정국 재무관리과 재무팀 이종호 031-488-2492",
   "work_type": "통신",
-  "announced": false
+  "announced": true
  },
  {
   "title": "경기도교육청학생교육원(양평학생야영장) 환경개선 통신공사",
@@ -257,7 +270,7 @@
   "registered": "2026-11-04 13:52:00",
   "contact": "운영지원부 김설희 031-774-2822",
   "work_type": "통신",
-  "announced": false
+  "announced": true
  },
  {
   "title": "경민대학교 기숙사 신축 통신공사",
@@ -271,6 +284,19 @@
   "contact": "총무회계팀 조성준 031-828-7502",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "덕양구 염수분사장치 노즐제어 통신제어장치 보수공사",
+  "org": "경기도 고양시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "104565000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-05 14:44:08",
+  "contact": "도로관리과 성상기 031-8075-4693",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "도서관 CCTV 추가설치 정보통신설비 공사",
@@ -312,6 +338,19 @@
   "announced": false
  },
  {
+  "title": "방호 공정용 영상감시장치(CCTV) 구매설치 및 이전 공사",
+  "org": "서울특별시 서울아리수본부 강북아리수정수센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "47293010",
+  "contract_method": "수의계약",
+  "registered": "2026-11-05 14:18:04",
+  "contact": "정수시설과 이은주 02-3146-5880",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "본오초 석면제거 천장설치 통신공사",
   "org": "경기도교육청 경기도안산교육지원청",
   "region": "경기도",
@@ -334,6 +373,19 @@
   "contract_method": "수의계약",
   "registered": "2026-01-20 09:24:05",
   "contact": "교육시설과 정주남 031-412-4688",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
+  "title": "샘모루초 외 1교(평촌경영고) LED조명교체 통신공사",
+  "org": "경기도교육청 경기도안양과천교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "21908000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-05 20:31:46",
+  "contact": "교육시설과 이석현 031-380-7299",
   "work_type": "통신",
   "announced": false
  },
@@ -479,6 +531,19 @@
   "contact": "교육시설과 정주남 031-412-4688",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "일산동구,서구 염수분사장치 노즐제어 통신제어장치 보수공사",
+  "org": "경기도 고양시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "72695600",
+  "contract_method": "수의계약",
+  "registered": "2026-11-05 14:36:46",
+  "contact": "도로관리과 김정석 031-8075-4697",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "중앙선 양정 등 19역 비상통화장치 개량공사",

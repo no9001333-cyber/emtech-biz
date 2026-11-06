@@ -12741,5 +12741,140 @@
    "경기"
   ],
   "checked_at": "2026-11-05 13:08"
+ },
+ "E022600342": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607963": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607945": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607950": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607922": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607948": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "도장·습식·방수·석공사업",
+   "조경식재·시설물공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607924": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "부산"
+  ],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607929": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607943": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607093": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607931": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607936": {
+  "licenses": [
+   "철근·콘크리트공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E112600124": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607911": {
+  "licenses": [
+   "기타공사 및 용역"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-06 13:00"
+ },
+ "E012607836": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-06 13:00"
  }
 }
