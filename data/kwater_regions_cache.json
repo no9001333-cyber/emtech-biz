@@ -3002,5 +3002,34 @@
    "지반조성·포장공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110609172168139%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603958": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "입찰공고문 및 시방서를 확인하신 후 입찰에 참가하시길 바랍니다.",
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "공고문(견적서제출안내문(삼척3현대화사업소_리모델링_전기공사).hwp)",
+  "checked_at": "2026-11-09 09:01",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110615310374002%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603957": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "입찰공고문 및 시방서를 확인하신 후 입찰에 참가하시길 바랍니다.",
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "공고문(견적서제출안내문(삼척3현대화사업소_리모델링_실내건축공사).hwp)",
+  "checked_at": "2026-11-09 09:01",
+  "licenses": [
+   "전문공사업",
+   "실내건축공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110616154974689%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

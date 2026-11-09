@@ -12876,5 +12876,108 @@
    "경북"
   ],
   "checked_at": "2026-11-06 13:00"
+ },
+ "E012607990": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경남"
+  ],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607984": {
+  "licenses": [
+   "소프트웨어사업자(패키지소프트웨어개발.공급사업)",
+   "소프트웨어사업자(컴퓨터관련서비스사업)",
+   "소프트웨어사업자(디지털콘텐츠개발서비스사업)",
+   "소프트웨어사업자(데이터베이스제작및검색서비스사업)"
+  ],
+  "license_logic": "Or",
+  "regions": [],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607985": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "울산"
+  ],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607977": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607971": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607976": {
+  "licenses": [
+   "철근·콘크리트공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607979": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607970": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607829": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E012607946": {
+  "licenses": [
+   "토목공사업",
+   "전기공사업"
+  ],
+  "license_logic": "And",
+  "regions": [],
+  "checked_at": "2026-11-09 09:01"
+ },
+ "E042600445": {
+  "licenses": [
+   "전문소방시설공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-09 09:01"
  }
 }

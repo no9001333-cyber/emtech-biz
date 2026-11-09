@@ -260,6 +260,19 @@
   "announced": true
  },
  {
+  "title": "경강선 곤지암역 승강장 부본선 운행에 따른 통신설비 개량공사",
+  "org": "한국철도공사 회계통합센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "110724000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-06 18:00:55",
+  "contact": "수도권동부본부 전기처 안중기 02-3299-7946",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "경기도교육청학생교육원(양평학생야영장) 환경개선 통신공사",
   "org": "경기도교육청 경기도교육청학생교육원",
   "region": "경기도",
@@ -286,6 +299,32 @@
   "announced": false
  },
  {
+  "title": "경부선 병점역 등 3역 침식차 주박선 통신설비 신설공사",
+  "org": "한국철도공사 회계통합센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "78646000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-06 17:01:39",
+  "contact": "수도권서부본부 전기처 김도훈 02-2639-3849",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "과천고 LED조명교체 및 샌드위치 패널 통신공사",
+  "org": "경기도교육청 경기도안양과천교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "15629000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-06 16:14:15",
+  "contact": "교육시설과 유환서 031-380-7297",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "덕양구 염수분사장치 노즐제어 통신제어장치 보수공사",
   "org": "경기도 고양시",
   "region": "경기도",
@@ -297,6 +336,19 @@
   "contact": "도로관리과 성상기 031-8075-4693",
   "work_type": "통신",
   "announced": true
+ },
+ {
+  "title": "도농역 전문점 소방통신회선 보수 공사",
+  "org": "코레일유통(주)",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "7600000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-08 16:44:40",
+  "contact": "동부본부 고가온 02-526-6542",
+  "work_type": "전기",
+  "announced": false
  },
  {
   "title": "도서관 CCTV 추가설치 정보통신설비 공사",
