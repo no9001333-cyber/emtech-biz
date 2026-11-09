@@ -312,6 +312,45 @@
   "announced": true
  },
  {
+  "title": "경부선 석수역 등 3역 승강장 회전형 모니터 함체 개량공사",
+  "org": "한국철도공사 회계통합센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "191719000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-11-09 17:27:33",
+  "contact": "수도권서부본부 전기처 김현경 02-2639-3848",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "경부선 평택역 종합방송설비 개량공사",
+  "org": "한국철도공사 회계통합센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "263674965",
+  "contract_method": "제한경쟁",
+  "registered": "2026-11-09 17:44:36",
+  "contact": "수도권서부본부 전기처 김현경 02-2639-3848",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "경원선 연천∼백마고지 정보통신설비 개량공사",
+  "org": "한국철도공사 회계통합센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "374705370",
+  "contract_method": "수의계약",
+  "registered": "2026-11-09 17:44:15",
+  "contact": "서울정보통신사무소 박성결 02-3780-5798",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "과천고 LED조명교체 및 샌드위치 패널 통신공사",
   "org": "경기도교육청 경기도안양과천교육지원청",
   "region": "경기도",
