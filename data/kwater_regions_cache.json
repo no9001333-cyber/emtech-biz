@@ -3091,5 +3091,29 @@
    "도장·습식·방수·석공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26110616115874642%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603976": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "* 본 공고 건의 입찰참가자격은 다음과 같습니다.\n - “상·하수도설비공사업\" 면허/ 여성 또는 장애인기업/ 전남광주통합특별시 위치\n* 자세한 사항은 안내문을 참고해주시기 바랍니다.",
+  "regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-10 14:09",
+  "licenses": [
+   "상·하수도설비공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111009452789418%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603981": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "ㅁ '주식회사 덕진방재'와의 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-10 14:09",
+  "private": true
  }
 }
