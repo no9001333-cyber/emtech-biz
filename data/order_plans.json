@@ -234,6 +234,19 @@
   "announced": true
  },
  {
+  "title": "[긴급]매현초 외 1교(매현중) 석면병행 LED교체 통신공사[계속비]",
+  "org": "경기도교육청 경기도수원교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "39165000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-10 20:40:22",
+  "contact": "교육시설과 문성찬 031-250-1457",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "각골초 석면제거 천장설치 통신공사",
   "org": "경기도교육청 경기도안산교육지원청",
   "region": "경기도",
@@ -286,6 +299,19 @@
   "announced": true
  },
  {
+  "title": "경기체고 다이빙장 리모델링 통신공사",
+  "org": "경기도교육청 경기도수원교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "5995000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-11 11:01:37",
+  "contact": "재무관리과 문성찬 031-250-1457",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "경민대학교 기숙사 신축 통신공사",
   "org": "경민대학교",
   "region": "경기도",
@@ -296,7 +322,7 @@
   "registered": "2026-11-05 13:10:40",
   "contact": "총무회계팀 조성준 031-828-7502",
   "work_type": "통신",
-  "announced": false
+  "announced": true
  },
  {
   "title": "경부선 병점역 등 3역 침식차 주박선 통신설비 신설공사",
@@ -362,6 +388,19 @@
   "contact": "교육시설과 유환서 031-380-7297",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "광네트워크 구성 및 CCTV설치공사",
+  "org": "서울특별시 서울아리수본부 광암아리수정수센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "98230000",
+  "contract_method": "지명경쟁",
+  "registered": "2026-11-10 14:43:56",
+  "contact": "정수시설과 김현철 02-3146-5384",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "덕양구 염수분사장치 노즐제어 통신제어장치 보수공사",
@@ -546,6 +585,19 @@
   "announced": false
  },
  {
+  "title": "시화공단기업스마트지점 신설 레이아웃 통신공사",
+  "org": "중소기업은행",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "42526000",
+  "contract_method": "지명경쟁",
+  "registered": "2026-11-11 08:35:25",
+  "contact": "총무부 최남주 02-729-7458",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "시화나래초중 모듈러교실 설치 부대 통신공사",
   "org": "경기도교육청 경기도시흥교육지원청",
   "region": "경기도",
@@ -555,6 +607,19 @@
   "contract_method": "수의계약",
   "registered": "2026-11-04 10:51:57",
   "contact": "행정국 재무관리과 재무팀 이종호 031-488-2492",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "시흥물환경센터 신설탈수기동 탈취설비 계측제어설비 공사",
+  "org": "케이워터(K-water) 컨소시엄",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "8100000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-10 15:58:22",
+  "contact": "관리팀 성영인 031-497-6083",
   "work_type": "통신",
   "announced": true
  },
@@ -700,6 +765,19 @@
   "contact": "AI소방기술연구소 황의홍 031-289-6533",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "평택 친환경 미생물관 신축 통신공사",
+  "org": "경기도 평택시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "87499000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-10 17:23:08",
+  "contact": "녹색건축사업과 이경민 031-8024-4085",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "항공우주박물관 기후체험관 조성공사 (정보통신)",

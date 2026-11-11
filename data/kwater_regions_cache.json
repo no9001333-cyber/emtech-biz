@@ -3115,5 +3115,58 @@
   "basis": "",
   "checked_at": "2026-11-10 14:09",
   "private": true
+ },
+ "B3202603996": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "자세한 사항은 입찰공고문 등을 반드시 확인하시기 바랍니다.",
+  "regions": [
+   "충청남도"
+  ],
+  "basis": "공고문(★공고문(환기설비).hwp)",
+  "checked_at": "2026-11-11 12:22",
+  "licenses": [
+   "기계설비·가스공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111109135896680%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603993": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "* 본 건은 상승전력(395-63-00539)과의 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-11 12:22",
+  "private": true
+ },
+ "B3202603978": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "* 본 공사는 K-water '공사종합심사낙찰제 심사세부기준'이 적용되며, 세부공종별 단가심사가 진행되는 내역입찰입니다.\n - 입찰참가자는 반드시 공고문, 심사세부기준 등 입찰관련 서류를 숙지하시고 입찰에 참가하시기 바랍니다.\n - 내역작성시 반드시 배부된 프로그램을 사용하여 제출해야 합니다.\n - 현장설명은 생략합니다.",
+  "regions": [
+   "부산광역시"
+  ],
+  "basis": "공고문(1.입찰공고문(부산도시물순환).hwp)",
+  "checked_at": "2026-11-11 12:22",
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "건설공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111010420090434%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202603988": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "□ K-water 정읍권지사 '섬진강(광) 복선화 유량계실 설치공사' 건입니다.\n□ 견적서제출참가자격\n - 공고일 현재 전입일 다음날부터 기산하여 90일 이상 법인등기부상 본점소재지가 전북특별자치도에 소재한 업체로서 이를 계약체결일까지 유지한 업체\n\n -「건설산업기본법」제8조 및 동법 시행령 제7조에 따라 상·하수도설비공사업 면허를 보유한 '전문건설사업자'\n*공사예정금액 4.3억원 미만인 전문공사의 종합건설사업자 원도급 제한으로 종합/전문간 상호시장 진출을 허용하지 않습니다.\n\n - 「여성기업지원에 관한 법률」 제2조에 따른 “여성",
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-11 12:22",
+  "licenses": [
+   "상·하수도설비공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111014223792608%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }
