@@ -39,6 +39,45 @@
   "announced": true
  },
  {
+  "title": "2026년 소사구 교통신호기 유지보수공사(단가2차)",
+  "org": "경기도 부천시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "40000000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-11 15:13:03",
+  "contact": "교통정책과 임규훈 032-625-3844",
+  "work_type": "전기",
+  "announced": true
+ },
+ {
+  "title": "2026년 오정구 교통신호기 유지보수공사(단가2차)",
+  "org": "경기도 부천시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "40000000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-11 15:15:14",
+  "contact": "교통정책과 구동윤 032-625-3845",
+  "work_type": "전기",
+  "announced": true
+ },
+ {
+  "title": "2026년 원미구 교통신호기 유지보수공사(단가2차)",
+  "org": "경기도 부천시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "49948000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-11 15:10:10",
+  "contact": "교통정책과 신웅비 032-625-3842",
+  "work_type": "전기",
+  "announced": true
+ },
+ {
   "title": "2027년 교통신호기 유지관리(단가계약:권선1권역) 공사",
   "org": "경기도 수원시",
   "region": "경기도",
@@ -307,7 +346,7 @@
   "amount": "5995000",
   "contract_method": "수의계약",
   "registered": "2026-11-11 11:01:37",
-  "contact": "재무관리과 문성찬 031-250-1457",
+  "contact": "교육시설과 문성찬 031-250-1457",
   "work_type": "통신",
   "announced": false
  },
@@ -468,6 +507,19 @@
   "announced": false
  },
  {
+  "title": "명륜보육원 기능보강(신축)공사(정보통신)",
+  "org": "사회복지법인명륜",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "333953000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-11-11 17:56:07",
+  "contact": "명륜보육원 사무국 이주연 031-426-1996",
+  "work_type": "통신",
+  "announced": false
+ },
+ {
   "title": "방호 공정용 영상감시장치(CCTV) 구매설치 및 이전 공사",
   "org": "서울특별시 서울아리수본부 강북아리수정수센터",
   "region": "경기도",
@@ -544,6 +596,19 @@
   "contact": "교육시설과 김영균 031-412-4687",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "송원초 석면병행 LED조명 교체 통신공사[계속비]",
+  "org": "경기도교육청 경기도수원교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "28393000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-11 13:40:00",
+  "contact": "교육시설과 서예림 031-250-1463",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "송호고 석면제거 천장설치 통신공사",
@@ -698,6 +763,19 @@
   "contract_method": "수의계약",
   "registered": "2026-11-05 14:36:46",
   "contact": "도로관리과 김정석 031-8075-4697",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "중앙선 덕소 등 8역 시설침식차 통신회선 신설공사",
+  "org": "한국철도공사 회계통합센터",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "217247000",
+  "contract_method": "제한경쟁",
+  "registered": "2026-11-11 17:34:52",
+  "contact": "수도권동부본부 전기처 안중기 02-3299-7946",
   "work_type": "통신",
   "announced": true
  },

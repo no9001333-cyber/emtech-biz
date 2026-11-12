@@ -3168,5 +3168,60 @@
    "상·하수도설비공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111014223792608%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604015": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "본 건은 소액수의계약(전자)로, \n - 지역제한(경기도)\n - 창업기업 또는 장애인기업으로 제한하는 건입니다.\n\n자세한 사항은 공고문, 시방서 등을 참고해주시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-12 13:38",
+  "licenses": [
+   "건축공사업",
+   "토목건축공사업",
+   "실내건축공사업",
+   "철근·콘크리트공사업",
+   "기계설비·가스공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111209131804405%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604002": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "□ 자세한 사항은 공고문 및 시방서 등을 반드시 확인하시기 바랍니다.",
+  "regions": [
+   "충청북도"
+  ],
+  "basis": "공고문(입찰공고문(경관조명_증설).hwp)",
+  "checked_at": "2026-11-12 13:38",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111113424199569%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604010": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "본 입찰은 (주)세진전력(409-81-64404)과 진행하는 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-12 13:38",
+  "private": true
+ },
+ "B3202604004": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "* 자세한 내용은 반드시 입찰공고문 등을 확인하여 주시기 바랍니다.",
+  "regions": [
+   "대전광역시"
+  ],
+  "basis": "공고문(1.입찰공고문_대청댐전기공사_.hwp)",
+  "checked_at": "2026-11-12 13:38",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111209015404186%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

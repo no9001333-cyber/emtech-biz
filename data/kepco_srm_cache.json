@@ -13573,5 +13573,255 @@
   "license_logic": null,
   "regions": [],
   "checked_at": "2026-11-11 12:22"
+ },
+ "E012608104": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E112600128": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608100": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E082600439": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608107": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608079": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608101": {
+  "licenses": [
+   "감리업(전력종합감리)",
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": "Or",
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608115": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608108": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608070": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608098": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608093": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608088": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E112600127": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북 괴산군",
+   "충북 단양군",
+   "충북 보은군",
+   "충북 영동군",
+   "충북 옥천군",
+   "충북 음성군",
+   "충북 제천시",
+   "충북 증평군",
+   "충북 진천군",
+   "충북 청주시 청원구",
+   "충북 청주시 상당구",
+   "충북 청주시 흥덕구",
+   "충북 충주시",
+   "충북 청주시 서원구"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608086": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E062600530": {
+  "licenses": [
+   "응급환자이송업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "강원"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608109": {
+  "licenses": [
+   "지반조성·포장공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E042600455": {
+  "licenses": [
+   "전문소방시설공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주 광양시",
+   "경남 남해군",
+   "경남 하동군"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012607996": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608037": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608077": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608091": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E062600527": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E062600528": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E062600529": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-12 13:38"
+ },
+ "E012608090": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-12 13:38"
  }
 }
