@@ -299,6 +299,19 @@
   "announced": false
  },
  {
+  "title": "갈현1배수장 스마트상황룸 구축공사",
+  "org": "한국농어촌공사 경기지역본부 파주지사",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "44962000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-12 13:43:07",
+  "contact": "한국농어촌공사 경기지역본부 파주지사 이인학 031-950-3222",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "검바위초 교실 및 급식소 증축 통신공사",
   "org": "경기도교육청 경기도시흥교육지원청",
   "region": "경기도",
@@ -438,6 +451,19 @@
   "contract_method": "지명경쟁",
   "registered": "2026-11-10 14:43:56",
   "contact": "정수시설과 김현철 02-3146-5384",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "대부지역 교직원 공동사택 증축 통신공사",
+  "org": "경기도교육청 경기도안산교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "344881400",
+  "contract_method": "제한경쟁",
+  "registered": "2026-11-12 20:25:37",
+  "contact": "교육시설과 권석준 031-412-4688",
   "work_type": "통신",
   "announced": true
  },
@@ -637,6 +663,19 @@
   "announced": false
  },
  {
+  "title": "수지 소2-92호 1구간 교통신호기 설치공사",
+  "org": "경기도 용인시 수지구",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "44402000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-13 09:42:03",
+  "contact": "건설도로과 주승환 031-6193-8424",
+  "work_type": "전기",
+  "announced": true
+ },
+ {
   "title": "슬기초 석면제거 천장설치 통신공사",
   "org": "경기도교육청 경기도안산교육지원청",
   "region": "경기도",
@@ -660,7 +699,7 @@
   "registered": "2026-11-11 08:35:25",
   "contact": "총무부 최남주 02-729-7458",
   "work_type": "통신",
-  "announced": false
+  "announced": true
  },
  {
   "title": "시화나래초중 모듈러교실 설치 부대 통신공사",
@@ -752,6 +791,19 @@
   "contact": "교육시설과 정주남 031-412-4688",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "율현중 1~3층 석면병행 LED조명 교체 통신공사",
+  "org": "경기도교육청 경기도수원교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "27306000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-13 10:30:42",
+  "contact": "교육시설과 서예림 031-250-1463",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "일산동구,서구 염수분사장치 노즐제어 통신제어장치 보수공사",
