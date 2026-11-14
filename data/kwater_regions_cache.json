@@ -3276,5 +3276,46 @@
   "basis": "",
   "checked_at": "2026-11-13 12:55",
   "private": true
+ },
+ "B3202604049": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "- 본 건은 소액전자로 진행되는 건입니다. \n * 정보통신공사업 / 울산광역시 / 여성기업\n\n- 공고문 및 시방서 등을 숙지하고 참여해주시기 바랍니다.",
+  "regions": [
+   "울산광역시"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-14 12:53",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111315155117447%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604052": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "* 본 건은 (주)성지이테크(611-81-15258)와 진행하는 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-14 12:53",
+  "private": true
+ },
+ "B3202604048": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "- 본 건은 지역제한(경기도) 적용 건입니다.\n- 자세한 사항은 입찰공고문 등을 확인하여 주시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-14 12:53",
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성·포장공사업",
+   "철근·콘크리트공사업",
+   "포장공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111314014016443%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

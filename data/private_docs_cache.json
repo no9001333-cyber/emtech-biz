@@ -3821,5 +3821,42 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01830066": {
+  "read": true,
+  "doc": "송월아파트구역 주택재개발정비사업 시공자 선정 입찰공고.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01830272": {
+  "read": true,
+  "doc": "1. 입찰 공고문.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01829798": {
+  "read": true,
+  "doc": "1. 입찰공고문.hwpx",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01829626": {
+  "read": true,
+  "doc": "1. 정보통신.소방 감리업체 선정 입찰 공고문.hwp",
+  "licenses": [
+   "정보통신공사업",
+   "소방시설공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }
