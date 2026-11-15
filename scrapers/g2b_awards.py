@@ -94,6 +94,10 @@ def fetch_g2b_awards(begin=None, end=None):
         if isinstance(items, dict):  # 결과가 1건이면 리스트가 아니라 dict 하나로 옴
             items = [items]
         if not items:
+            if page_no == 1:
+                # 진단용: 0건일 때 API가 돌려준 결과코드/메시지를 로그에 남긴다(동작 변경 없음)
+                hdr = data.get("response", {}).get("header", {}) if isinstance(data, dict) else {}
+                print(f"[낙찰정보] 1페이지가 비어있음 - resultCode={hdr.get('resultCode')} resultMsg={hdr.get('resultMsg')} totalCount={body.get('totalCount')} 기간={begin_dt}~{end_dt} 원본={str(data)[:300]}")
             break
 
         if page_no == 1:
