@@ -950,7 +950,20 @@ function setBadge(id, ok, okText, warnText) {{
   el.className = 'src-badge ' + (ok ? 'ok' : 'warn');
 }}
 
+// 낙찰하한율 금액구간은 추정가격(부가세 제외) 기준으로 고른다.
+// 우선순위: 공고의 추정가격(est_price_excl_vat) > 추정금액÷1.1 > 기초금액÷1.1(추정)
+function exclVatEstimate(bid) {{
+  var excl = parseAmount(bid.est_price_excl_vat);
+  if (excl !== null && excl > 0) return excl;
+  var est = parseAmount(bid.est_amount);
+  if (est !== null && est > 0) return est / 1.1;
+  var base = parseAmount(bid.base_amount);
+  if (base !== null && base > 0) return base / 1.1;
+  return null;
+}}
+
 function pickRateTierByAmount(amount) {{
+  // amount: 추정가격(부가세 제외)
   if (amount === null || amount === undefined || amount <= 0) return null;
   if (amount < 1e9) return '0.89745';
   if (amount < 5e9) return '0.88745';
@@ -1013,7 +1026,7 @@ function initCalc(bid) {{
     customField.style.display = 'flex';
     setBadge('badgeRate', true, '공고 데이터(실제값)');
   }} else {{
-    var tier = pickRateTierByAmount(baseVal);
+    var tier = pickRateTierByAmount(exclVatEstimate(bid));
     if (tier) {{
       document.getElementById('calcRateSel').value = tier;
       customField.style.display = 'none';
@@ -1121,7 +1134,9 @@ function calcDraw() {{
   var exclAmount = avgPrice - aValue;
   var appliedAmount = exclAmount * lowLimitRate;
   var readdedAmount = appliedAmount + aValue;
-  var finalAmount = Math.floor(readdedAmount);
+  // 낙찰하한금액은 원 미만 올림(내림하면 하한보다 1원 낮아져 무효가 될 수 있음).
+  // 부동소수 오차(…000.0000001 등)로 1원 더 올라가지 않게 소수 6자리에서 정리 후 올림.
+  var finalAmount = Math.ceil(Math.round(readdedAmount * 1e6) / 1e6);
 
   document.getElementById('c_assessed').textContent = won(avgPrice);
   document.getElementById('c_excl').textContent = won(exclAmount);
