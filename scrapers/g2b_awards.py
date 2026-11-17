@@ -72,7 +72,10 @@ def fetch_g2b_awards(begin=None, end=None):
 
     # 2026-10-19: 낙찰 아카이브(scrapers/award_archive.py)가 과거 구간을 채울 수 있게 기간을 받는다.
     end = end or datetime.now()
-    begin = begin or (end - timedelta(days=LOOKBACK_DAYS))
+    # 2026-11-17: 이 API는 조회기간이 1개월을 넘으면 resultCode 07(입력범위값 초과 에러)을
+    # 돌려주고 items 없이 끝난다. begin 00:00 ~ end 23:59 로 잡으면 LOOKBACK_DAYS(30)일이
+    # 실제로 31일짜리 구간이 되어 11-11부터 매일 0건이었다. 안전하게 최대 28일로 제한한다.
+    begin = begin or (end - timedelta(days=min(LOOKBACK_DAYS, 28)))
     begin_dt = begin.strftime("%Y%m%d0000")
     end_dt = end.strftime("%Y%m%d2359")
 
