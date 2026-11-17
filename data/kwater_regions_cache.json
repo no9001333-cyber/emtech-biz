@@ -3317,5 +3317,33 @@
    "포장공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111314014016443%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604066": {
+  "found": true,
+  "method": "수의견적(전자)",
+  "qualification": "□ 본 건은 수의견적(전자)로 진행되는 건으로, 견적서 제출업체를 아래의 3개사로 제한합니다.\n * 참가대상업체 : 수자원기술(주)(212-81-50572), 에코엔(주)(314-86-61685), 베타(주)(457-87-00380)\n * 공고문 및 첨부서류 숙지 후 입찰에 참가하여 주시기 바랍니다.",
+  "regions": [],
+  "basis": "공고문에서 지역 문구를 못 찾음",
+  "checked_at": "2026-11-17 14:30",
+  "licenses": [
+   "기계설비·가스공사업",
+   "기계가스설비공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111708215737182%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604065": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "- 본 건은 소액전자로 진행되는 건입니다. \n1) 금속‧창호‧지붕‧건축물조립공사업(주력분야 금속구조물공사)\n2) 충청남도 또는 세종특별자치시\n3) 장애인기업 또는 청년창업기업\n\n- 자세한 사항은 공고문 및 시방서 등을 참고해주시기 바랍니다.",
+  "regions": [
+   "세종특별자치시",
+   "충청남도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-17 14:30",
+  "licenses": [
+   "금속‧창호‧지붕‧건축물조립공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111616323331191%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

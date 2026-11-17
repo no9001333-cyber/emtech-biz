@@ -3894,5 +3894,63 @@
   ],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01834696": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01833914": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01832376": {
+  "read": true,
+  "doc": "쉬브로프 입찰 재공고문.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01832745": {
+  "read": true,
+  "doc": "동남목화 가로주택정비사업 협력업체(시공자) 선정 재입찰공고 - 26년 11월 16일-2.hwp",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01835563": {
+  "read": true,
+  "doc": "시공자선정 재입찰공고(2026.11.17).pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01835910": {
+  "read": true,
+  "doc": "1. 인천국제공항고속도로 아스팔트포장 유지보수공사(2026년~2027년)_입찰안내서.hwp",
+  "licenses": [
+   "지반조성·포장공사업",
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성‧포장공사업",
+   "도장‧습식‧방수‧석공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }

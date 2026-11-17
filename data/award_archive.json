@@ -56853,6 +56853,20 @@
    "notice_kind": "공사",
    "url": "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidNum=2603922&bidDegree=00",
    "participants": null
+  },
+  "LH::2603996": {
+   "source": "LH",
+   "title": "밀양나노융합국가산단 C-2BL 아파트 정보통신공사 1공구",
+   "org": "한국토지주택공사",
+   "notice_no": "2603996",
+   "winner": "(주)대하정보기술",
+   "award_amount": "1852960202",
+   "assessed_rate": "88.748",
+   "open_date": "2026/11/16 11:00",
+   "region_scope": "기타",
+   "notice_kind": "공사",
+   "url": "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidNum=2603996&bidDegree=00",
+   "participants": null
   }
  },
  "backfilled_months": [
