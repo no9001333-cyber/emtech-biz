@@ -72,6 +72,20 @@ def fetch_g2b_awards(begin=None, end=None):
 
     # 2026-10-19: 낙찰 아카이브(scrapers/award_archive.py)가 과거 구간을 채울 수 있게 기간을 받는다.
     end = end or datetime.now()
+    # 2026-11-18: 28일로 줄인 뒤에도(11-17 러너 로그: 기간=20261020~20261117) 여전히 resultCode 07이
+    # 나왔다. 반면 낙찰 아카이브가 쓰는 5일 단위 구간은 정상 조회된다. 이 API의 허용 기간이 문서
+    # 설명(1개월)보다 훨씬 짧은 것으로 보여, 기본 조회(기간 미지정)는 아카이브와 같은 5일 단위로
+    # 쪼개서 조회한 뒤 합친다. 구간은 겹치지 않는다(begin 00:00 ~ end 23:59, 5일 단위).
+    if begin is None:
+        start = (end - timedelta(days=min(LOOKBACK_DAYS, 28))).replace(hour=0, minute=0, second=0, microsecond=0)
+        rows = []
+        cur = start
+        while cur <= end:
+            chunk_end = min(cur + timedelta(days=5) - timedelta(seconds=1), end)
+            rows += fetch_g2b_awards(cur, chunk_end)
+            cur = chunk_end + timedelta(seconds=1)
+        print(f"[낙찰정보] 5일 단위 {start:%Y-%m-%d}~{end:%Y-%m-%d} 합계 {len(rows)}건")
+        return rows
     # 2026-11-17: 이 API는 조회기간이 1개월을 넘으면 resultCode 07(입력범위값 초과 에러)을
     # 돌려주고 items 없이 끝난다. begin 00:00 ~ end 23:59 로 잡으면 LOOKBACK_DAYS(30)일이
     # 실제로 31일짜리 구간이 되어 11-11부터 매일 0건이었다. 안전하게 최대 28일로 제한한다.
