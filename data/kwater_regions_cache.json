@@ -3345,5 +3345,65 @@
    "금속‧창호‧지붕‧건축물조립공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111616323331191%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604092": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "* 본 건은 주식회사 디엠로드와 수의시담 진행 건입니다",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-18 14:00",
+  "private": true
+ },
+ "B3202604091": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "□ 제한경쟁(본점소재지-전북특별자치도) 입니다.\n□ 낙찰하한율은 89.745%이며, 홈페이지 공지사항을 통해 확인 가능합니다.\n□ 세부 자격 및 유의사항은 공고문 등을 확인하시기 바랍니다.\n ※ 건설업역간 상호시장 진출이 허용되지 않는 공사입니다.",
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-18 14:00",
+  "licenses": [
+   "실내건축공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111809310049336%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604086": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "1. 소액전자 건입니다.\n - 지역(경상북도), 여성기업 또는 장애인기업 제한 등\n2. 자세한 사항은 공고문 등 제공서류 등을 참고하여 주시기 바랍니다.",
+  "regions": [
+   "경상북도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-18 14:00",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111808150648239%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604083": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "- 본 건은 소액전자로 진행되는 건입니다. \n1) 조경시설물공사업\n2) 경상남도\n3) 여성기업 또는 장애인기업\n\n- 자세한 사항은 공고문 및 시방서 등을 참고해주시기 바랍니다.",
+  "regions": [
+   "경상남도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-18 14:00",
+  "licenses": [
+   "조경시설물공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111716011044765%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604070": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "* 본 건은 주식회사 케이아이티(198-87-00079)와의 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-18 14:00",
+  "private": true
  }
 }

@@ -13,6 +13,19 @@
   "announced": false
  },
  {
+  "title": "(가칭)새빛학교 신축 통신공사[계속비]",
+  "org": "경기도교육청 경기도수원교육지원청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "1659379671",
+  "contract_method": "제한경쟁",
+  "registered": "2026-11-17 16:16:55",
+  "contact": "교육시설과 신오철 031-250-1464",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
   "title": "(가칭)포천특수 신축 통신공사",
   "org": "경기도교육청",
   "region": "경기도",
@@ -37,6 +50,32 @@
   "contact": "학교설립과 이은혜 031-820-0737",
   "work_type": "통신",
   "announced": true
+ },
+ {
+  "title": "2026년 산불대응센터 신축공사(통신)",
+  "org": "산림청 북부지방산림청 수원국유림관리소",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "7410930",
+  "contract_method": "수의계약",
+  "registered": "2026-11-17 14:39:50",
+  "contact": "산림재난대응팀 조용현 031-240-8952",
+  "work_type": "기타",
+  "announced": false
+ },
+ {
+  "title": "2026년 서울청 국도감응신호 구축사업(정보통신공사)",
+  "org": "국토교통부 서울지방국토관리청",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "1228715000",
+  "contract_method": "일반경쟁",
+  "registered": "2026-11-17 18:24:08",
+  "contact": "교통안전팀 신상은 02-2110-6819",
+  "work_type": "통신",
+  "announced": false
  },
  {
   "title": "2026년 소사구 교통신호기 유지보수공사(단가2차)",
@@ -347,6 +386,19 @@
   "contract_method": "수의계약",
   "registered": "2026-11-04 13:52:00",
   "contact": "운영지원부 김설희 031-774-2822",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "경기영상과학고 학과재구조화 공간조성 및 노후실습실 환경개선 통신공사",
+  "org": "경기도교육청 경기영상과학고등학교",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "74747000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-18 10:21:08",
+  "contact": "교육행정실 우남영 031-910-8703",
   "work_type": "통신",
   "announced": true
  },
@@ -932,6 +984,19 @@
   "contract_method": "수의계약",
   "registered": "2026-11-10 17:23:08",
   "contact": "녹색건축사업과 이경민 031-8024-4085",
+  "work_type": "통신",
+  "announced": true
+ },
+ {
+  "title": "항공대지하차도 진입차단시설 설치공사(통신)",
+  "org": "경기도 고양시",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "80895000",
+  "contract_method": "수의계약",
+  "registered": "2026-11-17 16:03:31",
+  "contact": "도로관리과 서정범 031-8075-4707",
   "work_type": "통신",
   "announced": true
  },
