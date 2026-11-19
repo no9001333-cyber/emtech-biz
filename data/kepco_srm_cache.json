@@ -14328,5 +14328,147 @@
    "충남"
   ],
   "checked_at": "2026-11-18 14:00"
+ },
+ "E012608170": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "도장·습식·방수·석공사업",
+   "조경식재·시설물공사업",
+   "철근·콘크리트공사업",
+   "구조물해체·비계공사업",
+   "토목건축공사업",
+   "토목공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E082600452": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608208": {
+  "licenses": [
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608220": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충북"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608221": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608199": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608180": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "세종"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608197": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전남광주"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608217": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "충남"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608207": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "인천"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E042600459": {
+  "licenses": [
+   "실내건축공사업",
+   "금속창호·지붕건축물조립공사업"
+  ],
+  "license_logic": "And",
+  "regions": [
+   "경기",
+   "서울"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608202": {
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608150": {
+  "licenses": [
+   "감리업(전력전문감리)"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-19 13:53"
+ },
+ "E012608194": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경북"
+  ],
+  "checked_at": "2026-11-19 13:53"
  }
 }

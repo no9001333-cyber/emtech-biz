@@ -3405,5 +3405,109 @@
   "basis": "",
   "checked_at": "2026-11-18 14:00",
   "private": true
+ },
+ "B3202604122": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "□ 공고문 및 시방서 등을 반드시 숙지하신 후 입찰에 참가하여 주시기 바랍니다.",
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "공고문(견적서제출안내문(안)_2026년_평화의댐_통일관_내부_철거공사.hwp)",
+  "checked_at": "2026-11-19 13:53",
+  "licenses": [
+   "구조물해체·비계공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111910422859942%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604124": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "* 본 건은 주식회사 지케이정보통신(761-81-02378)과의 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-19 13:53",
+  "private": true
+ },
+ "B3202604099": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "□ 소액전자로 진행되는 건입니다.\n * 자세한 사항은 공고문 및 시방서를 참고하여 주시기 바랍니다.",
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "공고문(1._표준입찰공고문(공사소액수의)_전기차_충전기_전기공사.hwp)",
+  "checked_at": "2026-11-19 13:53",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111812344552046%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604094": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "자세한 사항은 공고문 및 시방서 등을 확인하시기  바랍니다.",
+  "regions": [
+   "경상남도"
+  ],
+  "basis": "공고문(★공고문(거제계통_유량계실_설치공사).hwp)",
+  "checked_at": "2026-11-19 13:53",
+  "licenses": [
+   "상ㆍ하수도설비공사업",
+   "상·하수도설비공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111810090450091%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604108": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "□ 본 건은 씨와이토건주식회사와 진행하는 수의시담 건입니다.\n\n\n□ 자세한 사항은 시방서를 참고해주시기 바랍니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-19 13:53",
+  "private": true
+ },
+ "B3202604115": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "- 본 건은 소액전자로 진행되는 건입니다. (전기공사업 / 전북특별자치도 전주시)\n * 반드시 안내공고문 등 제공문서와 관련 법규을 숙지하신 후 견적서 제출에 참가하시기 바랍니다.",
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-19 13:53",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111816310955765%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604114": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "- 지역제한경쟁입찰입니다. (전남광주통합특별시)\n- (업면허) 지반조성·포장공사업 (주력분야: 토공사)\n- 자세한 사항은 공고문 등을 확인하시기 바랍니다.",
+  "regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-19 13:53",
+  "licenses": [
+   "지반조성·포장공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111816260855701%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604116": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "- 이 건은 소액수의계약(전자)(지역제한(경기도) 및 여성기업ㆍ청년창업기업 대상) 건입니다.\n* 낙찰하한율 : 89.745%\n* 견적서 제출 참가자격 등 자세한 내용은 반드시 공고문을 확인하시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-19 13:53",
+  "licenses": [
+   "상ㆍ하수도설비공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111816355955829%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

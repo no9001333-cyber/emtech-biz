@@ -75,7 +75,7 @@
   "registered": "2026-11-17 18:24:08",
   "contact": "교통안전팀 신상은 02-2110-6819",
   "work_type": "통신",
-  "announced": false
+  "announced": true
  },
  {
   "title": "2026년 소사구 교통신호기 유지보수공사(단가2차)",
@@ -843,6 +843,19 @@
   "contact": "교육시설과 유환서 031-380-7297",
   "work_type": "통신",
   "announced": false
+ },
+ {
+  "title": "양동면 기초생활거점조성사업 통신공사",
+  "org": "한국농어촌공사 경기지역본부 양평.광주.서울지사",
+  "region": "경기도",
+  "region_scope": "경기",
+  "order_month": "2026-11",
+  "amount": "372783931",
+  "contract_method": "수의계약",
+  "registered": "2026-11-18 14:42:28",
+  "contact": "한국농어촌공사 양평·광주·서울지사 박상규 031-770-8005",
+  "work_type": "통신",
+  "announced": true
  },
  {
   "title": "원일초 석면제거 천장설치 통신공사",

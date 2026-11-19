@@ -3977,5 +3977,48 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01836618": {
+  "read": true,
+  "doc": "1. 공고서-밀양IC교(대구방향) 보강 공사.hwp",
+  "licenses": [
+   "토목공사업"
+  ],
+  "regions": [
+   "부산광역시",
+   "대구광역시",
+   "경상북도",
+   "경상남도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01841708": {
+  "read": true,
+  "doc": "스마트팜_연동하우스_신축공사_입찰공고서.pdf",
+  "licenses": [],
+  "regions": [
+   "충청북도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01839595": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01840118": {
+  "read": true,
+  "doc": "(공고문)슬러지자원화3단계시설 슬러지 공급피더(#4-A) 우측 샤프트 보수공사(그린_제2026-31호).hwp",
+  "licenses": [
+   "금속창호공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
  }
 }
