@@ -4020,5 +4020,105 @@
   "regions": [],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01839399": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
+ },
+ "R26BK01843376": {
+  "read": true,
+  "doc": "견적공고문 1부.pdf, 2. 시방서(특기시방서 포함).hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01843564": {
+  "read": true,
+  "doc": "농업회사법인_자연드림(주)_입찰공고문_261118.pdf",
+  "licenses": [
+   "건축공사업"
+  ],
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01845756": {
+  "read": true,
+  "doc": "1. 입찰공고문.hwpx",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01842564": {
+  "read": true,
+  "doc": "0-1. 시공자_입찰공고문(2차).hwp",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업",
+   "조경공사업",
+   "소방시설공사업",
+   "전문소방시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01846997": {
+  "read": true,
+  "doc": "2026년 부산실내빙상장 냉동기정비 입찰공고문.hwp, 2026년 부산실내빙상장 냉동기정비 입찰공고문.pdf, 2026년 부산실내빙상장 냉동기정비 시방서.pdf",
+  "licenses": [
+   "가스공사업"
+  ],
+  "regions": [
+   "부산광역시"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01844790": {
+  "read": true,
+  "doc": "현우산호맨션_소규모재건축사업_시공사선정입찰공고문.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01845272": {
+  "read": true,
+  "doc": "○ 나운주공3단지 정비기반시설 공사업체 선정 입찰공고 및 입찰지침서.hwp",
+  "licenses": [
+   "조경공사업",
+   "전기공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01842330": {
+  "read": true,
+  "doc": "261117_입찰공고_27.정비기반시설 공사.hwpx",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01845282": {
+  "read": false,
+  "doc": "",
+  "licenses": [],
+  "regions": [],
+  "basis": "공고서 글자 추출 실패(스캔본)",
+  "docs_v2": true
  }
 }

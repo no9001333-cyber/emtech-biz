@@ -780,5 +780,27 @@
   "pq_deadline": "",
   "doc_read": true,
   "checked_at": "2026-11-18 14:00"
+ },
+ "2026-01-000258-00": {
+  "deadline": "2026-12-23 10:00",
+  "open_date": "2026-12-23 11:00",
+  "reg_deadline": "2026-12-22 18:00",
+  "lower_rate": "",
+  "url": "https://ebid.kr.or.kr/common/FileDown.do?atchFileId=2026%2F11%2F2026-01-000258-00-1.hwp&orignlFileNm=1.%20%EC%9E%85%EC%B0%B0%EA%B3%B5%EA%B3%A0%EB%AC%B8.hwp&atchDirId=TENDER_DIR_UPLOAD",
+  "licenses": [
+   "전문공사업",
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성ㆍ포장공사업",
+   "철근·콘크리트공사업",
+   "철도‧궤도공사업",
+   "철강구조물공사업",
+   "건축공사업"
+  ],
+  "regions": [],
+  "joint_duty_regions": [],
+  "pq_deadline": "2026-12-07",
+  "doc_read": true,
+  "checked_at": "2026-11-23 08:36"
  }
 }

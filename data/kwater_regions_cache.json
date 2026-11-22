@@ -3509,5 +3509,113 @@
    "상ㆍ하수도설비공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111816355955829%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604145": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "주식회사 케이아이티(198-87-00079)와 수의시담으로 진행하는 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-23 08:36",
+  "private": true
+ },
+ "B3202604137": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "자세한 사항은 공고문 및 시방서 등을 참고하여 주시기 바랍니다.",
+  "regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "basis": "공고문(★입찰공고문_지하수저류댐설치공사.hwp)",
+  "checked_at": "2026-11-23 08:36",
+  "licenses": [
+   "종합공사업",
+   "전문공사업",
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성‧포장공사업",
+   "철근·콘크리트공사업",
+   "상·하수도설비공사업",
+   "지반조성·포장공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111916442666216%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604134": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "입찰공고문과 공사시방서 등 관련 서류를 사전에 양지하시고 입찰에 참가하여 주시기 바랍니다.",
+  "regions": [],
+  "basis": "공고문에서 지역 문구를 못 찾음",
+  "checked_at": "2026-11-23 08:36",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111916360866088%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604127": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "- 본 계약은 (주)도연이엔지와의 수의시담 건입니다.",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-23 08:36",
+  "private": true
+ },
+ "B3202604136": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "자세한 사항은 공고문 등을 확인하시기 바랍니다.",
+  "regions": [
+   "강원특별자치도"
+  ],
+  "basis": "공고문(공고문_F.hwp)",
+  "checked_at": "2026-11-23 08:36",
+  "licenses": [
+   "수중·준설공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111916414566137%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604135": {
+  "found": true,
+  "method": "수의계약(시담)",
+  "qualification": "* 본 건은 주식회사 드림건설 주식회사와 수의시담 진행 건입니다",
+  "regions": [],
+  "basis": "",
+  "checked_at": "2026-11-23 08:36",
+  "private": true
+ },
+ "B3202604130": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "□ 본 건은 제한경쟁(지역), 적격심사 대상건입니다. \n - 지역제한: 경기도\n\n□ 본 건의 입찰참가에 앞서 입찰공고문, 시방서 등을 숙지하여 주시기 바랍니다.\n\n□ 낙찰하한율 : 89.745%",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-23 08:36",
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "지반조성·포장공사업",
+   "철근·콘크리트공사업",
+   "도장ㆍ습식ㆍ방수ㆍ석공사업",
+   "조경식재ㆍ시설물공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111915365064603%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604105": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "자세한 사항은 공고문을 참고하여 주시기 바랍니다.",
+  "regions": [
+   "충청남도"
+  ],
+  "basis": "공고문(입찰공고문(청양,_수도미터).hwp)",
+  "checked_at": "2026-11-23 08:36",
+  "licenses": [
+   "상·하수도설비공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111814074353590%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }
