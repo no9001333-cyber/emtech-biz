@@ -3617,5 +3617,20 @@
    "상·하수도설비공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26111814074353590%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604148": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "* 본 공고 건의 입찰참가자격은 다음과 같습니다.\n - “금속창호․지붕건출물조립공사업(주력분야 : 금속구조물․창호․온실공사)\" 면허/ 여성 또는 장애인 또는 청년창업 또는 사회적 기업/ 전남광주통합특별시 위치\n* 자세한 사항은 안내문을 참고해주시기 바랍니다.",
+  "regions": [
+   "광주광역시",
+   "전라남도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-23 13:20",
+  "licenses": [
+   "지붕건출물조립공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26112310172777037%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

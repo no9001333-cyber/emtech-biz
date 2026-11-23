@@ -14811,5 +14811,20 @@
    "대구"
   ],
   "checked_at": "2026-11-23 08:36"
+ },
+ "E082600454": {
+  "licenses": [
+   "구조물해체·비계공사업",
+   "철강구조물공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-23 13:20"
+ },
+ "E092600148": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-23 13:20"
  }
 }
