@@ -802,5 +802,40 @@
   "pq_deadline": "2026-12-07",
   "doc_read": true,
   "checked_at": "2026-11-23 08:36"
+ },
+ "2026-01-000259-00": {
+  "deadline": "2026-11-27 10:00",
+  "open_date": "2026-11-27 11:00",
+  "reg_deadline": "2026-11-26 18:00",
+  "lower_rate": "89.745",
+  "url": "https://ebid.kr.or.kr/common/FileDown.do?atchFileId=2026%2F11%2F2026-01-000259-00-1.pdf&orignlFileNm=1.%20%EC%86%8C%EC%95%A1%EC%88%98%EC%9D%98%20%EA%B3%B5%EA%B3%A0%EB%AC%B8%28%EC%95%88%29_%EB%83%89%EB%82%9C%EB%B0%A9%20%EC%A0%84%EA%B8%B0%EA%B3%B5%EC%82%AC.pdf&atchDirId=TENDER_DIR_UPLOAD",
+  "licenses": [
+   "전기공사업"
+  ],
+  "regions": [
+   "대전광역시"
+  ],
+  "joint_duty_regions": [],
+  "pq_deadline": "",
+  "doc_read": true,
+  "checked_at": "2026-11-24 16:27"
+ },
+ "2026-01-000260-00": {
+  "deadline": "2026-11-27 10:00",
+  "open_date": "2026-11-27 11:00",
+  "reg_deadline": "2026-11-26 18:00",
+  "lower_rate": "89.745",
+  "url": "https://ebid.kr.or.kr/common/FileDown.do?atchFileId=2026%2F11%2F2026-01-000260-00-1.pdf&orignlFileNm=1.%20%EC%86%8C%EC%95%A1%EC%88%98%EC%9D%98%20%EA%B3%B5%EA%B3%A0%EB%AC%B8%28%EC%95%88%29_%EB%83%89%EB%82%9C%EB%B0%A9%20%EC%84%A4%EB%B9%84%EA%B3%B5%EC%82%AC.pdf&atchDirId=TENDER_DIR_UPLOAD",
+  "licenses": [
+   "기계설비·가스공사업",
+   "기계가스설비공사업"
+  ],
+  "regions": [
+   "대전광역시"
+  ],
+  "joint_duty_regions": [],
+  "pq_deadline": "",
+  "doc_read": true,
+  "checked_at": "2026-11-24 16:27"
  }
 }

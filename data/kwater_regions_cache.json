@@ -3632,5 +3632,36 @@
    "지붕건출물조립공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26112310172777037%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604154": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "* 자세한 내용은 반드시 입찰공고문 등을 확인하여 주시기 바랍니다.",
+  "regions": [
+   "경기도"
+  ],
+  "basis": "공고문(01.입찰공고문(와부고도).hwp)",
+  "checked_at": "2026-11-24 16:27",
+  "licenses": [
+   "전기공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26112410494684700%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604153": {
+  "found": true,
+  "method": "제한경쟁",
+  "qualification": "* 입찰공고문 및 과업지시서 등을 반드시 숙지하신 후 입찰에 참여해주시기 바랍니다.",
+  "regions": [
+   "경상북도"
+  ],
+  "basis": "공고문(공고문.hwp)",
+  "checked_at": "2026-11-24 16:27",
+  "licenses": [
+   "전문공사업",
+   "금속·창호·지붕·건축물조립공사업",
+   "토목공사업",
+   "토목건축공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26112410295684251%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }
