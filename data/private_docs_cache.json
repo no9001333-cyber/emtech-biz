@@ -4263,5 +4263,101 @@
   ],
   "basis": "",
   "docs_v2": true
+ },
+ "R26BK01856781": {
+  "read": true,
+  "doc": "제진뎀퍼 업체선정을 위한 입찰공고(26.11.25).hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01858617": {
+  "read": true,
+  "doc": "사업내용(신재섭).pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01855955": {
+  "read": true,
+  "doc": "2026년 스마트팜 ICT융복합 확산사업 입찰공고문.hwp",
+  "licenses": [
+   "창호공사업"
+  ],
+  "regions": [
+   "전북특별자치도"
+  ],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01858807": {
+  "read": true,
+  "doc": "시방서.pdf",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01854805": {
+  "read": true,
+  "doc": "표준계약조건(시설공사)_priStdContDoc_const.hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01856804": {
+  "read": true,
+  "doc": "정비기반시설 공사 입찰공고문.hwpx",
+  "licenses": [
+   "토목공사업",
+   "토목건축공사업",
+   "조경공사업",
+   "전기공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01856320": {
+  "read": true,
+  "doc": "온천1구역 재건축정비사업 시공자 선정 입찰 공고.pdf",
+  "licenses": [
+   "토목공사업",
+   "건축공사업",
+   "토목건축공사업",
+   "조경공사업",
+   "소방시설공사업",
+   "전문소방시설공사업",
+   "전기공사업",
+   "정보통신공사업"
+  ],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01858477": {
+  "read": true,
+  "doc": "표준계약조건(시설공사)_priStdContDoc_const.hwp",
+  "licenses": [],
+  "regions": [],
+  "basis": "",
+  "docs_v2": true
+ },
+ "R26BK01858034": {
+  "read": true,
+  "doc": "입찰공고문(변환본).pdf",
+  "licenses": [
+   "금속창호·지붕건축물조립공사업",
+   "금속구조물·창호·온실공사업"
+  ],
+  "regions": [
+   "전라남도",
+   "광주광역시"
+  ],
+  "basis": "",
+  "docs_v2": true
  }
 }
