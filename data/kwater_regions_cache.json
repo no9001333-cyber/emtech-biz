@@ -3771,5 +3771,19 @@
    "구조물해체·비계공사업"
   ],
   "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26112509570795958%22%2C+%22fileSeq%22%3A+1%7D"
+ },
+ "B3202604197": {
+  "found": true,
+  "method": "소액전자",
+  "qualification": "* 본 건은 지역제한(경상북도), 장애인기업 또는 창업기업 제한 건입니다.\n* 자세한 사항은 입찰공고문, 시방서 등을 숙지하시고 입찰에 참가하여 주시기 바랍니다.",
+  "regions": [
+   "경상북도"
+  ],
+  "basis": "참가자격 문구",
+  "checked_at": "2026-11-27 14:48",
+  "licenses": [
+   "정보통신공사업"
+  ],
+  "notice_url": "https://ebid.kwater.or.kr/sc/file/downloadAtchFileOne.do?xmlValue=%7B%22atchflId%22%3A+%22FMS26112616535315467%22%2C+%22fileSeq%22%3A+1%7D"
  }
 }

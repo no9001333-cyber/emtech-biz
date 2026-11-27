@@ -15364,5 +15364,155 @@
   "license_logic": null,
   "regions": [],
   "checked_at": "2026-11-26 14:54"
+ },
+ "E012608371": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E112600136": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E052600460": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E042600470": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E062600552": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608340": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608369": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "실내건축공사업",
+   "금속창호·지붕건축물조립공사업",
+   "도장·습식·방수·석공사업",
+   "조경식재·시설물공사업",
+   "철근·콘크리트공사업",
+   "구조물해체·비계공사업",
+   "상·하수도설비공사업",
+   "철강구조물공사업",
+   "기계가스설비공사업",
+   "토목건축공사업",
+   "건축공사업",
+   "토목공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E102600504": {
+  "licenses": [
+   "기계가스설비공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608349": {
+  "licenses": [],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608352": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608363": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608327": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "서울"
+  ],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608355": {
+  "licenses": [
+   "지반조성·포장공사업",
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "경기"
+  ],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608351": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E052600458": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608343": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [],
+  "checked_at": "2026-11-27 14:48"
+ },
+ "E012608308": {
+  "licenses": [
+   "전기공사업"
+  ],
+  "license_logic": null,
+  "regions": [
+   "전북"
+  ],
+  "checked_at": "2026-11-27 14:48"
  }
 }
